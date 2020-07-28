@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Create Schema for Users
+// Create Schema for Messages
 const MessageSchema = new Schema({
     conversation: {
         type: Schema.Types.ObjectId,

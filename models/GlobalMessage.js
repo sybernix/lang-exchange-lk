@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Create Schema for Users
+// Create Schema for Global Message
 const GlobalMessageSchema = new Schema({
     from: {
         type: Schema.Types.ObjectId,
@@ -17,7 +17,4 @@ const GlobalMessageSchema = new Schema({
     },
 });
 
-module.exports = GlobalMessage = mongoose.model(
-    'global_messages',
-    GlobalMessageSchema
-);
+module.exports = GlobalMessage = mongoose.model('global_messages', GlobalMessageSchema);

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Create Schema for Users
+// Create Schema for Conversations
 const ConversationSchema = new Schema({
     recipients: [{ type: Schema.Types.ObjectId, ref: 'users' }],
     lastMessage: {
@@ -13,7 +13,4 @@ const ConversationSchema = new Schema({
     },
 });
 
-module.exports = Conversation = mongoose.model(
-    'conversations',
-    ConversationSchema
-);
+module.exports = Conversation = mongoose.model('conversations', ConversationSchema);
