@@ -46,11 +46,11 @@ router.post('/register', (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
     // Check validation
     if (!isValid) {
-        return res.status(400).json(errors);
+        return res.status(500).json(errors);
     }
     User.findOne({ username: req.body.username }).then(user => {
         if (user) {
-            return res.status(400).json({ message: 'Username already exists' });
+            return res.status(500).json({ message: 'Username already exists' });
         } else {
             const newUser = new User({
                 name: req.body.name,

@@ -8,10 +8,6 @@
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly",
-        "User": true,
-        "Message": true,
-        "GlobalMessage": true,
-        "Conversation": true
     },
     "parserOptions": {
         "ecmaFeatures": {

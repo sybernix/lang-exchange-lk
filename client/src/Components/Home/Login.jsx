@@ -8,8 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import * as Yup from 'yup';
 
-import history from '../Utilities/history';
-import { useLogin } from '../Services/authenticationService';
+import history from '../../Utilities/history';
+import { useLogin } from '../../Services/authenticationService';
 
 const useStyles = makeStyles(theme => ({
     paper: {

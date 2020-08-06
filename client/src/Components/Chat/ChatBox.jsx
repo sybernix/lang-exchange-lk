@@ -18,7 +18,7 @@ import {
     useSendGlobalMessage,
     useGetConversationMessages,
     useSendConversationMessage,
-} from '../Services/chatService';
+} from '../../Services/chatService';
 
 const useStyles = makeStyles(theme => ({
     root: {

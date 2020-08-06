@@ -7,8 +7,8 @@ import { SnackbarProvider } from 'notistack';
 
 import history from './Utilities/history';
 import PrivateRoute from './Utilities/private-route';
-import Home from './Home/Home';
-import Chat from './Chat/Chat';
+import Home from './Components/Home/Home';
+import Chat from './Components/Chat/Chat';
 
 const theme = createMuiTheme({
     palette: {

@@ -9,8 +9,8 @@ import Link from '@material-ui/core/Link';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 
-import { authenticationService } from '../Services/authenticationService';
-import history from '../Utilities/history';
+import { authenticationService } from '../../Services/authenticationService';
+import history from '../../Utilities/history';
 import logo from './logo.png';
 
 const useStyles = makeStyles(theme => ({

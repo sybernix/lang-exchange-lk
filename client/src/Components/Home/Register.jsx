@@ -8,8 +8,8 @@ import TextField from '@material-ui/core/TextField';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import history from '../Utilities/history';
-import { useRegister } from '../Services/authenticationService';
+import history from '../../Utilities/history';
+import { useRegister } from '../../Services/authenticationService';
 
 const useStyles = makeStyles(theme => ({
     paper: {
