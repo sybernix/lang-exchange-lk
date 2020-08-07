@@ -9,6 +9,7 @@ import history from './Utilities/history';
 import PrivateRoute from './Utilities/private-route';
 import Home from './Components/Home/Home';
 import Chat from './Components/Chat/Chat';
+import Discover from './Components/Discover/Discover';
 
 const theme = createMuiTheme({
     palette: {
@@ -40,6 +41,7 @@ function App() {
                 <Router history={history}>
                     <Route path="/" exact component={Home} />
                     <PrivateRoute path="/chat" component={Chat} />
+                    <PrivateRoute path="/discover" component={Discover} />
                 </Router>
             </SnackbarProvider>
         </ThemeProvider>

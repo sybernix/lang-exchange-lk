@@ -60,7 +60,7 @@ const Login = props => {
                             login(username, password).then(
                                 () => {
                                     const { from } = history.location.state || {
-                                        from: { pathname: '/chat' },
+                                        from: { pathname: '/discover' },
                                     };
                                     history.push(from);
                                 },

@@ -8,6 +8,8 @@ import { authenticationService } from '../../Services/authenticationService';
 
 const Home = () => {
     const [page, setPage] = useState('login');
+    console.log(page);
+    console.log(setPage)
 
     useEffect(() => {
         if (authenticationService.currentUserValue) {
