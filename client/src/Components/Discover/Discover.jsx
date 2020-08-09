@@ -1,53 +1,35 @@
-import React, { useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import { useGetUsers } from '../../Services/userService';
 
 const Discover = props => {
+    const [users, setUsers] = useState([]);
     const getUsers = useGetUsers();
 
-    // console.log({getUsers});
+    // function onResponse(res) {
+    //     setUsers(res);
+    //     console.log(users);
+    // }
 
     useEffect(() => {
-        getUsers().then(res => console.log(res));
-    }, null);
+        getUsers().then(res => setUsers(res));
+    }, []);
+
+    useEffect(() => {
+        console.log(users);
+    });
 
     return (
         <div>
-            {/*console.log(getUsers.getUsers());*/}
-            {/*getUsers().then(res => setUsers(res));*/}
             <h3>Welcome to Discover Page</h3>
             <Link to="/chat">chat</Link>
         </div>
     )
-}
+};
 
 Discover.propTypes = {
 
-}
+};
 
 export default Discover
-
-// import React, {Component} from 'react';
-// import {Link} from "react-router-dom";
-// import { useGetUsers } from '../../Services/userService';
-//
-// class Discover extends Component {
-//
-//     componentDidMount() {
-//         useGetUsers((response) => {
-//             console.log(response);
-//         });
-//     }
-//
-//     render() {
-//         return (
-//             <div>
-//                 <h3>Welcome to Discover Page</h3>
-//                 <Link to="/chat">chat</Link>
-//             </div>
-//         );
-//     }
-// }
-//
-// export default Discover;
