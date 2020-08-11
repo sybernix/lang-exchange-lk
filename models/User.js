@@ -15,6 +15,18 @@ const UserSchema = new Schema({
         type: String,
         required: true,
     },
+    description: {
+        type: String,
+        required: true,
+    },
+    nativeLanguage: {
+        type: String,
+        required: true,
+    },
+    targetLanguage: {
+        type: String,
+        required: true,
+    },
     date: {
         type: String,
         default: Date.now,
