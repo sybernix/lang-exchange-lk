@@ -50,11 +50,11 @@ export function useRegister() {
     const { enqueueSnackbar } = useSnackbar();
     const handleResponse = useHandleResponse();
 
-    const register = (name, username, password, password2) => {
+    const register = (name, username, password, password2, description, nativeLanguage, targetLanguage) => {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, username, password, password2 }),
+            body: JSON.stringify({ name, username, password, password2, description, nativeLanguage, targetLanguage }),
         };
 
         return fetch(

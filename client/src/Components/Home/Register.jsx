@@ -10,6 +10,10 @@ import * as Yup from 'yup';
 
 import history from '../../Utilities/history';
 import { useRegister } from '../../Services/authenticationService';
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import InputLabel from "@material-ui/core/InputLabel";
+import FormControl from "@material-ui/core/FormControl";
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -45,6 +49,9 @@ const Register = props => {
                             username: '',
                             password: '',
                             password2: '',
+                            description: '',
+                            nativeLanguage: '',
+                            targetLanguage: '',
                         }}
                         validationSchema={Yup.object().shape({
                             name: Yup.string()
@@ -56,21 +63,24 @@ const Register = props => {
                             password: Yup.string()
                                 .required('Password is Required')
                                 .max(100, 'Password too long')
-                                .min(
-                                    6,
-                                    'Password should be at least 6 characters long'
-                                ),
+                                .min(6, 'Password should be at least 6 characters long'),
                             password2: Yup.string().oneOf(
                                 [Yup.ref('password'), null],
-                                'Passwords do not match'
-                            ),
+                                'Passwords do not match'),
+                            description: Yup.string()
+                                .required('Description is Required')
+                                .max(500, 'Description is too long'),
+                            nativeLanguage: Yup.string()
+                                .required('Native language is required'),
+                            targetLanguage: Yup.string()
+                                .required('Target language is required'),
                         })}
                         onSubmit={(
-                            { name, username, password, password2 },
+                            { name, username, password, password2, description, nativeLanguage, targetLanguage },
                             { setStatus, setSubmitting }
                         ) => {
                             setStatus();
-                            register(name, username, password, password2).then(
+                            register(name, username, password, password2, description, nativeLanguage, targetLanguage).then(
                                 user => {
                                     const { from } = history.location.state || {
                                         from: { pathname: '/chat' },
@@ -176,6 +186,67 @@ const Register = props => {
                                     onChange={handleChange}
                                     type="password"
                                 />
+
+                                <TextField
+                                    id="description"
+                                    className={classes.textField}
+                                    name="description"
+                                    label="Description of yourself"
+                                    fullWidth={true}
+                                    variant="outlined"
+                                    margin="normal"
+                                    required={true}
+                                    helperText={touched.description ? errors.description : ''}
+                                    error={touched.description && Boolean(errors.description)}
+                                    value={values.description}
+                                    onChange={handleChange}
+                                />
+
+                                <FormControl
+                                    fullWidth={true}
+                                    className={classes.formControl}
+                                    margin="normal"
+                                >
+                                    <InputLabel id="native-language-select-label">Native Language</InputLabel>
+                                    <Select
+                                        id="nativeLanguage"
+                                        name="nativeLanguage"
+                                        labelId="native-language-select-label"
+                                        variant="outlined"
+                                        required={true}
+                                        helperText={touched.nativeLanguage ? errors.nativeLanguage : ''}
+                                        error={touched.nativeLanguage && Boolean(errors.nativeLanguage)}
+                                        value={values.nativeLanguage}
+                                        onChange={handleChange}
+                                    >
+                                        <MenuItem value={"english"}>English</MenuItem>
+                                        <MenuItem value={"tamil"}>Tamil</MenuItem>
+                                        <MenuItem value={"sinhala"}>Sinhala</MenuItem>
+                                    </Select>
+                                </FormControl>
+
+                                <FormControl
+                                    fullWidth={true}
+                                    className={classes.formControl}
+                                    margin="normal"
+                                >
+                                    <InputLabel id="target-language-select-label">Target Language</InputLabel>
+                                    <Select
+                                        id="targetLanguage"
+                                        name="targetLanguage"
+                                        labelId="target-language-select-label"
+                                        variant="outlined"
+                                        required={true}
+                                        helperText={touched.targetLanguage ? errors.targetLanguage : ''}
+                                        error={touched.targetLanguage && Boolean(errors.targetLanguage)}
+                                        value={values.targetLanguage}
+                                        onChange={handleChange}
+                                    >
+                                        <MenuItem value={"english"}>English</MenuItem>
+                                        <MenuItem value={"tamil"}>Tamil</MenuItem>
+                                        <MenuItem value={"sinhala"}>Sinhala</MenuItem>
+                                    </Select>
+                                </FormControl>
 
                                 <Button
                                     type="submit"
