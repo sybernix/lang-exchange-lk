@@ -10,6 +10,7 @@ import List from "@material-ui/core/List";
 import {makeStyles} from "@material-ui/core/styles";
 import {grey} from '@material-ui/core/colors';
 import Divider from '@material-ui/core/Divider';
+import { Helmet } from 'react-helmet'
 import Header from "../Layout/Header";
 
 const useStyles = makeStyles(theme => ({
@@ -47,6 +48,9 @@ const Discover = props => {
 
     return (
         <React.Fragment>
+            <Helmet>
+                <title>{ 'Discover Language Partners | LangExchange.lk' }</title>
+            </Helmet>
             <Header/>
             {/*<h3>Welcome to Discover Page</h3>*/}
             {/*<Divider inset={true} />*/}
