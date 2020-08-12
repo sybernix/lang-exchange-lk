@@ -16,6 +16,7 @@ const useStyles = makeStyles(theme => ({
     list: {
         maxHeight: '80vh',
         overflowY: 'auto',
+        margin: '10px 0px'
     },
     avatar: {
         margin: theme.spacing(0, 3, 0, 1),
@@ -48,6 +49,7 @@ const Discover = props => {
         <React.Fragment>
             <Header/>
             {/*<h3>Welcome to Discover Page</h3>*/}
+            {/*<Divider inset={true} />*/}
             {/*<Link to="/chat">chat</Link>*/}
             <List className={classes.list}>
                 {users && (
@@ -61,11 +63,16 @@ const Discover = props => {
                                         // props.setUser(u);
                                         // props.setScope(u.name);
                                     }}
-                                    button>
+                                    button
+                                >
                                     <ListItemAvatar className={classes.avatar}>
                                         <Avatar>AD</Avatar>
                                     </ListItemAvatar>
-                                    <ListItemText primary={<NameDetails {...u} />} secondary={u.description}/>
+                                    <ListItemText
+                                        primary={<NameDetails {...u} />}
+                                        secondary={u.description}
+                                        secondaryTextLines={1}
+                                    />
                                 </ListItem>
                                 <Divider inset={true} />
                             </React.Fragment>
