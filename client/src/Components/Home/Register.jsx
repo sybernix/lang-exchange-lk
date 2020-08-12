@@ -207,12 +207,13 @@ const Register = props => {
                                     className={classes.formControl}
                                     margin="normal"
                                 >
-                                    <InputLabel id="native-language-select-label">Native Language</InputLabel>
+                                    <InputLabel style={{ padding: "0px 0px 0px 15px" }} id="native-language-select-label">Native Language</InputLabel>
                                     <Select
                                         id="nativeLanguage"
                                         name="nativeLanguage"
                                         labelId="native-language-select-label"
                                         variant="outlined"
+                                        style={{ padding: "0px 0px 0px 0px" }}
                                         required={true}
                                         helperText={touched.nativeLanguage ? errors.nativeLanguage : ''}
                                         error={touched.nativeLanguage && Boolean(errors.nativeLanguage)}
@@ -230,7 +231,7 @@ const Register = props => {
                                     className={classes.formControl}
                                     margin="normal"
                                 >
-                                    <InputLabel id="target-language-select-label">Target Language</InputLabel>
+                                    <InputLabel style={{ padding: "0px 0px 0px 15px" }} id="target-language-select-label">Target Language</InputLabel>
                                     <Select
                                         id="targetLanguage"
                                         name="targetLanguage"
