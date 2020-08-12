@@ -8,7 +8,8 @@ import Avatar from "@material-ui/core/Avatar";
 import ListItemText from "@material-ui/core/ListItemText";
 import List from "@material-ui/core/List";
 import {makeStyles} from "@material-ui/core/styles";
-import {blue} from '@material-ui/core/colors';
+import {grey} from '@material-ui/core/colors';
+import Divider from '@material-ui/core/Divider';
 import Header from "../Layout/Header";
 
 const useStyles = makeStyles(theme => ({
@@ -18,6 +19,15 @@ const useStyles = makeStyles(theme => ({
     },
     avatar: {
         margin: theme.spacing(0, 3, 0, 1),
+    },
+    name: {
+        fontSize: 20,
+        textTransform: 'capitalize',
+    },
+    subtitle: {
+        fontSize: 12,
+        textTransform: 'capitalize',
+        color: grey["500"],
     },
 }));
 
@@ -37,26 +47,28 @@ const Discover = props => {
     return (
         <React.Fragment>
             <Header/>
-            <h3>Welcome to Discover Page</h3>
-            <Link to="/chat">chat</Link>
+            {/*<h3>Welcome to Discover Page</h3>*/}
+            {/*<Link to="/chat">chat</Link>*/}
             <List className={classes.list}>
                 {users && (
                     <React.Fragment>
                         {users.map(u => (
-                            <ListItem
-                                className={classes.listItem}
-                                key={u._id}
-                                onClick={() => {
-                                    // props.setUser(u);
-                                    // props.setScope(u.name);
-                                }}
-                                button
-                            >
-                                <ListItemAvatar className={classes.avatar}>
-                                    <Avatar>AD</Avatar>
-                                </ListItemAvatar>
-                                <ListItemText primary={<NameDetails {...u} />} secondary={u.description}/>
-                            </ListItem>
+                            <React.Fragment>
+                                <ListItem
+                                    className={classes.listItem}
+                                    key={u._id}
+                                    onClick={() => {
+                                        // props.setUser(u);
+                                        // props.setScope(u.name);
+                                    }}
+                                    button>
+                                    <ListItemAvatar className={classes.avatar}>
+                                        <Avatar>AD</Avatar>
+                                    </ListItemAvatar>
+                                    <ListItemText primary={<NameDetails {...u} />} secondary={u.description}/>
+                                </ListItem>
+                                <Divider inset={true} />
+                            </React.Fragment>
                         ))}
                     </React.Fragment>
                 )}
@@ -66,24 +78,21 @@ const Discover = props => {
 };
 
 const NameDetails = ({name, description, nativeLanguage, targetLanguage}) => {
+    const classes = useStyles();
     return (
         <div>
             <div>
-                <span style={{fontSize: '14', color: blue}}>
+                <span className={classes.name}>
                   {name}
                 </span>
             </div>
-            <div>
-                <span
-                    style={{fontSize: '5', color: blue}}
-                >
+            <div className={classes.subtitle}>
+                <span>
                     {`Speaks ${nativeLanguage}`}
-                </span>{' '}
-                <span
-                    style={{fontSize: '10', color: blue}}
-                >
+                </span>{' | '}
+                <span>
                     {`Learning ${targetLanguage}`}
-                </span>{' '}
+                </span>
             </div>
         </div>
     );
