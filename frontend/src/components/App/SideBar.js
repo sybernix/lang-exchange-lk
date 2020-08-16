@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { generatePath, withRouter, NavLink } from 'react-router-dom';
+import {generatePath, withRouter, NavLink} from 'react-router-dom';
 import styled from 'styled-components';
 
-import { Spacing } from 'components/Layout';
+import {Spacing} from 'components/Layout';
 import Navigation from './Navigation';
 import Avatar from 'components/Avatar';
 
 import {
-  SIDEBAR_DESKTOP_WIDTH,
-  SIDEBAR_MOBILE_WIDTH,
-  HEADER_HEIGHT,
+    SIDEBAR_DESKTOP_WIDTH,
+    SIDEBAR_MOBILE_WIDTH,
+    HEADER_HEIGHT,
 } from 'constants/Layout';
 
-import { useStore } from 'store';
+import {useStore} from 'store';
 
 import * as Routes from 'routes';
 
@@ -74,38 +74,38 @@ const FullName = styled.div`
 /**
  * Displays left side bar
  */
-const SideBar = ({ location, isOpen, sideBarRef }) => {
-  const [{ auth }] = useStore();
+const SideBar = ({location, isOpen, sideBarRef}) => {
+    const [{auth}] = useStore();
 
-  const isAuthUsersProfilePage =
-    auth.user.username === location.pathname.substring(1);
+    const isAuthUsersProfilePage =
+        auth.user.username === location.pathname.substring(1);
 
-  return (
-    <Root isOpen={isOpen} ref={sideBarRef}>
-      <User
-        exact
-        to={generatePath(Routes.USER_PROFILE, { username: auth.user.username })}
-        activeClassName="selected"
-      >
-        <Avatar image={auth.user.image} size={20} />
+    return (
+        <Root isOpen={isOpen} ref={sideBarRef}>
+            <User
+                exact
+                to={generatePath(Routes.USER_PROFILE, {username: auth.user.username})}
+                activeClassName="selected"
+            >
+                <Avatar image={auth.user.image} size={20}/>
 
-        <Spacing left="xxs">
-          <FullName active={isAuthUsersProfilePage}>
-            {auth.user.fullName}
-          </FullName>
-        </Spacing>
-      </User>
+                <Spacing left="xxs">
+                    <FullName active={isAuthUsersProfilePage}>
+                        {auth.user.fullName}
+                    </FullName>
+                </Spacing>
+            </User>
 
-      <Spacing top="sm" />
+            <Spacing top="sm"/>
 
-      <Navigation />
-    </Root>
-  );
+            <Navigation/>
+        </Root>
+    );
 };
 
 SideBar.propTypes = {
-  location: PropTypes.object.isRequired,
-  isOpen: PropTypes.bool.isRequired,
+    location: PropTypes.object.isRequired,
+    isOpen: PropTypes.bool.isRequired,
 };
 
 export default withRouter(SideBar);

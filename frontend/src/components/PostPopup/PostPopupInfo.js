@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { generatePath } from 'react-router-dom';
+import {generatePath} from 'react-router-dom';
 
-import { A } from 'components/Text';
+import {A} from 'components/Text';
 import Follow from 'components/Follow';
-import { Spacing } from 'components/Layout';
+import {Spacing} from 'components/Layout';
 import Avatar from 'components/Avatar';
 
 import * as Routes from 'routes';
 
-import { useStore } from 'store';
+import {useStore} from 'store';
 
 const Root = styled.div`
   display: flex;
@@ -38,36 +38,36 @@ const UserName = styled.div`
 /**
  * Author info for PostPopup component
  */
-const PostPopupInfo = ({ author }) => {
-  const [{ auth }] = useStore();
+const PostPopupInfo = ({author}) => {
+    const [{auth}] = useStore();
 
-  return (
-    <Root>
-      <Author>
-        <A
-          to={generatePath(Routes.USER_PROFILE, { username: author.username })}
-        >
-          <Avatar image={author.image} />
-        </A>
+    return (
+        <Root>
+            <Author>
+                <A
+                    to={generatePath(Routes.USER_PROFILE, {username: author.username})}
+                >
+                    <Avatar image={author.image}/>
+                </A>
 
-        <Spacing left="xs" inline>
-          <A
-            to={generatePath(Routes.USER_PROFILE, {
-              username: author.username,
-            })}
-          >
-            <UserName>{author.fullName}</UserName>
-          </A>
-        </Spacing>
-      </Author>
+                <Spacing left="xs" inline>
+                    <A
+                        to={generatePath(Routes.USER_PROFILE, {
+                            username: author.username,
+                        })}
+                    >
+                        <UserName>{author.fullName}</UserName>
+                    </A>
+                </Spacing>
+            </Author>
 
-      {auth.user.id !== author.id && <Follow user={author} />}
-    </Root>
-  );
+            {auth.user.id !== author.id && <Follow user={author}/>}
+        </Root>
+    );
 };
 
 PostPopupInfo.propTypes = {
-  author: PropTypes.object.isRequired,
+    author: PropTypes.object.isRequired,
 };
 
 export default PostPopupInfo;

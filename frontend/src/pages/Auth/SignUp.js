@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { withRouter } from 'react-router-dom';
-import { Mutation } from 'react-apollo';
+import {withRouter} from 'react-router-dom';
+import {Mutation} from 'react-apollo';
 
-import { Spacing, Container } from 'components/Layout';
-import { H1, Error } from 'components/Text';
-import { InputText, Button } from 'components/Form';
+import {Spacing, Container} from 'components/Layout';
+import {H1, Error} from 'components/Text';
+import {InputText, Button} from 'components/Form';
 import Head from 'components/Head';
 
-import { SIGN_UP } from 'graphql/user';
+import {SIGN_UP} from 'graphql/user';
 
 import * as Routes from 'routes';
 
@@ -55,169 +55,169 @@ const Form = styled.div`
 /**
  * Sign Up page
  */
-const SignUp = ({ history, refetch }) => {
-  const [error, setError] = useState('');
-  const [values, setValues] = useState({
-    fullName: '',
-    username: '',
-    email: '',
-    password: '',
-  });
-
-  const handleChange = e => {
-    const { name, value } = e.target;
-    setValues({ ...values, [name]: value });
-  };
-
-  const validate = () => {
-    if (!fullName || !email || !username || !password) {
-      return 'All fields are required';
-    }
-
-    if (fullName.length > 50) {
-      return 'Full name no more than 50 characters';
-    }
-
-    const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!emailRegex.test(String(email).toLowerCase())) {
-      return 'Enter a valid email address.';
-    }
-
-    const usernameRegex = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/;
-    if (!usernameRegex.test(username)) {
-      return 'Usernames can only use letters, numbers, underscores and periods';
-    } else if (username.length > 20) {
-      return 'Username no more than 50 characters';
-    }
-
-    if (password.length < 6) {
-      return 'Password min 6 characters';
-    }
-
-    return false;
-  };
-
-  const handleSubmit = (e, signup) => {
-    e.preventDefault();
-
-    const error = validate();
-    if (error) {
-      setError(error);
-      return false;
-    }
-
-    signup().then(async ({ data }) => {
-      localStorage.setItem('token', data.signup.token);
-      await refetch();
-      history.push(Routes.HOME);
+const SignUp = ({history, refetch}) => {
+    const [error, setError] = useState('');
+    const [values, setValues] = useState({
+        fullName: '',
+        username: '',
+        email: '',
+        password: '',
     });
-  };
 
-  const renderErrors = apiError => {
-    let errorMessage;
+    const handleChange = e => {
+        const {name, value} = e.target;
+        setValues({...values, [name]: value});
+    };
 
-    if (error) {
-      errorMessage = error;
-    } else if (apiError) {
-      errorMessage = apiError.graphQLErrors[0].message;
-    }
+    const validate = () => {
+        if (!fullName || !email || !username || !password) {
+            return 'All fields are required';
+        }
 
-    if (errorMessage) {
-      return (
-        <Spacing bottom="sm" top="sm">
-          <Error>{errorMessage}</Error>
-        </Spacing>
-      );
-    }
+        if (fullName.length > 50) {
+            return 'Full name no more than 50 characters';
+        }
 
-    return null;
-  };
+        const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!emailRegex.test(String(email).toLowerCase())) {
+            return 'Enter a valid email address.';
+        }
 
-  const { fullName, email, password, username } = values;
+        const usernameRegex = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/;
+        if (!usernameRegex.test(username)) {
+            return 'Usernames can only use letters, numbers, underscores and periods';
+        } else if (username.length > 20) {
+            return 'Username no more than 50 characters';
+        }
 
-  return (
-    <Mutation
-      mutation={SIGN_UP}
-      variables={{ input: { fullName, email, password, username } }}
-    >
-      {(signup, { loading, error: apiError }) => {
-        return (
-          <Root maxWidth="lg">
-            <Head />
+        if (password.length < 6) {
+            return 'Password min 6 characters';
+        }
 
-            <Welcome>
-              <div>
-                <Heading color="white">
-                  Connect with friends and the world around you.
-                </Heading>
-              </div>
+        return false;
+    };
 
-              <p>See photos and updates from your friends.</p>
-              <p>Follow your interests.</p>
-              <p>Hear what people are talking about.</p>
-            </Welcome>
+    const handleSubmit = (e, signup) => {
+        e.preventDefault();
 
-            <Form>
-              <Spacing bottom="md">
-                <H1>Create Account</H1>
-              </Spacing>
+        const error = validate();
+        if (error) {
+            setError(error);
+            return false;
+        }
 
-              <form onSubmit={e => handleSubmit(e, signup)}>
-                <InputText
-                  type="text"
-                  name="fullName"
-                  values={fullName}
-                  onChange={handleChange}
-                  placeholder="Full name"
-                  borderColor="white"
-                />
-                <Spacing top="xs" bottom="xs">
-                  <InputText
-                    type="text"
-                    name="email"
-                    values={email}
-                    onChange={handleChange}
-                    placeholder="Email"
-                    borderColor="white"
-                  />
+        signup().then(async ({data}) => {
+            localStorage.setItem('token', data.signup.token);
+            await refetch();
+            history.push(Routes.HOME);
+        });
+    };
+
+    const renderErrors = apiError => {
+        let errorMessage;
+
+        if (error) {
+            errorMessage = error;
+        } else if (apiError) {
+            errorMessage = apiError.graphQLErrors[0].message;
+        }
+
+        if (errorMessage) {
+            return (
+                <Spacing bottom="sm" top="sm">
+                    <Error>{errorMessage}</Error>
                 </Spacing>
-                <InputText
-                  type="text"
-                  name="username"
-                  values={username}
-                  onChange={handleChange}
-                  placeholder="Username"
-                  borderColor="white"
-                />
-                <Spacing top="xs" bottom="xs">
-                  <InputText
-                    type="password"
-                    name="password"
-                    values={password}
-                    onChange={handleChange}
-                    placeholder="Password"
-                    borderColor="white"
-                  />
-                </Spacing>
+            );
+        }
 
-                {renderErrors(apiError)}
+        return null;
+    };
 
-                <Spacing top="sm" />
-                <Button size="large" disabled={loading}>
-                  Sign up
-                </Button>
-              </form>
-            </Form>
-          </Root>
-        );
-      }}
-    </Mutation>
-  );
+    const {fullName, email, password, username} = values;
+
+    return (
+        <Mutation
+            mutation={SIGN_UP}
+            variables={{input: {fullName, email, password, username}}}
+        >
+            {(signup, {loading, error: apiError}) => {
+                return (
+                    <Root maxWidth="lg">
+                        <Head/>
+
+                        <Welcome>
+                            <div>
+                                <Heading color="white">
+                                    Connect with friends and the world around you.
+                                </Heading>
+                            </div>
+
+                            <p>See photos and updates from your friends.</p>
+                            <p>Follow your interests.</p>
+                            <p>Hear what people are talking about.</p>
+                        </Welcome>
+
+                        <Form>
+                            <Spacing bottom="md">
+                                <H1>Create Account</H1>
+                            </Spacing>
+
+                            <form onSubmit={e => handleSubmit(e, signup)}>
+                                <InputText
+                                    type="text"
+                                    name="fullName"
+                                    values={fullName}
+                                    onChange={handleChange}
+                                    placeholder="Full name"
+                                    borderColor="white"
+                                />
+                                <Spacing top="xs" bottom="xs">
+                                    <InputText
+                                        type="text"
+                                        name="email"
+                                        values={email}
+                                        onChange={handleChange}
+                                        placeholder="Email"
+                                        borderColor="white"
+                                    />
+                                </Spacing>
+                                <InputText
+                                    type="text"
+                                    name="username"
+                                    values={username}
+                                    onChange={handleChange}
+                                    placeholder="Username"
+                                    borderColor="white"
+                                />
+                                <Spacing top="xs" bottom="xs">
+                                    <InputText
+                                        type="password"
+                                        name="password"
+                                        values={password}
+                                        onChange={handleChange}
+                                        placeholder="Password"
+                                        borderColor="white"
+                                    />
+                                </Spacing>
+
+                                {renderErrors(apiError)}
+
+                                <Spacing top="sm"/>
+                                <Button size="large" disabled={loading}>
+                                    Sign up
+                                </Button>
+                            </form>
+                        </Form>
+                    </Root>
+                );
+            }}
+        </Mutation>
+    );
 };
 
 SignUp.propTypes = {
-  history: PropTypes.object.isRequired,
-  refetch: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired,
+    refetch: PropTypes.func.isRequired,
 };
 
 export default withRouter(SignUp);

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { EmptyIcon } from 'components/icons';
+import {EmptyIcon} from 'components/icons';
 
 const Container = styled.div`
   display: flex;
@@ -12,16 +12,16 @@ const Container = styled.div`
 /**
  * Component for displaying when there is no data provided
  */
-const Empty = ({ text }) => (
-  <Container>
-    <EmptyIcon />
+const Empty = ({text}) => (
+    <Container>
+        <EmptyIcon/>
 
-    {text}
-  </Container>
+        {text}
+    </Container>
 );
 
 Empty.propTypes = {
-  text: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
 };
 
 export default Empty;

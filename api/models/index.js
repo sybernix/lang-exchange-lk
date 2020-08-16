@@ -7,11 +7,11 @@ import Notification from './Notification';
 import Message from './Message';
 
 export default {
-  User,
-  Post,
-  Like,
-  Follow,
-  Comment,
-  Notification,
-  Message,
+    User,
+    Post,
+    Like,
+    Follow,
+    Comment,
+    Notification,
+    Message,
 };

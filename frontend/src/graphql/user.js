@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 import {
-  postCommentsPayload,
-  postAuthorPayload,
-  postLikesPayload,
+    postCommentsPayload,
+    postAuthorPayload,
+    postLikesPayload,
 } from './post';
 
 /**

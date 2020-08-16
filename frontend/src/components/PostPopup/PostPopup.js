@@ -1,20 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import styled from 'styled-components';
-import { Query } from 'react-apollo';
+import {Query} from 'react-apollo';
 
-import { Loading } from 'components/Loading';
-import { CloseIcon } from 'components/icons';
+import {Loading} from 'components/Loading';
+import {CloseIcon} from 'components/icons';
 import CreateComment from 'components/CreateComment';
-import { Spacing } from 'components/Layout';
+import {Spacing} from 'components/Layout';
 import NotFound from 'components/NotFound';
 import Head from 'components/Head';
 import PostPopupInfo from './PostPopupInfo';
 import PostPopupComments from './PostPopupComments';
 import PostPopupOptions from './PostPopupOptions';
 
-import { GET_POST } from 'graphql/post';
+import {GET_POST} from 'graphql/post';
 
 const Root = styled.div`
   margin: 0 auto;
@@ -99,72 +99,72 @@ const Title = styled.div`
  * Displays post with comments and options
  * Meant to be used in Modal or Page component
  */
-const PostPopup = ({ id, closeModal, usedInModal }) => {
-  return (
-    <Query query={GET_POST} variables={{ id }}>
-      {({ data, loading, error }) => {
-        if (loading) return <Loading top="lg" />;
-        if (error) return <NotFound />;
+const PostPopup = ({id, closeModal, usedInModal}) => {
+    return (
+        <Query query={GET_POST} variables={{id}}>
+            {({data, loading, error}) => {
+                if (loading) return <Loading top="lg"/>;
+                if (error) return <NotFound/>;
 
-        const post = data.getPost;
+                const post = data.getPost;
 
-        return (
-          <Root usedInModal={usedInModal}>
-            <Head
-              title={post.title ? post.title : `${post.author.username}'s post`}
-            />
+                return (
+                    <Root usedInModal={usedInModal}>
+                        <Head
+                            title={post.title ? post.title : `${post.author.username}'s post`}
+                        />
 
-            {closeModal && (
-              <CloseModal onClick={closeModal}>
-                <CloseIcon width="16" color="white" />
-              </CloseModal>
-            )}
+                        {closeModal && (
+                            <CloseModal onClick={closeModal}>
+                                <CloseIcon width="16" color="white"/>
+                            </CloseModal>
+                        )}
 
-            <Container usedInModal={usedInModal}>
-              <Left usedInModal={usedInModal}>
-                <Image src={post.image} usedInModal={usedInModal} />
-              </Left>
+                        <Container usedInModal={usedInModal}>
+                            <Left usedInModal={usedInModal}>
+                                <Image src={post.image} usedInModal={usedInModal}/>
+                            </Left>
 
-              <Right usedInModal={usedInModal}>
-                <Spacing>
-                  <PostPopupInfo author={post.author} />
+                            <Right usedInModal={usedInModal}>
+                                <Spacing>
+                                    <PostPopupInfo author={post.author}/>
 
-                  {post.title && <Title>{post.title}</Title>}
+                                    {post.title && <Title>{post.title}</Title>}
 
-                  <PostPopupComments
-                    usedInModal={usedInModal}
-                    comments={post.comments}
-                    postId={post.id}
-                    postAuthor={post.author}
-                  />
-                </Spacing>
+                                    <PostPopupComments
+                                        usedInModal={usedInModal}
+                                        comments={post.comments}
+                                        postId={post.id}
+                                        postAuthor={post.author}
+                                    />
+                                </Spacing>
 
-                <Spacing>
-                  <PostPopupOptions
-                    postId={post.id}
-                    postAuthor={post.author}
-                    postLikes={post.likes}
-                  />
+                                <Spacing>
+                                    <PostPopupOptions
+                                        postId={post.id}
+                                        postAuthor={post.author}
+                                        postLikes={post.likes}
+                                    />
 
-                  <CreateComment post={post} />
-                </Spacing>
-              </Right>
-            </Container>
-          </Root>
-        );
-      }}
-    </Query>
-  );
+                                    <CreateComment post={post}/>
+                                </Spacing>
+                            </Right>
+                        </Container>
+                    </Root>
+                );
+            }}
+        </Query>
+    );
 };
 
 PostPopup.propTypes = {
-  id: PropTypes.string.isRequired,
-  closeModal: PropTypes.func,
-  usedInModal: PropTypes.bool.isRequired,
+    id: PropTypes.string.isRequired,
+    closeModal: PropTypes.func,
+    usedInModal: PropTypes.bool.isRequired,
 };
 
 PostPopup.defaultProps = {
-  usedInModal: true,
+    usedInModal: true,
 };
 
 export default withRouter(PostPopup);

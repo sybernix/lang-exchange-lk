@@ -1,17 +1,17 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { useMutation } from '@apollo/react-hooks';
+import {useMutation} from '@apollo/react-hooks';
 
-import { Button, Textarea } from 'components/Form';
-import { SendIcon } from 'components/icons';
+import {Button, Textarea} from 'components/Form';
+import {SendIcon} from 'components/icons';
 import Avatar from 'components/Avatar';
-import { Spacing } from 'components/Layout';
+import {Spacing} from 'components/Layout';
 
-import { CREATE_MESSAGE } from 'graphql/messages';
-import { GET_CONVERSATIONS } from 'graphql/user';
+import {CREATE_MESSAGE} from 'graphql/messages';
+import {GET_CONVERSATIONS} from 'graphql/user';
 
-import { currentDate } from 'utils/date';
+import {currentDate} from 'utils/date';
 
 import * as Routes from 'routes';
 
@@ -108,108 +108,108 @@ const SendButton = styled(Button)`
  * Component that renders messages conversations UI
  */
 const MessagesChatConversation = ({
-  messages,
-  authUser,
-  chatUser,
-  data,
-  match,
-}) => {
-  const bottomRef = useRef(null);
+                                      messages,
+                                      authUser,
+                                      chatUser,
+                                      data,
+                                      match,
+                                  }) => {
+    const bottomRef = useRef(null);
 
-  const [messageText, setMessageText] = useState('');
+    const [messageText, setMessageText] = useState('');
 
-  const [createMessage] = useMutation(CREATE_MESSAGE);
+    const [createMessage] = useMutation(CREATE_MESSAGE);
 
-  useEffect(() => {
-    if (bottomRef.current) {
-      bottomRef.current.scrollIntoView();
-    }
-  }, [bottomRef, data]);
-
-  const sendMessage = e => {
-    e.preventDefault();
-
-    if (!messageText) return;
-
-    setMessageText('');
-    createMessage({
-      variables: {
-        input: {
-          sender: authUser.id,
-          receiver: chatUser ? chatUser.id : null,
-          message: messageText,
-        },
-      },
-      refetchQueries: ({ data }) => {
-        if (data && data.createMessage && data.createMessage.isFirstMessage) {
-          return [
-            {
-              query: GET_CONVERSATIONS,
-              variables: { authUserId: authUser.id },
-            },
-          ];
+    useEffect(() => {
+        if (bottomRef.current) {
+            bottomRef.current.scrollIntoView();
         }
-      },
-    });
-  };
+    }, [bottomRef, data]);
 
-  const onEnterPress = e => {
-    if (e.keyCode === 13 && e.shiftKey === false) {
-      sendMessage(e);
-    }
-  };
+    const sendMessage = e => {
+        e.preventDefault();
 
-  return (
-    <Root>
-      <Conversation>
-        {messages.map(message => {
-          const isAuthUserReceiver = authUser.id === message.sender.id;
+        if (!messageText) return;
 
-          return (
-            <MessageWrapper userMessage={isAuthUserReceiver} key={message.id}>
-              {!isAuthUserReceiver && (
-                <Spacing right="xs">
-                  <Avatar image={message.sender.image} />
-                </Spacing>
-              )}
+        setMessageText('');
+        createMessage({
+            variables: {
+                input: {
+                    sender: authUser.id,
+                    receiver: chatUser ? chatUser.id : null,
+                    message: messageText,
+                },
+            },
+            refetchQueries: ({data}) => {
+                if (data && data.createMessage && data.createMessage.isFirstMessage) {
+                    return [
+                        {
+                            query: GET_CONVERSATIONS,
+                            variables: {authUserId: authUser.id},
+                        },
+                    ];
+                }
+            },
+        });
+    };
 
-              <Message userMessage={isAuthUserReceiver}>
-                {message.message}
-              </Message>
+    const onEnterPress = e => {
+        if (e.keyCode === 13 && e.shiftKey === false) {
+            sendMessage(e);
+        }
+    };
 
-              <MessageDate userMessage={isAuthUserReceiver}>
-                {currentDate(message.createdAt)}
-              </MessageDate>
-            </MessageWrapper>
-          );
-        })}
-        <div ref={bottomRef} />
-      </Conversation>
+    return (
+        <Root>
+            <Conversation>
+                {messages.map(message => {
+                    const isAuthUserReceiver = authUser.id === message.sender.id;
 
-      {match.params.userId !== Routes.NEW_ID_VALUE && chatUser && (
-        <Form onSubmit={sendMessage}>
-          <StyledTextarea
-            placeholder="Type a message"
-            value={messageText}
-            onChange={e => setMessageText(e.target.value)}
-            onKeyDown={onEnterPress}
-          />
+                    return (
+                        <MessageWrapper userMessage={isAuthUserReceiver} key={message.id}>
+                            {!isAuthUserReceiver && (
+                                <Spacing right="xs">
+                                    <Avatar image={message.sender.image}/>
+                                </Spacing>
+                            )}
 
-          <SendButton type="submit" ghost>
-            <SendIcon width="28" />
-          </SendButton>
-        </Form>
-      )}
-    </Root>
-  );
+                            <Message userMessage={isAuthUserReceiver}>
+                                {message.message}
+                            </Message>
+
+                            <MessageDate userMessage={isAuthUserReceiver}>
+                                {currentDate(message.createdAt)}
+                            </MessageDate>
+                        </MessageWrapper>
+                    );
+                })}
+                <div ref={bottomRef}/>
+            </Conversation>
+
+            {match.params.userId !== Routes.NEW_ID_VALUE && chatUser && (
+                <Form onSubmit={sendMessage}>
+                    <StyledTextarea
+                        placeholder="Type a message"
+                        value={messageText}
+                        onChange={e => setMessageText(e.target.value)}
+                        onKeyDown={onEnterPress}
+                    />
+
+                    <SendButton type="submit" ghost>
+                        <SendIcon width="28"/>
+                    </SendButton>
+                </Form>
+            )}
+        </Root>
+    );
 };
 
 MessagesChatConversation.propTypes = {
-  messages: PropTypes.array.isRequired,
-  authUser: PropTypes.object.isRequired,
-  chatUser: PropTypes.object,
-  data: PropTypes.any,
-  match: PropTypes.object.isRequired,
+    messages: PropTypes.array.isRequired,
+    authUser: PropTypes.object.isRequired,
+    chatUser: PropTypes.object,
+    data: PropTypes.any,
+    match: PropTypes.object.isRequired,
 };
 
 export default MessagesChatConversation;

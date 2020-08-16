@@ -1,21 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { generatePath } from 'react-router-dom';
-import { Mutation } from 'react-apollo';
+import {generatePath} from 'react-router-dom';
+import {Mutation} from 'react-apollo';
 
-import { CloseIcon } from 'components/icons';
-import { A } from './Text';
-import { Spacing } from './Layout';
+import {CloseIcon} from 'components/icons';
+import {A} from './Text';
+import {Spacing} from './Layout';
 import Avatar from 'components/Avatar';
 
-import { GET_AUTH_USER, GET_USER } from 'graphql/user';
-import { DELETE_COMMENT } from 'graphql/comment';
-import { GET_POST, GET_POSTS, GET_FOLLOWED_POSTS } from 'graphql/post';
+import {GET_AUTH_USER, GET_USER} from 'graphql/user';
+import {DELETE_COMMENT} from 'graphql/comment';
+import {GET_POST, GET_POSTS, GET_FOLLOWED_POSTS} from 'graphql/post';
 
-import { useNotifications } from '../hooks/useNotifications';
+import {useNotifications} from '../hooks/useNotifications';
 
-import { useStore } from 'store';
+import {useStore} from 'store';
 
 import * as Routes from 'routes';
 
@@ -61,81 +61,81 @@ const CommentSection = styled.div`
 /**
  * Renders comments UI
  */
-const Comment = ({ comment, postId, postAuthor }) => {
-  const [{ auth }] = useStore();
-  const notification = useNotifications();
+const Comment = ({comment, postId, postAuthor}) => {
+    const [{auth}] = useStore();
+    const notification = useNotifications();
 
-  const handleDeleteComment = async deleteComment => {
-    await deleteComment();
+    const handleDeleteComment = async deleteComment => {
+        await deleteComment();
 
-    // Delete notification after comment deletion
-    if (auth.user.id !== postAuthor.id) {
-      const isNotified = postAuthor.notifications.find(
-        n => n.comment && n.comment.id === comment.id
-      );
-      notification.remove({
-        notificationId: isNotified.id,
-      });
-    }
-  };
+        // Delete notification after comment deletion
+        if (auth.user.id !== postAuthor.id) {
+            const isNotified = postAuthor.notifications.find(
+                n => n.comment && n.comment.id === comment.id
+            );
+            notification.remove({
+                notificationId: isNotified.id,
+            });
+        }
+    };
 
-  return (
-    <Mutation
-      mutation={DELETE_COMMENT}
-      variables={{ input: { id: comment.id } }}
-      refetchQueries={() => [
-        { query: GET_FOLLOWED_POSTS, variables: { userId: auth.user.id } },
-        { query: GET_USER, variables: { username: comment.author.username } },
-        { query: GET_AUTH_USER },
-        { query: GET_POSTS, variables: { authUserId: auth.user.id } },
-        { query: GET_POST, variables: { id: postId } },
-      ]}
-    >
-      {deleteComment => {
-        return (
-          <Root>
-            <A
-              to={generatePath(Routes.USER_PROFILE, {
-                username: comment.author.username,
-              })}
-            >
-              <Avatar image={comment.author.image} />
-            </A>
+    return (
+        <Mutation
+            mutation={DELETE_COMMENT}
+            variables={{input: {id: comment.id}}}
+            refetchQueries={() => [
+                {query: GET_FOLLOWED_POSTS, variables: {userId: auth.user.id}},
+                {query: GET_USER, variables: {username: comment.author.username}},
+                {query: GET_AUTH_USER},
+                {query: GET_POSTS, variables: {authUserId: auth.user.id}},
+                {query: GET_POST, variables: {id: postId}},
+            ]}
+        >
+            {deleteComment => {
+                return (
+                    <Root>
+                        <A
+                            to={generatePath(Routes.USER_PROFILE, {
+                                username: comment.author.username,
+                            })}
+                        >
+                            <Avatar image={comment.author.image}/>
+                        </A>
 
-            <CommentSection>
-              {comment.author.id === auth.user.id && (
-                <DeleteButton
-                  onClick={() => handleDeleteComment(deleteComment)}
-                >
-                  <CloseIcon width="10" />
-                </DeleteButton>
-              )}
+                        <CommentSection>
+                            {comment.author.id === auth.user.id && (
+                                <DeleteButton
+                                    onClick={() => handleDeleteComment(deleteComment)}
+                                >
+                                    <CloseIcon width="10"/>
+                                </DeleteButton>
+                            )}
 
-              <Spacing top="xxs" />
+                            <Spacing top="xxs"/>
 
-              <Spacing inline right="xxs">
-                <A
-                  to={generatePath(Routes.USER_PROFILE, {
-                    username: comment.author.username,
-                  })}
-                >
-                  <UserName>{comment.author.fullName}</UserName>
-                </A>
-              </Spacing>
+                            <Spacing inline right="xxs">
+                                <A
+                                    to={generatePath(Routes.USER_PROFILE, {
+                                        username: comment.author.username,
+                                    })}
+                                >
+                                    <UserName>{comment.author.fullName}</UserName>
+                                </A>
+                            </Spacing>
 
-              {comment.comment}
-            </CommentSection>
-          </Root>
-        );
-      }}
-    </Mutation>
-  );
+                            {comment.comment}
+                        </CommentSection>
+                    </Root>
+                );
+            }}
+        </Mutation>
+    );
 };
 
 Comment.propTypes = {
-  comment: PropTypes.object.isRequired,
-  postId: PropTypes.string.isRequired,
-  postAuthor: PropTypes.object.isRequired,
+    comment: PropTypes.object.isRequired,
+    postId: PropTypes.string.isRequired,
+    postAuthor: PropTypes.object.isRequired,
 };
 
 export default Comment;

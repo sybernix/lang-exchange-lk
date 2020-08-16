@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
 // prettier-ignore
 
@@ -65,7 +65,7 @@ export const LoadingDots = styled.div`
     content: '.';
     text-align: center;
     color: ${p =>
-      p.color ? p.theme.colors[p.color] : p.theme.colors.text.secondary};
+    p.color ? p.theme.colors[p.color] : p.theme.colors.text.secondary};
     font-size: ${p => p.theme.font.size.xl};
   }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { SearchIcon } from 'components/icons';
+import {SearchIcon} from 'components/icons';
 
 const Root = styled.div`
   width: 100%;
@@ -28,8 +28,8 @@ const Input = styled.input`
   font-size: ${p => p.theme.font.size.xs};
   background-color: ${p =>
     p.backgroundColor
-      ? p.theme.colors[p.backgroundColor]
-      : p.theme.colors.grey[200]};
+        ? p.theme.colors[p.backgroundColor]
+        : p.theme.colors.grey[200]};
   transition: border-color 0.1s;
 
   &:focus {
@@ -43,51 +43,51 @@ const Input = styled.input`
  * Component for rendering search input
  */
 const SearchInput = ({
-  onChange,
-  onFocus,
-  value,
-  inputRef,
-  backgroundColor,
-  placeholder,
-  hideIcon,
-  children,
-  autoFocus,
-}) => {
-  return (
-    <Root>
-      {!hideIcon && (
-        <IconContainer>
-          <SearchIcon />
-        </IconContainer>
-      )}
+                         onChange,
+                         onFocus,
+                         value,
+                         inputRef,
+                         backgroundColor,
+                         placeholder,
+                         hideIcon,
+                         children,
+                         autoFocus,
+                     }) => {
+    return (
+        <Root>
+            {!hideIcon && (
+                <IconContainer>
+                    <SearchIcon/>
+                </IconContainer>
+            )}
 
-      <Input
-        onChange={onChange}
-        onFocus={onFocus}
-        value={value}
-        ref={inputRef}
-        backgroundColor={backgroundColor}
-        type="text"
-        placeholder={placeholder}
-        hideIcon={hideIcon}
-        autoFocus={autoFocus}
-      />
+            <Input
+                onChange={onChange}
+                onFocus={onFocus}
+                value={value}
+                ref={inputRef}
+                backgroundColor={backgroundColor}
+                type="text"
+                placeholder={placeholder}
+                hideIcon={hideIcon}
+                autoFocus={autoFocus}
+            />
 
-      {children}
-    </Root>
-  );
+            {children}
+        </Root>
+    );
 };
 
 SearchInput.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  onFocus: PropTypes.func,
-  value: PropTypes.string.isRequired,
-  ref: PropTypes.object,
-  backgroundColor: PropTypes.string,
-  placeholder: PropTypes.string,
-  hideIcon: PropTypes.bool,
-  children: PropTypes.node,
-  autoFocus: PropTypes.bool,
+    onChange: PropTypes.func.isRequired,
+    onFocus: PropTypes.func,
+    value: PropTypes.string.isRequired,
+    ref: PropTypes.object,
+    backgroundColor: PropTypes.string,
+    placeholder: PropTypes.string,
+    hideIcon: PropTypes.bool,
+    children: PropTypes.node,
+    autoFocus: PropTypes.bool,
 };
 
 export default SearchInput;

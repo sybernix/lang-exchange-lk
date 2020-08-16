@@ -19,52 +19,52 @@ const Container = styled.div`
  * Renders an UI block to inform a user, that content will be shown here after loading
  */
 const Skeleton = ({
-  count,
-  width,
-  height,
-  inline,
-  top,
-  right,
-  bottom,
-  left,
-  radius,
-}) => {
-  const loopSkeleton = () => {
-    let skeleton = [];
-    for (let i = 0; i < count; i++) {
-      skeleton.push(
-        <Container
-          key={i}
-          top={top}
-          left={left}
-          right={right}
-          width={width}
-          height={height}
-          inline={inline}
-          bottom={bottom}
-          radius={radius}
-        />
-      );
-    }
-    return skeleton;
-  };
+                      count,
+                      width,
+                      height,
+                      inline,
+                      top,
+                      right,
+                      bottom,
+                      left,
+                      radius,
+                  }) => {
+    const loopSkeleton = () => {
+        let skeleton = [];
+        for (let i = 0; i < count; i++) {
+            skeleton.push(
+                <Container
+                    key={i}
+                    top={top}
+                    left={left}
+                    right={right}
+                    width={width}
+                    height={height}
+                    inline={inline}
+                    bottom={bottom}
+                    radius={radius}
+                />
+            );
+        }
+        return skeleton;
+    };
 
-  return loopSkeleton();
+    return loopSkeleton();
 };
 
 Skeleton.propTypes = {
-  inline: PropTypes.bool,
-  count: PropTypes.number,
-  width: PropTypes.number,
-  left: PropTypes.string,
-  top: PropTypes.string,
-  right: PropTypes.string,
-  bottom: PropTypes.string,
-  height: PropTypes.number,
+    inline: PropTypes.bool,
+    count: PropTypes.number,
+    width: PropTypes.number,
+    left: PropTypes.string,
+    top: PropTypes.string,
+    right: PropTypes.string,
+    bottom: PropTypes.string,
+    height: PropTypes.number,
 };
 
 Skeleton.defaultProps = {
-  count: 1,
+    count: 1,
 };
 
 export default Skeleton;

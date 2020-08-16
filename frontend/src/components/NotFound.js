@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { A, H1, H2 } from 'components/Text';
-import { Spacing } from 'components/Layout';
-import { NotFoundIcon } from 'components/icons';
+import {A, H1, H2} from 'components/Text';
+import {Spacing} from 'components/Layout';
+import {NotFoundIcon} from 'components/icons';
 
 import * as Routes from 'routes';
 
@@ -20,19 +20,19 @@ const Root = styled.div`
  * Component for displaying when we couldn't find the page
  */
 const NotFound = () => (
-  <Root>
-    <H1>Oops!</H1>
+    <Root>
+        <H1>Oops!</H1>
 
-    <Spacing top="sm" bottom="md">
-      <H2>We can't seem to find the page you're looking for.</H2>
-    </Spacing>
+        <Spacing top="sm" bottom="md">
+            <H2>We can't seem to find the page you're looking for.</H2>
+        </Spacing>
 
-    <NotFoundIcon width="100" />
+        <NotFoundIcon width="100"/>
 
-    <Spacing bottom="md" />
+        <Spacing bottom="md"/>
 
-    <A to={Routes.HOME}>Go back to Home Page</A>
-  </Root>
+        <A to={Routes.HOME}>Go back to Home Page</A>
+    </Root>
 );
 
 export default NotFound;

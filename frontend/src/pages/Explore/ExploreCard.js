@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Spacing } from 'components/Layout';
-import { LikeIcon, PostCommentIcon } from 'components/icons';
+import {Spacing} from 'components/Layout';
+import {LikeIcon, PostCommentIcon} from 'components/icons';
 
 const Overlay = styled.div`
   position: absolute;
@@ -45,46 +45,46 @@ const Photo = styled.div`
 /**
  * Card component, meant to be used in Explore page
  */
-const ExploreCard = ({ openPostPopup, image, countLikes, countComments }) => {
-  const [imageLoaded, setImageLoaded] = useState(false);
+const ExploreCard = ({openPostPopup, image, countLikes, countComments}) => {
+    const [imageLoaded, setImageLoaded] = useState(false);
 
-  useEffect(() => {
-    const img = new Image();
-    img.src = image;
+    useEffect(() => {
+        const img = new Image();
+        img.src = image;
 
-    img.onload = () => {
-      setImageLoaded(true);
-    };
+        img.onload = () => {
+            setImageLoaded(true);
+        };
 
-    return () => {
-      img.onload = null;
-    };
-  }, [image]);
+        return () => {
+            img.onload = null;
+        };
+    }, [image]);
 
-  return (
-    <Root>
-      <Photo style={imageLoaded ? { backgroundImage: `url(${image})` } : {}} />
+    return (
+        <Root>
+            <Photo style={imageLoaded ? {backgroundImage: `url(${image})`} : {}}/>
 
-      <Overlay onClick={openPostPopup}>
-        <LikeIcon color="white" />
+            <Overlay onClick={openPostPopup}>
+                <LikeIcon color="white"/>
 
-        <Spacing left="xs" right="lg">
-          {countLikes}
-        </Spacing>
+                <Spacing left="xs" right="lg">
+                    {countLikes}
+                </Spacing>
 
-        <PostCommentIcon color="white" />
+                <PostCommentIcon color="white"/>
 
-        <Spacing left="xs">{countComments}</Spacing>
-      </Overlay>
-    </Root>
-  );
+                <Spacing left="xs">{countComments}</Spacing>
+            </Overlay>
+        </Root>
+    );
 };
 
 ExploreCard.propTypes = {
-  openPostPopup: PropTypes.func.isRequired,
-  image: PropTypes.string.isRequired,
-  countLikes: PropTypes.number.isRequired,
-  countComments: PropTypes.number.isRequired,
+    openPostPopup: PropTypes.func.isRequired,
+    image: PropTypes.string.isRequired,
+    countLikes: PropTypes.number.isRequired,
+    countComments: PropTypes.number.isRequired,
 };
 
 export default ExploreCard;

@@ -1,4 +1,4 @@
-import { useRef, useMemo } from 'react';
+import {useRef, useMemo} from 'react';
 
 /**
  * Compares inputs and console logs changes
@@ -8,29 +8,29 @@ import { useRef, useMemo } from 'react';
  * @param {array} newInputs
  */
 const compareInputs = (inputKeys, oldInputs, newInputs) => {
-  inputKeys.forEach(key => {
-    const oldInput = oldInputs[key];
-    const newInput = newInputs[key];
+    inputKeys.forEach(key => {
+        const oldInput = oldInputs[key];
+        const newInput = newInputs[key];
 
-    if (oldInput !== newInput) {
-      console.log('change detected', key, 'old:', oldInput, 'new:', newInput);
-    }
-  });
+        if (oldInput !== newInput) {
+            console.log('change detected', key, 'old:', oldInput, 'new:', newInput);
+        }
+    });
 };
 
 /**
  * Hook for detecting dependency array changes, meant to be used for debugging
  */
 export const useDependencyDebugger = inputs => {
-  const oldInputsRef = useRef(inputs);
-  const inputValuesArray = Object.values(inputs);
-  const inputKeysArray = Object.keys(inputs);
+    const oldInputsRef = useRef(inputs);
+    const inputValuesArray = Object.values(inputs);
+    const inputKeysArray = Object.keys(inputs);
 
-  useMemo(() => {
-    const oldInputs = oldInputsRef.current;
+    useMemo(() => {
+        const oldInputs = oldInputsRef.current;
 
-    compareInputs(inputKeysArray, oldInputs, inputs);
+        compareInputs(inputKeysArray, oldInputs, inputs);
 
-    oldInputsRef.current = inputs;
-  }, inputValuesArray); // eslint-disable-line react-hooks/exhaustive-deps
+        oldInputsRef.current = inputs;
+    }, inputValuesArray); // eslint-disable-line react-hooks/exhaustive-deps
 };

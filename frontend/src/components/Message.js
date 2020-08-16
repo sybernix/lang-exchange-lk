@@ -1,23 +1,23 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
-import styled, { keyframes } from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
 import {
-  SuccessIcon,
-  InfoIcon,
-  WarningIcon,
-  ErrorIcon,
-  CloseIcon,
+    SuccessIcon,
+    InfoIcon,
+    WarningIcon,
+    ErrorIcon,
+    CloseIcon,
 } from 'components/icons';
-import { Spacing } from './Layout';
-import { Button } from 'components/Form';
+import {Spacing} from './Layout';
+import {Button} from 'components/Form';
 
 import theme from 'theme';
 
-import { allMessageTypes } from 'constants/MessageType';
+import {allMessageTypes} from 'constants/MessageType';
 
-import { useStore } from 'store';
-import { CLEAR_MESSAGE } from 'store/message';
+import {useStore} from 'store';
+import {CLEAR_MESSAGE} from 'store/message';
 
 const fade = keyframes`
   from {
@@ -57,63 +57,63 @@ const Close = styled(Button)`
 /**
  * Displays global message as feedback in response to user operations
  */
-const Message = ({ children, type, autoClose }) => {
-  const [, dispatch] = useStore();
+const Message = ({children, type, autoClose}) => {
+    const [, dispatch] = useStore();
 
-  useEffect(
-    () => {
-      if (autoClose) {
-        const timer = setTimeout(() => {
-          dispatch({ type: CLEAR_MESSAGE });
-        }, 5000);
+    useEffect(
+        () => {
+            if (autoClose) {
+                const timer = setTimeout(() => {
+                    dispatch({type: CLEAR_MESSAGE});
+                }, 5000);
 
-        return () => {
-          clearTimeout(timer);
-        };
-      }
-    },
-    [dispatch, autoClose]
-  );
+                return () => {
+                    clearTimeout(timer);
+                };
+            }
+        },
+        [dispatch, autoClose]
+    );
 
-  const { success, info, warning, error } = theme.colors;
+    const {success, info, warning, error} = theme.colors;
 
-  const Colors = {
-    SUCCESS: success,
-    INFO: info,
-    WARNING: warning,
-    ERROR: error.main,
-  };
-
-  const MessageType = type => {
-    const icons = {
-      SUCCESS: <SuccessIcon />,
-      INFO: <InfoIcon />,
-      WARNING: <WarningIcon />,
-      ERROR: <ErrorIcon />,
+    const Colors = {
+        SUCCESS: success,
+        INFO: info,
+        WARNING: warning,
+        ERROR: error.main,
     };
 
-    return icons[type];
-  };
+    const MessageType = type => {
+        const icons = {
+            SUCCESS: <SuccessIcon/>,
+            INFO: <InfoIcon/>,
+            WARNING: <WarningIcon/>,
+            ERROR: <ErrorIcon/>,
+        };
 
-  return (
-    <Root color={Colors[type]}>
-      {MessageType(type)}
-      <Spacing left={type && 'xs'}>{children}</Spacing>
-      <Close ghost onClick={() => dispatch({ type: CLEAR_MESSAGE })}>
-        <CloseIcon color="white" />
-      </Close>
-    </Root>
-  );
+        return icons[type];
+    };
+
+    return (
+        <Root color={Colors[type]}>
+            {MessageType(type)}
+            <Spacing left={type && 'xs'}>{children}</Spacing>
+            <Close ghost onClick={() => dispatch({type: CLEAR_MESSAGE})}>
+                <CloseIcon color="white"/>
+            </Close>
+        </Root>
+    );
 };
 
 Message.defaultProps = {
-  autoClose: true,
+    autoClose: true,
 };
 
 Message.propTypes = {
-  children: PropTypes.any.isRequired,
-  type: PropTypes.oneOf(allMessageTypes),
-  autoClose: PropTypes.bool,
+    children: PropTypes.any.isRequired,
+    type: PropTypes.oneOf(allMessageTypes),
+    autoClose: PropTypes.bool,
 };
 
 export default Message;

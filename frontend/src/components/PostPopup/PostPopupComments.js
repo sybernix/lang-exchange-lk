@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Comment from 'components/Comment';
-import { Spacing } from 'components/Layout';
+import {Spacing} from 'components/Layout';
 
 const Root = styled.div`
   height: 100%;
@@ -27,27 +27,27 @@ const Comments = styled.div`
 /**
  * Comments for PostPopup component
  */
-const PostPopupComments = ({ comments, postId, postAuthor, usedInModal }) => (
-  <Root usedInModal={usedInModal}>
-    <Spacing top="xs" />
+const PostPopupComments = ({comments, postId, postAuthor, usedInModal}) => (
+    <Root usedInModal={usedInModal}>
+        <Spacing top="xs"/>
 
-    <Comments usedInModal={usedInModal}>
-      {comments.map(comment => (
-        <Comment
-          key={comment.id}
-          comment={comment}
-          postId={postId}
-          postAuthor={postAuthor}
-        />
-      ))}
-    </Comments>
-  </Root>
+        <Comments usedInModal={usedInModal}>
+            {comments.map(comment => (
+                <Comment
+                    key={comment.id}
+                    comment={comment}
+                    postId={postId}
+                    postAuthor={postAuthor}
+                />
+            ))}
+        </Comments>
+    </Root>
 );
 
 PostPopupComments.propTypes = {
-  comments: PropTypes.array.isRequired,
-  postId: PropTypes.string.isRequired,
-  postAuthor: PropTypes.object.isRequired,
+    comments: PropTypes.array.isRequired,
+    postId: PropTypes.string.isRequired,
+    postAuthor: PropTypes.object.isRequired,
 };
 
 export default PostPopupComments;

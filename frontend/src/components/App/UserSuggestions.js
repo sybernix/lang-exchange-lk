@@ -1,20 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { matchPath } from 'react-router';
-import { generatePath } from 'react-router-dom';
-import { Query } from 'react-apollo';
+import {matchPath} from 'react-router';
+import {generatePath} from 'react-router-dom';
+import {Query} from 'react-apollo';
 
-import { Loading } from 'components/Loading';
-import { H3, A } from 'components/Text';
-import { Spacing } from 'components/Layout';
+import {Loading} from 'components/Loading';
+import {H3, A} from 'components/Text';
+import {Spacing} from 'components/Layout';
 import Avatar from 'components/Avatar';
 
-import { useStore } from 'store';
+import {useStore} from 'store';
 
-import { USER_SUGGESTIONS } from 'graphql/user';
+import {USER_SUGGESTIONS} from 'graphql/user';
 
-import { USER_SUGGESTIONS_WIDTH, HEADER_HEIGHT } from 'constants/Layout';
+import {USER_SUGGESTIONS_WIDTH, HEADER_HEIGHT} from 'constants/Layout';
 
 import * as Routes from 'routes';
 
@@ -64,66 +64,66 @@ const UserName = styled.div`
 /**
  * Displays user suggestions
  */
-const UserSuggestions = ({ pathname }) => {
-  const [{ auth }] = useStore();
+const UserSuggestions = ({pathname}) => {
+    const [{auth}] = useStore();
 
-  const hideUserSuggestions = matchPath(pathname, {
-    path: [Routes.MESSAGES, Routes.PEOPLE, Routes.EXPLORE, Routes.USER_PROFILE],
-  });
+    const hideUserSuggestions = matchPath(pathname, {
+        path: [Routes.MESSAGES, Routes.PEOPLE, Routes.EXPLORE, Routes.USER_PROFILE],
+    });
 
-  if (hideUserSuggestions) return null;
+    if (hideUserSuggestions) return null;
 
-  return (
-    <Query query={USER_SUGGESTIONS} variables={{ userId: auth.user.id }}>
-      {({ data, loading }) => {
-        if (loading)
-          return (
-            <Root>
-              <Loading />
-            </Root>
-          );
+    return (
+        <Query query={USER_SUGGESTIONS} variables={{userId: auth.user.id}}>
+            {({data, loading}) => {
+                if (loading)
+                    return (
+                        <Root>
+                            <Loading/>
+                        </Root>
+                    );
 
-        if (!data.suggestPeople.length > 0) {
-          return null;
-        }
+                if (!data.suggestPeople.length > 0) {
+                    return null;
+                }
 
-        return (
-          <Root>
-            <H3>Suggestions For You</H3>
+                return (
+                    <Root>
+                        <H3>Suggestions For You</H3>
 
-            <List>
-              {data.suggestPeople.map(user => (
-                <ListItem key={user.id}>
-                  <A
-                    to={generatePath(Routes.USER_PROFILE, {
-                      username: user.username,
-                    })}
-                  >
-                    <Avatar image={user.image} />
-                  </A>
+                        <List>
+                            {data.suggestPeople.map(user => (
+                                <ListItem key={user.id}>
+                                    <A
+                                        to={generatePath(Routes.USER_PROFILE, {
+                                            username: user.username,
+                                        })}
+                                    >
+                                        <Avatar image={user.image}/>
+                                    </A>
 
-                  <Spacing left="xs">
-                    <A
-                      to={generatePath(Routes.USER_PROFILE, {
-                        username: user.username,
-                      })}
-                    >
-                      <FullName>{user.fullName}</FullName>
-                      <UserName>@{user.username}</UserName>
-                    </A>
-                  </Spacing>
-                </ListItem>
-              ))}
-            </List>
-          </Root>
-        );
-      }}
-    </Query>
-  );
+                                    <Spacing left="xs">
+                                        <A
+                                            to={generatePath(Routes.USER_PROFILE, {
+                                                username: user.username,
+                                            })}
+                                        >
+                                            <FullName>{user.fullName}</FullName>
+                                            <UserName>@{user.username}</UserName>
+                                        </A>
+                                    </Spacing>
+                                </ListItem>
+                            ))}
+                        </List>
+                    </Root>
+                );
+            }}
+        </Query>
+    );
 };
 
 UserSuggestions.propTypes = {
-  pathname: PropTypes.string.isRequired,
+    pathname: PropTypes.string.isRequired,
 };
 
 export default UserSuggestions;

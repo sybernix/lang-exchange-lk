@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { NavLink, generatePath, withRouter } from 'react-router-dom';
-import { useQuery } from '@apollo/react-hooks';
+import {NavLink, generatePath, withRouter} from 'react-router-dom';
+import {useQuery} from '@apollo/react-hooks';
 
-import { GET_CONVERSATIONS } from 'graphql/user';
-import { GET_NEW_CONVERSATIONS_SUBSCRIPTION } from 'graphql/messages';
+import {GET_CONVERSATIONS} from 'graphql/user';
+import {GET_NEW_CONVERSATIONS_SUBSCRIPTION} from 'graphql/messages';
 
 import Search from 'components/Search';
-import { PencilIcon } from 'components/icons';
-import { LoadingDots } from 'components/Loading';
+import {PencilIcon} from 'components/icons';
+import {LoadingDots} from 'components/Loading';
 import Avatar from 'components/Avatar';
 
 import * as Routes from 'routes';
@@ -87,8 +87,8 @@ const User = styled(NavLink)`
 
   @media (max-width: ${p => p.theme.screen.lg}) {
     ${p =>
-      !p.seen &&
-      `
+    !p.seen &&
+    `
         background-color: ${p.theme.colors.primary.light};
       `};
   }
@@ -139,102 +139,102 @@ const LastMessage = styled.div`
 /**
  * Component that renders users, with whom auth user had a chat
  */
-const MessagesUsers = ({ location, authUser }) => {
-  const { subscribeToMore, data, loading } = useQuery(GET_CONVERSATIONS, {
-    variables: { authUserId: authUser.id },
-  });
-
-  useEffect(() => {
-    const unsubscribe = subscribeToMore({
-      document: GET_NEW_CONVERSATIONS_SUBSCRIPTION,
-      updateQuery: (prev, { subscriptionData }) => {
-        if (!subscriptionData.data) return prev;
-
-        const { newConversation } = subscriptionData.data;
-        const oldConversations = prev.getConversations;
-
-        if (oldConversations.some(u => u.id === newConversation.id)) {
-          return prev;
-        }
-
-        // Merge conversations
-        const conversations = newConversation;
-        delete conversations['receiverId'];
-        const mergedConversations = [newConversation, ...oldConversations];
-
-        return { getConversations: mergedConversations };
-      },
+const MessagesUsers = ({location, authUser}) => {
+    const {subscribeToMore, data, loading} = useQuery(GET_CONVERSATIONS, {
+        variables: {authUserId: authUser.id},
     });
 
-    return () => {
-      unsubscribe();
-    };
-  }, [subscribeToMore]);
+    useEffect(() => {
+        const unsubscribe = subscribeToMore({
+            document: GET_NEW_CONVERSATIONS_SUBSCRIPTION,
+            updateQuery: (prev, {subscriptionData}) => {
+                if (!subscriptionData.data) return prev;
 
-  return (
-    <Root>
-      <HeadingContainer>
-        <Heading>Chats</Heading>
+                const {newConversation} = subscriptionData.data;
+                const oldConversations = prev.getConversations;
 
-        <NewMessage
-          exact
-          activeClassName="selected"
-          to={generatePath(Routes.MESSAGES, { userId: Routes.NEW_ID_VALUE })}
-        >
-          <PencilIcon />
-        </NewMessage>
-      </HeadingContainer>
+                if (oldConversations.some(u => u.id === newConversation.id)) {
+                    return prev;
+                }
 
-      <SearchContainer>
-        <Search
-          location={location}
-          backgroundColor="white"
-          forMessage
-          placeholder="Search message"
-        />
-      </SearchContainer>
+                // Merge conversations
+                const conversations = newConversation;
+                delete conversations['receiverId'];
+                const mergedConversations = [newConversation, ...oldConversations];
 
-      {loading && <LoadingDots top="xl" />}
+                return {getConversations: mergedConversations};
+            },
+        });
 
-      {!loading && (
-        <UserContainer>
-          {data.getConversations.map(user => {
-            const unseen = !user.lastMessageSender && !user.seen;
+        return () => {
+            unsubscribe();
+        };
+    }, [subscribeToMore]);
 
-            return (
-              <User
-                key={user.id}
-                activeClassName="selected"
-                to={`/messages/${user.id}`}
-                seen={unseen ? 0 : 1}
-              >
+    return (
+        <Root>
+            <HeadingContainer>
+                <Heading>Chats</Heading>
+
+                <NewMessage
+                    exact
+                    activeClassName="selected"
+                    to={generatePath(Routes.MESSAGES, {userId: Routes.NEW_ID_VALUE})}
+                >
+                    <PencilIcon/>
+                </NewMessage>
+            </HeadingContainer>
+
+            <SearchContainer>
+                <Search
+                    location={location}
+                    backgroundColor="white"
+                    forMessage
+                    placeholder="Search message"
+                />
+            </SearchContainer>
+
+            {loading && <LoadingDots top="xl"/>}
+
+            {!loading && (
+                <UserContainer>
+                    {data.getConversations.map(user => {
+                        const unseen = !user.lastMessageSender && !user.seen;
+
+                        return (
+                            <User
+                                key={user.id}
+                                activeClassName="selected"
+                                to={`/messages/${user.id}`}
+                                seen={unseen ? 0 : 1}
+                            >
                 <span>
-                  <Avatar image={user.image} size={50} />
+                  <Avatar image={user.image} size={50}/>
                 </span>
 
-                <Info>
-                  <FullNameUnSeen>
-                    <FullName>{user.fullName}</FullName>
+                                <Info>
+                                    <FullNameUnSeen>
+                                        <FullName>{user.fullName}</FullName>
 
-                    {unseen && <UnSeen />}
-                  </FullNameUnSeen>
+                                        {unseen && <UnSeen/>}
+                                    </FullNameUnSeen>
 
-                  <LastMessage>
-                    {user.lastMessageSender && 'You:'} {user.lastMessage}
-                  </LastMessage>
-                </Info>
-              </User>
-            );
-          })}
-        </UserContainer>
-      )}
-    </Root>
-  );
+                                    <LastMessage>
+                                        {user.lastMessageSender && 'You:'} {user.lastMessage}
+                                    </LastMessage>
+                                </Info>
+                            </User>
+                        );
+                    })}
+                </UserContainer>
+            )}
+        </Root>
+    );
 };
 
 MessagesUsers.propTypes = {
-  location: PropTypes.object.isRequired,
-  authUser: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    authUser: PropTypes.object.isRequired,
 };
 
 export default withRouter(MessagesUsers);

@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { generatePath } from 'react-router-dom';
+import {generatePath} from 'react-router-dom';
 import styled from 'styled-components';
 
-import { Button } from 'components/Form';
+import {Button} from 'components/Form';
 import Follow from 'components/Follow';
 
-import { useStore } from 'store';
+import {useStore} from 'store';
 
 import * as Routes from 'routes';
 
@@ -43,53 +43,53 @@ const StyledButton = styled(Button)`
 /**
  * Post Card options, meant to be used in PostCard components Modal
  */
-const PostCardOption = ({ postId, author, closeOption, deletePost }) => {
-  const [{ auth }] = useStore();
+const PostCardOption = ({postId, author, closeOption, deletePost}) => {
+    const [{auth}] = useStore();
 
-  const copyToClipboard = () => {
-    try {
-      navigator.clipboard.writeText(
-        `${process.env.REACT_APP_FRONTEND_URL}${generatePath(Routes.POST, {
-          id: postId,
-        })}`
-      );
-    } catch (error) {
-      console.error('Failed to read clipboard contents: ', error);
-    }
+    const copyToClipboard = () => {
+        try {
+            navigator.clipboard.writeText(
+                `${process.env.REACT_APP_FRONTEND_URL}${generatePath(Routes.POST, {
+                    id: postId,
+                })}`
+            );
+        } catch (error) {
+            console.error('Failed to read clipboard contents: ', error);
+        }
 
-    closeOption();
-  };
+        closeOption();
+    };
 
-  return (
-    <Root>
-      {auth.user.id !== author.id && (
-        <FollowItem>
-          <Follow user={author} />
-        </FollowItem>
-      )}
+    return (
+        <Root>
+            {auth.user.id !== author.id && (
+                <FollowItem>
+                    <Follow user={author}/>
+                </FollowItem>
+            )}
 
-      <StyledButton fullWidth text onClick={copyToClipboard}>
-        Copy link
-      </StyledButton>
+            <StyledButton fullWidth text onClick={copyToClipboard}>
+                Copy link
+            </StyledButton>
 
-      {auth.user.id === author.id && (
-        <StyledButton fullWidth text onClick={deletePost}>
-          Delete post
-        </StyledButton>
-      )}
+            {auth.user.id === author.id && (
+                <StyledButton fullWidth text onClick={deletePost}>
+                    Delete post
+                </StyledButton>
+            )}
 
-      <StyledButton fullWidth onClick={closeOption} text>
-        Cancel
-      </StyledButton>
-    </Root>
-  );
+            <StyledButton fullWidth onClick={closeOption} text>
+                Cancel
+            </StyledButton>
+        </Root>
+    );
 };
 
 PostCardOption.propTypes = {
-  postId: PropTypes.string.isRequired,
-  author: PropTypes.object.isRequired,
-  closeOption: PropTypes.func.isRequired,
-  deletePost: PropTypes.func.isRequired,
+    postId: PropTypes.string.isRequired,
+    author: PropTypes.object.isRequired,
+    closeOption: PropTypes.func.isRequired,
+    deletePost: PropTypes.func.isRequired,
 };
 
 export default PostCardOption;

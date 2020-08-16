@@ -7,11 +7,11 @@ import notificationResolver from './notification';
 import message from './message';
 
 export default [
-  userResolver,
-  postResolver,
-  likeResolver,
-  followResolver,
-  commentResolver,
-  notificationResolver,
-  message,
+    userResolver,
+    postResolver,
+    likeResolver,
+    followResolver,
+    commentResolver,
+    notificationResolver,
+    message,
 ];

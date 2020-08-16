@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Link, generatePath } from 'react-router-dom';
-import { useSubscription } from '@apollo/react-hooks';
+import {Link, generatePath} from 'react-router-dom';
+import {useSubscription} from '@apollo/react-hooks';
 
-import { IS_USER_ONLINE_SUBSCRIPTION } from 'graphql/user';
+import {IS_USER_ONLINE_SUBSCRIPTION} from 'graphql/user';
 
-import { H1 } from 'components/Text';
-import { Spacing } from 'components/Layout';
+import {H1} from 'components/Text';
+import {Spacing} from 'components/Layout';
 import Follow from 'components/Follow';
 import ProfileImageUpload from './ProfileImageUpload';
 import ProfileCoverUpload from './ProfileCoverUpload';
 
-import { useStore } from 'store';
+import {useStore} from 'store';
 
 import * as Routes from 'routes';
 
@@ -88,69 +88,69 @@ const List = styled.div`
 /**
  * Renders user information in profile page
  */
-const ProfileInfo = ({ user }) => {
-  const [{ auth }] = useStore();
+const ProfileInfo = ({user}) => {
+    const [{auth}] = useStore();
 
-  const { data, loading } = useSubscription(IS_USER_ONLINE_SUBSCRIPTION, {
-    variables: { authUserId: auth.user.id, userId: user.id },
-  });
+    const {data, loading} = useSubscription(IS_USER_ONLINE_SUBSCRIPTION, {
+        variables: {authUserId: auth.user.id, userId: user.id},
+    });
 
-  let isUserOnline = user.isOnline;
-  if (!loading && data) {
-    isUserOnline = data.isUserOnline.isOnline;
-  }
+    let isUserOnline = user.isOnline;
+    if (!loading && data) {
+        isUserOnline = data.isUserOnline.isOnline;
+    }
 
-  return (
-    <Root>
-      <ProfileCoverUpload
-        userId={user.id}
-        coverImage={user.coverImage}
-        coverImagePublicId={user.coverImagePublicId}
-      />
+    return (
+        <Root>
+            <ProfileCoverUpload
+                userId={user.id}
+                coverImage={user.coverImage}
+                coverImagePublicId={user.coverImagePublicId}
+            />
 
-      <ProfileImage>
-        <ProfileImageUpload
-          userId={user.id}
-          image={user.image}
-          imagePublicId={user.imagePublicId}
-          username={user.username}
-        />
+            <ProfileImage>
+                <ProfileImageUpload
+                    userId={user.id}
+                    image={user.image}
+                    imagePublicId={user.imagePublicId}
+                    username={user.username}
+                />
 
-        <FullName>
-          <H1>{user.fullName}</H1>
+                <FullName>
+                    <H1>{user.fullName}</H1>
 
-          {isUserOnline && auth.user.id !== user.id && <Online />}
+                    {isUserOnline && auth.user.id !== user.id && <Online/>}
 
-          {auth.user.id !== user.id && (
-            <FollowAndMessage>
-              <Follow user={user} />
+                    {auth.user.id !== user.id && (
+                        <FollowAndMessage>
+                            <Follow user={user}/>
 
-              <Spacing left="sm" />
-              <Message to={generatePath(Routes.MESSAGES, { userId: user.id })}>
-                Message
-              </Message>
-            </FollowAndMessage>
-          )}
-        </FullName>
-      </ProfileImage>
+                            <Spacing left="sm"/>
+                            <Message to={generatePath(Routes.MESSAGES, {userId: user.id})}>
+                                Message
+                            </Message>
+                        </FollowAndMessage>
+                    )}
+                </FullName>
+            </ProfileImage>
 
-      <Info>
-        <List>
-          <b>{user.posts.length} </b> posts
-        </List>
-        <List>
-          <b>{user.followers.length} </b> followers
-        </List>
-        <List>
-          <b>{user.following.length} </b> following
-        </List>
-      </Info>
-    </Root>
-  );
+            <Info>
+                <List>
+                    <b>{user.posts.length} </b> posts
+                </List>
+                <List>
+                    <b>{user.followers.length} </b> followers
+                </List>
+                <List>
+                    <b>{user.following.length} </b> following
+                </List>
+            </Info>
+        </Root>
+    );
 };
 
 ProfileInfo.propTypes = {
-  user: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired,
 };
 
 export default ProfileInfo;

@@ -1,19 +1,19 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
-import { generatePath } from 'react-router-dom';
+import {generatePath} from 'react-router-dom';
 import styled from 'styled-components';
-import { withApollo } from 'react-apollo';
+import {withApollo} from 'react-apollo';
 
-import { A } from 'components/Text';
-import { Spacing } from 'components/Layout';
+import {A} from 'components/Text';
+import {Spacing} from 'components/Layout';
 import Avatar from 'components/Avatar';
 
-import { useClickOutside } from 'hooks/useClickOutside';
+import {useClickOutside} from 'hooks/useClickOutside';
 
-import { GET_AUTH_USER } from 'graphql/user';
-import { UPDATE_NOTIFICATION_SEEN } from 'graphql/notification';
+import {GET_AUTH_USER} from 'graphql/user';
+import {UPDATE_NOTIFICATION_SEEN} from 'graphql/notification';
 
-import { useStore } from 'store';
+import {useStore} from 'store';
 
 import * as Routes from 'routes';
 
@@ -67,83 +67,84 @@ const Image = styled.img`
 /**
  * Renders user notifications
  */
-const Notification = ({ notification, close, client }) => {
-  const [{ auth }] = useStore();
+const Notification = ({notification, close, client}) => {
+    const [{auth}] = useStore();
 
-  const ref = React.useRef(null);
+    const ref = React.useRef(null);
 
-  useClickOutside(ref, close);
+    useClickOutside(ref, close);
 
-  useEffect(() => {
-    const updateNotificationSeen = async () => {
-      try {
-        await client.mutate({
-          mutation: UPDATE_NOTIFICATION_SEEN,
-          variables: {
-            input: {
-              userId: auth.user.id,
-            },
-          },
-          refetchQueries: () => [{ query: GET_AUTH_USER }],
-        });
-      } catch (err) {}
-    };
+    useEffect(() => {
+        const updateNotificationSeen = async () => {
+            try {
+                await client.mutate({
+                    mutation: UPDATE_NOTIFICATION_SEEN,
+                    variables: {
+                        input: {
+                            userId: auth.user.id,
+                        },
+                    },
+                    refetchQueries: () => [{query: GET_AUTH_USER}],
+                });
+            } catch (err) {
+            }
+        };
 
-    updateNotificationSeen();
-  }, [auth.user.id, auth.user.newNotifications.length, client]);
+        updateNotificationSeen();
+    }, [auth.user.id, auth.user.newNotifications.length, client]);
 
-  if (!notification.follow && !notification.like && !notification.comment) {
-    return null;
-  }
+    if (!notification.follow && !notification.like && !notification.comment) {
+        return null;
+    }
 
-  return (
-    <NotificationItem ref={ref}>
-      <A
-        to={generatePath(Routes.USER_PROFILE, {
-          username: notification.author.username,
-        })}
-      >
-        <LeftSide>
-          <Avatar image={notification.author.image} size={34} />
+    return (
+        <NotificationItem ref={ref}>
+            <A
+                to={generatePath(Routes.USER_PROFILE, {
+                    username: notification.author.username,
+                })}
+            >
+                <LeftSide>
+                    <Avatar image={notification.author.image} size={34}/>
 
-          <Spacing left="xs" />
+                    <Spacing left="xs"/>
 
-          <Name>{notification.author.fullName}</Name>
-        </LeftSide>
-      </A>
+                    <Name>{notification.author.fullName}</Name>
+                </LeftSide>
+            </A>
 
-      {notification.follow && <Action>started following you</Action>}
+            {notification.follow && <Action>started following you</Action>}
 
-      {notification.like && (
-        <Action>
-          likes your photo
-          <A to={generatePath(Routes.POST, { id: notification.like.post.id })}>
-            <PostImage>
-              <Image src={notification.like.post.image} />
-            </PostImage>
-          </A>
-        </Action>
-      )}
+            {notification.like && (
+                <Action>
+                    likes your photo
+                    <A to={generatePath(Routes.POST, {id: notification.like.post.id})}>
+                        <PostImage>
+                            <Image src={notification.like.post.image}/>
+                        </PostImage>
+                    </A>
+                </Action>
+            )}
 
-      {notification.comment && (
-        <Action>
-          commented on your photo
-          <A
-            to={generatePath(Routes.POST, { id: notification.comment.post.id })}
-          >
-            <PostImage>
-              <Image src={notification.comment.post.image} />
-            </PostImage>
-          </A>
-        </Action>
-      )}
-    </NotificationItem>
-  );
+            {notification.comment && (
+                <Action>
+                    commented on your photo
+                    <A
+                        to={generatePath(Routes.POST, {id: notification.comment.post.id})}
+                    >
+                        <PostImage>
+                            <Image src={notification.comment.post.image}/>
+                        </PostImage>
+                    </A>
+                </Action>
+            )}
+        </NotificationItem>
+    );
 };
 
 Notification.propTypes = {
-  client: PropTypes.object.isRequired,
-  close: PropTypes.func,
+    client: PropTypes.object.isRequired,
+    close: PropTypes.func,
 };
 
 export default withApollo(Notification);

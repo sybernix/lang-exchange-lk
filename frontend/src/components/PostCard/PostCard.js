@@ -1,34 +1,34 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import { generatePath } from 'react-router-dom';
+import {generatePath} from 'react-router-dom';
 import styled from 'styled-components';
-import { withApollo } from 'react-apollo';
+import {withApollo} from 'react-apollo';
 
 import Comment from 'components/Comment';
 import CreateComment from 'components/CreateComment';
 import Like from 'components/Like';
-import { DotsIcon, PostCommentIcon } from 'components/icons';
-import { Spacing } from 'components/Layout';
-import { A, H3 } from 'components/Text';
-import { Button } from 'components/Form';
+import {DotsIcon, PostCommentIcon} from 'components/icons';
+import {Spacing} from 'components/Layout';
+import {A, H3} from 'components/Text';
+import {Button} from 'components/Form';
 import PostCardOption from 'components/PostCard/PostCardOption';
 import Modal from 'components/Modal';
 import Avatar from 'components/Avatar';
 
-import { GET_FOLLOWED_POSTS, DELETE_POST } from 'graphql/post';
-import { GET_AUTH_USER } from 'graphql/user';
-import { GET_USER_POSTS } from 'graphql/user';
+import {GET_FOLLOWED_POSTS, DELETE_POST} from 'graphql/post';
+import {GET_AUTH_USER} from 'graphql/user';
+import {GET_USER_POSTS} from 'graphql/user';
 
 import {
-  HOME_PAGE_POSTS_LIMIT,
-  PROFILE_PAGE_POSTS_LIMIT,
+    HOME_PAGE_POSTS_LIMIT,
+    PROFILE_PAGE_POSTS_LIMIT,
 } from 'constants/DataLimit';
 
-import { useStore } from 'store';
+import {useStore} from 'store';
 
 import * as Routes from 'routes';
 
-import { timeAgo } from 'utils/date';
+import {timeAgo} from 'utils/date';
 
 const Root = styled.div`
   width: 100%;
@@ -120,166 +120,167 @@ const CommentLine = styled.div`
  * Component for rendering user post
  */
 const PostCard = ({
-  author,
-  imagePublicId,
-  comments,
-  title,
-  createdAt,
-  image,
-  likes,
-  postId,
-  openModal,
-  client,
-}) => {
-  const [{ auth }] = useStore();
-  const [isCommentOpen, setIsCommentOpen] = useState(false);
-  const [isOptionOpen, setIsOptionOpen] = useState(false);
+                      author,
+                      imagePublicId,
+                      comments,
+                      title,
+                      createdAt,
+                      image,
+                      likes,
+                      postId,
+                      openModal,
+                      client,
+                  }) => {
+    const [{auth}] = useStore();
+    const [isCommentOpen, setIsCommentOpen] = useState(false);
+    const [isOptionOpen, setIsOptionOpen] = useState(false);
 
-  const toggleCreateComment = () => {
-    setIsCommentOpen(true);
-  };
+    const toggleCreateComment = () => {
+        setIsCommentOpen(true);
+    };
 
-  const toggleComment = () => {
-    setIsCommentOpen(!isCommentOpen);
-  };
+    const toggleComment = () => {
+        setIsCommentOpen(!isCommentOpen);
+    };
 
-  const closeOption = () => setIsOptionOpen(false);
+    const closeOption = () => setIsOptionOpen(false);
 
-  const openOption = () => setIsOptionOpen(true);
+    const openOption = () => setIsOptionOpen(true);
 
-  const deletePost = async () => {
-    try {
-      await client.mutate({
-        mutation: DELETE_POST,
-        variables: { input: { id: postId, imagePublicId } },
-        refetchQueries: () => [
-          {
-            query: GET_FOLLOWED_POSTS,
-            variables: {
-              userId: auth.user.id,
-              skip: 0,
-              limit: HOME_PAGE_POSTS_LIMIT,
-            },
-          },
-          { query: GET_AUTH_USER },
-          {
-            query: GET_USER_POSTS,
-            variables: {
-              username: auth.user.username,
-              skip: 0,
-              limit: PROFILE_PAGE_POSTS_LIMIT,
-            },
-          },
-        ],
-      });
-    } catch (err) {}
+    const deletePost = async () => {
+        try {
+            await client.mutate({
+                mutation: DELETE_POST,
+                variables: {input: {id: postId, imagePublicId}},
+                refetchQueries: () => [
+                    {
+                        query: GET_FOLLOWED_POSTS,
+                        variables: {
+                            userId: auth.user.id,
+                            skip: 0,
+                            limit: HOME_PAGE_POSTS_LIMIT,
+                        },
+                    },
+                    {query: GET_AUTH_USER},
+                    {
+                        query: GET_USER_POSTS,
+                        variables: {
+                            username: auth.user.username,
+                            skip: 0,
+                            limit: PROFILE_PAGE_POSTS_LIMIT,
+                        },
+                    },
+                ],
+            });
+        } catch (err) {
+        }
 
-    setIsOptionOpen(false);
-  };
+        setIsOptionOpen(false);
+    };
 
-  return (
-    <>
-      <Root>
-        <Modal onClose={closeOption} open={isOptionOpen}>
-          <PostCardOption
-            postId={postId}
-            closeOption={closeOption}
-            author={author}
-            deletePost={deletePost}
-          />
-        </Modal>
+    return (
+        <>
+            <Root>
+                <Modal onClose={closeOption} open={isOptionOpen}>
+                    <PostCardOption
+                        postId={postId}
+                        closeOption={closeOption}
+                        author={author}
+                        deletePost={deletePost}
+                    />
+                </Modal>
 
-        <TopRow>
-          <Author
-            to={generatePath(Routes.USER_PROFILE, {
-              username: author.username,
-            })}
-          >
-            <Avatar image={author.image} />
+                <TopRow>
+                    <Author
+                        to={generatePath(Routes.USER_PROFILE, {
+                            username: author.username,
+                        })}
+                    >
+                        <Avatar image={author.image}/>
 
-            <Spacing left="xs">
-              <Name>{author.fullName}</Name>
-              <CreatedAt>{timeAgo(createdAt)}</CreatedAt>
-            </Spacing>
-          </Author>
+                        <Spacing left="xs">
+                            <Name>{author.fullName}</Name>
+                            <CreatedAt>{timeAgo(createdAt)}</CreatedAt>
+                        </Spacing>
+                    </Author>
 
-          <Button ghost onClick={openOption}>
-            <DotsIcon />
-          </Button>
-        </TopRow>
+                    <Button ghost onClick={openOption}>
+                        <DotsIcon/>
+                    </Button>
+                </TopRow>
 
-        <Spacing left="sm" bottom="sm" top="xs">
-          <H3>{title}</H3>
-        </Spacing>
+                <Spacing left="sm" bottom="sm" top="xs">
+                    <H3>{title}</H3>
+                </Spacing>
 
-        {image && <Poster src={image} onClick={openModal} />}
+                {image && <Poster src={image} onClick={openModal}/>}
 
-        <BottomRow>
-          <CountAndIcons>
-            <Count>
-              {likes.length} likes
-              <Spacing />
-              <StyledButton onClick={toggleComment} text>
-                {comments.length} comments
-              </StyledButton>
-            </Count>
+                <BottomRow>
+                    <CountAndIcons>
+                        <Count>
+                            {likes.length} likes
+                            <Spacing/>
+                            <StyledButton onClick={toggleComment} text>
+                                {comments.length} comments
+                            </StyledButton>
+                        </Count>
 
-            <Icons>
-              <Like
-                fullWidth
-                withText
-                user={author}
-                postId={postId}
-                likes={likes}
-              />
+                        <Icons>
+                            <Like
+                                fullWidth
+                                withText
+                                user={author}
+                                postId={postId}
+                                likes={likes}
+                            />
 
-              <Button fullWidth text onClick={toggleCreateComment}>
-                <PostCommentIcon /> <Spacing inline left="xxs" /> <b>Comment</b>
-              </Button>
-            </Icons>
-          </CountAndIcons>
+                            <Button fullWidth text onClick={toggleCreateComment}>
+                                <PostCommentIcon/> <Spacing inline left="xxs"/> <b>Comment</b>
+                            </Button>
+                        </Icons>
+                    </CountAndIcons>
 
-          {isCommentOpen && (
-            <>
-              <Spacing top="xs">
-                <CommentLine />
-                <CreateComment
-                  post={{ id: postId, author }}
-                  focus={isCommentOpen}
-                />
-              </Spacing>
+                    {isCommentOpen && (
+                        <>
+                            <Spacing top="xs">
+                                <CommentLine/>
+                                <CreateComment
+                                    post={{id: postId, author}}
+                                    focus={isCommentOpen}
+                                />
+                            </Spacing>
 
-              {comments.length > 0 && <CommentLine />}
+                            {comments.length > 0 && <CommentLine/>}
 
-              <Comments>
-                {comments.map(comment => (
-                  <Comment
-                    key={comment.id}
-                    comment={comment}
-                    postId={postId}
-                    postAuthor={author}
-                  />
-                ))}
-              </Comments>
-            </>
-          )}
-        </BottomRow>
-      </Root>
-    </>
-  );
+                            <Comments>
+                                {comments.map(comment => (
+                                    <Comment
+                                        key={comment.id}
+                                        comment={comment}
+                                        postId={postId}
+                                        postAuthor={author}
+                                    />
+                                ))}
+                            </Comments>
+                        </>
+                    )}
+                </BottomRow>
+            </Root>
+        </>
+    );
 };
 
 PostCard.propTypes = {
-  author: PropTypes.object.isRequired,
-  imagePublicId: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  image: PropTypes.string,
-  likes: PropTypes.array.isRequired,
-  comments: PropTypes.array,
-  createdAt: PropTypes.string.isRequired,
-  postId: PropTypes.string.isRequired,
-  openModal: PropTypes.func.isRequired,
-  client: PropTypes.object.isRequired,
+    author: PropTypes.object.isRequired,
+    imagePublicId: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    image: PropTypes.string,
+    likes: PropTypes.array.isRequired,
+    comments: PropTypes.array,
+    createdAt: PropTypes.string.isRequired,
+    postId: PropTypes.string.isRequired,
+    openModal: PropTypes.func.isRequired,
+    client: PropTypes.object.isRequired,
 };
 
 export default withApollo(PostCard);

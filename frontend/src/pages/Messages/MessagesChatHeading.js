@@ -1,17 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { generatePath, withRouter, Link } from 'react-router-dom';
-import { useSubscription } from '@apollo/react-hooks';
+import {generatePath, withRouter, Link} from 'react-router-dom';
+import {useSubscription} from '@apollo/react-hooks';
 
 import Search from 'components/Search';
 import Avatar from 'components/Avatar';
 
-import { IS_USER_ONLINE_SUBSCRIPTION } from 'graphql/user';
+import {IS_USER_ONLINE_SUBSCRIPTION} from 'graphql/user';
 
 import * as Routes from 'routes';
 
-import { useStore } from 'store';
+import {useStore} from 'store';
 
 const Root = styled.div`
   position: relative;
@@ -74,66 +74,66 @@ const Online = styled.div`
 /**
  * Heading component for messages chat
  */
-const MessagesChatHeading = ({ location, match, chatUser }) => {
-  const [{ auth }] = useStore();
+const MessagesChatHeading = ({location, match, chatUser}) => {
+    const [{auth}] = useStore();
 
-  const { data, loading } = useSubscription(IS_USER_ONLINE_SUBSCRIPTION, {
-    variables: {
-      authUserId: auth.user.id,
-      userId: chatUser ? chatUser.id : null,
-    },
-    skip: !chatUser,
-  });
+    const {data, loading} = useSubscription(IS_USER_ONLINE_SUBSCRIPTION, {
+        variables: {
+            authUserId: auth.user.id,
+            userId: chatUser ? chatUser.id : null,
+        },
+        skip: !chatUser,
+    });
 
-  // Update user's isOnline field in real time
-  if (!loading && data && chatUser) {
-    chatUser.isOnline = data.isUserOnline.isOnline;
-  }
+    // Update user's isOnline field in real time
+    if (!loading && data && chatUser) {
+        chatUser.isOnline = data.isUserOnline.isOnline;
+    }
 
-  if (match.params.userId === Routes.NEW_ID_VALUE || !chatUser) {
-    return (
-      <Root>
-        <InputContainer>
-          <To>To:</To>
-          <Search
-            location={location}
-            backgroundColor="white"
-            hideIcon
-            forMessage
-            placeholder="Type the name of a person"
-            autoFocus
-          />
-        </InputContainer>
-      </Root>
-    );
-  }
+    if (match.params.userId === Routes.NEW_ID_VALUE || !chatUser) {
+        return (
+            <Root>
+                <InputContainer>
+                    <To>To:</To>
+                    <Search
+                        location={location}
+                        backgroundColor="white"
+                        hideIcon
+                        forMessage
+                        placeholder="Type the name of a person"
+                        autoFocus
+                    />
+                </InputContainer>
+            </Root>
+        );
+    }
 
-  if (chatUser) {
-    return (
-      <Root>
-        <User
-          to={generatePath(Routes.USER_PROFILE, {
-            username: chatUser.username,
-          })}
-        >
-          <Avatar image={chatUser.image} size={40} />
+    if (chatUser) {
+        return (
+            <Root>
+                <User
+                    to={generatePath(Routes.USER_PROFILE, {
+                        username: chatUser.username,
+                    })}
+                >
+                    <Avatar image={chatUser.image} size={40}/>
 
-          <Info>
-            <FullName>{chatUser.fullName}</FullName>
+                    <Info>
+                        <FullName>{chatUser.fullName}</FullName>
 
-            {chatUser.isOnline && <Online />}
-          </Info>
-        </User>
-      </Root>
-    );
-  }
+                        {chatUser.isOnline && <Online/>}
+                    </Info>
+                </User>
+            </Root>
+        );
+    }
 
-  return null;
+    return null;
 };
 
 MessagesChatHeading.propTypes = {
-  match: PropTypes.object.isRequired,
-  chatUser: PropTypes.object,
+    match: PropTypes.object.isRequired,
+    chatUser: PropTypes.object,
 };
 
 export default withRouter(MessagesChatHeading);

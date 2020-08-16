@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { A } from 'components/Text';
-import { Container } from 'components/Layout';
+import {A} from 'components/Text';
+import {Container} from 'components/Layout';
 import SignIn from './SignIn';
 
 import * as Routes from 'routes';
@@ -57,22 +57,22 @@ const SignInContainer = styled.div`
 /**
  * Header of the App when user isn't authenticated
  */
-const AuthHeader = ({ refetch }) => {
-  return (
-    <Root>
-      <StyledContainer maxWidth="lg">
-        <Logo to={Routes.HOME}>{SiteInfo.name}</Logo>
+const AuthHeader = ({refetch}) => {
+    return (
+        <Root>
+            <StyledContainer maxWidth="lg">
+                <Logo to={Routes.HOME}>{SiteInfo.name}</Logo>
 
-        <SignInContainer>
-          <SignIn refetch={refetch} />
-        </SignInContainer>
-      </StyledContainer>
-    </Root>
-  );
+                <SignInContainer>
+                    <SignIn refetch={refetch}/>
+                </SignInContainer>
+            </StyledContainer>
+        </Root>
+    );
 };
 
 AuthHeader.propTypes = {
-  refetch: PropTypes.func.isRequired,
+    refetch: PropTypes.func.isRequired,
 };
 
 export default AuthHeader;

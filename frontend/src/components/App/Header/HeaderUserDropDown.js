@@ -1,14 +1,14 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
-import { generatePath } from 'react-router-dom';
+import styled, {css} from 'styled-components';
+import {generatePath} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import SignOut from 'components/App/SignOut';
-import { A } from 'components/Text';
+import {A} from 'components/Text';
 
 import * as Routes from 'routes';
 
-import { useStore } from 'store';
+import {useStore} from 'store';
 
 const Root = styled.div`
   text-align: center;
@@ -43,28 +43,28 @@ const Item = styled.div`
 /**
  * Component that renders Header User's dropdown
  */
-const HeaderUserDropDown = ({ userRef }) => {
-  const [{ auth }] = useStore();
+const HeaderUserDropDown = ({userRef}) => {
+    const [{auth}] = useStore();
 
-  return (
-    <Root ref={userRef}>
-      <Link
-        to={generatePath(Routes.USER_PROFILE, {
-          username: auth.user.username,
-        })}
-      >
-        My Profile
-      </Link>
+    return (
+        <Root ref={userRef}>
+            <Link
+                to={generatePath(Routes.USER_PROFILE, {
+                    username: auth.user.username,
+                })}
+            >
+                My Profile
+            </Link>
 
-      <Item>
-        <SignOut />
-      </Item>
-    </Root>
-  );
+            <Item>
+                <SignOut/>
+            </Item>
+        </Root>
+    );
 };
 
 HeaderUserDropDown.propTypes = {
-  userRef: PropTypes.object,
+    userRef: PropTypes.object,
 };
 
 export default HeaderUserDropDown;

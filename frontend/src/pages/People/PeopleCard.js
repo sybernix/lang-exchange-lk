@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { generatePath } from 'react-router-dom';
+import {generatePath} from 'react-router-dom';
 
-import { A } from 'components/Text';
-import { Spacing } from 'components/Layout';
+import {A} from 'components/Text';
+import {Spacing} from 'components/Layout';
 import Follow from 'components/Follow';
 import theme from 'theme';
 
@@ -61,63 +61,63 @@ const UserName = styled.span`
 /**
  * Card component for rendering user info, meant to be used in Peoples page
  */
-const PeopleCard = ({ user }) => {
-  const [color, setColor] = useState('');
+const PeopleCard = ({user}) => {
+    const [color, setColor] = useState('');
 
-  const { fullName, username, image } = user;
+    const {fullName, username, image} = user;
 
-  useEffect(() => {
-    const { primary, secondary, success, error } = theme.colors;
-    const colors = [primary.main, secondary.main, success, error.main];
-    const randomColor = Math.floor(Math.random() * colors.length);
-    setColor(colors[randomColor]);
-  }, []);
+    useEffect(() => {
+        const {primary, secondary, success, error} = theme.colors;
+        const colors = [primary.main, secondary.main, success, error.main];
+        const randomColor = Math.floor(Math.random() * colors.length);
+        setColor(colors[randomColor]);
+    }, []);
 
-  const splitFullName = () => {
-    // If a fullName contains more word than two, take first two word
-    const splitWords = fullName
-      .split(' ')
-      .slice(0, 2)
-      .join(' ');
+    const splitFullName = () => {
+        // If a fullName contains more word than two, take first two word
+        const splitWords = fullName
+            .split(' ')
+            .slice(0, 2)
+            .join(' ');
 
-    // Take only first letters from split words
-    const firstLetters = splitWords
-      .split(' ')
-      .map(a => a.charAt(0))
-      .join(' ');
+        // Take only first letters from split words
+        const firstLetters = splitWords
+            .split(' ')
+            .map(a => a.charAt(0))
+            .join(' ');
 
-    return firstLetters;
-  };
+        return firstLetters;
+    };
 
-  return (
-    <Root>
-      <A to={generatePath(Routes.USER_PROFILE, { username })}>
-        <ImageContainer>
-          {image ? (
-            <Image src={image} />
-          ) : (
-            <InitialLetters color={color}>{splitFullName()}</InitialLetters>
-          )}
-        </ImageContainer>
-      </A>
+    return (
+        <Root>
+            <A to={generatePath(Routes.USER_PROFILE, {username})}>
+                <ImageContainer>
+                    {image ? (
+                        <Image src={image}/>
+                    ) : (
+                        <InitialLetters color={color}>{splitFullName()}</InitialLetters>
+                    )}
+                </ImageContainer>
+            </A>
 
-      <Spacing top="sm" bottom="xs">
-        <A to={generatePath(Routes.USER_PROFILE, { username })}>
-          <FullName>{fullName}</FullName>
-        </A>
-      </Spacing>
+            <Spacing top="sm" bottom="xs">
+                <A to={generatePath(Routes.USER_PROFILE, {username})}>
+                    <FullName>{fullName}</FullName>
+                </A>
+            </Spacing>
 
-      <UserName>@{username}</UserName>
+            <UserName>@{username}</UserName>
 
-      <Spacing top="lg" />
+            <Spacing top="lg"/>
 
-      <Follow user={user} />
-    </Root>
-  );
+            <Follow user={user}/>
+        </Root>
+    );
 };
 
 PeopleCard.propTypes = {
-  user: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired,
 };
 
 export default PeopleCard;

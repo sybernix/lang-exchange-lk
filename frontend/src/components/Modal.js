@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import Confirm from './Confirm';
-import { Overlay } from './Layout';
+import {Overlay} from './Layout';
 
 const Root = styled.div`
   position: fixed;
@@ -26,23 +26,23 @@ const Root = styled.div`
 /**
  * Main component for rendering Modals
  */
-const Modal = ({ children, open, onClose, type, ...otherProps }) => {
-  if (!open) return null;
+const Modal = ({children, open, onClose, type, ...otherProps}) => {
+    if (!open) return null;
 
-  return (
-    <Root>
-      <Overlay onClick={onClose} />
+    return (
+        <Root>
+            <Overlay onClick={onClose}/>
 
-      {type === 'confirm' ? <Confirm {...otherProps} /> : children}
-    </Root>
-  );
+            {type === 'confirm' ? <Confirm {...otherProps} /> : children}
+        </Root>
+    );
 };
 
 Modal.propTypes = {
-  children: PropTypes.node,
-  open: PropTypes.bool,
-  onClose: PropTypes.func.isRequired,
-  type: PropTypes.oneOf(['', 'confirm']),
+    children: PropTypes.node,
+    open: PropTypes.bool,
+    onClose: PropTypes.func.isRequired,
+    type: PropTypes.oneOf(['', 'confirm']),
 };
 
 export default Modal;

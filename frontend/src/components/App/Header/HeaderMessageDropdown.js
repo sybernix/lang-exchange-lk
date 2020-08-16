@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { NavLink, generatePath } from 'react-router-dom';
+import {NavLink, generatePath} from 'react-router-dom';
 
 import Avatar from 'components/Avatar';
-import { A } from 'components/Text';
+import {A} from 'components/Text';
 
-import { timeAgo } from 'utils/date';
+import {timeAgo} from 'utils/date';
 
 import * as Routes from 'routes';
 
@@ -90,44 +90,44 @@ const CreatedAt = styled.div`
 /**
  * Component that renders Header Message's dropdown
  */
-const HeaderMessageDropdown = ({ messageRef, dropdownData }) => {
-  return (
-    <Root ref={messageRef}>
-      <Heading>
-        <Link
-          to={generatePath(Routes.MESSAGES, { userId: Routes.NEW_ID_VALUE })}
-        >
-          New Message
-        </Link>
-      </Heading>
+const HeaderMessageDropdown = ({messageRef, dropdownData}) => {
+    return (
+        <Root ref={messageRef}>
+            <Heading>
+                <Link
+                    to={generatePath(Routes.MESSAGES, {userId: Routes.NEW_ID_VALUE})}
+                >
+                    New Message
+                </Link>
+            </Heading>
 
-      {dropdownData.map(user => (
-        <User
-          key={user.id}
-          to={generatePath(Routes.MESSAGES, { userId: user.id })}
-        >
+            {dropdownData.map(user => (
+                <User
+                    key={user.id}
+                    to={generatePath(Routes.MESSAGES, {userId: user.id})}
+                >
           <span>
-            <Avatar image={user.image} size={50} />
+            <Avatar image={user.image} size={50}/>
           </span>
 
-          <Info>
-            <div>
-              <FullName>{user.fullName}</FullName>
+                    <Info>
+                        <div>
+                            <FullName>{user.fullName}</FullName>
 
-              <LastMessage>{user.lastMessage}</LastMessage>
-            </div>
+                            <LastMessage>{user.lastMessage}</LastMessage>
+                        </div>
 
-            <CreatedAt>{timeAgo(user.lastMessageCreatedAt)}</CreatedAt>
-          </Info>
-        </User>
-      ))}
-    </Root>
-  );
+                        <CreatedAt>{timeAgo(user.lastMessageCreatedAt)}</CreatedAt>
+                    </Info>
+                </User>
+            ))}
+        </Root>
+    );
 };
 
 HeaderMessageDropdown.propTypes = {
-  messageRef: PropTypes.object,
-  dropdownData: PropTypes.array,
+    messageRef: PropTypes.object,
+    dropdownData: PropTypes.array,
 };
 
 export default HeaderMessageDropdown;

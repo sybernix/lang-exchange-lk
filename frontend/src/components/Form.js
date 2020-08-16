@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { get } from 'lodash';
+import {get} from 'lodash';
 
 // prettier-ignore
 
@@ -72,7 +72,7 @@ export const InputText = styled.input`
   padding-left: ${p => p.theme.spacing.xs};
   border: 1px solid
     ${p =>
-      p.borderColor
+    p.borderColor
         ? p.theme.colors[p.borderColor]
         : p.theme.colors.border.main};
   color: ${p => p.theme.colors.text.secondary};

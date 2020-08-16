@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { useStore } from 'store';
+import {useStore} from 'store';
 
-import { HEADER_HEIGHT } from 'constants/Layout';
+import {HEADER_HEIGHT} from 'constants/Layout';
 
 import MessagesUsers from './MessagesUsers';
 import MessagesChat from './MessagesChat';
@@ -29,20 +29,20 @@ const Root = styled.div`
 /**
  * Messages page
  */
-const Messages = ({ match }) => {
-  const [{ auth }] = useStore();
+const Messages = ({match}) => {
+    const [{auth}] = useStore();
 
-  return (
-    <Root>
-      <MessagesUsers authUser={auth.user} match={match} />
+    return (
+        <Root>
+            <MessagesUsers authUser={auth.user} match={match}/>
 
-      <MessagesChat match={match} authUser={auth.user} />
-    </Root>
-  );
+            <MessagesChat match={match} authUser={auth.user}/>
+        </Root>
+    );
 };
 
 Messages.propTypes = {
-  match: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired,
 };
 
 export default Messages;
