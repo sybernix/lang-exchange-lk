@@ -6,7 +6,7 @@ import {Mutation} from 'react-apollo';
 
 import {Spacing, Container} from 'components/Layout';
 import {H1, Error} from 'components/Text';
-import {InputText, Button} from 'components/Form';
+import {InputText, Button, Select} from 'components/Form';
 import Head from 'components/Head';
 
 import {SIGN_UP} from 'graphql/user';
@@ -199,6 +199,18 @@ const SignUp = ({history, refetch}) => {
                                         borderColor="white"
                                     />
                                 </Spacing>
+                                <Select
+                                    type="text"
+                                    name="nativeLanguage"
+                                    values={fullName}
+                                    onChange={handleChange}
+                                    borderColor="white"
+                                >
+                                    <option value="" disabled selected>Native Language</option>
+                                    <option value="1">English</option>
+                                    <option value="2">Sinhala</option>
+                                    <option value="3">Tamil</option>
+                                </Select>
 
                                 {renderErrors(apiError)}
 
