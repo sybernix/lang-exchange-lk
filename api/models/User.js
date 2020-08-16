@@ -26,6 +26,14 @@ const userSchema = new Schema(
             trim: true,
             unique: true,
         },
+        nativeLanguage: {
+            type: String,
+            required: true,
+        },
+        targetLanguage: {
+            type: String,
+            required: true,
+        },
         passwordResetToken: String,
         passwordResetTokenExpiry: Date,
         password: {
