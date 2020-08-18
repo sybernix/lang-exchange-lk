@@ -62,6 +62,8 @@ const SignUp = ({history, refetch}) => {
         username: '',
         email: '',
         password: '',
+        nativeLanguage: '',
+        targetLanguage: '',
     });
 
     const handleChange = e => {
@@ -70,7 +72,7 @@ const SignUp = ({history, refetch}) => {
     };
 
     const validate = () => {
-        if (!fullName || !email || !username || !password) {
+        if (!fullName || !email || !username || !password || !nativeLanguage || !targetLanguage) {
             return 'All fields are required';
         }
 
@@ -133,12 +135,12 @@ const SignUp = ({history, refetch}) => {
         return null;
     };
 
-    const {fullName, email, password, username} = values;
+    const {fullName, email, password, username, nativeLanguage, targetLanguage} = values;
 
     return (
         <Mutation
             mutation={SIGN_UP}
-            variables={{input: {fullName, email, password, username}}}
+            variables={{input: {fullName, email, password, username, nativeLanguage, targetLanguage}}}
         >
             {(signup, {loading, error: apiError}) => {
                 return (
@@ -202,28 +204,28 @@ const SignUp = ({history, refetch}) => {
                                 <Select
                                     type="text"
                                     name="nativeLanguage"
-                                    values={fullName}
+                                    values={nativeLanguage}
                                     onChange={handleChange}
                                     borderColor="white"
                                 >
                                     <option value="" disabled selected>Native Language</option>
-                                    <option value="1">English</option>
-                                    <option value="2">Sinhala</option>
-                                    <option value="3">Tamil</option>
+                                    <option value="english">English</option>
+                                    <option value="sinhala">Sinhala</option>
+                                    <option value="tamil">Tamil</option>
                                 </Select>
 
                                 <Spacing top="xs" bottom="xs">
                                     <Select
                                         type="text"
                                         name="targetLanguage"
-                                        values={fullName}
+                                        values={targetLanguage}
                                         onChange={handleChange}
                                         borderColor="white"
                                     >
                                         <option value="" disabled selected>Target Language</option>
-                                        <option value="1">English</option>
-                                        <option value="2">Sinhala</option>
-                                        <option value="3">Tamil</option>
+                                        <option value="english">English</option>
+                                        <option value="sinhala">Sinhala</option>
+                                        <option value="tamil">Tamil</option>
                                     </Select>
                                 </Spacing>
 
