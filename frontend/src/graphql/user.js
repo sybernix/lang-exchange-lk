@@ -174,6 +174,40 @@ export const GET_USERS = gql`
 `;
 
 /**
+ * Gets potential language partners
+ */
+export const GET_POTENTIAL_PARTNERS = gql`
+  query($userId: String!, $skip: Int, $limit: Int) {
+    getUsers(userId: $userId, skip: $skip, limit: $limit) {
+      count
+      users {
+        id
+        fullName
+        username
+        image
+        following {
+          id
+          user
+        }
+        followers {
+          id
+        }
+        notifications {
+          id
+          author {
+            id
+            username
+          }
+          follow {
+            id
+          }
+        }
+      }
+    }
+  }
+`;
+
+/**
  * Searches users by username or fullName
  */
 export const SEARCH_USERS = gql`
