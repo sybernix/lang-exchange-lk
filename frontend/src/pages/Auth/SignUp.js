@@ -212,6 +212,21 @@ const SignUp = ({history, refetch}) => {
                                     <option value="3">Tamil</option>
                                 </Select>
 
+                                <Spacing top="xs" bottom="xs">
+                                    <Select
+                                        type="text"
+                                        name="targetLanguage"
+                                        values={fullName}
+                                        onChange={handleChange}
+                                        borderColor="white"
+                                    >
+                                        <option value="" disabled selected>Target Language</option>
+                                        <option value="1">English</option>
+                                        <option value="2">Sinhala</option>
+                                        <option value="3">Tamil</option>
+                                    </Select>
+                                </Spacing>
+
                                 {renderErrors(apiError)}
 
                                 <Spacing top="sm"/>
