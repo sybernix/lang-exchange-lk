@@ -243,15 +243,18 @@ const Query = {
      * @param {int} limit how many users to limit
      */
     getPotentialPartners: async (root, {userId, skip, limit}, {User, Follow}) => {
-        //Find the native and target language of the current user with userId
-
-
         // Find user ids, that current user follows
         const userFollowing = [];
         const follow = await Follow.find({follower: userId}, {_id: 0}).select(
             'user'
         );
         follow.map(f => userFollowing.push(f.user));
+
+        //Find the native and target language of the current user with userId
+        const queryToFindLangInfo = {
+            $and: [{_id:userId}],
+        };
+        const currentUser = await User.find(queryToFindLangInfo);
 
         // Find users that user is not following
         const query = {
