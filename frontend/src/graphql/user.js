@@ -178,7 +178,7 @@ export const GET_USERS = gql`
  */
 export const GET_POTENTIAL_PARTNERS = gql`
   query($userId: String!, $skip: Int, $limit: Int) {
-    getUsers(userId: $userId, skip: $skip, limit: $limit) {
+    getPotentialPartners(userId: $userId, skip: $skip, limit: $limit) {
       count
       users {
         id

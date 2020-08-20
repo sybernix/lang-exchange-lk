@@ -243,6 +243,9 @@ const Query = {
      * @param {int} limit how many users to limit
      */
     getPotentialPartners: async (root, {userId, skip, limit}, {User, Follow}) => {
+        //Find the native and target language of the current user with userId
+
+
         // Find user ids, that current user follows
         const userFollowing = [];
         const follow = await Follow.find({follower: userId}, {_id: 0}).select(
