@@ -35,6 +35,10 @@ export const createApolloServer = (schema, resolvers, models) => {
     return new ApolloServer({
         typeDefs: schema,
         resolvers,
+        // engine: {
+        //     reportSchema: true,
+        //     variant: "current"
+        // },
         context: async ({req, connection}) => {
             if (connection) {
                 return connection.context;

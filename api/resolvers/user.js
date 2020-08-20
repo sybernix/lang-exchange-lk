@@ -235,6 +235,45 @@ const Query = {
         return {users, count};
     },
     /**
+     * Gets potential language exchange partners who speak the user's target language and
+     * learning user's native language
+     *
+     * @param {string} userId
+     * @param {int} skip how many users to skip
+     * @param {int} limit how many users to limit
+     */
+    getPotentialPartners: async (root, {userId, skip, limit}, {User, Follow}) => {
+        // Find user ids, that current user follows
+        const userFollowing = [];
+        const follow = await Follow.find({follower: userId}, {_id: 0}).select(
+            'user'
+        );
+        follow.map(f => userFollowing.push(f.user));
+
+        // Find users that user is not following
+        const query = {
+            $and: [{_id: {$ne: userId}}, {_id: {$nin: userFollowing}}],
+        };
+        const count = await User.where(query).countDocuments();
+        const users = await User.find(query)
+            .populate('followers')
+            .populate('following')
+            .populate({
+                path: 'notifications',
+                populate: [
+                    {path: 'author'},
+                    {path: 'follow'},
+                    {path: 'like'},
+                    {path: 'comment'},
+                ],
+            })
+            .skip(skip)
+            .limit(limit)
+            .sort({createdAt: 'desc'});
+
+        return {users, count};
+    },
+    /**
      * Searches users by username or fullName
      *
      * @param {string} searchQuery

@@ -133,6 +133,9 @@ const UserSchema = gql`
 
     # Gets all users
     getUsers(userId: String!, skip: Int, limit: Int): UsersPayload
+    
+    # Gets potential partners
+    getPotentialPartners(userId: String!, skip: Int, limit: Int): UsersPayload
 
     # Searches users by username or fullName
     searchUsers(searchQuery: String!): [UserPayload]
