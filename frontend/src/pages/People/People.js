@@ -9,7 +9,7 @@ import InfiniteScroll from 'components/InfiniteScroll';
 import Head from 'components/Head';
 import PeopleCard from './PeopleCard';
 
-import {GET_USERS} from 'graphql/user';
+import {GET_POTENTIAL_PARTNERS} from 'graphql/user';
 
 import {PEOPLE_PAGE_USERS_LIMIT} from 'constants/DataLimit';
 
@@ -50,7 +50,7 @@ const People = () => {
             <Head title="Find new People"/>
 
             <Query
-                query={GET_USERS}
+                query={GET_POTENTIAL_PARTNERS}
                 variables={variables}
                 notifyOnNetworkStatusChange
             >
@@ -63,14 +63,14 @@ const People = () => {
                         );
                     }
 
-                    const {users, count} = data.getUsers;
+                    const {users, count} = data.getPotentialPartners;
 
                     if (!users.length > 0) return <Empty text="No people yet."/>;
 
                     return (
                         <InfiniteScroll
                             data={users}
-                            dataKey="getUsers.users"
+                            dataKey="getPotentialPartners.users"
                             count={parseInt(count)}
                             variables={variables}
                             fetchMore={fetchMore}
