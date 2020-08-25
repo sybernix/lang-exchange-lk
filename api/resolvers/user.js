@@ -258,7 +258,7 @@ const Query = {
 
         // Find users that user is not following
         const query = {
-            $and: [{_id: {$ne: userId}}, {_id: {$nin: userFollowing}}],
+            $and: [{_id: {$ne: userId}}, {_id: {$nin: userFollowing}}, {targetLanguage: currentUser["0"].nativeLanguage}, {nativeLanguage: currentUser["0"].targetLanguage}],
         };
         const count = await User.where(query).countDocuments();
         const users = await User.find(query)
