@@ -319,8 +319,14 @@ const Query = {
         following.map(f => userFollowing.push(f.user));
         userFollowing.push(userId);
 
+        //Find the native and target language of the current user with userId
+        const queryToFindLangInfo = {
+            $and: [{_id:userId}],
+        };
+        const currentUser = await User.find(queryToFindLangInfo);
+
         // Find random users
-        const query = {_id: {$nin: userFollowing}};
+        const query = {$and: [{_id: {$nin: userFollowing}}, {targetLanguage: currentUser["0"].nativeLanguage}, {nativeLanguage: currentUser["0"].targetLanguage}]};
         const usersCount = await User.where(query).countDocuments();
         let random = Math.floor(Math.random() * usersCount);
 
