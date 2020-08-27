@@ -113,9 +113,9 @@ const PeopleCard = ({user}) => {
                 </A>
             </Spacing>
 
-            <UserName>@{username}</UserName>
+            {/*<UserName>@{username}</UserName>*/}
 
-            <Spacing top="sm" bottom="xs">
+            <Spacing top="xs" bottom="xs">
             <Language>{nativeLanguage}</Language>
             </Spacing>
             <Language>{targetLanguage}</Language>
