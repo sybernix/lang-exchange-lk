@@ -106,22 +106,23 @@ const PeopleCard = ({user}) => {
                     )}
                 </ImageContainer>
             </A>
-
             <Spacing top="sm" bottom="xs">
                 <A to={generatePath(Routes.USER_PROFILE, {username})}>
                     <FullName>{fullName}</FullName>
                 </A>
             </Spacing>
-
             {/*<UserName>@{username}</UserName>*/}
-
             <Spacing top="xs" bottom="xs">
-            <Language>{nativeLanguage}</Language>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gridGap: 20 }}>
+                    <div>
+                        <Language>{nativeLanguage}</Language>
+                    </div>
+                    <div>
+                        <Language>{targetLanguage}</Language>
+                    </div>
+                </div>
             </Spacing>
-            <Language>{targetLanguage}</Language>
-
             <Spacing top="lg"/>
-
             <Follow user={user}/>
         </Root>
     );
