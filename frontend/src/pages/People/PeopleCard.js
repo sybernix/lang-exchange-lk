@@ -6,6 +6,7 @@ import {generatePath} from 'react-router-dom';
 import {A} from 'components/Text';
 import {Spacing} from 'components/Layout';
 import Follow from 'components/Follow';
+import {SpeakIcon} from 'components/icons';
 import theme from 'theme';
 
 import * as Routes from 'routes';
@@ -63,6 +64,12 @@ const Language = styled.span`
   color: ${p => p.theme.colors.grey[600]}
 `;
 
+const IconContainer = styled.div`
+  // position: absolute;
+  top: 12px;
+  left: 10px;
+`;
+
 /**
  * Card component for rendering user info, meant to be used in Peoples page
  */
@@ -113,8 +120,11 @@ const PeopleCard = ({user}) => {
             </Spacing>
             {/*<UserName>@{username}</UserName>*/}
             <Spacing top="xs" bottom="xs">
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gridGap: 20 }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gridGap: 5 }}>
                     <div>
+                        <IconContainer>
+                            <SpeakIcon/>
+                        </IconContainer>
                         <Language>{nativeLanguage}</Language>
                     </div>
                     <div>

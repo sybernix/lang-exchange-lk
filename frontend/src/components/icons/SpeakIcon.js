@@ -7,13 +7,17 @@ import theme from 'theme';
  * @param {string} width
  * @param {string} color
  */
-export const CloseIcon = ({width, color}) => {
-    const DEFAULT_WIDTH = '12';
+export const SpeakIcon = ({width, color}) => {
+    const DEFAULT_WIDTH = '50';
     const DEFAULT_COLOR = theme.colors.text.secondary;
 
     return (
-        <svg id="_x31_" enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512"
-             xmlns="http://www.w3.org/2000/svg">
+        <svg
+            width={width || DEFAULT_WIDTH}
+            fill={theme.colors[color] || DEFAULT_COLOR}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 56.966 56.966"
+        >
             <g>
                 <g>
                     <g>
