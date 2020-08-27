@@ -58,13 +58,18 @@ const UserName = styled.span`
   font-size: ${p => p.theme.font.size.xs};
 `;
 
+const Language = styled.span`
+  font-size: ${p => p.theme.font.size.xs};
+  color: ${p => p.theme.colors.grey[600]}
+`;
+
 /**
  * Card component for rendering user info, meant to be used in Peoples page
  */
 const PeopleCard = ({user}) => {
     const [color, setColor] = useState('');
 
-    const {fullName, username, image} = user;
+    const {fullName, username, image, nativeLanguage, targetLanguage} = user;
     console.log(user);
 
     useEffect(() => {
@@ -109,6 +114,11 @@ const PeopleCard = ({user}) => {
             </Spacing>
 
             <UserName>@{username}</UserName>
+
+            <Spacing top="sm" bottom="xs">
+            <Language>{nativeLanguage}</Language>
+            </Spacing>
+            <Language>{targetLanguage}</Language>
 
             <Spacing top="lg"/>
 
