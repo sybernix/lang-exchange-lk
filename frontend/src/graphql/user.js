@@ -185,6 +185,8 @@ export const GET_POTENTIAL_PARTNERS = gql`
         fullName
         username
         image
+        nativeLanguage
+        targetLanguage
         following {
           id
           user

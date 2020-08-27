@@ -65,6 +65,7 @@ const PeopleCard = ({user}) => {
     const [color, setColor] = useState('');
 
     const {fullName, username, image} = user;
+    console.log(user);
 
     useEffect(() => {
         const {primary, secondary, success, error} = theme.colors;
