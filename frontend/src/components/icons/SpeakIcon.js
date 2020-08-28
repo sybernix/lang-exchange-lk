@@ -13,10 +13,12 @@ export const SpeakIcon = ({width, color}) => {
 
     return (
         <svg
+            // enable-background="new 0 0 24 24"
+            // height="30"
+            viewBox="0 0 24 24"
             width={width || DEFAULT_WIDTH}
-            fill={theme.colors[color] || DEFAULT_COLOR}
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 23"
+            fill={theme.colors[color] || DEFAULT_COLOR}
         >
             <g>
                 <g>
