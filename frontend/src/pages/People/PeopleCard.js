@@ -70,6 +70,18 @@ const IconContainer = styled.div`
   left: 10px;
 `;
 
+const LangInfoBase = styled.div`
+  display: "grid";
+  grid-template-columns: "repeat(2, 1fr)";
+  gridGap: 5;
+`;
+
+const LangInfoContainer = styled.div`
+  display: "grid";
+  grid-template-columns: "repeat(2, 1fr)";
+  gridGap: 5;
+`;
+
 /**
  * Card component for rendering user info, meant to be used in Peoples page
  */
@@ -120,7 +132,7 @@ const PeopleCard = ({user}) => {
             </Spacing>
             {/*<UserName>@{username}</UserName>*/}
             <Spacing top="xs" bottom="xs">
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gridGap: 5 }}>
+                <LangInfo>
                     <div>
                         <IconContainer>
                             <SpeakIcon/>
@@ -130,7 +142,7 @@ const PeopleCard = ({user}) => {
                     <div>
                         <Language>{targetLanguage}</Language>
                     </div>
-                </div>
+                </LangInfo>
             </Spacing>
             <Spacing top="lg"/>
             <Follow user={user}/>
