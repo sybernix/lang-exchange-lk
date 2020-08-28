@@ -61,25 +61,23 @@ const UserName = styled.span`
 
 const Language = styled.span`
   font-size: ${p => p.theme.font.size.xs};
-  color: ${p => p.theme.colors.grey[600]}
+  color: ${p => p.theme.colors.grey[600]};
 `;
 
 const IconContainer = styled.div`
   // position: absolute;
-  top: 12px;
-  left: 10px;
+  //top: 12px;
+  //left: 10px;
+  //border: 1px solid palevioletred;
 `;
 
 const LangInfoBase = styled.div`
-  display: "grid";
-  grid-template-columns: "repeat(2, 1fr)";
-  gridGap: 5;
+  display: flex;
 `;
 
 const LangInfoContainer = styled.div`
-  display: "grid";
-  grid-template-columns: "repeat(2, 1fr)";
-  gridGap: 5;
+  flex: 1;
+  padding-right: ${(props) => props.rightPadding};
 `;
 
 /**
@@ -132,17 +130,22 @@ const PeopleCard = ({user}) => {
             </Spacing>
             {/*<UserName>@{username}</UserName>*/}
             <Spacing top="xs" bottom="xs">
-                <LangInfo>
-                    <div>
-                        <IconContainer>
+                <LangInfoBase>
+                    <LangInfoContainer rightPadding="7px">
+                        {/*<IconContainer>*/}
                             <SpeakIcon/>
-                        </IconContainer>
+                        {/*</IconContainer>*/}
+                    </LangInfoContainer>
+                    <LangInfoContainer rightPadding="15px">
                         <Language>{nativeLanguage}</Language>
-                    </div>
-                    <div>
+                    </LangInfoContainer>
+                    <LangInfoContainer rightPadding="7px">
+                        <SpeakIcon/>
+                    </LangInfoContainer>
+                    <LangInfoContainer>
                         <Language>{targetLanguage}</Language>
-                    </div>
-                </LangInfo>
+                    </LangInfoContainer>
+                </LangInfoBase>
             </Spacing>
             <Spacing top="lg"/>
             <Follow user={user}/>

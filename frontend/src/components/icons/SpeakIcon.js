@@ -2,13 +2,13 @@ import React from 'react';
 import theme from 'theme';
 
 /**
- * Close (X) icon
+ * Speak icon
  *
  * @param {string} width
  * @param {string} color
  */
 export const SpeakIcon = ({width, color}) => {
-    const DEFAULT_WIDTH = '50';
+    const DEFAULT_WIDTH = '30';
     const DEFAULT_COLOR = theme.colors.text.secondary;
 
     return (
@@ -16,7 +16,7 @@ export const SpeakIcon = ({width, color}) => {
             width={width || DEFAULT_WIDTH}
             fill={theme.colors[color] || DEFAULT_COLOR}
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 56.966 56.966"
+            viewBox="0 0 24 23"
         >
             <g>
                 <g>

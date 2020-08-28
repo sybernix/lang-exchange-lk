@@ -252,7 +252,7 @@ const Query = {
 
         //Find the native and target language of the current user with userId
         const queryToFindLangInfo = {
-            $and: [{_id:userId}],
+            $and: [{_id: userId}],
         };
         const currentUser = await User.find(queryToFindLangInfo);
 
@@ -321,7 +321,7 @@ const Query = {
 
         //Find the native and target language of the current user with userId
         const queryToFindLangInfo = {
-            $and: [{_id:userId}],
+            $and: [{_id: userId}],
         };
         const currentUser = await User.find(queryToFindLangInfo);
 
