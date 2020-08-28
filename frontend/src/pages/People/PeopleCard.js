@@ -6,7 +6,7 @@ import {generatePath} from 'react-router-dom';
 import {A} from 'components/Text';
 import {Spacing} from 'components/Layout';
 import Follow from 'components/Follow';
-import {SpeakIcon} from 'components/icons';
+import {SpeakIcon, LearnIcon} from 'components/icons';
 import theme from 'theme';
 
 import * as Routes from 'routes';
@@ -62,6 +62,7 @@ const UserName = styled.span`
 const Language = styled.span`
   font-size: ${p => p.theme.font.size.xs};
   color: ${p => p.theme.colors.grey[600]};
+  text-transform: capitalize;
 `;
 
 const IconContainer = styled.div`
@@ -77,7 +78,8 @@ const LangInfoBase = styled.div`
 
 const LangInfoContainer = styled.div`
   flex: 1;
-  padding-right: ${(props) => props.rightPadding};
+  padding-top: ${(props) => props.paddingTop};
+  padding-right: ${(props) => props.paddingRight};
 `;
 
 /**
@@ -131,23 +133,23 @@ const PeopleCard = ({user}) => {
             {/*<UserName>@{username}</UserName>*/}
             <Spacing top="xs" bottom="xs">
                 <LangInfoBase>
-                    <LangInfoContainer rightPadding="7px">
+                    <LangInfoContainer paddingRight="7px">
                         {/*<IconContainer>*/}
                             <SpeakIcon/>
                         {/*</IconContainer>*/}
                     </LangInfoContainer>
-                    <LangInfoContainer rightPadding="15px">
+                    <LangInfoContainer paddingRight="15px" paddingTop="5px">
                         <Language>{nativeLanguage}</Language>
                     </LangInfoContainer>
-                    <LangInfoContainer rightPadding="7px">
-                        <SpeakIcon/>
+                    <LangInfoContainer paddingRight="7px">
+                        <LearnIcon/>
                     </LangInfoContainer>
-                    <LangInfoContainer>
+                    <LangInfoContainer paddingTop="5px">
                         <Language>{targetLanguage}</Language>
                     </LangInfoContainer>
                 </LangInfoBase>
             </Spacing>
-            <Spacing top="lg"/>
+            <Spacing top="sm"/>
             <Follow user={user}/>
         </Root>
     );

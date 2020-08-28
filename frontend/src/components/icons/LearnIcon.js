@@ -8,7 +8,7 @@ import theme from 'theme';
  * @param {string} color
  */
 export const LearnIcon = ({width, color}) => {
-    const DEFAULT_WIDTH = '30';
+    const DEFAULT_WIDTH = '25';
     const DEFAULT_COLOR = theme.colors.text.secondary;
 
     return (
