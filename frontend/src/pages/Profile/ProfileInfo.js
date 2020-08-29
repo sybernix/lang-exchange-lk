@@ -71,7 +71,7 @@ const InfoBase = styled.div`
   display: flex;
   flex-direction: row;
   font-size: ${p => p.theme.font.size.xs};
-  color: ${p => p.theme.colors.grey[800]};
+  color: ${p => p.theme.colors.grey[600]};
 `;
 
 const Info = styled.div`
@@ -85,7 +85,6 @@ const Info = styled.div`
 const List = styled.div`
   padding: 0 ${p => p.theme.spacing.xs};
   white-space: nowrap;
-
   @media (min-width: ${p => p.theme.screen.md}) {
     padding: 0 ${p => p.theme.spacing.lg};
   }
@@ -95,7 +94,37 @@ const Language = styled.span`
   // font-size: ${p => p.theme.font.size.xs};
   // color: ${p => p.theme.colors.grey[600]};
   padding: 0 ${p => p.theme.spacing.xs};
-  text-transform: capitalize;
+  //text-transform: capitalize;
+`;
+
+// const IntroductionBase = styled.label`
+//   padding: 1px;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   margin-top: ${p => p.theme.spacing.sm};
+//   font-size: ${p => p.theme.font.size.xs};
+//   color: ${p => p.theme.colors.grey[600]};
+//   border-radius: ${p => p.theme.radius.sm};
+//   background-color: ${p => p.theme.colors.grey[600]};
+//   transition: background-color 0.4s;
+//   box-shadow: ${p => p.theme.shadows.sm};
+// `;
+
+const Introduction = styled.label`
+  //padding: 10px 10ch;
+  padding: ${p => p.theme.spacing.xs} ${p => p.theme.spacing.sm};
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+  margin-top: ${p => p.theme.spacing.sm};
+  font-size: ${p => p.theme.font.size.xs};
+  color: ${p => p.theme.colors.grey[600]};
+  border-radius: ${p => p.theme.radius.sm};
+  // background-color: ${p => p.theme.colors.grey[200]};
+  //transition: background-color 0.4s;
+  // box-shadow: ${p => p.theme.shadows.sm};
 `;
 
 /**
@@ -146,7 +175,16 @@ const ProfileInfo = ({user}) => {
                     )}
                 </FullName>
             </ProfileImage>
-
+            {/*<IntroductionBase>*/}
+                <Introduction>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sed neque sit amet mi lacinia
+                    aliquam vel in velit. Cras nec turpis imperdiet, tincidunt erat id, porta purus. In iaculis purus
+                    ac scelerisque lacinia. Donec eu pharetra ligula. Nunc consequat mauris vel mi pellentesque, et
+                    fringilla eros ullamcorper. Aliquam sed nulla vitae lectus fringilla blandit a ac odio. Praesent
+                    ullamcorper id lectus sed ornare. Proin faucibus mattis sodales. Duis sodales nulla aliquet eros
+                    accumsan lacinia. Nam tellus arcu, fringilla id quam sed, laoreet fermentum sapien.
+                </Introduction>
+            {/*</IntroductionBase>*/}
             <InfoBase>
                 <Info>
                     <List>
@@ -158,14 +196,11 @@ const ProfileInfo = ({user}) => {
                 </Info>
                 <Info>
                     <Language>
-                        Speaks {user.nativeLanguage}
+                        speaks {user.nativeLanguage}
                     </Language>
                     <Language>
-                        Learning {user.targetLanguage}
+                        learning {user.targetLanguage}
                     </Language>
-                </Info>
-                <Info>
-                    sfdgsdfhfgh
                 </Info>
             </InfoBase>
         </Root>
