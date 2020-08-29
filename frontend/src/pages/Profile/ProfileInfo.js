@@ -67,22 +67,35 @@ const Online = styled.div`
   border-radius: 50%;
 `;
 
+const InfoBase = styled.div`
+  display: flex;
+  flex-direction: row;
+  font-size: ${p => p.theme.font.size.xs};
+  color: ${p => p.theme.colors.grey[800]};
+`;
+
 const Info = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: ${p => p.theme.font.size.xs};
+ 
   margin-top: ${p => p.theme.spacing.sm};
 `;
 
 const List = styled.div`
   padding: 0 ${p => p.theme.spacing.xs};
-  color: ${p => p.theme.colors.grey[800]};
   white-space: nowrap;
 
   @media (min-width: ${p => p.theme.screen.md}) {
     padding: 0 ${p => p.theme.spacing.lg};
   }
+`;
+
+const Language = styled.span`
+  // font-size: ${p => p.theme.font.size.xs};
+  // color: ${p => p.theme.colors.grey[600]};
+  padding: 0 ${p => p.theme.spacing.xs};
+  text-transform: capitalize;
 `;
 
 /**
@@ -134,17 +147,27 @@ const ProfileInfo = ({user}) => {
                 </FullName>
             </ProfileImage>
 
-            <Info>
-                {/*<List>*/}
-                {/*    <b>{user.posts.length} </b> posts*/}
-                {/*</List>*/}
-                <List>
-                    <b>{user.followers.length} </b> followers
-                </List>
-                <List>
-                    <b>{user.following.length} </b> following
-                </List>
-            </Info>
+            <InfoBase>
+                <Info>
+                    <List>
+                        <b>{user.followers.length} </b> followers
+                    </List>
+                    <List>
+                        <b>{user.following.length} </b> following
+                    </List>
+                </Info>
+                <Info>
+                    <Language>
+                        Speaks {user.nativeLanguage}
+                    </Language>
+                    <Language>
+                        Learning {user.targetLanguage}
+                    </Language>
+                </Info>
+                <Info>
+                    sfdgsdfhfgh
+                </Info>
+            </InfoBase>
         </Root>
     );
 };
