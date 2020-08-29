@@ -34,6 +34,9 @@ const userSchema = new Schema(
             type: String,
             required: true,
         },
+        introduction: {
+            type: String,
+        },
         passwordResetToken: String,
         passwordResetTokenExpiry: Date,
         password: {
