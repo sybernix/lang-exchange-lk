@@ -178,12 +178,7 @@ const ProfileInfo = ({user}) => {
             </ProfileImage>
             {/*<IntroductionBase>*/}
                 <Introduction>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sed neque sit amet mi lacinia
-                    aliquam vel in velit. Cras nec turpis imperdiet, tincidunt erat id, porta purus. In iaculis purus
-                    ac scelerisque lacinia. Donec eu pharetra ligula. Nunc consequat mauris vel mi pellentesque, et
-                    fringilla eros ullamcorper. Aliquam sed nulla vitae lectus fringilla blandit a ac odio. Praesent
-                    ullamcorper id lectus sed ornare. Proin faucibus mattis sodales. Duis sodales nulla aliquet eros
-                    accumsan lacinia. Nam tellus arcu, fringilla id quam sed, laoreet fermentum sapien.
+                    {user.introduction}
                 </Introduction>
             {/*</IntroductionBase>*/}
             <InfoBase>

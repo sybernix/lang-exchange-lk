@@ -136,6 +136,7 @@ const Query = {
                 ],
                 options: {sort: {createdAt: 'desc'}},
             })
+            .populate('introduction')
             .populate('likes')
             .populate('followers')
             .populate('following')

@@ -15,6 +15,7 @@ const UserSchema = gql`
     password: String!
     nativeLanguage: String!
     targetLanguage: String!
+    introduction: String
     resetToken: String
     resetTokenExpiry: String
     image: File
@@ -91,6 +92,7 @@ const UserSchema = gql`
     password: String
     nativeLanguage: String
     targetLanguage: String
+    introduction: String
     image: String
     imagePublicId: String
     coverImage: String

@@ -30,6 +30,7 @@ export const GET_USER = gql`
       isOnline
       nativeLanguage
       targetLanguage
+      introduction
       posts {
         id
       }
