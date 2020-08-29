@@ -69,7 +69,7 @@ const Online = styled.div`
 
 const Info = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   font-size: ${p => p.theme.font.size.xs};
   margin-top: ${p => p.theme.spacing.sm};
@@ -135,9 +135,9 @@ const ProfileInfo = ({user}) => {
             </ProfileImage>
 
             <Info>
-                <List>
-                    <b>{user.posts.length} </b> posts
-                </List>
+                {/*<List>*/}
+                {/*    <b>{user.posts.length} </b> posts*/}
+                {/*</List>*/}
                 <List>
                     <b>{user.followers.length} </b> followers
                 </List>
