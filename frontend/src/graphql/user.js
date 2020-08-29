@@ -28,6 +28,8 @@ export const GET_USER = gql`
     getUser(username: $username, id: $id) {
       ${userPayload}
       isOnline
+      nativeLanguage
+      targetLanguage
       posts {
         id
       }
