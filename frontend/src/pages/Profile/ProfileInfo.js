@@ -113,7 +113,7 @@ const Language = styled.span`
 
 const Introduction = styled.label`
   //padding: 10px 10ch;
-  padding: ${p => p.theme.spacing.xs} ${p => p.theme.spacing.sm};
+  padding: ${p => p.theme.spacing.xs} ${p => p.theme.spacing.lg};
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -122,6 +122,7 @@ const Introduction = styled.label`
   font-size: ${p => p.theme.font.size.xs};
   color: ${p => p.theme.colors.grey[600]};
   border-radius: ${p => p.theme.radius.sm};
+  max-width: ${p => p.theme.screen.sm}
   // background-color: ${p => p.theme.colors.grey[200]};
   //transition: background-color 0.4s;
   // box-shadow: ${p => p.theme.shadows.sm};
