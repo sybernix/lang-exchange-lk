@@ -90,11 +90,11 @@ const List = styled.div`
   }
 `;
 
-const Language = styled.span`
+const Language = styled.text`
   // font-size: ${p => p.theme.font.size.xs};
   // color: ${p => p.theme.colors.grey[600]};
-  padding: 0 ${p => p.theme.spacing.xs};
-  //text-transform: capitalize;
+  // padding: 0 ${p => p.theme.spacing.xs};
+  text-transform: capitalize;
 `;
 
 // const IntroductionBase = styled.label`
@@ -196,12 +196,12 @@ const ProfileInfo = ({user}) => {
                     </List>
                 </Info>
                 <Info>
-                    <Language>
-                        speaks {user.nativeLanguage}
-                    </Language>
-                    <Language>
-                        learning {user.targetLanguage}
-                    </Language>
+                    <List>
+                        speaks <Language>{user.nativeLanguage}</Language>
+                    </List>
+                    <List>
+                        learning <Language>{user.targetLanguage}</Language>
+                    </List>
                 </Info>
             </InfoBase>
         </Root>
