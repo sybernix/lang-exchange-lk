@@ -9,12 +9,14 @@ import {IS_USER_ONLINE_SUBSCRIPTION} from 'graphql/user';
 import {H1} from 'components/Text';
 import {Spacing} from 'components/Layout';
 import Follow from 'components/Follow';
+import {Button} from 'components/Form';
 import ProfileImageUpload from './ProfileImageUpload';
 import ProfileCoverUpload from './ProfileCoverUpload';
 
 import {useStore} from 'store';
 
 import * as Routes from 'routes';
+import {Mutation} from "react-apollo";
 
 const Root = styled.div`
   display: flex;
@@ -97,19 +99,40 @@ const Language = styled.text`
   text-transform: capitalize;
 `;
 
-// const IntroductionBase = styled.label`
-//   padding: 1px;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   margin-top: ${p => p.theme.spacing.sm};
-//   font-size: ${p => p.theme.font.size.xs};
-//   color: ${p => p.theme.colors.grey[600]};
-//   border-radius: ${p => p.theme.radius.sm};
-//   background-color: ${p => p.theme.colors.grey[600]};
-//   transition: background-color 0.4s;
-//   box-shadow: ${p => p.theme.shadows.sm};
-// `;
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: ${p => p.theme.spacing.sm} 0;
+`;
+
+const Textarea = styled.textarea`
+  width: 100%;
+  margin: 0 ${p => p.theme.spacing.xs};
+  padding-left: ${p => p.theme.spacing.sm};
+  padding-top: ${p => p.theme.spacing.xs};
+  border: 0;
+  outline: none;
+  resize: none;
+  transition: 0.1s ease-out;
+  height: ${p => (p.focus ? '80px' : '40px')};
+  font-size: ${p => p.theme.font.size.xs};
+  background-color: ${p => p.theme.colors.grey[100]};
+  border-radius: ${p => p.theme.radius.md};
+`;
+
+const Buttons = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const Options = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-top: 1px solid ${p => p.theme.colors.border.main};
+  padding: ${p => p.theme.spacing.sm} 0;
+`;
 
 const Introduction = styled.label`
   //padding: 10px 10ch;
@@ -137,6 +160,12 @@ const ProfileInfo = ({user}) => {
     const {data, loading} = useSubscription(IS_USER_ONLINE_SUBSCRIPTION, {
         variables: {authUserId: auth.user.id, userId: user.id},
     });
+
+    const handleSubmit = async (e, createPost) => {
+        e.preventDefault();
+        // createPost();
+        // handleReset();
+    };
 
     let isUserOnline = user.isOnline;
     if (!loading && data) {
@@ -176,11 +205,84 @@ const ProfileInfo = ({user}) => {
                     )}
                 </FullName>
             </ProfileImage>
-            {/*<IntroductionBase>*/}
-                <Introduction>
-                    {user.introduction}
-                </Introduction>
-            {/*</IntroductionBase>*/}
+            {user.introduction !== null && <Introduction> {user.introduction} </Introduction>}
+
+            {user.introduction === null &&
+            <Mutation
+                mutation={CREATE_POST}
+                variables={{input: {title, image, authorId: auth.user.id}}}
+                refetchQueries={() => [
+                    {
+                        query: GET_FOLLOWED_POSTS,
+                        variables: {
+                            userId: auth.user.id,
+                            skip: 0,
+                            limit: HOME_PAGE_POSTS_LIMIT,
+                        },
+                    },
+                    {query: GET_AUTH_USER},
+                    {
+                        query: GET_USER_POSTS,
+                        variables: {
+                            username: auth.user.username,
+                            skip: 0,
+                            limit: PROFILE_PAGE_POSTS_LIMIT,
+                        },
+                    },
+                ]}
+            >
+                {(createPost, {loading, error: apiError}) => {
+                    const isShareDisabled = loading || (!loading && !image && !title);
+
+                    return (
+                        <form onSubmit={e => handleSubmit(e, createPost)}>
+                            <Wrapper>
+                                <Textarea
+                                    type="textarea"
+                                    name="title"
+                                    focus={isFocused}
+                                    value={title}
+                                    onFocus={handleOnFocus}
+                                    onChange={handleTitleChange}
+                                    placeholder="Add a post"
+                                />
+                            </Wrapper>
+
+                            {/*{image && (*/}
+                            {/*    <Spacing bottom="sm">*/}
+                            {/*        <ImagePreviewContainer>*/}
+                            {/*            <ImagePreview src={URL.createObjectURL(image)}/>*/}
+                            {/*        </ImagePreviewContainer>*/}
+                            {/*    </Spacing>*/}
+                            {/*)}*/}
+
+                            <Options>
+
+                                <Buttons>
+                                    {/*<Button text type="button" onClick={handleReset}>*/}
+                                    {/*    Cancel*/}
+                                    {/*</Button>*/}
+                                    <Button type="submit">
+                                        Share
+                                    </Button>
+                                </Buttons>
+                            </Options>
+
+                            {/*{apiError ||*/}
+                            {/*(error && (*/}
+                            {/*    <Spacing top="xs" bottom="sm">*/}
+                            {/*        <Error size="xs">*/}
+                            {/*            {apiError*/}
+                            {/*                ? 'Something went wrong, please try again.'*/}
+                            {/*                : error}*/}
+                            {/*        </Error>*/}
+                            {/*    </Spacing>*/}
+                            {/*))}*/}
+                        </form>
+                    );
+                }}
+            </Mutation>
+            }
             <InfoBase>
                 <Info>
                     <List>
