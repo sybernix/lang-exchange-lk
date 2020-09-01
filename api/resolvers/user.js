@@ -490,10 +490,28 @@ const Mutation = {
             throw new Error('Introduction text is required is required.');
         }
 
-        await User.findOneAndUpdate(
-            {_id: userId},
-            {$push: {introduction: introductionText}}
-        );
+        // await User.findOneAndUpdate(
+        //     {_id: userId},
+        //     {$push: {introduction: introductionText}}
+        // );
+
+        // Check if user exists
+        const user = await User.findOne({_id: userId});
+        if (!user) {
+            throw new Error('No user found with the provided id');
+        }
+        user.introduction = introductionText;
+        await user.save();
+
+        // User.findOneAndUpdate({_id: userId}, {$set:{introduction:introductionText}},
+        //     {new: true}, (err, doc) => {
+        //     if (err || doc === null) {
+        //         return {
+        //             message: `Error when adding introduction` + err,
+        //         };
+        //     }
+        //     console.log(doc);
+        // });
 
         // Return success message
         return {
