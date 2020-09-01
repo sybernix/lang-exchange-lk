@@ -490,17 +490,15 @@ const Mutation = {
             throw new Error('Introduction text is required is required.');
         }
 
-        // const newPost = await new Post({
-        //     title,
-        //     author: authorId,
-        // }).save();
-
         await User.findOneAndUpdate(
             {_id: userId},
-            {$push: {posts: newPost.id}}
+            {$push: {introduction: introductionText}}
         );
 
-        return newPost;
+        // Return success message
+        return {
+            message: `Introduction successfully added`,
+        };
     },
     /**
      * Requests reset password
