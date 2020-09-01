@@ -68,9 +68,9 @@ const UserSchema = gql`
     email: String!
   }
   
-  input addIntroduction {
+  input addIntroductionInput {
     introductionText: String!
-    introductionText: ID!
+    userId: ID!
   }
 
   input ResetPasswordInput {
@@ -165,7 +165,7 @@ const UserSchema = gql`
     requestPasswordReset(input: RequestPasswordResetInput!): SuccessMessage
     
     # Add introduction text
-    addIntroduction(input: addIntroduction!): SuccessMessage
+    addIntroduction(input: addIntroductionInput!): SuccessMessage
 
     # Resets user password
     resetPassword(input: ResetPasswordInput!): Token
