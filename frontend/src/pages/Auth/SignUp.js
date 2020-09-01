@@ -5,7 +5,7 @@ import {withRouter} from 'react-router-dom';
 import {Mutation} from 'react-apollo';
 
 import {Spacing, Container} from 'components/Layout';
-import {H1, Error} from 'components/Text';
+import {H1, H2, Error} from 'components/Text';
 import {InputText, Button, Select} from 'components/Form';
 import Head from 'components/Head';
 
@@ -155,13 +155,12 @@ const SignUp = ({history, refetch}) => {
                             </div>
 
                             <p>Find people who speak your target language.</p>
-                            <p>Exchange knowledge with your language partner.</p>
-                            <p>Learn. Teach. Share. Grow.</p>
+                            <p>Learn. Teach. Share.</p>
                         </Welcome>
 
                         <Form>
                             <Spacing bottom="md">
-                                <H1>Create Account</H1>
+                                <H2>Create Account</H2>
                             </Spacing>
 
                             <form onSubmit={e => handleSubmit(e, signup)}>
