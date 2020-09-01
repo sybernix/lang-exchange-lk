@@ -476,6 +476,51 @@ const Mutation = {
         };
     },
     /**
+     * Creates introduction text to user
+     *
+     * @param {string} introductionText
+     * @param {string} authorId
+     */
+    addIntroduction: async (
+        root,
+        {input: {title, authorId}},
+        {Post, User}
+    ) => {
+        if (!title ) {
+            throw new Error('Introduction text is required is required.');
+        }
+
+        let imageUrl, imagePublicId;
+        if (image) {
+            const {createReadStream} = await image;
+            const stream = createReadStream();
+            const uploadImage = await uploadToCloudinary(stream, 'post');
+
+            if (!uploadImage.secure_url) {
+                throw new Error(
+                    'Something went wrong while uploading image to Cloudinary'
+                );
+            }
+
+            imageUrl = uploadImage.secure_url;
+            imagePublicId = uploadImage.public_id;
+        }
+
+        const newPost = await new Post({
+            title,
+            image: imageUrl,
+            imagePublicId,
+            author: authorId,
+        }).save();
+
+        await User.findOneAndUpdate(
+            {_id: authorId},
+            {$push: {posts: newPost.id}}
+        );
+
+        return newPost;
+    },
+    /**
      * Requests reset password
      *
      * @param {string} email
