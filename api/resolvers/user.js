@@ -479,42 +479,24 @@ const Mutation = {
      * Creates introduction text to user
      *
      * @param {string} introductionText
-     * @param {string} authorId
+     * @param {string} userId
      */
     addIntroduction: async (
         root,
-        {input: {title, authorId}},
-        {Post, User}
+        {input: {introductionText, userId}},
+        {User}
     ) => {
-        if (!title ) {
+        if (!introductionText ) {
             throw new Error('Introduction text is required is required.');
         }
 
-        let imageUrl, imagePublicId;
-        if (image) {
-            const {createReadStream} = await image;
-            const stream = createReadStream();
-            const uploadImage = await uploadToCloudinary(stream, 'post');
-
-            if (!uploadImage.secure_url) {
-                throw new Error(
-                    'Something went wrong while uploading image to Cloudinary'
-                );
-            }
-
-            imageUrl = uploadImage.secure_url;
-            imagePublicId = uploadImage.public_id;
-        }
-
-        const newPost = await new Post({
-            title,
-            image: imageUrl,
-            imagePublicId,
-            author: authorId,
-        }).save();
+        // const newPost = await new Post({
+        //     title,
+        //     author: authorId,
+        // }).save();
 
         await User.findOneAndUpdate(
-            {_id: authorId},
+            {_id: userId},
             {$push: {posts: newPost.id}}
         );
 
