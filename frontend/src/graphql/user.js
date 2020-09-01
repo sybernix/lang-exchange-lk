@@ -143,6 +143,17 @@ export const GET_AUTH_USER = gql`
 `;
 
 /**
+ * Creates a post
+ */
+export const ADD_INTRODUCTION = gql`
+  mutation($input: addIntroductionInput!) {
+    addIntroduction(input: $input) {
+      id
+    }
+  }
+`;
+
+/**
  * Gets all available users
  */
 export const GET_USERS = gql`
