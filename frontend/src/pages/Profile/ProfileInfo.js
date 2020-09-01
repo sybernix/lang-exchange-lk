@@ -207,81 +207,115 @@ const ProfileInfo = ({user}) => {
             </ProfileImage>
             {user.introduction !== null && <Introduction> {user.introduction} </Introduction>}
 
-            {user.introduction === null &&
-            <Mutation
-                mutation={CREATE_POST}
-                variables={{input: {title, image, authorId: auth.user.id}}}
-                refetchQueries={() => [
-                    {
-                        query: GET_FOLLOWED_POSTS,
-                        variables: {
-                            userId: auth.user.id,
-                            skip: 0,
-                            limit: HOME_PAGE_POSTS_LIMIT,
-                        },
-                    },
-                    {query: GET_AUTH_USER},
-                    {
-                        query: GET_USER_POSTS,
-                        variables: {
-                            username: auth.user.username,
-                            skip: 0,
-                            limit: PROFILE_PAGE_POSTS_LIMIT,
-                        },
-                    },
-                ]}
-            >
-                {(createPost, {loading, error: apiError}) => {
-                    const isShareDisabled = loading || (!loading && !image && !title);
+            <form onSubmit={e => handleSubmit(e)}>
+                <Wrapper>
+                    <Textarea
+                        type="textarea"
+                        name="title"
+                        // focus={isFocused}
+                        // value={title}
+                        // onFocus={handleOnFocus}
+                        // onChange={handleTitleChange}
+                        placeholder="Add a post"
+                    />
+                </Wrapper>
+                <Options>
+                    <Buttons>
+                        {/*<Button text type="button" onClick={handleReset}>*/}
+                        {/*    Cancel*/}
+                        {/*</Button>*/}
+                        <Button type="submit">
+                            Share
+                        </Button>
+                    </Buttons>
+                </Options>
 
-                    return (
-                        <form onSubmit={e => handleSubmit(e, createPost)}>
-                            <Wrapper>
-                                <Textarea
-                                    type="textarea"
-                                    name="title"
-                                    focus={isFocused}
-                                    value={title}
-                                    onFocus={handleOnFocus}
-                                    onChange={handleTitleChange}
-                                    placeholder="Add a post"
-                                />
-                            </Wrapper>
+                {/*{apiError ||*/}
+                {/*(error && (*/}
+                {/*    <Spacing top="xs" bottom="sm">*/}
+                {/*        <Error size="xs">*/}
+                {/*            {apiError*/}
+                {/*                ? 'Something went wrong, please try again.'*/}
+                {/*                : error}*/}
+                {/*        </Error>*/}
+                {/*    </Spacing>*/}
+                {/*))}*/}
+            </form>
+            {/*{user.introduction === null &&*/}
+            {/*<Mutation*/}
+            {/*    mutation={CREATE_POST}*/}
+            {/*    variables={{input: {title, image, authorId: auth.user.id}}}*/}
+            {/*    refetchQueries={() => [*/}
+            {/*        {*/}
+            {/*            query: GET_FOLLOWED_POSTS,*/}
+            {/*            variables: {*/}
+            {/*                userId: auth.user.id,*/}
+            {/*                skip: 0,*/}
+            {/*                limit: HOME_PAGE_POSTS_LIMIT,*/}
+            {/*            },*/}
+            {/*        },*/}
+            {/*        {query: GET_AUTH_USER},*/}
+            {/*        {*/}
+            {/*            query: GET_USER_POSTS,*/}
+            {/*            variables: {*/}
+            {/*                username: auth.user.username,*/}
+            {/*                skip: 0,*/}
+            {/*                limit: PROFILE_PAGE_POSTS_LIMIT,*/}
+            {/*            },*/}
+            {/*        },*/}
+            {/*    ]}*/}
+            {/*>*/}
+            {/*    {(createPost, {loading, error: apiError}) => {*/}
+            {/*        const isShareDisabled = loading || (!loading && !image && !title);*/}
 
-                            {/*{image && (*/}
-                            {/*    <Spacing bottom="sm">*/}
-                            {/*        <ImagePreviewContainer>*/}
-                            {/*            <ImagePreview src={URL.createObjectURL(image)}/>*/}
-                            {/*        </ImagePreviewContainer>*/}
-                            {/*    </Spacing>*/}
-                            {/*)}*/}
+            {/*        return (*/}
+            {/*            <form onSubmit={e => handleSubmit(e, createPost)}>*/}
+            {/*                <Wrapper>*/}
+            {/*                    <Textarea*/}
+            {/*                        type="textarea"*/}
+            {/*                        name="title"*/}
+            {/*                        focus={isFocused}*/}
+            {/*                        value={title}*/}
+            {/*                        onFocus={handleOnFocus}*/}
+            {/*                        onChange={handleTitleChange}*/}
+            {/*                        placeholder="Add a post"*/}
+            {/*                    />*/}
+            {/*                </Wrapper>*/}
 
-                            <Options>
+            {/*                /!*{image && (*!/*/}
+            {/*                /!*    <Spacing bottom="sm">*!/*/}
+            {/*                /!*        <ImagePreviewContainer>*!/*/}
+            {/*                /!*            <ImagePreview src={URL.createObjectURL(image)}/>*!/*/}
+            {/*                /!*        </ImagePreviewContainer>*!/*/}
+            {/*                /!*    </Spacing>*!/*/}
+            {/*                /!*)}*!/*/}
 
-                                <Buttons>
-                                    {/*<Button text type="button" onClick={handleReset}>*/}
-                                    {/*    Cancel*/}
-                                    {/*</Button>*/}
-                                    <Button type="submit">
-                                        Share
-                                    </Button>
-                                </Buttons>
-                            </Options>
+            {/*                <Options>*/}
 
-                            {/*{apiError ||*/}
-                            {/*(error && (*/}
-                            {/*    <Spacing top="xs" bottom="sm">*/}
-                            {/*        <Error size="xs">*/}
-                            {/*            {apiError*/}
-                            {/*                ? 'Something went wrong, please try again.'*/}
-                            {/*                : error}*/}
-                            {/*        </Error>*/}
-                            {/*    </Spacing>*/}
-                            {/*))}*/}
-                        </form>
-                    );
-                }}
-            </Mutation>
+            {/*                    <Buttons>*/}
+            {/*                        /!*<Button text type="button" onClick={handleReset}>*!/*/}
+            {/*                        /!*    Cancel*!/*/}
+            {/*                        /!*</Button>*!/*/}
+            {/*                        <Button type="submit">*/}
+            {/*                            Share*/}
+            {/*                        </Button>*/}
+            {/*                    </Buttons>*/}
+            {/*                </Options>*/}
+
+            {/*                /!*{apiError ||*!/*/}
+            {/*                /!*(error && (*!/*/}
+            {/*                /!*    <Spacing top="xs" bottom="sm">*!/*/}
+            {/*                /!*        <Error size="xs">*!/*/}
+            {/*                /!*            {apiError*!/*/}
+            {/*                /!*                ? 'Something went wrong, please try again.'*!/*/}
+            {/*                /!*                : error}*!/*/}
+            {/*                /!*        </Error>*!/*/}
+            {/*                /!*    </Spacing>*!/*/}
+            {/*                /!*))}*!/*/}
+            {/*            </form>*/}
+            {/*        );*/}
+            {/*    }}*/}
+            {/*</Mutation>*/}
             }
             <InfoBase>
                 <Info>
