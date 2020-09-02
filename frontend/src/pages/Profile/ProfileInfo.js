@@ -165,7 +165,6 @@ const ProfileInfo = ({user}) => {
     const handleSubmit = async (e, addIntroduction) => {
         e.preventDefault();
         addIntroduction();
-        // handleReset();
     };
 
     const handleReset = () => {
@@ -213,31 +212,12 @@ const ProfileInfo = ({user}) => {
                     )}
                 </FullName>
             </ProfileImage>
-            {introductionText !== null && <Introduction> {introductionText} </Introduction>}
+            {user.introduction !== null && <Introduction> {introductionText} </Introduction>}
 
             {user.introduction === null &&
             <Mutation
                 mutation={ADD_INTRODUCTION}
                 variables={{input: {introductionText, userId: auth.user.id}}}
-                // refetchQueries={() => [
-                //     {
-                //         query: GET_FOLLOWED_POSTS,
-                //         variables: {
-                //             userId: auth.user.id,
-                //             skip: 0,
-                //             limit: HOME_PAGE_POSTS_LIMIT,
-                //         },
-                //     },
-                //     {query: GET_AUTH_USER},
-                //     {
-                //         query: GET_USER_POSTS,
-                //         variables: {
-                //             username: auth.user.username,
-                //             skip: 0,
-                //             limit: PROFILE_PAGE_POSTS_LIMIT,
-                //         },
-                //     },
-                // ]}
             >
                 {(addIntroduction, {loading, error: apiError}) => {
                     const isShareDisabled = loading || (!loading && !introductionText);
@@ -248,14 +228,11 @@ const ProfileInfo = ({user}) => {
                                 <Textarea
                                     type="textarea"
                                     name="title"
-                                    // focus={isFocused}
                                     value={introductionText}
-                                    // onFocus={handleOnFocus}
                                     onChange={handleIntroChange}
                                     placeholder="Add introduction about yourself!"
                                 />
                             </Wrapper>
-
                             <Options>
                                 <Buttons>
                                     <Button text type="button" onClick={handleReset}>
