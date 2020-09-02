@@ -45,7 +45,7 @@ const Options = styled.div`
 const Introduction = styled.label`
   //padding: 10px 10ch;
   padding: ${p => p.theme.spacing.xs} ${p => p.theme.spacing.lg};
-  width: 100%;
+  //width: 100%;
   display: flex;
   flex-direction: column;
   text-align: justify;
