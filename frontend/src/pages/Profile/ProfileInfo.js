@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {Link, generatePath} from 'react-router-dom';
@@ -154,7 +154,7 @@ const Introduction = styled.label`
  * Renders user information in profile page
  */
 const ProfileInfo = ({user}) => {
-    const [introductionText, setIntroductionText] = useState('');
+    const [introductionText, setIntroductionText] = useState(user.introduction);
     const [error, setError] = useState('');
     const [{auth}] = useStore();
 
@@ -165,7 +165,7 @@ const ProfileInfo = ({user}) => {
     const handleSubmit = async (e, addIntroduction) => {
         e.preventDefault();
         addIntroduction();
-        handleReset();
+        // handleReset();
     };
 
     const handleReset = () => {
@@ -213,7 +213,7 @@ const ProfileInfo = ({user}) => {
                     )}
                 </FullName>
             </ProfileImage>
-            {user.introduction !== null && <Introduction> {user.introduction} </Introduction>}
+            {introductionText !== null && <Introduction> {introductionText} </Introduction>}
 
             {user.introduction === null &&
             <Mutation
