@@ -31,6 +31,7 @@ const ErrorMessage = styled.div`
 `;
 
 const ForgotPassword = styled.div`
+  padding-left: 5px;
   font-size: ${p => p.theme.font.size.xxs};
   margin-top: ${p => p.theme.spacing.xxs};
   color: ${p => p.theme.colors.white};
