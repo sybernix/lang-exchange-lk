@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {Link, generatePath} from 'react-router-dom';
 import {useSubscription} from '@apollo/react-hooks';
-import gql from 'graphql-tag';
 import {IS_USER_ONLINE_SUBSCRIPTION, ADD_INTRODUCTION} from 'graphql/user';
 
 import {H1, Error} from 'components/Text';
@@ -216,41 +215,7 @@ const ProfileInfo = ({user}) => {
             </ProfileImage>
             {user.introduction !== null && <Introduction> {user.introduction} </Introduction>}
 
-            {/*<form onSubmit={e => handleSubmit(e)}>*/}
-            {/*    <Wrapper>*/}
-            {/*        <Textarea*/}
-            {/*            type="textarea"*/}
-            {/*            name="title"*/}
-            {/*            // focus={isFocused}*/}
-            {/*            // value={title}*/}
-            {/*            // onFocus={handleOnFocus}*/}
-            {/*            // onChange={handleTitleChange}*/}
-            {/*            placeholder="Add a post"*/}
-            {/*        />*/}
-            {/*    </Wrapper>*/}
-            {/*    <Options>*/}
-            {/*        <Buttons>*/}
-            {/*            /!*<Button text type="button" onClick={handleReset}>*!/*/}
-            {/*            /!*    Cancel*!/*/}
-            {/*            /!*</Button>*!/*/}
-            {/*            <Button type="submit">*/}
-            {/*                Share*/}
-            {/*            </Button>*/}
-            {/*        </Buttons>*/}
-            {/*    </Options>*/}
-
-            {/*    /!*{apiError ||*!/*/}
-            {/*    /!*(error && (*!/*/}
-            {/*    /!*    <Spacing top="xs" bottom="sm">*!/*/}
-            {/*    /!*        <Error size="xs">*!/*/}
-            {/*    /!*            {apiError*!/*/}
-            {/*    /!*                ? 'Something went wrong, please try again.'*!/*/}
-            {/*    /!*                : error}*!/*/}
-            {/*    /!*        </Error>*!/*/}
-            {/*    /!*    </Spacing>*!/*/}
-            {/*    /!*))}*!/*/}
-            {/*</form>*/}
-            {user.introduction !== null &&
+            {user.introduction === null &&
             <Mutation
                 mutation={ADD_INTRODUCTION}
                 variables={{input: {introductionText, userId: auth.user.id}}}
