@@ -155,6 +155,7 @@ const Introduction = styled.label`
  */
 const ProfileInfo = ({user}) => {
     const [introductionText, setIntroductionText] = useState(user.introduction);
+    const [introductionAdded, setIntroductionAdded] = useState(false);
     const [error, setError] = useState('');
     const [{auth}] = useStore();
 
@@ -165,6 +166,7 @@ const ProfileInfo = ({user}) => {
     const handleSubmit = async (e, addIntroduction) => {
         e.preventDefault();
         addIntroduction();
+        setIntroductionAdded(true);
     };
 
     const handleReset = () => {
@@ -212,9 +214,9 @@ const ProfileInfo = ({user}) => {
                     )}
                 </FullName>
             </ProfileImage>
-            {user.introduction !== null && <Introduction> {introductionText} </Introduction>}
+            {(user.introduction !== null || introductionAdded) && <Introduction> {introductionText} </Introduction>}
 
-            {user.introduction === null &&
+            {user.introduction === null && !introductionAdded &&
             <Mutation
                 mutation={ADD_INTRODUCTION}
                 variables={{input: {introductionText, userId: auth.user.id}}}
