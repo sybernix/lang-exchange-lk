@@ -4,7 +4,7 @@ import {Switch, Route, Redirect} from 'react-router-dom';
 import styled from 'styled-components';
 
 import {Overlay} from 'components/Layout';
-import {AuthHeader, SignUp, ForgotPassword, ResetPassword} from 'pages/Auth';
+import {AuthHeader, SignUp, ForgotPassword, ResetPassword, AuthFooter} from 'pages/Auth';
 
 import * as Routes from 'routes';
 
@@ -69,6 +69,7 @@ const AuthLayout = ({refetch}) => {
                         <Redirect to={Routes.HOME}/>
                     </Switch>
                 </Pages>
+                <AuthFooter/>
             </Container>
         </Root>
     );
