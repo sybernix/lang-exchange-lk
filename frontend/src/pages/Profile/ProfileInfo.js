@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import {Link, generatePath} from 'react-router-dom';
+import {generatePath, Link} from 'react-router-dom';
 import {useSubscription} from '@apollo/react-hooks';
-import {IS_USER_ONLINE_SUBSCRIPTION, ADD_INTRODUCTION} from 'graphql/user';
+import {IS_USER_ONLINE_SUBSCRIPTION} from 'graphql/user';
 
 import {H1} from 'components/Text';
 import {Spacing} from 'components/Layout';
