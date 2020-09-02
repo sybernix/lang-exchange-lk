@@ -15,6 +15,7 @@ import ProfileCoverUpload from './ProfileCoverUpload';
 import {useStore} from 'store';
 
 import * as Routes from 'routes';
+import ProfileIntroduction from "./ProfileIntroduction";
 
 
 const Root = styled.div`
@@ -146,7 +147,7 @@ const ProfileInfo = ({user}) => {
                     )}
                 </FullName>
             </ProfileImage>
-
+            <ProfileIntroduction userId={auth.user.id} initialIntroduction={user.introduction}/>
             <InfoBase>
                 <Info>
                     <List>

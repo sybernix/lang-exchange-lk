@@ -60,7 +60,7 @@ const Introduction = styled.label`
 `;
 
 const ProfileIntroduction = props => {
-    const [introductionText, setIntroductionText] = useState(user.introduction);
+    const [introductionText, setIntroductionText] = useState(props.initialIntroduction);
     const [introductionAdded, setIntroductionAdded] = useState(false);
     const [error, setError] = useState('');
 
