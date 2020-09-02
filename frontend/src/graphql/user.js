@@ -148,7 +148,7 @@ export const GET_AUTH_USER = gql`
 export const ADD_INTRODUCTION = gql`
   mutation($input: addIntroductionInput!) {
     addIntroduction(input: $input) {
-      id
+      message
     }
   }
 `;

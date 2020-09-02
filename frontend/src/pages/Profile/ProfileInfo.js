@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {Link, generatePath} from 'react-router-dom';
 import {useSubscription} from '@apollo/react-hooks';
-
+import gql from 'graphql-tag';
 import {IS_USER_ONLINE_SUBSCRIPTION, ADD_INTRODUCTION} from 'graphql/user';
 
 import {H1, Error} from 'components/Text';
@@ -163,11 +163,18 @@ const ProfileInfo = ({user}) => {
         variables: {authUserId: auth.user.id, userId: user.id},
     });
 
-    const handleSubmit = async (e, createPost) => {
+    const handleSubmit = async (e, addIntroduction) => {
         e.preventDefault();
-        // createPost();
-        // handleReset();
+        addIntroduction();
+        handleReset();
     };
+
+    const handleReset = () => {
+        setIntroductionText('');
+        setError('');
+    };
+
+    const handleIntroChange = e => setIntroductionText(e.target.value);
 
     let isUserOnline = user.isOnline;
     if (!loading && data) {
@@ -209,44 +216,44 @@ const ProfileInfo = ({user}) => {
             </ProfileImage>
             {user.introduction !== null && <Introduction> {user.introduction} </Introduction>}
 
-            <form onSubmit={e => handleSubmit(e)}>
-                <Wrapper>
-                    <Textarea
-                        type="textarea"
-                        name="title"
-                        // focus={isFocused}
-                        // value={title}
-                        // onFocus={handleOnFocus}
-                        // onChange={handleTitleChange}
-                        placeholder="Add a post"
-                    />
-                </Wrapper>
-                <Options>
-                    <Buttons>
-                        {/*<Button text type="button" onClick={handleReset}>*/}
-                        {/*    Cancel*/}
-                        {/*</Button>*/}
-                        <Button type="submit">
-                            Share
-                        </Button>
-                    </Buttons>
-                </Options>
+            {/*<form onSubmit={e => handleSubmit(e)}>*/}
+            {/*    <Wrapper>*/}
+            {/*        <Textarea*/}
+            {/*            type="textarea"*/}
+            {/*            name="title"*/}
+            {/*            // focus={isFocused}*/}
+            {/*            // value={title}*/}
+            {/*            // onFocus={handleOnFocus}*/}
+            {/*            // onChange={handleTitleChange}*/}
+            {/*            placeholder="Add a post"*/}
+            {/*        />*/}
+            {/*    </Wrapper>*/}
+            {/*    <Options>*/}
+            {/*        <Buttons>*/}
+            {/*            /!*<Button text type="button" onClick={handleReset}>*!/*/}
+            {/*            /!*    Cancel*!/*/}
+            {/*            /!*</Button>*!/*/}
+            {/*            <Button type="submit">*/}
+            {/*                Share*/}
+            {/*            </Button>*/}
+            {/*        </Buttons>*/}
+            {/*    </Options>*/}
 
-                {/*{apiError ||*/}
-                {/*(error && (*/}
-                {/*    <Spacing top="xs" bottom="sm">*/}
-                {/*        <Error size="xs">*/}
-                {/*            {apiError*/}
-                {/*                ? 'Something went wrong, please try again.'*/}
-                {/*                : error}*/}
-                {/*        </Error>*/}
-                {/*    </Spacing>*/}
-                {/*))}*/}
-            </form>
-            {user.introduction === null &&
+            {/*    /!*{apiError ||*!/*/}
+            {/*    /!*(error && (*!/*/}
+            {/*    /!*    <Spacing top="xs" bottom="sm">*!/*/}
+            {/*    /!*        <Error size="xs">*!/*/}
+            {/*    /!*            {apiError*!/*/}
+            {/*    /!*                ? 'Something went wrong, please try again.'*!/*/}
+            {/*    /!*                : error}*!/*/}
+            {/*    /!*        </Error>*!/*/}
+            {/*    /!*    </Spacing>*!/*/}
+            {/*    /!*))}*!/*/}
+            {/*</form>*/}
+            {user.introduction !== null &&
             <Mutation
                 mutation={ADD_INTRODUCTION}
-                variables={{input: {introductionText, authorId: auth.user.id}}}
+                variables={{input: {introductionText, userId: auth.user.id}}}
                 // refetchQueries={() => [
                 //     {
                 //         query: GET_FOLLOWED_POSTS,
@@ -267,11 +274,11 @@ const ProfileInfo = ({user}) => {
                 //     },
                 // ]}
             >
-                {(createPost, {loading, error: apiError}) => {
+                {(addIntroduction, {loading, error: apiError}) => {
                     const isShareDisabled = loading || (!loading && !introductionText);
 
                     return (
-                        <form onSubmit={e => handleSubmit(e, createPost)}>
+                        <form onSubmit={e => handleSubmit(e, addIntroduction)}>
                             <Wrapper>
                                 <Textarea
                                     type="textarea"
