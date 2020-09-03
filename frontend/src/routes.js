@@ -12,7 +12,7 @@ export const USER_PROFILE = '/:username';
 
 export const EXPLORE = '/explore';
 
-export const LEARNER = '/learner';
+export const LEARNER = '/learners';
 
 export const NOTIFICATIONS = '/notifications';
 
