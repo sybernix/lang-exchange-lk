@@ -9,7 +9,7 @@ export {ExploreIcon} from './ExploreIcon';
 export {NotificationIcon} from './NotificationIcon';
 export {MenuIcon} from './MenuIcon';
 export {HomeIcon} from './HomeIcon';
-export {PeopleIcon} from './PeopleIcon';
+export {LearnerIcon} from './LearnerIcon';
 export {SearchIcon} from './SearchIcon';
 export {DotsIcon} from './DotsIcon';
 export {UdiliaIcon} from './UdiliaIcon';

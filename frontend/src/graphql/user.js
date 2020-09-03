@@ -304,7 +304,7 @@ export const RESET_PASSWORD = gql`
 `;
 
 /**
- * People suggestions for auth user
+ * Learners suggestions for auth user
  */
 export const USER_SUGGESTIONS = gql`
   query($userId: String!) {

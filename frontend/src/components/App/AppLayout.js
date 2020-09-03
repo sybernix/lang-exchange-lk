@@ -12,7 +12,7 @@ import UserSuggestions from './UserSuggestions';
 import Home from 'pages/Home';
 import Profile from 'pages/Profile';
 import Explore from 'pages/Explore';
-import People from 'pages/People';
+import Learner from 'pages/Learners';
 import Notifications from 'pages/Notifications';
 import Post from 'pages/Post';
 import Messages from 'pages/Messages';
@@ -91,7 +91,7 @@ const AppLayout = ({location, authUser}) => {
 
                     <Route exact path={Routes.EXPLORE} component={Explore}/>
 
-                    <Route exact path={Routes.PEOPLE} component={People}/>
+                    <Route exact path={Routes.LEARNER} component={Learner}/>
 
                     <Route exact path={Routes.NOTIFICATIONS} component={Notifications}/>
 

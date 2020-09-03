@@ -2,12 +2,12 @@ import React from 'react';
 import theme from 'theme';
 
 /**
- * People icon
+ * Learners icon
  *
  * @param {string} width
  * @param {string} color
  */
-export const PeopleIcon = ({width, color}) => {
+export const LearnerIcon = ({width, color}) => {
     const DEFAULT_WIDTH = '20';
     const DEFAULT_COLOR = theme.colors.text.secondary;
 

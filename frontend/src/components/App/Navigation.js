@@ -8,7 +8,7 @@ import {
     ExploreIcon,
     NotificationIcon,
     HomeIcon,
-    PeopleIcon,
+    LearnerIcon,
     EnvelopeIcon,
 } from 'components/icons';
 
@@ -71,10 +71,10 @@ const Navigation = () => {
                 </ListItem>
             </Link>
 
-            <Link exact activeClassName="selected" to={Routes.PEOPLE}>
+            <Link exact activeClassName="selected" to={Routes.LEARNER}>
                 <ListItem>
-                    <PeopleIcon/>
-                    <Name>People</Name>
+                    <LearnerIcon/>
+                    <Name>Learners</Name>
                 </ListItem>
             </Link>
 

@@ -7,11 +7,11 @@ import {Loading} from 'components/Loading';
 import Empty from 'components/Empty';
 import InfiniteScroll from 'components/InfiniteScroll';
 import Head from 'components/Head';
-import PeopleCard from './PeopleCard';
+import LearnerCard from './LearnerCard';
 
 import {GET_POTENTIAL_PARTNERS} from 'graphql/user';
 
-import {PEOPLE_PAGE_USERS_LIMIT} from 'constants/DataLimit';
+import {LEARNER_PAGE_USERS_LIMIT} from 'constants/DataLimit';
 
 import {useStore} from 'store';
 
@@ -26,7 +26,7 @@ const Root = styled(Container)`
   }
 `;
 
-const PeopleContainer = styled.div`
+const LearnerContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 3fr));
   grid-auto-rows: auto;
@@ -35,19 +35,19 @@ const PeopleContainer = styled.div`
 `;
 
 /**
- * People page
+ * Learners page
  */
-const People = () => {
+const Learners = () => {
     const [{auth}] = useStore();
     const variables = {
         userId: auth.user.id,
         skip: 0,
-        limit: PEOPLE_PAGE_USERS_LIMIT,
+        limit: LEARNER_PAGE_USERS_LIMIT,
     };
 
     return (
         <Root maxWidth="md">
-            <Head title="Find new People"/>
+            <Head title="Find new Learners"/>
 
             <Query
                 query={GET_POTENTIAL_PARTNERS}
@@ -57,15 +57,15 @@ const People = () => {
                 {({data, loading, fetchMore, networkStatus}) => {
                     if (loading && networkStatus === 1) {
                         return (
-                            <PeopleContainer>
-                                <Skeleton height={280} count={PEOPLE_PAGE_USERS_LIMIT}/>
-                            </PeopleContainer>
+                            <LearnerContainer>
+                                <Skeleton height={280} count={LEARNER_PAGE_USERS_LIMIT}/>
+                            </LearnerContainer>
                         );
                     }
 
                     const {users, count} = data.getPotentialPartners;
 
-                    if (!users.length > 0) return <Empty text="No people yet."/>;
+                    if (!users.length > 0) return <Empty text="No learners yet."/>;
 
                     return (
                         <InfiniteScroll
@@ -81,11 +81,11 @@ const People = () => {
 
                                 return (
                                     <Fragment>
-                                        <PeopleContainer>
+                                        <LearnerContainer>
                                             {data.map(user => (
-                                                <PeopleCard key={user.id} user={user}/>
+                                                <LearnerCard key={user.id} user={user}/>
                                             ))}
-                                        </PeopleContainer>
+                                        </LearnerContainer>
 
                                         {showNextLoading && <Loading top="lg"/>}
                                     </Fragment>
@@ -99,4 +99,4 @@ const People = () => {
     );
 };
 
-export default People;
+export default Learners;

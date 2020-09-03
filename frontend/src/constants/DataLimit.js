@@ -6,7 +6,7 @@ export const HOME_PAGE_POSTS_LIMIT = 6;
 
 export const EXPLORE_PAGE_POSTS_LIMIT = 15;
 
-export const PEOPLE_PAGE_USERS_LIMIT = 15;
+export const LEARNER_PAGE_USERS_LIMIT = 15;
 
 export const NOTIFICATIONS_PAGE_NOTIFICATION_LIMIT = 50;
 

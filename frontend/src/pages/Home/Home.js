@@ -92,8 +92,8 @@ const Home = () => {
                                     Explore new posts
                                 </StyledA>{' '}
                                 or{' '}
-                                <StyledA to={generatePath(Routes.PEOPLE)}>
-                                    Find new people
+                                <StyledA to={generatePath(Routes.LEARNER)}>
+                                    Find new learners
                                 </StyledA>
                             </Empty>
                         );

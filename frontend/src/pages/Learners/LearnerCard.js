@@ -85,7 +85,7 @@ const LangInfoContainer = styled.div`
 /**
  * Card component for rendering user info, meant to be used in Peoples page
  */
-const PeopleCard = ({user}) => {
+const LearnerCard = ({user}) => {
     const [color, setColor] = useState('');
 
     const {fullName, username, image, nativeLanguage, targetLanguage} = user;
@@ -155,8 +155,8 @@ const PeopleCard = ({user}) => {
     );
 };
 
-PeopleCard.propTypes = {
+LearnerCard.propTypes = {
     user: PropTypes.object.isRequired,
 };
 
-export default PeopleCard;
+export default LearnerCard;
