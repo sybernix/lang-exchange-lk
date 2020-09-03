@@ -81,10 +81,10 @@ const ProfileIntroduction = props => {
         <React.Fragment>
             {(props.initialIntroduction !== null || introductionAdded) && <Introduction> {introductionText} </Introduction>}
 
-            {props.initialIntroduction === null && !introductionAdded &&
+            {props.initialIntroduction === null && !introductionAdded && props.userId === props.authId &&
             <Mutation
                 mutation={ADD_INTRODUCTION}
-                variables={{input: {introductionText, userId: props.userId}}}
+                variables={{input: {introductionText, userId: props.authId}}}
             >
                 {(addIntroduction, {loading, error: apiError}) => {
                     const isShareDisabled = loading || (!loading && !introductionText);
@@ -132,6 +132,7 @@ const ProfileIntroduction = props => {
 
 ProfileIntroduction.propTypes = {
     userId: PropTypes.string.isRequired,
+    authId: PropTypes.string.isRequired,
     initialIntroduction: PropTypes.string.isRequired,
 };
 

@@ -147,7 +147,7 @@ const ProfileInfo = ({user}) => {
                     )}
                 </FullName>
             </ProfileImage>
-            <ProfileIntroduction userId={auth.user.id} initialIntroduction={user.introduction}/>
+            <ProfileIntroduction authId={auth.user.id} userId={user.id} initialIntroduction={user.introduction}/>
             <InfoBase>
                 <Info>
                     <List>
