@@ -303,11 +303,11 @@ const Query = {
         return users;
     },
     /**
-     * Gets Suggested people for user
+     * Gets Suggested learners for user
      *
      * @param {string} userId
      */
-    suggestPeople: async (root, {userId}, {User, Follow}) => {
+    suggestLearners: async (root, {userId}, {User, Follow}) => {
         const LIMIT = 6;
 
         // Find who user follows
@@ -449,7 +449,7 @@ const Mutation = {
             'forgot-password',
             'reset-password',
             'explore',
-            'people',
+            'learners',
             'notifications',
             'post',
         ];

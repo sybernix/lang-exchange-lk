@@ -308,7 +308,7 @@ export const RESET_PASSWORD = gql`
  */
 export const USER_SUGGESTIONS = gql`
   query($userId: String!) {
-    suggestPeople(userId: $userId) {
+    suggestLearners(userId: $userId) {
       id
       fullName
       username

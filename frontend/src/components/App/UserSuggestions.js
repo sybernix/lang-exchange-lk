@@ -83,7 +83,7 @@ const UserSuggestions = ({pathname}) => {
                         </Root>
                     );
 
-                if (!data.suggestPeople.length > 0) {
+                if (!data.suggestLearners.length > 0) {
                     return null;
                 }
 
@@ -92,7 +92,7 @@ const UserSuggestions = ({pathname}) => {
                         <H3>Suggestions For You</H3>
 
                         <List>
-                            {data.suggestPeople.map(user => (
+                            {data.suggestLearners.map(user => (
                                 <ListItem key={user.id}>
                                     <A
                                         to={generatePath(Routes.USER_PROFILE, {

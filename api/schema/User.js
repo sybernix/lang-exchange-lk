@@ -147,8 +147,8 @@ const UserSchema = gql`
     # Searches users by username or fullName
     searchUsers(searchQuery: String!): [UserPayload]
 
-    # Gets Suggested people for user
-    suggestPeople(userId: String!): [UserPayload]
+    # Gets Suggested learners for user
+    suggestLearners(userId: String!): [UserPayload]
   }
 
   # ---------------------------------------------------------

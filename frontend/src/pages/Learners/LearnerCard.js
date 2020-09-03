@@ -83,7 +83,7 @@ const LangInfoContainer = styled.div`
 `;
 
 /**
- * Card component for rendering user info, meant to be used in Peoples page
+ * Card component for rendering user info, meant to be used in Learners page
  */
 const LearnerCard = ({user}) => {
     const [color, setColor] = useState('');

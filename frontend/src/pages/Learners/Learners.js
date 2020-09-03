@@ -47,7 +47,7 @@ const Learners = () => {
 
     return (
         <Root maxWidth="md">
-            <Head title="Find new Learners"/>
+            <Head title="Find language partners"/>
 
             <Query
                 query={GET_POTENTIAL_PARTNERS}
