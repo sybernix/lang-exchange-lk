@@ -32,11 +32,21 @@ const Copyright = styled.div`
   display: none;
   color: ${p => p.theme.colors.white};
   font-size: ${p => p.theme.font.size.xxs};
+  a {
+    color: #47ccff;
+  }
+  a:visited {
+    color: white;
+  }
 
   @media (min-width: ${p => p.theme.screen.md}) {
     display: block;
   }
 `;
+
+// const Link = styled.a`
+//   color: #47ccff;
+// `;
 
 /**
  * Display Copyright notice
