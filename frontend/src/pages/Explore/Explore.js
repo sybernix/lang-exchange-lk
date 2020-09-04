@@ -64,7 +64,7 @@ const Explore = () => {
 
     return (
         <Root maxWidth="md">
-            <Head title="Explore New Posts and Users"/>
+            <Head title="Explore New Posts and Learners"/>
 
             <Query
                 query={GET_POSTS}
