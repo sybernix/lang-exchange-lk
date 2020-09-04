@@ -14,16 +14,31 @@ const Wrapper = styled.div`
   padding: ${p => p.theme.spacing.sm} 0;
 `;
 
-const Textarea = styled.textarea`
-  width: 100%;
-  margin: 0 ${p => p.theme.spacing.xs};
-  padding-left: ${p => p.theme.spacing.sm};
-  padding-top: ${p => p.theme.spacing.xs};
+const Form = styled.form`
+  margin-top: ${p => p.theme.spacing.sm};
+  padding: ${p => p.theme.spacing.xs} ${p => p.theme.spacing.lg};
   border: 0;
+  display: flex;
+  flex-direction: column;
+  //outline: none;
+  resize: none;
+  max-width: ${p => p.theme.screen.sm}
+  width: 100%;
+`;
+
+const Textarea = styled.textarea`
+  //width: 100%;
+  // margin-top: ${p => p.theme.spacing.sm};
+  // padding: ${p => p.theme.spacing.xs} ${p => p.theme.spacing.lg};
+  border: 0;
+  //display: flex;
+  //flex-direction: column;
   outline: none;
   resize: none;
+  // max-width: ${p => p.theme.screen.sm}
+  // width: 100%;
   transition: 0.1s ease-out;
-  height: ${p => (p.focus ? '80px' : '40px')};
+  // height: ${p => (p.focus ? '80px' : '40px')};
   font-size: ${p => p.theme.font.size.xs};
   background-color: ${p => p.theme.colors.grey[100]};
   border-radius: ${p => p.theme.radius.md};
@@ -38,7 +53,7 @@ const Options = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-top: 1px solid ${p => p.theme.colors.border.main};
+  // border-top: 1px solid ${p => p.theme.colors.border.main};
   padding: ${p => p.theme.spacing.sm} 0;
 `;
 
@@ -80,7 +95,6 @@ const ProfileIntroduction = props => {
     return (
         <React.Fragment>
             {(props.initialIntroduction !== null || introductionAdded) && <Introduction> {introductionText} </Introduction>}
-
             {props.initialIntroduction === null && !introductionAdded && props.userId === props.authId &&
             <Mutation
                 mutation={ADD_INTRODUCTION}
@@ -90,8 +104,8 @@ const ProfileIntroduction = props => {
                     const isShareDisabled = loading || (!loading && !introductionText);
 
                     return (
-                        <form onSubmit={e => handleSubmit(e, addIntroduction)}>
-                            <Wrapper>
+                        <Form onSubmit={e => handleSubmit(e, addIntroduction)}>
+                            {/*<Wrapper>*/}
                                 <Textarea
                                     type="textarea"
                                     name="title"
@@ -99,7 +113,7 @@ const ProfileIntroduction = props => {
                                     onChange={handleIntroChange}
                                     placeholder="Add introduction about yourself!"
                                 />
-                            </Wrapper>
+                            {/*</Wrapper>*/}
                             <Options>
                                 <Buttons>
                                     <Button text type="button" onClick={handleReset}>
@@ -121,7 +135,7 @@ const ProfileIntroduction = props => {
                                     </Error>
                                 </Spacing>
                             ))}
-                        </form>
+                        </Form>
                     );
                 }}
             </Mutation>
