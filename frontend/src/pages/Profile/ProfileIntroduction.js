@@ -27,18 +27,12 @@ const Form = styled.form`
 `;
 
 const Textarea = styled.textarea`
-  //width: 100%;
-  // margin-top: ${p => p.theme.spacing.sm};
-  // padding: ${p => p.theme.spacing.xs} ${p => p.theme.spacing.lg};
+  padding: ${p => p.theme.spacing.xs} ${p => p.theme.spacing.xs};
   border: 0;
-  //display: flex;
-  //flex-direction: column;
+  margin-bottom: 0;
   outline: none;
   resize: none;
-  // max-width: ${p => p.theme.screen.sm}
-  // width: 100%;
   transition: 0.1s ease-out;
-  // height: ${p => (p.focus ? '80px' : '40px')};
   font-size: ${p => p.theme.font.size.xs};
   background-color: ${p => p.theme.colors.grey[100]};
   border-radius: ${p => p.theme.radius.md};
@@ -47,12 +41,19 @@ const Textarea = styled.textarea`
 const Buttons = styled.div`
   display: flex;
   flex-direction: row;
+  padding: 0;
+  justify-content: right;
+  margin-top: 0;
+  //Button: {
+  //  font-size: 100px;
+  //}
 `;
 
 const Options = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   // border-top: 1px solid ${p => p.theme.colors.border.main};
   padding: ${p => p.theme.spacing.sm} 0;
 `;
@@ -120,7 +121,7 @@ const ProfileIntroduction = props => {
                                         Cancel
                                     </Button>
                                     <Button type="submit">
-                                        Share
+                                        Save
                                     </Button>
                                 </Buttons>
                             </Options>
