@@ -4,7 +4,7 @@ import {Mutation} from "react-apollo";
 import {Button} from 'components/Form';
 import styled from "styled-components";
 import {Error} from 'components/Text';
-import {Spacing} from 'components/Layout';
+import {Spacing, Overlay, Container} from 'components/Layout';
 import {ADD_INTRODUCTION} from 'graphql/user';
 
 const Wrapper = styled.div`
@@ -12,6 +12,11 @@ const Wrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding: ${p => p.theme.spacing.sm} 0;
+`;
+
+const Root = styled(Container)`
+  border: 0;
+  border: 1px solid ${p => p.theme.colors.border.main};
 `;
 
 const Form = styled.form`
@@ -78,6 +83,7 @@ const Introduction = styled.label`
 const ProfileIntroduction = props => {
     const [introductionText, setIntroductionText] = useState(props.initialIntroduction);
     const [introductionAdded, setIntroductionAdded] = useState(false);
+    const [isFocused, setIsFocused] = useState(false);
     const [error, setError] = useState('');
 
     const handleSubmit = async (e, addIntroduction) => {
@@ -89,6 +95,7 @@ const ProfileIntroduction = props => {
     const handleReset = () => {
         setIntroductionText('');
         setError('');
+        setIsFocused(false);
     };
 
     const handleIntroChange = e => setIntroductionText(e.target.value);
@@ -105,38 +112,48 @@ const ProfileIntroduction = props => {
                     const isShareDisabled = loading || (!loading && !introductionText);
 
                     return (
-                        <Form onSubmit={e => handleSubmit(e, addIntroduction)}>
-                            {/*<Wrapper>*/}
-                                <Textarea
-                                    type="textarea"
-                                    name="title"
-                                    value={introductionText}
-                                    onChange={handleIntroChange}
-                                    placeholder="Add introduction about yourself!"
-                                />
-                            {/*</Wrapper>*/}
-                            <Options>
-                                <Buttons>
-                                    <Button text type="button" onClick={handleReset}>
-                                        Cancel
-                                    </Button>
-                                    <Button type="submit">
-                                        Save
-                                    </Button>
-                                </Buttons>
-                            </Options>
+                        <>
+                        {isFocused && <Overlay onClick={handleReset}/>}
+                            <Root
+                                zIndex={isFocused ? 'md' : 'xs'}
+                                color="white"
+                                radius="sm"
+                                padding="sm"
+                            >
+                                <Form onSubmit={e => handleSubmit(e, addIntroduction)}>
+                                    {/*<Wrapper>*/}
+                                        <Textarea
+                                            type="textarea"
+                                            name="title"
+                                            value={introductionText}
+                                            onChange={handleIntroChange}
+                                            placeholder="Add introduction about yourself!"
+                                        />
+                                    {/*</Wrapper>*/}
+                                    <Options>
+                                        <Buttons>
+                                            <Button text type="button" onClick={handleReset}>
+                                                Cancel
+                                            </Button>
+                                            <Button type="submit">
+                                                Save
+                                            </Button>
+                                        </Buttons>
+                                    </Options>
 
-                            {apiError ||
-                            (error && (
-                                <Spacing top="xs" bottom="sm">
-                                    <Error size="xs">
-                                        {apiError
-                                            ? 'Something went wrong, please try again.'
-                                            : error}
-                                    </Error>
-                                </Spacing>
-                            ))}
-                        </Form>
+                                    {apiError ||
+                                    (error && (
+                                        <Spacing top="xs" bottom="sm">
+                                            <Error size="xs">
+                                                {apiError
+                                                    ? 'Something went wrong, please try again.'
+                                                    : error}
+                                            </Error>
+                                        </Spacing>
+                                    ))}
+                                </Form>
+                            </Root>
+                        </>
                     );
                 }}
             </Mutation>
