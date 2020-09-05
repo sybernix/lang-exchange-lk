@@ -16,11 +16,14 @@ const Wrapper = styled.div`
 
 const Root = styled(Container)`
   border: 0;
-  border: 1px solid ${p => p.theme.colors.border.main};
+  max-width: ${p => p.theme.screen.sm}
+  padding: 0;
+  margin-top: 0;
+  //border: 1px solid ${p => p.theme.colors.border.main};
 `;
 
 const Form = styled.form`
-  margin-top: ${p => p.theme.spacing.sm};
+  margin-top: ${p => p.theme.spacing.xs};
   padding: ${p => p.theme.spacing.xs} ${p => p.theme.spacing.lg};
   border: 0;
   display: flex;
@@ -32,9 +35,10 @@ const Form = styled.form`
 `;
 
 const Textarea = styled.textarea`
-  padding: ${p => p.theme.spacing.xs} ${p => p.theme.spacing.xs};
+  padding: ${p => p.theme.spacing.sm} ${p => p.theme.spacing.xs};
   border: 0;
-  margin-bottom: 0;
+  //margin-bottom: 0;
+  // margin: 0 ${p => p.theme.spacing.xs};
   outline: none;
   resize: none;
   transition: 0.1s ease-out;
@@ -119,9 +123,9 @@ const ProfileIntroduction = props => {
                         {isFocused && <Overlay onClick={handleReset}/>}
                             <Root
                                 zIndex={isFocused ? 'md' : 'xs'}
-                                color="white"
+                                color={isFocused ? 'mygrey2' : 'mygrey'}
                                 radius="sm"
-                                padding="sm"
+                                // padding="sm"
                             >
                                 <Form onSubmit={e => handleSubmit(e, addIntroduction)}>
                                     {/*<Wrapper>*/}

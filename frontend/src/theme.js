@@ -71,6 +71,9 @@ export default {
 
         info: '#4169E1',
 
+        mygrey: '#fafafa',
+        mygrey2: '#f5f5f5',
+
         grey: {
             50: '#fafafa',
             100: '#f5f5f5',
