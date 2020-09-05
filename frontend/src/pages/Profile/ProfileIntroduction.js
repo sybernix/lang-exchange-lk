@@ -38,6 +38,7 @@ const Textarea = styled.textarea`
   outline: none;
   resize: none;
   transition: 0.1s ease-out;
+  height: ${p => (p.focus ? '80px' : '40px')};
   font-size: ${p => p.theme.font.size.xs};
   background-color: ${p => p.theme.colors.grey[100]};
   border-radius: ${p => p.theme.radius.md};
@@ -100,6 +101,8 @@ const ProfileIntroduction = props => {
 
     const handleIntroChange = e => setIntroductionText(e.target.value);
 
+    const handleOnFocus = () => setIsFocused(true);
+
     return (
         <React.Fragment>
             {(props.initialIntroduction !== null || introductionAdded) && <Introduction> {introductionText} </Introduction>}
@@ -126,20 +129,24 @@ const ProfileIntroduction = props => {
                                             type="textarea"
                                             name="title"
                                             value={introductionText}
+                                            focus={isFocused}
+                                            onFocus={handleOnFocus}
                                             onChange={handleIntroChange}
                                             placeholder="Add introduction about yourself!"
                                         />
                                     {/*</Wrapper>*/}
-                                    <Options>
-                                        <Buttons>
-                                            <Button text type="button" onClick={handleReset}>
-                                                Cancel
-                                            </Button>
-                                            <Button type="submit">
-                                                Save
-                                            </Button>
-                                        </Buttons>
-                                    </Options>
+                                    {isFocused && (
+                                        <Options>
+                                            <Buttons>
+                                                <Button text type="button" onClick={handleReset}>
+                                                    Cancel
+                                                </Button>
+                                                <Button type="submit" disabled={isShareDisabled}>
+                                                    Save
+                                                </Button>
+                                            </Buttons>
+                                        </Options>
+                                    )}
 
                                     {apiError ||
                                     (error && (
