@@ -152,7 +152,7 @@ const ProfileIntroduction = props => {
 ProfileIntroduction.propTypes = {
     userId: PropTypes.string.isRequired,
     authId: PropTypes.string.isRequired,
-    initialIntroduction: PropTypes.string.isRequired,
+    initialIntroduction: PropTypes.string,
 };
 
 export default ProfileIntroduction;
