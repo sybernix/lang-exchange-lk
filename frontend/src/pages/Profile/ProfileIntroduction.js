@@ -27,12 +27,12 @@ const Form = styled.form`
 `;
 
 const Textarea = styled.textarea`
-  padding: ${p => p.theme.spacing.sm} ${p => p.theme.spacing.xs};
+  padding: ${p => p.theme.spacing.sm} ${p => p.theme.spacing.xs} 0 ${p => p.theme.spacing.xs};
   border: 0;
   outline: none;
   resize: none;
   transition: 0.1s ease-out;
-  height: ${p => (p.focus ? '8em' : '4em')};
+  height: ${p => (p.focus ? '6em' : '4em')};
   font-size: ${p => p.theme.font.size.xs};
   background-color: ${p => p.theme.colors.grey[100]};
   border-radius: ${p => p.theme.radius.md};
@@ -41,15 +41,12 @@ const Textarea = styled.textarea`
 const Buttons = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 0;
-  justify-content:flex-end;
-  margin-top: 0;
 `;
 
 const Options = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content:flex-end;
+  justify-content: flex-end;
   align-items: center;
   padding: ${p => p.theme.spacing.sm} 0;
 `;
@@ -67,7 +64,7 @@ const Introduction = styled.label`
 `;
 
 const ProfileIntroduction = props => {
-    const [introductionText, setIntroductionText] = useState(props.initialIntroduction);
+    const [introductionText, setIntroductionText] = useState(props.initialIntroduction === null ? '' : props.initialIntroduction);
     const [introductionAdded, setIntroductionAdded] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
     const [error, setError] = useState('');
@@ -109,17 +106,15 @@ const ProfileIntroduction = props => {
                                 // padding="sm"
                             >
                                 <Form onSubmit={e => handleSubmit(e, addIntroduction)}>
-                                    {/*<Wrapper>*/}
-                                        <Textarea
-                                            type="textarea"
-                                            name="title"
-                                            value={introductionText}
-                                            focus={isFocused}
-                                            onFocus={handleOnFocus}
-                                            onChange={handleIntroChange}
-                                            placeholder="Add introduction about yourself!"
-                                        />
-                                    {/*</Wrapper>*/}
+                                    <Textarea
+                                        type="textarea"
+                                        name="title"
+                                        value={introductionText}
+                                        focus={isFocused}
+                                        onFocus={handleOnFocus}
+                                        onChange={handleIntroChange}
+                                        placeholder="Add introduction about yourself!"
+                                    />
                                     {isFocused && (
                                         <Options>
                                             <Buttons>
