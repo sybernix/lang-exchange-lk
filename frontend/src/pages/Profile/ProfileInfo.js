@@ -92,7 +92,7 @@ const List = styled.div`
   }
 `;
 
-const Language = styled.text`
+const Language = styled.span`
   // font-size: ${p => p.theme.font.size.xs};
   // color: ${p => p.theme.colors.grey[600]};
   // padding: 0 ${p => p.theme.spacing.xs};
