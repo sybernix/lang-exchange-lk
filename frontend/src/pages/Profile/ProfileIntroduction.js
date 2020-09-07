@@ -7,19 +7,11 @@ import {Error} from 'components/Text';
 import {Spacing, Overlay, Container} from 'components/Layout';
 import {ADD_INTRODUCTION} from 'graphql/user';
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: ${p => p.theme.spacing.sm} 0;
-`;
-
 const Root = styled(Container)`
   border: 0;
-  max-width: ${p => p.theme.screen.sm}
+  /* max-width: ${p => p.theme.screen.sm}; */
   padding: 0;
   margin-top: 0;
-  //border: 1px solid ${p => p.theme.colors.border.main};
 `;
 
 const Form = styled.form`
@@ -28,17 +20,15 @@ const Form = styled.form`
   border: 0;
   display: flex;
   flex-direction: column;
-  //outline: none;
+  outline: none;
   resize: none;
-  max-width: ${p => p.theme.screen.sm}
+  max-width: ${p => p.theme.screen.sm};
   width: 100%;
 `;
 
 const Textarea = styled.textarea`
   padding: ${p => p.theme.spacing.sm} ${p => p.theme.spacing.xs};
   border: 0;
-  //margin-bottom: 0;
-  // margin: 0 ${p => p.theme.spacing.xs};
   outline: none;
   resize: none;
   transition: 0.1s ease-out;
@@ -54,9 +44,6 @@ const Buttons = styled.div`
   padding: 0;
   justify-content:flex-end;
   margin-top: 0;
-  //Button: {
-  //  font-size: 100px;
-  //}
 `;
 
 const Options = styled.div`
@@ -64,14 +51,11 @@ const Options = styled.div`
   flex-direction: row;
   justify-content:flex-end;
   align-items: center;
-  // border-top: 1px solid ${p => p.theme.colors.border.main};
   padding: ${p => p.theme.spacing.sm} 0;
 `;
 
 const Introduction = styled.label`
-  //padding: 10px 10ch;
   padding: ${p => p.theme.spacing.xs} ${p => p.theme.spacing.lg};
-  //width: 100%;
   display: flex;
   flex-direction: column;
   text-align: justify;
@@ -80,9 +64,6 @@ const Introduction = styled.label`
   color: ${p => p.theme.colors.grey[600]};
   border-radius: ${p => p.theme.radius.sm};
   max-width: ${p => p.theme.screen.sm}
-  // background-color: ${p => p.theme.colors.grey[200]};
-  //transition: background-color 0.4s;
-  // box-shadow: ${p => p.theme.shadows.sm};
 `;
 
 const ProfileIntroduction = props => {
