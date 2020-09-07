@@ -55,8 +55,9 @@ const Profile = ({match}) => {
 
                     return (
                         <Container padding="xxs">
+                            <ProfileInfo user={data.getUser}/>
+
                             <Container maxWidth="sm">
-                                <ProfileInfo user={data.getUser}/>
                                 <Spacing top="lg" bottom="lg">
                                     {username === auth.user.username && <CreatePost/>}
                                 </Spacing>
