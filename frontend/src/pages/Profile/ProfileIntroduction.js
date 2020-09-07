@@ -42,7 +42,7 @@ const Textarea = styled.textarea`
   outline: none;
   resize: none;
   transition: 0.1s ease-out;
-  height: ${p => (p.focus ? '80px' : '40px')};
+  height: ${p => (p.focus ? '8em' : '4em')};
   font-size: ${p => p.theme.font.size.xs};
   background-color: ${p => p.theme.colors.grey[100]};
   border-radius: ${p => p.theme.radius.md};
@@ -52,7 +52,7 @@ const Buttons = styled.div`
   display: flex;
   flex-direction: row;
   padding: 0;
-  justify-content: right;
+  justify-content:flex-end;
   margin-top: 0;
   //Button: {
   //  font-size: 100px;
@@ -62,7 +62,7 @@ const Buttons = styled.div`
 const Options = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content:flex-end;
   align-items: center;
   // border-top: 1px solid ${p => p.theme.colors.border.main};
   padding: ${p => p.theme.spacing.sm} 0;
