@@ -80,7 +80,7 @@ const Info = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-right: 1px ${p => p.theme.colors.grey[600]} solid;
+  border-right: 1px ${p => p.theme.colors.grey[400]} solid;
   margin-top: ${p => p.theme.spacing.sm};
 `;
 
