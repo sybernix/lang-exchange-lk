@@ -33,6 +33,7 @@ export const GET_USER = gql`
       introduction
       age
       sex
+      city
       posts {
         id
       }
@@ -205,6 +206,7 @@ export const GET_POTENTIAL_PARTNERS = gql`
         targetLanguage
         age
         sex
+        city
         following {
           id
           user

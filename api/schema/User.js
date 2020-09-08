@@ -18,6 +18,7 @@ const UserSchema = gql`
     introduction: String
     age: Int
     sex: String
+    city: String
     resetToken: String
     resetTokenExpiry: String
     image: File
@@ -102,6 +103,7 @@ const UserSchema = gql`
     introduction: String
     age: Int
     sex: String
+    city: String
     image: String
     imagePublicId: String
     coverImage: String
