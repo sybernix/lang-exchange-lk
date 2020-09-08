@@ -43,6 +43,9 @@ const userSchema = new Schema(
         sex: {
             type: String
         },
+        city: {
+            type: String
+        },
         passwordResetToken: String,
         passwordResetTokenExpiry: Date,
         password: {
