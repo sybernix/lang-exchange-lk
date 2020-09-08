@@ -13,6 +13,7 @@ import Home from 'pages/Home';
 import Profile from 'pages/Profile';
 import Explore from 'pages/Explore';
 import Learners from 'pages/Learners';
+import EditInfo from 'pages/EditInfo';
 import Notifications from 'pages/Notifications';
 import Post from 'pages/Post';
 import Messages from 'pages/Messages';
@@ -98,6 +99,8 @@ const AppLayout = ({location, authUser}) => {
                     <Route exact path={Routes.MESSAGES} component={Messages}/>
 
                     <Route exact path={Routes.USER_PROFILE} component={Profile}/>
+
+                    <Route exact path={Routes.EDIT_INFO} component={EditInfo}/>
 
                     <Route exact path={Routes.POST} component={Post}/>
 
