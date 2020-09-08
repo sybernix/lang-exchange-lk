@@ -80,12 +80,12 @@ const Info = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
- 
+  border-right: 1px ${p => p.theme.colors.grey[600]} solid;
   margin-top: ${p => p.theme.spacing.sm};
 `;
 
 const List = styled.div`
-  padding: 0 ${p => p.theme.spacing.xs};
+  padding: 0 ${p => p.theme.spacing.sm};
   white-space: nowrap;
   @media (min-width: ${p => p.theme.screen.md}) {
     padding: 0 ${p => p.theme.spacing.lg};
