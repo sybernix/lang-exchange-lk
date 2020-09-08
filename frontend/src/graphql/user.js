@@ -31,6 +31,8 @@ export const GET_USER = gql`
       nativeLanguage
       targetLanguage
       introduction
+      age
+      sex
       posts {
         id
       }
@@ -201,6 +203,8 @@ export const GET_POTENTIAL_PARTNERS = gql`
         image
         nativeLanguage
         targetLanguage
+        age
+        sex
         following {
           id
           user

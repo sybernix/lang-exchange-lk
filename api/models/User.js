@@ -37,6 +37,12 @@ const userSchema = new Schema(
         introduction: {
             type: String,
         },
+        age: {
+            type: Number
+        },
+        sex: {
+            type: String
+        },
         passwordResetToken: String,
         passwordResetTokenExpiry: Date,
         password: {
