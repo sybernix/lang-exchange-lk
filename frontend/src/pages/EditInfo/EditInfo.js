@@ -30,13 +30,17 @@ const Root = styled.div`
  */
 const EditInfo = ({match}) => {
     const [{auth}] = useStore();
-    const {username} = match.params;
+    
+    // const username = "sdf";
 
     return (
         <Root>
-            <Head title={username}/>
-
-            <Query query={GET_USER} variables={{username}}>
+            <Head title={auth.user.username}/>
+            <h3>Hello from edit info</h3>
+            {/* {const {username} = auth.user.username;} */}
+            {console.log(auth)}
+            {/* {console.log(username)} */}
+            <Query query={GET_USER} variables={{'username': auth.user.username}}>
                 {({data, loading, error}) => {
                     if (loading) {
                         return (
@@ -50,6 +54,7 @@ const EditInfo = ({match}) => {
                             </Container>
                         );
                     }
+                    {console.log(data);}
 
                     // if (error || !data.getUser) return <NotFound/>;
 
@@ -57,9 +62,9 @@ const EditInfo = ({match}) => {
                         <Container padding="xxs">
                             <Container maxWidth="sm">
                                 {/* <ProfileInfo user={data.getUser}/> */}
-                                <Spacing top="lg" bottom="lg">
+                                {/* <Spacing top="lg" bottom="lg">
                                     {username === auth.user.username && <CreatePost/>}
-                                </Spacing>
+                                </Spacing> */}
 
                                 {/* <ProfilePosts username={username}/> */}
                             </Container>

@@ -101,8 +101,6 @@ const AppLayout = ({location, authUser}) => {
 
                     <Route exact path={Routes.USER_PROFILE} component={Profile}/>
 
-                    
-
                     <Route exact path={Routes.POST} component={Post}/>
 
                     {/* <Route component={NotFound}/> */}
