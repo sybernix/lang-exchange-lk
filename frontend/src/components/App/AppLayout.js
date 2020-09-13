@@ -82,10 +82,10 @@ const AppLayout = ({location, authUser}) => {
 
     return (
         <>
-            {/* <Header toggleSideBar={() => setIsSidebarOpen(!isSideBarOpen)}/> */}
+            <Header toggleSideBar={() => setIsSidebarOpen(!isSideBarOpen)}/>
 
             <Root>
-                {/* <SideBar isOpen={isSideBarOpen} sideBarRef={sideBarRef}/> */}
+                <SideBar isOpen={isSideBarOpen} sideBarRef={sideBarRef}/>
 
                 <Switch>
                     <Route exact path={Routes.EDIT_INFO} component={EditInfo}/>
