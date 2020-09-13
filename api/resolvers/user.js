@@ -449,6 +449,7 @@ const Mutation = {
             'forgot-password',
             'reset-password',
             'explore',
+            'edit-info',
             'learners',
             'notifications',
             'post',
