@@ -9,7 +9,7 @@ import {Container, Spacing} from 'components/Layout';
 // import ProfileInfo from './ProfileInfo';
 import CreatePost from 'components/CreatePost';
 // import ProfilePosts from './ProfilePosts';
-import NotFound from 'components/NotFound';
+// import NotFound from 'components/NotFound';
 import Head from 'components/Head';
 
 import {GET_USER} from 'graphql/user';
@@ -51,7 +51,7 @@ const EditInfo = ({match}) => {
                         );
                     }
 
-                    if (error || !data.getUser) return <NotFound/>;
+                    // if (error || !data.getUser) return <NotFound/>;
 
                     return (
                         <Container padding="xxs">

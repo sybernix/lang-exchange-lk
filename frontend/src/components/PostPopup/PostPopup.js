@@ -8,7 +8,7 @@ import {Loading} from 'components/Loading';
 import {CloseIcon} from 'components/icons';
 import CreateComment from 'components/CreateComment';
 import {Spacing} from 'components/Layout';
-import NotFound from 'components/NotFound';
+// import NotFound from 'components/NotFound';
 import Head from 'components/Head';
 import PostPopupInfo from './PostPopupInfo';
 import PostPopupComments from './PostPopupComments';
@@ -104,7 +104,7 @@ const PostPopup = ({id, closeModal, usedInModal}) => {
         <Query query={GET_POST} variables={{id}}>
             {({data, loading, error}) => {
                 if (loading) return <Loading top="lg"/>;
-                if (error) return <NotFound/>;
+                // if (error) return <NotFound/>;
 
                 const post = data.getPost;
 
