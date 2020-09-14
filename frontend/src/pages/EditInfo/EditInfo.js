@@ -42,12 +42,15 @@ const Form = styled.div`
 const EditInfo = ({match}) => {
     const [{auth}] = useStore();
     const [values, setValues] = useState({
+        id: '',
         fullName: '',
-        username: '',
         email: '',
-        password: '',
         nativeLanguage: '',
         targetLanguage: '',
+        introduction: '',
+        age: '',
+        sex: '',
+        city: '',
     });
 
     const handleChange = e => {
@@ -77,7 +80,7 @@ const EditInfo = ({match}) => {
         <Root>
             <Head title={auth.user.username}/>
             {/* {const {username} = auth.user.username;} */}
-            {console.log(auth)}
+            {/* {console.log(auth)} */}
             {/* {console.log(username)} */}
             <Query query={GET_USER} variables={{'username': auth.user.username}}>
                 {({data, loading, error}) => {
@@ -93,14 +96,18 @@ const EditInfo = ({match}) => {
                             </Container>
                         );
                     }
-                    {console.log(data);}
+                    // {console.log(data);}
 
                     // if (error || !data.getUser) return <NotFound/>;
+
+                    const {id, fullName, email, nativeLanguage, targetLanguage, introduction, age, sex, city} = values;
+                    setValues({...values, ['id']: auth.user.id},[]);
+                    {console.log(values);}
 
                     return (
                         <Mutation
                             mutation={UPDATE_ACCOUNT_INFO}
-                            variables={{input: {fullName, email, password, username, nativeLanguage, targetLanguage}}}
+                            variables={{input: {id, fullName, email, nativeLanguage, targetLanguage, introduction, age, sex, city}}}
                         >
                             {(signup, {loading, error: apiError}) => {
                                 return (
@@ -117,7 +124,7 @@ const EditInfo = ({match}) => {
                                                         type="text"
                                                         name="fullName"
                                                         defaultValue={data.getUser.fullName}
-                                                        // values={fullName}
+                                                        values={fullName}
                                                         onChange={handleChange}
                                                         placeholder="Full name"
                                                         borderColor="white"
