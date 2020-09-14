@@ -125,7 +125,6 @@ const UserSchema = gql`
     id: ID!
     fullName: String
     email: String
-    password: String
     nativeLanguage: String
     targetLanguage: String
     introduction: String
