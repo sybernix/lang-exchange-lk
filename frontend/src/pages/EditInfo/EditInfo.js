@@ -12,7 +12,7 @@ import {Container, Spacing} from 'components/Layout';
 import Head from 'components/Head';
 
 import {GET_USER} from 'graphql/user';
-// import {SIGN_UP} from 'graphql/user';
+import {UPDATE_ACCOUNT_INFO} from 'graphql/user';
 
 import {useStore} from 'store';
 
@@ -99,7 +99,7 @@ const EditInfo = ({match}) => {
 
                     return (
                         <Mutation
-                            mutation={SIGN_UP}
+                            mutation={UPDATE_ACCOUNT_INFO}
                             variables={{input: {fullName, email, password, username, nativeLanguage, targetLanguage}}}
                         >
                             {(signup, {loading, error: apiError}) => {

@@ -121,7 +121,7 @@ const UserSchema = gql`
     updatedAt: String
   }
 
-  type UpdateInfoPayload {
+  type UpdateInfoInput {
     id: ID!
     fullName: String
     email: String
@@ -191,7 +191,7 @@ const UserSchema = gql`
     # Uploads user Profile or Cover photo
     uploadUserPhoto(input: UploadUserPhotoInput!): UserPayload
 
-    updateAccountInfo(input: UpdateInfoPayload): String
+    updateAccountInfo(input: UpdateInfoInput): String
   }
 
   # ---------------------------------------------------------
