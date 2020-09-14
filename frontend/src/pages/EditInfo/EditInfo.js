@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
 import {Query} from 'react-apollo';
 import styled from 'styled-components';
+import {Mutation} from 'react-apollo';
 
 import Skeleton from 'components/Skeleton';
 import {H2} from 'components/Text';
@@ -11,6 +12,7 @@ import {Container, Spacing} from 'components/Layout';
 import Head from 'components/Head';
 
 import {GET_USER} from 'graphql/user';
+// import {SIGN_UP} from 'graphql/user';
 
 import {useStore} from 'store';
 
@@ -96,35 +98,44 @@ const EditInfo = ({match}) => {
                     // if (error || !data.getUser) return <NotFound/>;
 
                     return (
-                        <Container padding="xxs">
-                            <Container maxWidth="sm">
-                                {/* <h3>Hello from edit info</h3> */}
-                                <Form>
-                                    <Spacing bottom="md">
-                                        <H2>Update Account Information</H2>
-                                    </Spacing>
+                        <Mutation
+                            mutation={SIGN_UP}
+                            variables={{input: {fullName, email, password, username, nativeLanguage, targetLanguage}}}
+                        >
+                            {(signup, {loading, error: apiError}) => {
+                                return (
+                                    <Container padding="xxs">
+                                        <Container maxWidth="sm">
+                                            {/* <h3>Hello from edit info</h3> */}
+                                            <Form>
+                                                <Spacing bottom="md">
+                                                    <H2>Update Account Information</H2>
+                                                </Spacing>
 
-                                    <form onSubmit={e => handleSubmit(e)}>
-                                        <InputText
-                                            type="text"
-                                            name="fullName"
-                                            defaultValue={data.getUser.fullName}
-                                            // values={fullName}
-                                            onChange={handleChange}
-                                            placeholder="Full name"
-                                            borderColor="white"
-                                        />
+                                                <form onSubmit={e => handleSubmit(e)}>
+                                                    <InputText
+                                                        type="text"
+                                                        name="fullName"
+                                                        defaultValue={data.getUser.fullName}
+                                                        // values={fullName}
+                                                        onChange={handleChange}
+                                                        placeholder="Full name"
+                                                        borderColor="white"
+                                                    />
 
-                                        {/* {renderErrors(apiError)} */}
+                                                    {/* {renderErrors(apiError)} */}
 
-                                        <Spacing top="sm"/>
-                                        <Button size="large" disabled={loading}>
-                                            Update
-                                        </Button>
-                                    </form>
-                                </Form>
-                            </Container>
-                        </Container>
+                                                    <Spacing top="sm"/>
+                                                    <Button size="large" disabled={loading}>
+                                                        Update
+                                                    </Button>
+                                                </form>
+                                            </Form>
+                                        </Container>
+                                    </Container>
+                                );
+                            }}
+                        </Mutation>
                     );
                 }}
             </Query>
