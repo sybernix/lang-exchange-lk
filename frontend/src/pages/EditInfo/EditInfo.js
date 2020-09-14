@@ -98,82 +98,28 @@ const EditInfo = ({match}) => {
                     return (
                         <Container padding="xxs">
                             <Container maxWidth="sm">
-                                <h3>Hello from edit info</h3>
+                                {/* <h3>Hello from edit info</h3> */}
                                 <Form>
                                     <Spacing bottom="md">
-                                        <H2>Create Account</H2>
+                                        <H2>Update Account Information</H2>
                                     </Spacing>
 
                                     <form onSubmit={e => handleSubmit(e)}>
                                         <InputText
                                             type="text"
                                             name="fullName"
+                                            defaultValue={data.getUser.fullName}
                                             // values={fullName}
                                             onChange={handleChange}
                                             placeholder="Full name"
                                             borderColor="white"
                                         />
-                                        <Spacing top="xs" bottom="xs">
-                                            <InputText
-                                                type="text"
-                                                name="email"
-                                                // values={email}
-                                                onChange={handleChange}
-                                                placeholder="Email"
-                                                borderColor="white"
-                                            />
-                                        </Spacing>
-                                        <InputText
-                                            type="text"
-                                            name="username"
-                                            // values={username}
-                                            onChange={handleChange}
-                                            placeholder="Username"
-                                            borderColor="white"
-                                        />
-                                        <Spacing top="xs" bottom="xs">
-                                            <InputText
-                                                type="password"
-                                                name="password"
-                                                // values={password}
-                                                onChange={handleChange}
-                                                placeholder="Password"
-                                                borderColor="white"
-                                            />
-                                        </Spacing>
-                                        <Select
-                                            type="text"
-                                            name="nativeLanguage"
-                                            // values={nativeLanguage}
-                                            onChange={handleChange}
-                                            borderColor="white"
-                                        >
-                                            <option value="" disabled selected>Native Language</option>
-                                            <option value="english">English</option>
-                                            <option value="sinhala">Sinhala</option>
-                                            <option value="tamil">Tamil</option>
-                                        </Select>
-
-                                        <Spacing top="xs" bottom="xs">
-                                            <Select
-                                                type="text"
-                                                name="targetLanguage"
-                                                // values={targetLanguage}
-                                                onChange={handleChange}
-                                                borderColor="white"
-                                            >
-                                                <option value="" disabled selected>Target Language</option>
-                                                <option value="english">English</option>
-                                                <option value="sinhala">Sinhala</option>
-                                                <option value="tamil">Tamil</option>
-                                            </Select>
-                                        </Spacing>
 
                                         {/* {renderErrors(apiError)} */}
 
                                         <Spacing top="sm"/>
                                         <Button size="large" disabled={loading}>
-                                            Sign up
+                                            Update
                                         </Button>
                                     </form>
                                 </Form>
