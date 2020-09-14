@@ -121,6 +121,19 @@ const UserSchema = gql`
     updatedAt: String
   }
 
+  type UpdateInfoPayload {
+    id: ID!
+    fullName: String
+    email: String
+    password: String
+    nativeLanguage: String
+    targetLanguage: String
+    introduction: String
+    age: Int
+    sex: String
+    city: String
+  }
+
   type UsersPayload {
     users: [UserPayload]!
     count: String!
@@ -178,6 +191,8 @@ const UserSchema = gql`
 
     # Uploads user Profile or Cover photo
     uploadUserPhoto(input: UploadUserPhotoInput!): UserPayload
+
+    updateAccountInfo(input: UpdateInfoPayload): String
   }
 
   # ---------------------------------------------------------
