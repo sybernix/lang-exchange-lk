@@ -13,6 +13,7 @@ import Head from 'components/Head';
 
 import {GET_USER} from 'graphql/user';
 import {UPDATE_ACCOUNT_INFO} from 'graphql/user';
+import * as Routes from 'routes';
 
 import {useStore} from 'store';
 
@@ -39,16 +40,16 @@ const Form = styled.div`
 /**
  * User Edit Info Page
  */
-const EditInfo = ({match}) => {
+const EditInfo = ({history}) => {
     const [{auth}] = useStore();
     const [values, setValues] = useState({
-        id: '',
+        id: auth.user.id,
         fullName: '',
-        email: '',
-        nativeLanguage: '',
-        targetLanguage: '',
-        introduction: '',
-        age: '',
+        email: auth.user.email,
+        nativeLanguage: auth.user.nativeLanguage,
+        targetLanguage: auth.user.targetLanguage,
+        introduction: auth.user.introduction,
+        age: 10,
         sex: '',
         city: '',
     });
@@ -58,7 +59,7 @@ const EditInfo = ({match}) => {
         setValues({...values, [name]: value});
     };
 
-    const handleSubmit = (e, signup) => {
+    const handleSubmit = (e, editinfo) => {
         e.preventDefault();
 
         // const error = validate();
@@ -67,12 +68,17 @@ const EditInfo = ({match}) => {
         //     return false;
         // }
 
-        // signup().then(async ({data}) => {
-        //     localStorage.setItem('token', data.signup.token);
-        //     await refetch();
-        //     history.push(Routes.HOME);
-        // });
+        editinfo().then(async ({message}) => {
+            console.log(message);
+            // await refetch();
+            history.push(Routes.HOME);
+        });
     };
+
+    const {id, fullName, email, nativeLanguage, targetLanguage, introduction, age, sex, city} = values;
+    // todo find a way to do this only once
+    // setValues({...values, ['id']: auth.user.id},[]);
+    // {console.log(values);}
     
     // const username = "sdf";
 
@@ -100,16 +106,12 @@ const EditInfo = ({match}) => {
 
                     // if (error || !data.getUser) return <NotFound/>;
 
-                    const {id, fullName, email, nativeLanguage, targetLanguage, introduction, age, sex, city} = values;
-                    setValues({...values, ['id']: auth.user.id},[]);
-                    {console.log(values);}
-
                     return (
                         <Mutation
                             mutation={UPDATE_ACCOUNT_INFO}
                             variables={{input: {id, fullName, email, nativeLanguage, targetLanguage, introduction, age, sex, city}}}
                         >
-                            {(signup, {loading, error: apiError}) => {
+                            {(editinfo, {loading, error: apiError}) => {
                                 return (
                                     <Container padding="xxs">
                                         <Container maxWidth="sm">
@@ -119,7 +121,7 @@ const EditInfo = ({match}) => {
                                                     <H2>Update Account Information</H2>
                                                 </Spacing>
 
-                                                <form onSubmit={e => handleSubmit(e)}>
+                                                <form onSubmit={e => handleSubmit(e, editinfo)}>
                                                     <InputText
                                                         type="text"
                                                         name="fullName"

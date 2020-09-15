@@ -191,7 +191,7 @@ const UserSchema = gql`
     # Uploads user Profile or Cover photo
     uploadUserPhoto(input: UploadUserPhotoInput!): UserPayload
 
-    updateAccountInfo(input: UpdateInfoInput!): String
+    updateAccountInfo(input: UpdateInfoInput!): SuccessMessage
   }
 
   # ---------------------------------------------------------
