@@ -7,7 +7,7 @@ import {Mutation} from 'react-apollo';
 
 import Skeleton from 'components/Skeleton';
 import {H2} from 'components/Text';
-import {InputText, Button, Select} from 'components/Form';
+import {InputText, Button, Select, Textarea} from 'components/Form';
 import {Container, Spacing} from 'components/Layout';
 import Head from 'components/Head';
 
@@ -130,6 +130,55 @@ const EditInfo = ({history, refetch}) => {
                                                         values={fullName}
                                                         onChange={handleChange}
                                                         placeholder="Full name"
+                                                        borderColor="white"
+                                                    />
+                                                    <Spacing top="xs" bottom="xs">
+                                                        <InputText
+                                                            type="text"
+                                                            name="email"
+                                                            defaultValue={data.getUser.email}
+                                                            values={email}
+                                                            onChange={handleChange}
+                                                            placeholder="Email"
+                                                            borderColor="white"
+                                                        />
+                                                    </Spacing>
+                                                    <Select
+                                                        type="text"
+                                                        name="nativeLanguage"
+                                                        defaultValue={data.getUser.nativeLanguage}
+                                                        values={nativeLanguage}
+                                                        onChange={handleChange}
+                                                        borderColor="white"
+                                                    >
+                                                        <option value="" disabled>Native Language</option>
+                                                        <option value="english">English</option>
+                                                        <option value="sinhala">Sinhala</option>
+                                                        <option value="tamil">Tamil</option>
+                                                    </Select>
+
+                                                    <Spacing top="xs" bottom="xs">
+                                                        <Select
+                                                            type="text"
+                                                            name="targetLanguage"
+                                                            defaultValue={data.getUser.targetLanguage}
+                                                            values={targetLanguage}
+                                                            onChange={handleChange}
+                                                            borderColor="white"
+                                                        >
+                                                            <option value="" disabled>Target Language</option>
+                                                            <option value="english">English</option>
+                                                            <option value="sinhala">Sinhala</option>
+                                                            <option value="tamil">Tamil</option>
+                                                        </Select>
+                                                    </Spacing>
+                                                    <Textarea
+                                                        type="text"
+                                                        name="introduction"
+                                                        defaultValue={data.getUser.introduction}
+                                                        values={introduction}
+                                                        onChange={handleChange}
+                                                        placeholder="Introduction About Yourself"
                                                         borderColor="white"
                                                     />
 
