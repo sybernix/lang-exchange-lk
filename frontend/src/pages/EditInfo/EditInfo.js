@@ -72,7 +72,7 @@ const EditInfo = ({history, refetch}) => {
             console.log(message);
             console.log(refetch);
             await refetch();
-            history.push(Routes.HOME);
+            history.push(auth.user.username);
         });
     };
 
