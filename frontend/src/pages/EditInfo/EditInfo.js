@@ -40,7 +40,7 @@ const Form = styled.div`
 /**
  * User Edit Info Page
  */
-const EditInfo = ({history}) => {
+const EditInfo = ({history, refetch}) => {
     const [{auth}] = useStore();
     const [values, setValues] = useState({
         id: auth.user.id,
@@ -70,7 +70,8 @@ const EditInfo = ({history}) => {
 
         editinfo().then(async ({message}) => {
             console.log(message);
-            // await refetch();
+            console.log(refetch);
+            await refetch();
             history.push(Routes.HOME);
         });
     };

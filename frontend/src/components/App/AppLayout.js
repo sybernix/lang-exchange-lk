@@ -47,7 +47,7 @@ const Root = styled.div`
 /**
  * Main layout of the app, when user is authenticated
  */
-const AppLayout = ({location, authUser}) => {
+const AppLayout = ({location, authUser, refetch}) => {
     const [{auth}, dispatch] = useStore();
 
     const windowSize = useWindowSize();
@@ -88,7 +88,7 @@ const AppLayout = ({location, authUser}) => {
                 <SideBar isOpen={isSideBarOpen} sideBarRef={sideBarRef}/>
 
                 <Switch>
-                    <Route exact path={Routes.EDIT_INFO} component={EditInfo}/>
+                    <Route exact path={Routes.EDIT_INFO}><EditInfo refetch={refetch}/></Route>
                     <Route exact path={Routes.HOME} component={Home}/>
 
                     <Route exact path={Routes.EXPLORE} component={Explore}/>
