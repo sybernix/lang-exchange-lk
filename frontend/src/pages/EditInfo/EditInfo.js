@@ -7,7 +7,7 @@ import {Mutation} from 'react-apollo';
 
 import Skeleton from 'components/Skeleton';
 import {H2} from 'components/Text';
-import {InputText, Button, Select, Textarea} from 'components/Form';
+import {InputText, Button, Select} from 'components/Form';
 import {Container, Spacing, Content} from 'components/Layout';
 import Head from 'components/Head';
 
@@ -44,6 +44,27 @@ const Form = styled.div`
 
   @media (min-width: ${p => p.theme.screen.sm}) {
     width: 450px;
+  }
+`;
+
+const Textarea = styled.textarea`
+  outline: 0;
+  height: 36px;
+  width: 100%;
+  resize: none;
+  transition: border 0.1s;
+  border-radius: ${p => p.theme.radius.sm};
+  padding-left: ${p => p.theme.spacing.xs};
+  height: 10em;
+  border: 1px solid
+    ${p =>
+    p.borderColor
+        ? p.theme.colors[p.borderColor]
+        : p.theme.colors.border.main};
+  color: ${p => p.theme.colors.text.secondary};
+
+  &:focus {
+    border-color: ${p => p.theme.colors.border.main};
   }
 `;
 
