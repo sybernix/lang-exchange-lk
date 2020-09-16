@@ -8,7 +8,7 @@ import {Mutation} from 'react-apollo';
 import Skeleton from 'components/Skeleton';
 import {H2} from 'components/Text';
 import {InputText, Button, Select, Textarea} from 'components/Form';
-import {Container, Spacing} from 'components/Layout';
+import {Container, Spacing, Content} from 'components/Layout';
 import Head from 'components/Head';
 
 import {GET_USER} from 'graphql/user';
@@ -17,8 +17,18 @@ import * as Routes from 'routes';
 
 import {useStore} from 'store';
 
-const Root = styled.div`
-  width: 100%;
+// const Root = styled.div`
+//   width: 100%;
+
+//   @media (min-width: ${p => p.theme.screen.lg}) {
+//     margin-left: ${p => p.theme.spacing.lg};
+//     padding: 0;
+//   }
+// `;
+
+const Root = styled(Container)`
+  margin-top: ${p => p.theme.spacing.lg};
+  margin-bottom: ${p => p.theme.spacing.sm};
 
   @media (min-width: ${p => p.theme.screen.lg}) {
     margin-left: ${p => p.theme.spacing.lg};
@@ -108,93 +118,97 @@ const EditInfo = ({history, refetch}) => {
                     // if (error || !data.getUser) return <NotFound/>;
 
                     return (
-                        <Mutation
-                            mutation={UPDATE_ACCOUNT_INFO}
-                            variables={{input: {id, fullName, email, nativeLanguage, targetLanguage, introduction, age, sex, city}}}
-                        >
-                            {(editinfo, {loading, error: apiError}) => {
-                                return (
-                                    <Container padding="xxs">
-                                        <Container maxWidth="sm">
-                                            {/* <h3>Hello from edit info</h3> */}
-                                            <Form>
-                                                <Spacing bottom="md">
-                                                    <H2>Update Account Information</H2>
-                                                </Spacing>
+                        <Content>
+                        <Root maxWidth="md">
+                            <Mutation
+                                mutation={UPDATE_ACCOUNT_INFO}
+                                variables={{input: {id, fullName, email, nativeLanguage, targetLanguage, introduction, age, sex, city}}}
+                            >
+                                {(editinfo, {loading, error: apiError}) => {
+                                    return (
+                                        <Container padding="xxs">
+                                            <Container maxWidth="sm">
+                                                {/* <h3>Hello from edit info</h3> */}
+                                                <Form>
+                                                    <Spacing bottom="md">
+                                                        <H2>Update Account Information</H2>
+                                                    </Spacing>
 
-                                                <form onSubmit={e => handleSubmit(e, editinfo)}>
-                                                    <InputText
-                                                        type="text"
-                                                        name="fullName"
-                                                        defaultValue={data.getUser.fullName}
-                                                        values={fullName}
-                                                        onChange={handleChange}
-                                                        placeholder="Full name"
-                                                        borderColor="white"
-                                                    />
-                                                    <Spacing top="xs" bottom="xs">
+                                                    <form onSubmit={e => handleSubmit(e, editinfo)}>
                                                         <InputText
                                                             type="text"
-                                                            name="email"
-                                                            defaultValue={data.getUser.email}
-                                                            values={email}
+                                                            name="fullName"
+                                                            defaultValue={data.getUser.fullName}
+                                                            values={fullName}
                                                             onChange={handleChange}
-                                                            placeholder="Email"
+                                                            placeholder="Full name"
                                                             borderColor="white"
                                                         />
-                                                    </Spacing>
-                                                    <Select
-                                                        type="text"
-                                                        name="nativeLanguage"
-                                                        defaultValue={data.getUser.nativeLanguage}
-                                                        values={nativeLanguage}
-                                                        onChange={handleChange}
-                                                        borderColor="white"
-                                                    >
-                                                        <option value="" disabled>Native Language</option>
-                                                        <option value="english">English</option>
-                                                        <option value="sinhala">Sinhala</option>
-                                                        <option value="tamil">Tamil</option>
-                                                    </Select>
-
-                                                    <Spacing top="xs" bottom="xs">
+                                                        <Spacing top="xs" bottom="xs">
+                                                            <InputText
+                                                                type="text"
+                                                                name="email"
+                                                                defaultValue={data.getUser.email}
+                                                                values={email}
+                                                                onChange={handleChange}
+                                                                placeholder="Email"
+                                                                borderColor="white"
+                                                            />
+                                                        </Spacing>
                                                         <Select
                                                             type="text"
-                                                            name="targetLanguage"
-                                                            defaultValue={data.getUser.targetLanguage}
-                                                            values={targetLanguage}
+                                                            name="nativeLanguage"
+                                                            defaultValue={data.getUser.nativeLanguage}
+                                                            values={nativeLanguage}
                                                             onChange={handleChange}
                                                             borderColor="white"
                                                         >
-                                                            <option value="" disabled>Target Language</option>
+                                                            <option value="" disabled>Native Language</option>
                                                             <option value="english">English</option>
                                                             <option value="sinhala">Sinhala</option>
                                                             <option value="tamil">Tamil</option>
                                                         </Select>
-                                                    </Spacing>
-                                                    <Textarea
-                                                        type="text"
-                                                        name="introduction"
-                                                        defaultValue={data.getUser.introduction}
-                                                        values={introduction}
-                                                        onChange={handleChange}
-                                                        placeholder="Introduction About Yourself"
-                                                        borderColor="white"
-                                                    />
 
-                                                    {/* {renderErrors(apiError)} */}
+                                                        <Spacing top="xs" bottom="xs">
+                                                            <Select
+                                                                type="text"
+                                                                name="targetLanguage"
+                                                                defaultValue={data.getUser.targetLanguage}
+                                                                values={targetLanguage}
+                                                                onChange={handleChange}
+                                                                borderColor="white"
+                                                            >
+                                                                <option value="" disabled>Target Language</option>
+                                                                <option value="english">English</option>
+                                                                <option value="sinhala">Sinhala</option>
+                                                                <option value="tamil">Tamil</option>
+                                                            </Select>
+                                                        </Spacing>
+                                                        <Textarea
+                                                            type="text"
+                                                            name="introduction"
+                                                            defaultValue={data.getUser.introduction}
+                                                            values={introduction}
+                                                            onChange={handleChange}
+                                                            placeholder="Introduction About Yourself"
+                                                            borderColor="white"
+                                                        />
 
-                                                    <Spacing top="sm"/>
-                                                    <Button size="large" disabled={loading}>
-                                                        Update
-                                                    </Button>
-                                                </form>
-                                            </Form>
+                                                        {/* {renderErrors(apiError)} */}
+
+                                                        <Spacing top="sm"/>
+                                                        <Button size="large" disabled={loading}>
+                                                            Update
+                                                        </Button>
+                                                    </form>
+                                                </Form>
+                                            </Container>
                                         </Container>
-                                    </Container>
-                                );
-                            }}
-                        </Mutation>
+                                    );
+                                }}
+                            </Mutation>
+                        </Root>
+                        </Content>
                     );
                 }}
             </Query>
