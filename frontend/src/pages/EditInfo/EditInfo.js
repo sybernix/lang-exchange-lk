@@ -216,7 +216,40 @@ const EditInfo = ({history, refetch}) => {
                                                                 borderColor="white"
                                                             >
                                                                 {
-                                                                    Array.from(new Array(100),( val, index) => index).reverse().map((year, index) => {
+                                                                    Array.from(new Array(100),( val, index) => index).reverse()
+                                                                    .map((year, index) => {
+                                                                        return <option key={`year${index}`} value={year}>{year}</option>
+                                                                    })
+                                                                }
+                                                            </Select>
+                                                        </Spacing>
+                                                        <Select
+                                                            type="text"
+                                                            name="sex"
+                                                            defaultValue={data.getUser.sex}
+                                                            values={sex}
+                                                            onChange={handleChange}
+                                                            borderColor="white"
+                                                        >
+                                                            <option value="male">Male</option>
+                                                            <option value="female">Female</option>
+                                                            <option value="other">Other</option>
+                                                        </Select>
+                                                        <Spacing top="xs" bottom="xs">
+                                                            <Select
+                                                                type="text"
+                                                                name="city"
+                                                                defaultValue={data.getUser.city}
+                                                                values={city}
+                                                                onChange={handleChange}
+                                                                borderColor="white"
+                                                            >
+                                                                {
+                                                                    ["Ampara", "Anuradhapura", "Badulla", "Batticaloa", "Colombo", "Galle", "Gampaha", 
+                                                                    "Hambantota", "Jaffna", "Kalutara", "Kandy", "Kegalle", "Kilinochchi", "Kurunegala", 
+                                                                    "Mannar", "Matale", "Matara", "Monaragala", "Mullaitivu", "NuwaraEliya", "Polonnaruwa", 
+                                                                    "Puttalam", "Ratnapura", "Trincomalee", "Vavuniya"]
+                                                                    .map((year, index) => {
                                                                         return <option key={`year${index}`} value={year}>{year}</option>
                                                                     })
                                                                 }
