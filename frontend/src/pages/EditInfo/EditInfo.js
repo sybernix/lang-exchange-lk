@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
 import {Query} from 'react-apollo';
@@ -93,8 +93,8 @@ const EditInfo = ({history, refetch}) => {
     };
 
     const handleSubmit = (e, editinfo) => {
-        console.log(year);
-        console.log(years);
+        // console.log(year);
+        // console.log(years);
         e.preventDefault();
 
         // const error = validate();
@@ -224,10 +224,17 @@ const EditInfo = ({history, refetch}) => {
                                                             {/* {
                                                                 console.log(years)
                                                             } */}
-                                                            { years &&
+                                                            {/* { years &&
                                                                 // const year = (new Date()).getFullYear();
                                                                 // const years = Array.from(new Array(20),( val, index) => index + year);
                                                                 years.map((year, index) => {
+                                                                    return <option key={`year${index}`} value={year}>{year}</option>
+                                                                })
+                                                            } */}
+                                                            {
+                                                                // const year = (new Date()).getFullYear();
+                                                                // const years = Array.from(new Array(20),( val, index) => index + year);
+                                                                Array.from(new Array(100),( val, index) => index + (new Date()).getFullYear() - 100).reverse().map((year, index) => {
                                                                     return <option key={`year${index}`} value={year}>{year}</option>
                                                                 })
                                                             }
