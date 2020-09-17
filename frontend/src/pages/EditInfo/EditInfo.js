@@ -84,6 +84,8 @@ const EditInfo = ({history, refetch}) => {
         sex: '',
         city: '',
     });
+    const [year, setYear] = useState((new Date()).getFullYear() - 100);
+    const [years, setYears] = useState(Array.from(new Array(100),( val, index) => index + year));
 
     const handleChange = e => {
         const {name, value} = e.target;
@@ -91,6 +93,8 @@ const EditInfo = ({history, refetch}) => {
     };
 
     const handleSubmit = (e, editinfo) => {
+        console.log(year);
+        console.log(years);
         e.preventDefault();
 
         // const error = validate();
@@ -108,6 +112,7 @@ const EditInfo = ({history, refetch}) => {
     };
 
     const {id, fullName, email, nativeLanguage, targetLanguage, introduction, age, sex, city} = values;
+    
     // todo find a way to do this only once
     // setValues({...values, ['id']: auth.user.id},[]);
     // {console.log(values);}
@@ -121,7 +126,7 @@ const EditInfo = ({history, refetch}) => {
             {/* {console.log(auth)} */}
             {/* {console.log(username)} */}
             <Query query={GET_USER} variables={{'username': auth.user.username}}>
-                {({data, loading, error}) => {
+                {({data, loading, error}, years) => {
                     if (loading) {
                         return (
                             <Container padding="xxs">
@@ -145,7 +150,7 @@ const EditInfo = ({history, refetch}) => {
                                 mutation={UPDATE_ACCOUNT_INFO}
                                 variables={{input: {id, fullName, email, nativeLanguage, targetLanguage, introduction, age, sex, city}}}
                             >
-                                {(editinfo, {loading, error: apiError}) => {
+                                {(editinfo, {loading, error: apiError}, years) => {
                                     return (
                                         <Container padding="xxs">
                                             <Container maxWidth="sm">
@@ -214,6 +219,20 @@ const EditInfo = ({history, refetch}) => {
                                                             placeholder="Introduction About Yourself"
                                                             borderColor="white"
                                                         />
+
+                                                        <Select>
+                                                            {/* {
+                                                                console.log(years)
+                                                            } */}
+                                                            { years &&
+                                                                // const year = (new Date()).getFullYear();
+                                                                // const years = Array.from(new Array(20),( val, index) => index + year);
+                                                                years.map((year, index) => {
+                                                                    return <option key={`year${index}`} value={year}>{year}</option>
+                                                                })
+                                                            }
+                                                            {/* <option value={year}>{year}</option> */}
+                                                        </Select>
 
                                                         {/* {renderErrors(apiError)} */}
 
