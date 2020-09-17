@@ -84,8 +84,6 @@ const EditInfo = ({history, refetch}) => {
         sex: '',
         city: '',
     });
-    const [year, setYear] = useState((new Date()).getFullYear() - 100);
-    const [years, setYears] = useState(Array.from(new Array(100),( val, index) => index + year));
 
     const handleChange = e => {
         const {name, value} = e.target;
@@ -93,8 +91,6 @@ const EditInfo = ({history, refetch}) => {
     };
 
     const handleSubmit = (e, editinfo) => {
-        // console.log(year);
-        // console.log(years);
         e.preventDefault();
 
         // const error = validate();
@@ -112,19 +108,10 @@ const EditInfo = ({history, refetch}) => {
     };
 
     const {id, fullName, email, nativeLanguage, targetLanguage, introduction, age, sex, city} = values;
-    
-    // todo find a way to do this only once
-    // setValues({...values, ['id']: auth.user.id},[]);
-    // {console.log(values);}
-    
-    // const username = "sdf";
 
     return (
         <Root>
             <Head title={auth.user.username}/>
-            {/* {const {username} = auth.user.username;} */}
-            {/* {console.log(auth)} */}
-            {/* {console.log(username)} */}
             <Query query={GET_USER} variables={{'username': auth.user.username}}>
                 {({data, loading, error}, years) => {
                     if (loading) {
@@ -139,7 +126,6 @@ const EditInfo = ({history, refetch}) => {
                             </Container>
                         );
                     }
-                    // {console.log(data);}
 
                     // if (error || !data.getUser) return <NotFound/>;
 
@@ -220,26 +206,22 @@ const EditInfo = ({history, refetch}) => {
                                                             borderColor="white"
                                                         />
 
-                                                        <Select>
-                                                            {/* {
-                                                                console.log(years)
-                                                            } */}
-                                                            {/* { years &&
-                                                                // const year = (new Date()).getFullYear();
-                                                                // const years = Array.from(new Array(20),( val, index) => index + year);
-                                                                years.map((year, index) => {
-                                                                    return <option key={`year${index}`} value={year}>{year}</option>
-                                                                })
-                                                            } */}
-                                                            {
-                                                                // const year = (new Date()).getFullYear();
-                                                                // const years = Array.from(new Array(20),( val, index) => index + year);
-                                                                Array.from(new Array(100),( val, index) => index + (new Date()).getFullYear() - 100).reverse().map((year, index) => {
-                                                                    return <option key={`year${index}`} value={year}>{year}</option>
-                                                                })
-                                                            }
-                                                            {/* <option value={year}>{year}</option> */}
-                                                        </Select>
+                                                        <Spacing top="xs" bottom="xs">
+                                                            <Select
+                                                                type="text"
+                                                                name="age"
+                                                                defaultValue={data.getUser.age}
+                                                                values={age}
+                                                                onChange={handleChange}
+                                                                borderColor="white"
+                                                            >
+                                                                {
+                                                                    Array.from(new Array(100),( val, index) => index).reverse().map((year, index) => {
+                                                                        return <option key={`year${index}`} value={year}>{year}</option>
+                                                                    })
+                                                                }
+                                                            </Select>
+                                                        </Spacing>
 
                                                         {/* {renderErrors(apiError)} */}
 
