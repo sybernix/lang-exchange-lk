@@ -83,29 +83,19 @@ const AppLayout = ({location, authUser, refetch}) => {
     return (
         <>
             <Header toggleSideBar={() => setIsSidebarOpen(!isSideBarOpen)}/>
-
             <Root>
                 <SideBar isOpen={isSideBarOpen} sideBarRef={sideBarRef}/>
-
                 <Switch>
                     <Route exact path={Routes.EDIT_INFO} component={EditInfo}/>
                     <Route exact path={Routes.HOME} component={Home}/>
-
                     <Route exact path={Routes.EXPLORE} component={Explore}/>
-
                     <Route exact path={Routes.LEARNER} component={Learners}/>
-
                     <Route exact path={Routes.NOTIFICATIONS} component={Notifications}/>
-
                     <Route exact path={Routes.MESSAGES} component={Messages}/>
-
                     <Route exact path={Routes.USER_PROFILE} component={Profile}/>
-
                     <Route exact path={Routes.POST} component={Post}/>
-
                     {/* <Route component={NotFound}/> */}
                 </Switch>
-
                 <UserSuggestions pathname={location.pathname}/>
             </Root>
         </>

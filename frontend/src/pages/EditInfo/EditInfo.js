@@ -38,6 +38,16 @@ const Form = styled.div`
   }
 `;
 
+const Label = styled.p`
+  padding-left: ${p => p.theme.spacing.xs};
+  margin-bottom: 1px;
+  color: ${p => p.theme.colors.text.primary};
+`;
+
+const Select2 = styled(Select)`
+  padding-left: 6px;
+`;
+
 const Textarea = styled.textarea`
   outline: 0;
   height: 36px;
@@ -85,10 +95,7 @@ const EditInfo = ({history}) => {
     const handleSubmit = (e, editinfo) => {
         e.preventDefault();
         editinfo().then(async ({message}) => {
-            console.log(message);
-            console.log(auth);
             await refetch({id:auth.user.id});
-            console.log(auth);
             history.push(auth.user.username);
         });
     };
@@ -98,8 +105,8 @@ const EditInfo = ({history}) => {
     return (
         <Root>
             <Head title={auth.user.username}/>
-            <Query query={GET_USER} variables={{'username': auth.user.username}}>
-                {({data, loading, error}, years) => {
+            <Query query={GET_USER} variables={{username: auth.user.username}}>
+                {({data, loading, error}) => {
                     if (loading) {
                         return (
                             <Container padding="xxs">
@@ -122,7 +129,7 @@ const EditInfo = ({history}) => {
                                 mutation={UPDATE_ACCOUNT_INFO}
                                 variables={{input: {id, fullName, email, nativeLanguage, targetLanguage, introduction, age, sex, city}}}
                             >
-                                {(editinfo, {loading, error: apiError}, years) => {
+                                {(editinfo, {loading, error: apiError}) => {
                                     return (
                                         <Container padding="xxs">
                                             <Container maxWidth="sm">
@@ -132,6 +139,7 @@ const EditInfo = ({history}) => {
                                                     </Spacing>
 
                                                     <form onSubmit={e => handleSubmit(e, editinfo)}>
+                                                        <Label>Full name:</Label>
                                                         <InputText
                                                             type="text"
                                                             name="fullName"
@@ -142,6 +150,7 @@ const EditInfo = ({history}) => {
                                                             borderColor="white"
                                                         />
                                                         <Spacing top="xs" bottom="xs">
+                                                        <Label>E-mail:</Label>
                                                             <InputText
                                                                 type="text"
                                                                 name="email"
@@ -152,7 +161,8 @@ const EditInfo = ({history}) => {
                                                                 borderColor="white"
                                                             />
                                                         </Spacing>
-                                                        <Select
+                                                        <Label>Native Language:</Label>
+                                                        <Select2
                                                             type="text"
                                                             name="nativeLanguage"
                                                             defaultValue={data.getUser.nativeLanguage}
@@ -160,14 +170,14 @@ const EditInfo = ({history}) => {
                                                             onChange={handleChange}
                                                             borderColor="white"
                                                         >
-                                                            <option value="" disabled>Native Language</option>
                                                             <option value="english">English</option>
                                                             <option value="sinhala">Sinhala</option>
                                                             <option value="tamil">Tamil</option>
-                                                        </Select>
+                                                        </Select2>
 
                                                         <Spacing top="xs" bottom="xs">
-                                                            <Select
+                                                            <Label>Target Language:</Label>
+                                                            <Select2
                                                                 type="text"
                                                                 name="targetLanguage"
                                                                 defaultValue={data.getUser.targetLanguage}
@@ -175,12 +185,12 @@ const EditInfo = ({history}) => {
                                                                 onChange={handleChange}
                                                                 borderColor="white"
                                                             >
-                                                                <option value="" disabled>Target Language</option>
                                                                 <option value="english">English</option>
                                                                 <option value="sinhala">Sinhala</option>
                                                                 <option value="tamil">Tamil</option>
-                                                            </Select>
+                                                            </Select2>
                                                         </Spacing>
+                                                        <Label>Introduction:</Label>
                                                         <Textarea
                                                             type="text"
                                                             name="introduction"
@@ -192,7 +202,8 @@ const EditInfo = ({history}) => {
                                                         />
 
                                                         <Spacing top="xs" bottom="xs">
-                                                            <Select
+                                                            <Label>Age:</Label>
+                                                            <Select2
                                                                 type="text"
                                                                 name="age"
                                                                 defaultValue={data.getUser.age}
@@ -206,9 +217,10 @@ const EditInfo = ({history}) => {
                                                                         return <option key={`year${index}`} value={year}>{year}</option>
                                                                     })
                                                                 }
-                                                            </Select>
+                                                            </Select2>
                                                         </Spacing>
-                                                        <Select
+                                                        <Label>Sex:</Label>
+                                                        <Select2
                                                             type="text"
                                                             name="sex"
                                                             defaultValue={data.getUser.sex}
@@ -219,9 +231,10 @@ const EditInfo = ({history}) => {
                                                             <option value="male">Male</option>
                                                             <option value="female">Female</option>
                                                             <option value="other">Other</option>
-                                                        </Select>
+                                                        </Select2>
                                                         <Spacing top="xs" bottom="xs">
-                                                            <Select
+                                                            <Label>City:</Label>
+                                                            <Select2
                                                                 type="text"
                                                                 name="city"
                                                                 defaultValue={data.getUser.city}
@@ -238,7 +251,7 @@ const EditInfo = ({history}) => {
                                                                         return <option key={`year${index}`} value={year}>{year}</option>
                                                                     })
                                                                 }
-                                                            </Select>
+                                                            </Select2>
                                                         </Spacing>
 
                                                         {/* {renderErrors(apiError)} */}
