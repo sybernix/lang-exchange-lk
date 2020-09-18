@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom';
 import {Query} from 'react-apollo';
 import styled from 'styled-components';
 import {Mutation} from 'react-apollo';
+import {useQuery} from '@apollo/react-hooks';
 
 import Skeleton from 'components/Skeleton';
 import {H2} from 'components/Text';
@@ -61,7 +62,8 @@ const Textarea = styled.textarea`
 /**
  * User Edit Info Page
  */
-const EditInfo = ({history, refetch}) => {
+const EditInfo = ({history}) => {
+    const {refetch} = useQuery(GET_USER);
     const [{auth}] = useStore();
     const [values, setValues] = useState({
         id: auth.user.id,
@@ -82,17 +84,10 @@ const EditInfo = ({history, refetch}) => {
 
     const handleSubmit = (e, editinfo) => {
         e.preventDefault();
-
-        // const error = validate();
-        // if (error) {
-        //     setError(error);
-        //     return false;
-        // }
-
         editinfo().then(async ({message}) => {
             console.log(message);
             console.log(auth);
-            await refetch();
+            await refetch({id:auth.user.id});
             console.log(auth);
             history.push(auth.user.username);
         });
@@ -131,7 +126,6 @@ const EditInfo = ({history, refetch}) => {
                                     return (
                                         <Container padding="xxs">
                                             <Container maxWidth="sm">
-                                                {/* <h3>Hello from edit info</h3> */}
                                                 <Form>
                                                     <Spacing bottom="md">
                                                         <H2>Update Account Information</H2>

@@ -88,7 +88,7 @@ const AppLayout = ({location, authUser, refetch}) => {
                 <SideBar isOpen={isSideBarOpen} sideBarRef={sideBarRef}/>
 
                 <Switch>
-                    <Route exact path={Routes.EDIT_INFO}><EditInfo refetch={refetch}/></Route>
+                    <Route exact path={Routes.EDIT_INFO} component={EditInfo}/>
                     <Route exact path={Routes.HOME} component={Home}/>
 
                     <Route exact path={Routes.EXPLORE} component={Explore}/>
