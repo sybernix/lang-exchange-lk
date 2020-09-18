@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
 import {Query} from 'react-apollo';
@@ -13,18 +13,8 @@ import Head from 'components/Head';
 
 import {GET_USER} from 'graphql/user';
 import {UPDATE_ACCOUNT_INFO} from 'graphql/user';
-import * as Routes from 'routes';
 
 import {useStore} from 'store';
-
-// const Root = styled.div`
-//   width: 100%;
-
-//   @media (min-width: ${p => p.theme.screen.lg}) {
-//     margin-left: ${p => p.theme.spacing.lg};
-//     padding: 0;
-//   }
-// `;
 
 const Root = styled(Container)`
   margin-top: ${p => p.theme.spacing.lg};
@@ -76,11 +66,11 @@ const EditInfo = ({history, refetch}) => {
     const [values, setValues] = useState({
         id: auth.user.id,
         fullName: '',
-        email: auth.user.email,
-        nativeLanguage: auth.user.nativeLanguage,
-        targetLanguage: auth.user.targetLanguage,
-        introduction: auth.user.introduction,
-        age: 10,
+        email: '',
+        nativeLanguage: '',
+        targetLanguage: '',
+        introduction: '',
+        age: '',
         sex: '',
         city: '',
     });
@@ -101,8 +91,9 @@ const EditInfo = ({history, refetch}) => {
 
         editinfo().then(async ({message}) => {
             console.log(message);
-            console.log(refetch);
+            console.log(auth);
             await refetch();
+            console.log(auth);
             history.push(auth.user.username);
         });
     };

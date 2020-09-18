@@ -551,7 +551,7 @@ const Mutation = {
             updated = true;
         }
         if (age) {
-            user.age = age;
+            user.age = parseInt(age);
             updated = true;
         }
         if (sex) {

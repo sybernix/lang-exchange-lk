@@ -96,7 +96,7 @@ const UserSchema = gql`
     nativeLanguage: String
     targetLanguage: String
     introduction: String
-    age: Int
+    age: String
     sex: String
     city: String
   }
