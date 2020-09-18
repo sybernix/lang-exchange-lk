@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import {generatePath, Link} from 'react-router-dom';
+import {generatePath, Link, NavLink} from 'react-router-dom';
 import {useSubscription} from '@apollo/react-hooks';
 import {IS_USER_ONLINE_SUBSCRIPTION} from 'graphql/user';
 
@@ -99,6 +99,18 @@ const Language = styled.span`
   text-transform: capitalize;
 `;
 
+const NavLink2 = styled(NavLink)`
+  /* display: flex;
+  flex-direction: row; */
+  /* align-items: right; */
+  text-decoration: none;
+  display:inline;
+  float:right;
+  position: relative;
+  /* justify-content: right; */
+  font-size: ${p => p.theme.font.size.xs};
+`;
+
 /**
  * Renders user information in profile page
  */
@@ -121,7 +133,6 @@ const ProfileInfo = ({user}) => {
                 coverImage={user.coverImage}
                 coverImagePublicId={user.coverImagePublicId}
             />
-
             <ProfileImage>
                 <ProfileImageUpload
                     userId={user.id}
@@ -129,12 +140,14 @@ const ProfileInfo = ({user}) => {
                     imagePublicId={user.imagePublicId}
                     username={user.username}
                 />
-
+                {auth.user.id == user.id &&
+                      <NavLink2 exact activeClassName="selected" to={Routes.EDIT_INFO}>
+                        Edit Info
+                      </NavLink2>
+                    }
                 <FullName>
                     <H1>{user.fullName}</H1>
-
                     {isUserOnline && auth.user.id !== user.id && <Online/>}
-
                     {auth.user.id !== user.id && (
                         <FollowAndMessage>
                             <Follow user={user}/>
