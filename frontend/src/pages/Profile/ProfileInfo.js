@@ -95,17 +95,14 @@ const List = styled.div`
 `;
 
 const Language = styled.span`
-  // font-size: ${p => p.theme.font.size.xs};
-  // color: ${p => p.theme.colors.grey[600]};
-  // padding: 0 ${p => p.theme.spacing.xs};
   text-transform: capitalize;
 `;
 
 const NavLink2 = styled(NavLink)`
   text-decoration: none;
   margin-left: auto; 
-  margin-right: 1em;
-  margin-right: 1em;
+  margin-right: 2em;
+  margin-top: 2em;
   font-size: ${p => p.theme.font.size.xs};
 `;
 
@@ -133,7 +130,7 @@ const ProfileInfo = ({user}) => {
             />
             {auth.user.id == user.id &&
               <NavLink2 exact activeClassName="selected" to={Routes.EDIT_INFO}>
-                Edit Info
+                <PencilIcon color='grey600'/>
               </NavLink2>
             }
             <ProfileImage>
