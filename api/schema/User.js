@@ -89,6 +89,18 @@ const UserSchema = gql`
     isCover: Boolean
   }
 
+  input UpdateInfoInput {
+    id: ID!
+    fullName: String
+    email: String
+    nativeLanguage: String
+    targetLanguage: String
+    introduction: String
+    age: String
+    sex: String
+    city: String
+  }
+
   # ---------------------------------------------------------
   # Return Payloads
   # ---------------------------------------------------------
@@ -178,6 +190,8 @@ const UserSchema = gql`
 
     # Uploads user Profile or Cover photo
     uploadUserPhoto(input: UploadUserPhotoInput!): UserPayload
+
+    updateAccountInfo(input: UpdateInfoInput!): SuccessMessage
   }
 
   # ---------------------------------------------------------

@@ -4,3 +4,4 @@ node_modules*
 readme*
 api/.env
 frontend/build
+/.vscode

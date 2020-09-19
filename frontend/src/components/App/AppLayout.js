@@ -5,7 +5,7 @@ import {Switch, Route} from 'react-router-dom';
 import styled from 'styled-components';
 
 import Header from 'components/App/Header';
-import NotFound from 'components/NotFound';
+// import NotFound from 'components/NotFound';
 import SideBar from './SideBar';
 import UserSuggestions from './UserSuggestions';
 
@@ -47,7 +47,7 @@ const Root = styled.div`
 /**
  * Main layout of the app, when user is authenticated
  */
-const AppLayout = ({location, authUser}) => {
+const AppLayout = ({location, authUser, refetch}) => {
     const [{auth}, dispatch] = useStore();
 
     const windowSize = useWindowSize();
@@ -83,30 +83,19 @@ const AppLayout = ({location, authUser}) => {
     return (
         <>
             <Header toggleSideBar={() => setIsSidebarOpen(!isSideBarOpen)}/>
-
             <Root>
                 <SideBar isOpen={isSideBarOpen} sideBarRef={sideBarRef}/>
-
                 <Switch>
-                    <Route exact path={Routes.HOME} component={Home}/>
-
-                    <Route exact path={Routes.EXPLORE} component={Explore}/>
-
-                    <Route exact path={Routes.LEARNER} component={Learners}/>
-
-                    <Route exact path={Routes.NOTIFICATIONS} component={Notifications}/>
-
-                    <Route exact path={Routes.MESSAGES} component={Messages}/>
-
-                    <Route exact path={Routes.USER_PROFILE} component={Profile}/>
-
                     <Route exact path={Routes.EDIT_INFO} component={EditInfo}/>
-
+                    <Route exact path={Routes.HOME} component={Home}/>
+                    <Route exact path={Routes.EXPLORE} component={Explore}/>
+                    <Route exact path={Routes.LEARNER} component={Learners}/>
+                    <Route exact path={Routes.NOTIFICATIONS} component={Notifications}/>
+                    <Route exact path={Routes.MESSAGES} component={Messages}/>
+                    <Route exact path={Routes.USER_PROFILE} component={Profile}/>
                     <Route exact path={Routes.POST} component={Post}/>
-
-                    <Route component={NotFound}/>
+                    {/* <Route component={NotFound}/> */}
                 </Switch>
-
                 <UserSuggestions pathname={location.pathname}/>
             </Root>
         </>

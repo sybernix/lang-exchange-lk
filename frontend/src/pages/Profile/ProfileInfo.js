@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import {generatePath, Link} from 'react-router-dom';
+import {generatePath, Link, NavLink} from 'react-router-dom';
 import {useSubscription} from '@apollo/react-hooks';
 import {IS_USER_ONLINE_SUBSCRIPTION} from 'graphql/user';
 
 import {H1} from 'components/Text';
 import {Spacing} from 'components/Layout';
 import Follow from 'components/Follow';
+import {PencilIcon} from 'components/icons';
 
 import ProfileImageUpload from './ProfileImageUpload';
 import ProfileCoverUpload from './ProfileCoverUpload';
@@ -27,6 +28,7 @@ const Root = styled.div`
 const ProfileImage = styled.div`
   display: flex;
   flex-direction: column;
+  /* flex: 0 1 auto; */
   align-items: center;
   margin-top: -140px;
 `;
@@ -93,10 +95,15 @@ const List = styled.div`
 `;
 
 const Language = styled.span`
-  // font-size: ${p => p.theme.font.size.xs};
-  // color: ${p => p.theme.colors.grey[600]};
-  // padding: 0 ${p => p.theme.spacing.xs};
   text-transform: capitalize;
+`;
+
+const NavLink2 = styled(NavLink)`
+  text-decoration: none;
+  margin-left: auto; 
+  margin-right: 2em;
+  margin-top: 2em;
+  font-size: ${p => p.theme.font.size.xs};
 `;
 
 /**
@@ -121,7 +128,11 @@ const ProfileInfo = ({user}) => {
                 coverImage={user.coverImage}
                 coverImagePublicId={user.coverImagePublicId}
             />
-
+            {auth.user.id == user.id &&
+              <NavLink2 exact activeClassName="selected" to={Routes.EDIT_INFO}>
+                <PencilIcon color='grey600'/>
+              </NavLink2>
+            }
             <ProfileImage>
                 <ProfileImageUpload
                     userId={user.id}
@@ -129,12 +140,9 @@ const ProfileInfo = ({user}) => {
                     imagePublicId={user.imagePublicId}
                     username={user.username}
                 />
-
                 <FullName>
                     <H1>{user.fullName}</H1>
-
                     {isUserOnline && auth.user.id !== user.id && <Online/>}
-
                     {auth.user.id !== user.id && (
                         <FollowAndMessage>
                             <Follow user={user}/>

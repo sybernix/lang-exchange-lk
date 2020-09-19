@@ -146,11 +146,22 @@ export const GET_AUTH_USER = gql`
 `;
 
 /**
- * Creates a post
+ * Adds introduction text
  */
 export const ADD_INTRODUCTION = gql`
   mutation($input: addIntroductionInput!) {
     addIntroduction(input: $input) {
+      message
+    }
+  }
+`;
+
+/**
+ * Updates account information
+ */
+export const UPDATE_ACCOUNT_INFO = gql`
+  mutation($input: UpdateInfoInput!) {
+    updateAccountInfo(input: $input) {
       message
     }
   }

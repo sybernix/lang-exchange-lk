@@ -449,6 +449,7 @@ const Mutation = {
             'forgot-password',
             'reset-password',
             'explore',
+            'edit-info',
             'learners',
             'notifications',
             'post',
@@ -516,6 +517,60 @@ const Mutation = {
         // Return success message
         return {
             message: `Introduction successfully added`,
+        };
+    },
+    updateAccountInfo: async (
+        root,
+        {input: {id, fullName, email, nativeLanguage, targetLanguage, introduction, age, sex, city}},
+        {User}
+    ) => {
+        // Check if user exists
+        const user = await User.findOne({_id: id});
+        if (!user) {
+            throw new Error('No user found with the provided id');
+        }
+        let updated = false;
+        if (fullName) {
+            user.fullName = fullName;
+            updated = true;
+        }
+        if (email) {
+            user.email = email;
+            updated = true;
+        }
+        if (nativeLanguage) {
+            user.nativeLanguage = nativeLanguage;
+            updated = true;
+        }
+        if (targetLanguage) {
+            user.targetLanguage = targetLanguage;
+            updated = true;
+        }
+        if (introduction) {
+            user.introduction = introduction;
+            updated = true;
+        }
+        if (age) {
+            user.age = parseInt(age);
+            updated = true;
+        }
+        if (sex) {
+            user.sex = sex;
+            updated = true;
+        }
+        if (city) {
+            user.city = city;
+            updated = true;
+        }
+        if (updated === false) {
+            return {
+                message: `No update was performed`,
+            };
+        }
+        await user.save();
+        // Return success message
+        return {
+            message: `Account information successfully updated`,
         };
     },
     /**

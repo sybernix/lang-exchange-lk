@@ -120,7 +120,7 @@ const App = () => {
                     {data.getAuthUser ? (
                         <Route
                             exact
-                            render={() => <AppLayout authUser={data.getAuthUser}/>}
+                            render={() => <AppLayout authUser={data.getAuthUser} refetch={refetch}/>}
                         />
                     ) : (
                         <Route exact render={() => <AuthLayout refetch={refetch}/>}/>
