@@ -8,6 +8,7 @@ import {IS_USER_ONLINE_SUBSCRIPTION} from 'graphql/user';
 import {H1} from 'components/Text';
 import {Spacing} from 'components/Layout';
 import Follow from 'components/Follow';
+import {PencilIcon} from 'components/icons';
 
 import ProfileImageUpload from './ProfileImageUpload';
 import ProfileCoverUpload from './ProfileCoverUpload';
@@ -27,6 +28,7 @@ const Root = styled.div`
 const ProfileImage = styled.div`
   display: flex;
   flex-direction: column;
+  /* flex: 0 1 auto; */
   align-items: center;
   margin-top: -140px;
 `;
@@ -100,14 +102,10 @@ const Language = styled.span`
 `;
 
 const NavLink2 = styled(NavLink)`
-  /* display: flex;
-  flex-direction: row; */
-  /* align-items: right; */
   text-decoration: none;
-  display:inline;
-  float:right;
-  position: relative;
-  /* justify-content: right; */
+  margin-left: auto; 
+  margin-right: 1em;
+  margin-right: 1em;
   font-size: ${p => p.theme.font.size.xs};
 `;
 
@@ -133,6 +131,11 @@ const ProfileInfo = ({user}) => {
                 coverImage={user.coverImage}
                 coverImagePublicId={user.coverImagePublicId}
             />
+            {auth.user.id == user.id &&
+              <NavLink2 exact activeClassName="selected" to={Routes.EDIT_INFO}>
+                Edit Info
+              </NavLink2>
+            }
             <ProfileImage>
                 <ProfileImageUpload
                     userId={user.id}
@@ -140,11 +143,6 @@ const ProfileInfo = ({user}) => {
                     imagePublicId={user.imagePublicId}
                     username={user.username}
                 />
-                {auth.user.id == user.id &&
-                      <NavLink2 exact activeClassName="selected" to={Routes.EDIT_INFO}>
-                        Edit Info
-                      </NavLink2>
-                    }
                 <FullName>
                     <H1>{user.fullName}</H1>
                     {isUserOnline && auth.user.id !== user.id && <Online/>}
