@@ -175,10 +175,10 @@ const ProfileInfo = ({user}) => {
                 </Info>
                 <Info>
                     <List>
-                        speaks <Language>{user.nativeLanguage}</Language>
+                        Location: <Language>{user.city}</Language>
                     </List>
                     <List>
-                        learning <Language>{user.targetLanguage}</Language>
+                        Age <Language>{user.age}</Language>
                     </List>
                 </Info>
             </InfoBase>
