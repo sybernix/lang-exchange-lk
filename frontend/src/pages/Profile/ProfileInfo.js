@@ -180,6 +180,9 @@ const ProfileInfo = ({user}) => {
                     <List>
                         Age <Language>{user.age}</Language>
                     </List>
+                    <List>
+                        Sex <Language>{user.sex}</Language>
+                    </List>
                 </Info>
             </InfoBase>
         </Root>
