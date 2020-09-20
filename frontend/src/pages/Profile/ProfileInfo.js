@@ -173,6 +173,14 @@ const ProfileInfo = ({user}) => {
                         learning <Language>{user.targetLanguage}</Language>
                     </List>
                 </Info>
+                <Info>
+                    <List>
+                        speaks <Language>{user.nativeLanguage}</Language>
+                    </List>
+                    <List>
+                        learning <Language>{user.targetLanguage}</Language>
+                    </List>
+                </Info>
             </InfoBase>
         </Root>
     );
