@@ -32,36 +32,6 @@ export const LocationIcon = ({ width, color }) => {
                     </g>
                 </g>
             </g>
-            <g>
-            </g>
-            <g>
-            </g>
-            <g>
-            </g>
-            <g>
-            </g>
-            <g>
-            </g>
-            <g>
-            </g>
-            <g>
-            </g>
-            <g>
-            </g>
-            <g>
-            </g>
-            <g>
-            </g>
-            <g>
-            </g>
-            <g>
-            </g>
-            <g>
-            </g>
-            <g>
-            </g>
-            <g>
-            </g>
         </svg>
 
     );
