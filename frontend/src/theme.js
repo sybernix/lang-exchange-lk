@@ -73,6 +73,7 @@ export default {
 
         mygrey: '#fafafa',
         mygrey2: '#f5f5f5',
+        grey500: '#9e9e9e',
         grey600: '#757575',
 
         grey: {

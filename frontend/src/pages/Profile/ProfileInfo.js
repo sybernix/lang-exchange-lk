@@ -96,7 +96,7 @@ const List = styled.div`
 `;
 
 const Language = styled.span`
-  text-transform: capitalize;
+  text-transform: ${p => p.transform && 'capitalize'};
   padding-left: ${p => p.left};
   padding-right: ${p => p.right};
   margin-top: ${p => p.top};
@@ -171,10 +171,10 @@ const ProfileInfo = ({ user }) => {
         </Info>
         <Info>
           <List>
-            speaks <Language>{user.nativeLanguage}</Language>
+            speaks <Language transform="true">{user.nativeLanguage}</Language>
           </List>
           <List top="0.5em">
-            learning <Language>{user.targetLanguage}</Language>
+            learning <Language transform="true">{user.targetLanguage}</Language>
           </List>
         </Info>
         <Info>
@@ -186,11 +186,8 @@ const ProfileInfo = ({ user }) => {
             {user.sex === "male" &&
               <MaleIcon width="15" color="grey500"/>
             }
-            <Language left="1em">Age {user.age}</Language>
+            <Language left="1em">age {user.age}</Language>
           </List>
-          {/* <List>
-            
-          </List> */}
         </Info>
       </InfoBase>
     </Root>
