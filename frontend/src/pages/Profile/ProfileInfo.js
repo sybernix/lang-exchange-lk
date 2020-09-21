@@ -8,7 +8,7 @@ import { IS_USER_ONLINE_SUBSCRIPTION } from 'graphql/user';
 import { H1 } from 'components/Text';
 import { Spacing } from 'components/Layout';
 import Follow from 'components/Follow';
-import { PencilIcon, LocationIcon } from 'components/icons';
+import { PencilIcon, LocationIcon, MaleIcon } from 'components/icons';
 
 import ProfileImageUpload from './ProfileImageUpload';
 import ProfileCoverUpload from './ProfileCoverUpload';
@@ -89,6 +89,7 @@ const Info = styled.div`
 const List = styled.div`
   padding: 0 ${p => p.theme.spacing.sm};
   white-space: nowrap;
+  margin-top: ${p => p.top};
   @media (min-width: ${p => p.theme.screen.md}) {
     padding: 0 ${p => p.theme.spacing.lg};
   }
@@ -97,6 +98,8 @@ const List = styled.div`
 const Language = styled.span`
   text-transform: capitalize;
   padding-left: ${p => p.left};
+  padding-right: ${p => p.right};
+  margin-top: ${p => p.top};
 `;
 
 const NavLink2 = styled(NavLink)`
@@ -162,7 +165,7 @@ const ProfileInfo = ({ user }) => {
           <List>
             <b>{user.followers.length} </b> followers
                     </List>
-          <List>
+          <List top="0.5em">
             <b>{user.following.length} </b> following
                     </List>
         </Info>
@@ -170,7 +173,7 @@ const ProfileInfo = ({ user }) => {
           <List>
             speaks <Language>{user.nativeLanguage}</Language>
           </List>
-          <List>
+          <List top="0.5em">
             learning <Language>{user.targetLanguage}</Language>
           </List>
         </Info>
@@ -179,12 +182,15 @@ const ProfileInfo = ({ user }) => {
             <LocationIcon width="15"/>
             <Language left="1em">{user.city}</Language>
           </List>
-          <List>
-            Age <Language>{user.age}</Language>
+          <List top="0.5em">
+            {user.sex === "male" &&
+              <MaleIcon width="15" color="grey500"/>
+            }
+            <Language left="1em">Age {user.age}</Language>
           </List>
-          <List>
-            Gender <Language>{user.sex}</Language>
-          </List>
+          {/* <List>
+            
+          </List> */}
         </Info>
       </InfoBase>
     </Root>
