@@ -74,6 +74,7 @@ const Online = styled.div`
 const InfoBase = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap:  wrap;
   font-size: ${p => p.theme.font.size.xs};
   color: ${p => p.theme.colors.grey[600]};
 `;
