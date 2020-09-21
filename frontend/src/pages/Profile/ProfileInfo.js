@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import {generatePath, Link, NavLink} from 'react-router-dom';
-import {useSubscription} from '@apollo/react-hooks';
-import {IS_USER_ONLINE_SUBSCRIPTION} from 'graphql/user';
+import { generatePath, Link, NavLink } from 'react-router-dom';
+import { useSubscription } from '@apollo/react-hooks';
+import { IS_USER_ONLINE_SUBSCRIPTION } from 'graphql/user';
 
-import {H1} from 'components/Text';
-import {Spacing} from 'components/Layout';
+import { H1 } from 'components/Text';
+import { Spacing } from 'components/Layout';
 import Follow from 'components/Follow';
-import {PencilIcon} from 'components/icons';
+import { PencilIcon, LocationIcon } from 'components/icons';
 
 import ProfileImageUpload from './ProfileImageUpload';
 import ProfileCoverUpload from './ProfileCoverUpload';
 
-import {useStore} from 'store';
+import { useStore } from 'store';
 
 import * as Routes from 'routes';
 import ProfileIntroduction from "./ProfileIntroduction";
@@ -96,6 +96,7 @@ const List = styled.div`
 
 const Language = styled.span`
   text-transform: capitalize;
+  padding-left: ${p => p.left};
 `;
 
 const NavLink2 = styled(NavLink)`
@@ -109,88 +110,89 @@ const NavLink2 = styled(NavLink)`
 /**
  * Renders user information in profile page
  */
-const ProfileInfo = ({user}) => {
-    const [{auth}] = useStore();
+const ProfileInfo = ({ user }) => {
+  const [{ auth }] = useStore();
 
-    const {data, loading} = useSubscription(IS_USER_ONLINE_SUBSCRIPTION, {
-        variables: {authUserId: auth.user.id, userId: user.id},
-    });
+  const { data, loading } = useSubscription(IS_USER_ONLINE_SUBSCRIPTION, {
+    variables: { authUserId: auth.user.id, userId: user.id },
+  });
 
-    let isUserOnline = user.isOnline;
-    if (!loading && data) {
-        isUserOnline = data.isUserOnline.isOnline;
-    }
+  let isUserOnline = user.isOnline;
+  if (!loading && data) {
+    isUserOnline = data.isUserOnline.isOnline;
+  }
 
-    return (
-        <Root>
-            <ProfileCoverUpload
-                userId={user.id}
-                coverImage={user.coverImage}
-                coverImagePublicId={user.coverImagePublicId}
-            />
-            {auth.user.id == user.id &&
-              <NavLink2 exact activeClassName="selected" to={Routes.EDIT_INFO}>
-                <PencilIcon color='grey600'/>
-              </NavLink2>
-            }
-            <ProfileImage>
-                <ProfileImageUpload
-                    userId={user.id}
-                    image={user.image}
-                    imagePublicId={user.imagePublicId}
-                    username={user.username}
-                />
-                <FullName>
-                    <H1>{user.fullName}</H1>
-                    {isUserOnline && auth.user.id !== user.id && <Online/>}
-                    {auth.user.id !== user.id && (
-                        <FollowAndMessage>
-                            <Follow user={user}/>
+  return (
+    <Root>
+      <ProfileCoverUpload
+        userId={user.id}
+        coverImage={user.coverImage}
+        coverImagePublicId={user.coverImagePublicId}
+      />
+      {auth.user.id == user.id &&
+        <NavLink2 exact activeClassName="selected" to={Routes.EDIT_INFO}>
+          <PencilIcon color='grey600' />
+        </NavLink2>
+      }
+      <ProfileImage>
+        <ProfileImageUpload
+          userId={user.id}
+          image={user.image}
+          imagePublicId={user.imagePublicId}
+          username={user.username}
+        />
+        <FullName>
+          <H1>{user.fullName}</H1>
+          {isUserOnline && auth.user.id !== user.id && <Online />}
+          {auth.user.id !== user.id && (
+            <FollowAndMessage>
+              <Follow user={user} />
 
-                            <Spacing left="sm"/>
-                            <Message to={generatePath(Routes.MESSAGES, {userId: user.id})}>
-                                Message
+              <Spacing left="sm" />
+              <Message to={generatePath(Routes.MESSAGES, { userId: user.id })}>
+                Message
                             </Message>
-                        </FollowAndMessage>
-                    )}
-                </FullName>
-            </ProfileImage>
-            <ProfileIntroduction authId={auth.user.id} userId={user.id} initialIntroduction={user.introduction}/>
-            <InfoBase>
-                <Info>
-                    <List>
-                        <b>{user.followers.length} </b> followers
+            </FollowAndMessage>
+          )}
+        </FullName>
+      </ProfileImage>
+      <ProfileIntroduction authId={auth.user.id} userId={user.id} initialIntroduction={user.introduction} />
+      <InfoBase>
+        <Info>
+          <List>
+            <b>{user.followers.length} </b> followers
                     </List>
-                    <List>
-                        <b>{user.following.length} </b> following
+          <List>
+            <b>{user.following.length} </b> following
                     </List>
-                </Info>
-                <Info>
-                    <List>
-                        speaks <Language>{user.nativeLanguage}</Language>
-                    </List>
-                    <List>
-                        learning <Language>{user.targetLanguage}</Language>
-                    </List>
-                </Info>
-                <Info>
-                    <List>
-                        Location: <Language>{user.city}</Language>
-                    </List>
-                    <List>
-                        Age <Language>{user.age}</Language>
-                    </List>
-                    <List>
-                        Gender <Language>{user.sex}</Language>
-                    </List>
-                </Info>
-            </InfoBase>
-        </Root>
-    );
+        </Info>
+        <Info>
+          <List>
+            speaks <Language>{user.nativeLanguage}</Language>
+          </List>
+          <List>
+            learning <Language>{user.targetLanguage}</Language>
+          </List>
+        </Info>
+        <Info>
+          <List>
+            <LocationIcon width="15"/>
+            <Language left="1em">{user.city}</Language>
+          </List>
+          <List>
+            Age <Language>{user.age}</Language>
+          </List>
+          <List>
+            Gender <Language>{user.sex}</Language>
+          </List>
+        </Info>
+      </InfoBase>
+    </Root>
+  );
 };
 
 ProfileInfo.propTypes = {
-    user: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
 };
 
 export default ProfileInfo;

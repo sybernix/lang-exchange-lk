@@ -12,11 +12,10 @@ export const LocationIcon = ({ width, color }) => {
     const DEFAULT_COLOR = theme.colors.text.secondary;
 
     return (
-        <svg
-            viewBox="0 0 24 24"
-            width={width || DEFAULT_WIDTH}
-            xmlns="http://www.w3.org/2000/svg"
-            fill={theme.colors[color] || DEFAULT_COLOR}
+        <svg 
+        width={width || DEFAULT_WIDTH}
+        fill={theme.colors[color] || DEFAULT_COLOR}
+        viewBox="0 0 368.16 368.16" 
         >
             <g>
                 <g>
