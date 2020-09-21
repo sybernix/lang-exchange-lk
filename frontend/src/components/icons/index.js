@@ -25,3 +25,4 @@ export {SendIcon} from './SendIcon';
 export {PencilIcon} from './PencilIcon';
 export {SpeakIcon} from './SpeakIcon';
 export {LearnIcon} from './LearnIcon';
+export {LocationIcon} from './LocationIcon';
