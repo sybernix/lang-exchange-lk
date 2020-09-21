@@ -82,7 +82,7 @@ const Info = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-right: 1px ${p => p.theme.colors.grey[400]} solid;
+  border-right: 1px ${p => p.theme.colors.grey[400]} ${p => p.border && 'solid'};
   margin-top: ${p => p.theme.spacing.sm};
 `;
 
@@ -161,7 +161,7 @@ const ProfileInfo = ({ user }) => {
       </ProfileImage>
       <ProfileIntroduction authId={auth.user.id} userId={user.id} initialIntroduction={user.introduction} />
       <InfoBase>
-        <Info>
+        <Info border="true">
           <List>
             <b>{user.followers.length} </b> followers
                     </List>
@@ -169,7 +169,7 @@ const ProfileInfo = ({ user }) => {
             <b>{user.following.length} </b> following
                     </List>
         </Info>
-        <Info>
+        <Info border="true">
           <List>
             speaks <Language transform="true">{user.nativeLanguage}</Language>
           </List>
