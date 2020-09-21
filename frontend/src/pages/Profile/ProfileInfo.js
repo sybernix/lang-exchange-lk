@@ -178,10 +178,12 @@ const ProfileInfo = ({ user }) => {
           </List>
         </Info>
         <Info>
-          <List>
-            <LocationIcon width="15"/>
-            <Language left="1em">{user.city}</Language>
-          </List>
+          {user.city &&
+             <List>
+              <LocationIcon width="15"/>
+              <Language left="1em">{user.city}</Language>
+           </List>
+          }
           <List top="0.5em">
             {user.sex === "male" &&
               <MaleIcon width="13" color="grey500"/>
@@ -189,7 +191,9 @@ const ProfileInfo = ({ user }) => {
             {user.sex === "female" &&
               <FemaleIcon width="15" color="grey500"/>
             }
-            <Language left="1em">age {user.age}</Language>
+            {user.age &&
+              <Language left="1em">age {user.age}</Language>
+            }
           </List>
         </Info>
       </InfoBase>
