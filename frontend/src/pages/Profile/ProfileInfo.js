@@ -8,7 +8,7 @@ import { IS_USER_ONLINE_SUBSCRIPTION } from 'graphql/user';
 import { H1 } from 'components/Text';
 import { Spacing } from 'components/Layout';
 import Follow from 'components/Follow';
-import { PencilIcon, LocationIcon, MaleIcon } from 'components/icons';
+import { PencilIcon, LocationIcon, MaleIcon, FemaleIcon } from 'components/icons';
 
 import ProfileImageUpload from './ProfileImageUpload';
 import ProfileCoverUpload from './ProfileCoverUpload';
@@ -184,7 +184,10 @@ const ProfileInfo = ({ user }) => {
           </List>
           <List top="0.5em">
             {user.sex === "male" &&
-              <MaleIcon width="15" color="grey500"/>
+              <MaleIcon width="13" color="grey500"/>
+            }
+            {user.sex === "female" &&
+              <FemaleIcon width="15" color="grey500"/>
             }
             <Language left="1em">age {user.age}</Language>
           </List>
