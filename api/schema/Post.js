@@ -69,8 +69,8 @@ const PostSchema = gql`
     # Gets posts from followed users
     getFollowedPosts(userId: String!, skip: Int, limit: Int): PostsPayload
 
-    # Gets all posts
-    getPosts(authUserId: ID!, skip: Int, limit: Int): PostsPayload
+    # Gets all posts of potential language partners
+    getExplorePosts(authUserId: ID!, authNativeLanguage: String!, authTargetLanguage: String!, skip: Int, limit: Int): PostsPayload
 
     # Gets post by id
     getPost(id: ID!): PostPayload

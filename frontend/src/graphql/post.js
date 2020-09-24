@@ -96,11 +96,11 @@ export const GET_FOLLOWED_POSTS = gql`
 `;
 
 /**
- * Gets all available posts
+ * Gets all available posts of potential partners
  */
-export const GET_POSTS = gql`
+export const GET_EXPLORE_POSTS = gql`
   query($authUserId: ID!, $skip: Int, $limit: Int) {
-    getPosts(authUserId: $authUserId, skip: $skip, limit: $limit) {
+    getExplorePosts(authUserId: $authUserId, authNativeLanguage: $authNativeLanguage, authtargetLanguage: $authtargetLanguage, skip: $skip, limit: $limit) {
       count
       posts {
         id

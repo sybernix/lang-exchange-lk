@@ -2,18 +2,18 @@ import {uploadToCloudinary, deleteFromCloudinary} from '../utils/cloudinary';
 
 const Query = {
     /**
-     * Gets all posts
+     * Gets all posts of potential language partners
      *
      * @param {string} authUserId
      * @param {int} skip how many posts to skip
      * @param {int} limit how many posts to limit
      */
-    getPosts: async (root, {authUserId, skip, limit}, {Post}) => {
+    getExplorePosts: async (root, {authUserId, authNativeLanguage, authtargetLanguage, skip, limit}, {Post}) => {
         // const query = {
         //     $and: [{image: {$ne: null}}, {author: {$ne: authUserId}}],
         // };
         const query = {
-            $and: [{author: {$ne: authUserId}}],
+            $and: [{author: {$ne: authUserId}, nativeLanguage: authtargetLanguage, targetLanguage: authNativeLanguage}],
         };
         const postsCount = await Post.find(query).countDocuments();
         const allPosts = await Post.find(query)
