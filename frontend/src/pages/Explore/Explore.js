@@ -13,7 +13,7 @@ import Empty from 'components/Empty';
 import {Loading} from 'components/Loading';
 import Head from 'components/Head';
 
-import {GET_POSTS} from 'graphql/post';
+import {GET_EXPLORE_POSTS} from 'graphql/post';
 
 import {EXPLORE_PAGE_POSTS_LIMIT} from 'constants/DataLimit';
 
@@ -58,6 +58,10 @@ const Explore = () => {
 
     const variables = {
         authUserId: auth.user.id,
+        // authNativeLanguage: auth.user.nativeLanguage,
+        // authtargetLanguage: auth.user.targetLanguage,
+        authNativeLanguage: "tamil",
+        authtargetLanguage: "sinhala",
         skip: 0,
         limit: EXPLORE_PAGE_POSTS_LIMIT,
     };
@@ -65,9 +69,10 @@ const Explore = () => {
     return (
         <Root maxWidth="md">
             <Head title="Explore New Posts and Learners"/>
+            {console.log(auth)}
 
             <Query
-                query={GET_POSTS}
+                query={GET_EXPLORE_POSTS}
                 variables={variables}
                 notifyOnNetworkStatusChange
             >
