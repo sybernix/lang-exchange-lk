@@ -106,6 +106,7 @@ export const GET_POSTS = gql`
         id
         title
         image
+        createdAt
         ${postAuthorPayload}
         ${postCommentsPayload}
         ${postLikesPayload}
