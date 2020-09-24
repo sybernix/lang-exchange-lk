@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import {generatePath} from 'react-router-dom';
 import {Query} from 'react-apollo';
 
-import {Container} from 'components/Layout';
-import ExploreCard from './ExploreCard';
+import {Container, Spacing} from 'components/Layout';
 import Skeleton from 'components/Skeleton';
+import PostCard from 'components/PostCard';
 import PostPopup from 'components/PostPopup';
 import Modal from 'components/Modal';
 import InfiniteScroll from 'components/InfiniteScroll';
@@ -98,25 +98,30 @@ const Explore = () => {
 
                                 return (
                                     <Fragment>
-                                        <PostsContainer>
-                                            {data.map(post => (
-                                                <Fragment key={post.id}>
-                                                    <Modal
-                                                        open={modalPostId === post.id}
-                                                        onClose={closeModal}
-                                                    >
-                                                        <PostPopup id={post.id} closeModal={closeModal}/>
-                                                    </Modal>
+                                        {data.map(post => (
+                                            <Fragment key={post.id}>
+                                                <Modal
+                                                    open={modalPostId === post.id}
+                                                    onClose={closeModal}
+                                                >
+                                                    <PostPopup id={post.id} closeModal={closeModal}/>
+                                                </Modal>
 
-                                                    <ExploreCard
+                                                <Spacing bottom="lg" top="lg">
+                                                    <PostCard
+                                                        author={post.author}
+                                                        imagePublicId={post.imagePublicId}
+                                                        postId={post.id}
+                                                        comments={post.comments}
+                                                        createdAt={post.createdAt}
+                                                        title={post.title}
                                                         image={post.image}
-                                                        countLikes={post.likes.length}
-                                                        countComments={post.comments.length}
-                                                        openPostPopup={() => openModal(post.id)}
+                                                        likes={post.likes}
+                                                        openModal={() => openModal(post.id)}
                                                     />
-                                                </Fragment>
-                                            ))}
-                                        </PostsContainer>
+                                                </Spacing>
+                                            </Fragment>
+                                        ))}
 
                                         {showNextLoading && <Loading top="lg"/>}
                                     </Fragment>
