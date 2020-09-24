@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import {Mutation, withApollo} from 'react-apollo';
 
 import {GET_AUTH_USER, GET_USER} from 'graphql/user';
-import {GET_POST, GET_POSTS, GET_FOLLOWED_POSTS} from 'graphql/post';
+import {GET_POST, GET_EXPLORE_POSTS, GET_FOLLOWED_POSTS} from 'graphql/post';
 import {CREATE_COMMENT} from 'graphql/comment';
 
 import {Textarea, Button} from './Form';
@@ -70,7 +70,7 @@ const CreateComment = ({post, focus}) => {
                 {query: GET_FOLLOWED_POSTS, variables: {userId: auth.user.id}},
                 {query: GET_USER, variables: {username: auth.user.username}},
                 {query: GET_AUTH_USER},
-                {query: GET_POSTS, variables: {authUserId: auth.user.id}},
+                {query: GET_EXPLORE_POSTS, variables: {authUserId: auth.user.id}},
                 {query: GET_POST, variables: {id: post.id}},
             ]}
         >
