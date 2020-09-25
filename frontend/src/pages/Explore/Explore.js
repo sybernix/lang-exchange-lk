@@ -61,7 +61,7 @@ const Explore = () => {
         // authNativeLanguage: auth.user.nativeLanguage,
         // authtargetLanguage: auth.user.targetLanguage,
         authNativeLanguage: "tamil",
-        authtargetLanguage: "sinhala",
+        authTargetLanguage: "sinhala",
         skip: 0,
         limit: EXPLORE_PAGE_POSTS_LIMIT,
     };
