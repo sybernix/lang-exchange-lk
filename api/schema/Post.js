@@ -13,6 +13,8 @@ const PostSchema = gql`
     image: File
     imagePublicId: String
     author: User!
+    authNativeLanguage: String
+    authTargetLanguage: String
     likes: [Like]
     comments: [Comment]
     createdAt: String
@@ -27,6 +29,8 @@ const PostSchema = gql`
     image: Upload
     imagePublicId: String
     authorId: ID!
+    authNativeLanguage: String
+    authTargetLanguage: String
   }
 
   input DeletePostInput {
@@ -48,6 +52,8 @@ const PostSchema = gql`
     image: String
     imagePublicId: String
     author: UserPayload!
+    authNativeLanguage: String
+    authTargetLanguage: String
     likes: [Like]
     comments: [CommentPayload]
     createdAt: String
