@@ -35,6 +35,8 @@ const Query = {
                     {path: 'follow'},
                     {path: 'like', populate: {path: 'post'}},
                     {path: 'comment', populate: {path: 'post'}},
+                    // {path: 'nativeLanguage', populate: {path: 'nativeLanguage'}},
+                    // {path: 'targetLanguage', populate: {path: 'targetLanguage'}},
                 ],
                 match: {seen: false},
             });

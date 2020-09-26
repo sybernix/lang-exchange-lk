@@ -91,6 +91,8 @@ export const GET_AUTH_USER = gql`
   query {
     getAuthUser {
       ${userPayload}
+      nativeLanguage
+      targetLanguage
       newNotifications {
         id
         createdAt
