@@ -100,7 +100,7 @@ export const GET_FOLLOWED_POSTS = gql`
  */
 export const GET_EXPLORE_POSTS = gql`
   query($authUserId: ID!, $targetLanguage: String!, $nativeLanguage: String! $skip: Int, $limit: Int) {
-    getExplorePosts(authUserId: $authUserId, authorNativeLanguage: $targetLanguage, authorTargetLanguage: $nativeLanguage, skip: $skip, limit: $limit) {
+    getExplorePosts(authUserId: $authUserId, nativeLanguage: $nativeLanguage, targetLanguage: $targetLanguage, skip: $skip, limit: $limit) {
       count
       posts {
         id

@@ -58,8 +58,8 @@ const Explore = () => {
 
     const variables = {
         authUserId: auth.user.id,
-        nativeLanguage: "tamil",
-        targetLanguage: "sinhala",
+        nativeLanguage: auth.user.nativeLanguage,
+        targetLanguage: auth.user.targetLanguage,
         skip: 0,
         limit: EXPLORE_PAGE_POSTS_LIMIT,
     };
@@ -82,7 +82,7 @@ const Explore = () => {
                             </PostsContainer>
                         );
                     }
-                    // {console.log(data)}
+                    {console.log(data)}
                     const {posts, count} = data.getExplorePosts;
 
                     if (!posts.length > 0) return <Empty text="No posts yet."/>;
