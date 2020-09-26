@@ -137,7 +137,7 @@ const Mutation = {
      */
     createPost: async (
         root,
-        {input: {title, image, authorId}},
+        {input: {title, image, authorId, authorNativeLanguage, authorTargetLanguage}},
         {Post, User}
     ) => {
         if (!title && !image) {
