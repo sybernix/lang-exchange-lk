@@ -58,10 +58,8 @@ const Explore = () => {
 
     const variables = {
         authUserId: auth.user.id,
-        // authNativeLanguage: auth.user.nativeLanguage,
-        // authtargetLanguage: auth.user.targetLanguage,
-        authNativeLanguage: "tamil",
-        authTargetLanguage: "sinhala",
+        nativeLanguage: "tamil",
+        targetLanguage: "sinhala",
         skip: 0,
         limit: EXPLORE_PAGE_POSTS_LIMIT,
     };
@@ -69,7 +67,7 @@ const Explore = () => {
     return (
         <Root maxWidth="md">
             <Head title="Explore New Posts and Learners"/>
-            {console.log(auth)}
+            {/* {console.log(auth)} */}
 
             <Query
                 query={GET_EXPLORE_POSTS}
@@ -84,8 +82,8 @@ const Explore = () => {
                             </PostsContainer>
                         );
                     }
-
-                    const {posts, count} = data.getPosts;
+                    // {console.log(data)}
+                    const {posts, count} = data.getExplorePosts;
 
                     if (!posts.length > 0) return <Empty text="No posts yet."/>;
 

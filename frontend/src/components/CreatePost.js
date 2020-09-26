@@ -124,7 +124,7 @@ const CreatePost = () => {
     return (
         <Mutation
             mutation={CREATE_POST}
-            variables={{input: {title, image, authorId: auth.user.id, authNativeLanguage: auth.user.authNativeLanguage, authTargetLanguage: auth.user.authTargetLanguage}}}
+            variables={{input: {title, image, authorId: auth.user.id, authorNativeLanguage: "tamil", authorTargetLanguage: auth.user.targetLanguage}}}
             refetchQueries={() => [
                 {
                     query: GET_FOLLOWED_POSTS,

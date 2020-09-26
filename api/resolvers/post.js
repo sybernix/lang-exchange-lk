@@ -8,12 +8,12 @@ const Query = {
      * @param {int} skip how many posts to skip
      * @param {int} limit how many posts to limit
      */
-    getExplorePosts: async (root, {authUserId, authNativeLanguage, authTargetLanguage, skip, limit}, {Post}) => {
+    getExplorePosts: async (root, {authUserId, authorNativeLanguage, authorTargetLanguage, skip, limit}, {Post}) => {
         // const query = {
         //     $and: [{image: {$ne: null}}, {author: {$ne: authUserId}}],
         // };
         const query = {
-            $and: [{author: {$ne: authUserId}, nativeLanguage: authTargetLanguage, targetLanguage: authNativeLanguage}],
+            $and: [{author: {$ne: authUserId}, authorNativeLanguage: authorTargetLanguage, targetLanguage: tativeLanguage}],
         };
         const postsCount = await Post.find(query).countDocuments();
         const allPosts = await Post.find(query)

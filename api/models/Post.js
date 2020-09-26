@@ -14,8 +14,8 @@ const postSchema = Schema(
             type: Schema.Types.ObjectId,
             ref: 'User',
         },
-        authNativeLanguage: String,
-        authTargetLanguage: String,
+        authorNativeLanguage: String,
+        authorTargetLanguage: String,
         likes: [
             {
                 type: Schema.Types.ObjectId,
