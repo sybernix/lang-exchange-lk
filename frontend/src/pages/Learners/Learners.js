@@ -70,7 +70,7 @@ const Learners = () => {
             <Head title="Find language partners"/>
             <Filters>
                 <Spacing bottom="sm">
-                    <H3>Search learners by:</H3>
+                    <H3>Filter learners by</H3>
                 </Spacing>
                 <Select
                     type="text"

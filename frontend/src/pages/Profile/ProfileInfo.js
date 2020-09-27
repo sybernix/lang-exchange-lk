@@ -165,10 +165,10 @@ const ProfileInfo = ({ user }) => {
         <Info border="true">
           <List>
             <b>{user.followers.length} </b> followers
-                    </List>
+          </List>
           <List top="0.5em">
             <b>{user.following.length} </b> following
-                    </List>
+          </List>
         </Info>
         <Info border="true">
           <List>
