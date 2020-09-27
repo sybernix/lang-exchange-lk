@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 import styled from 'styled-components';
 
 import {Container, Spacing} from 'components/Layout';
@@ -53,11 +53,22 @@ const LearnerContainer = styled.div`
  */
 const Learners = () => {
     const [{auth}] = useStore();
-    const variables = {
+    const [variables, setVariables] = useState({
         userId: auth.user.id,
         skip: 0,
         limit: LEARNER_PAGE_USERS_LIMIT,
+        city: '',
+    });
+
+    const handleChange = e => {
+        const {name, value} = e.target;
+        setVariables({...variables, [name]: value});
     };
+    // const variables = {
+    //     userId: auth.user.id,
+    //     skip: 0,
+    //     limit: LEARNER_PAGE_USERS_LIMIT,
+    // };
 
     return (
         <Root maxWidth="md">
@@ -70,8 +81,8 @@ const Learners = () => {
                     type="text"
                     name="city"
                     // defaultValue={data.getUser.city}
-                    // values={city}
-                    // onChange={handleChange}
+                    values={city}
+                    onChange={handleChange}
                     borderColor="white"
                 >
                     {
