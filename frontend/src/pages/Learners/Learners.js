@@ -1,7 +1,7 @@
 import React, {Fragment, useState} from 'react';
 import styled from 'styled-components';
 
-import {Container, Spacing} from 'components/Layout';
+import {Container} from 'components/Layout';
 import Skeleton from 'components/Skeleton';
 import {Loading} from 'components/Loading';
 import Empty from 'components/Empty';
@@ -28,16 +28,27 @@ const Root = styled(Container)`
   }
 `;
 
-const Filters = styled(Container)`
-  /* margin-top: ${p => p.theme.spacing.sm}; */
+const FilterContainer = styled(Container)`
   margin-bottom: ${p => p.theme.spacing.lg};
-  max-width: 15em;
+  /* max-width: 15em; */
   margin-left: 0;
+`;
 
-  /* @media (min-width: ${p => p.theme.screen.lg}) {
-    margin-left: ${p => p.theme.spacing.lg};
-    padding: 0;
-  } */
+const FilterBase = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap:  wrap;
+  font-size: ${p => p.theme.font.size.xs};
+  color: ${p => p.theme.colors.grey[600]};
+`;
+
+const Filter = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: ${p => p.theme.spacing.sm}
+  /* border-right: 1px ${p => p.theme.colors.grey[400]} ${p => p.border && 'solid'}; */
+  margin-top: ${p => p.theme.spacing.sm};
 `;
 
 const LearnerContainer = styled.div`
@@ -68,29 +79,34 @@ const Learners = () => {
     return (
         <Root maxWidth="md">
             <Head title="Find language partners"/>
-            <Filters>
-                <Spacing bottom="sm">
-                    <H3>Filter learners by</H3>
-                </Spacing>
-                <Select
-                    type="text"
-                    name="city"
-                    // defaultValue={data.getUser.city}
-                    values={variables.city}
-                    onChange={handleChange}
-                    borderColor="white"
-                >
-                    {
-                        ["Ampara", "Anuradhapura", "Badulla", "Batticaloa", "Colombo", "Galle", "Gampaha", 
-                        "Hambantota", "Jaffna", "Kalutara", "Kandy", "Kegalle", "Kilinochchi", "Kurunegala", 
-                        "Mannar", "Matale", "Matara", "Monaragala", "Mullaitivu", "NuwaraEliya", "Polonnaruwa", 
-                        "Puttalam", "Ratnapura", "Trincomalee", "Vavuniya"]
-                        .map((city, index) => {
-                            return <option key={`city${index}`} value={city}>{city}</option>
-                        })
-                    }
-                </Select>
-            </Filters>
+            <FilterContainer>
+                <H3>Filter learners by</H3>
+                <FilterBase>
+                    <Filter>
+                        District: 
+                    </Filter>
+                    <Filter>
+                        <Select
+                        type="text"
+                        name="city"
+                        // defaultValue={data.getUser.city}
+                        values={variables.city}
+                        onChange={handleChange}
+                        borderColor="white"
+                        >
+                            {
+                                ["Ampara", "Anuradhapura", "Badulla", "Batticaloa", "Colombo", "Galle", "Gampaha", 
+                                "Hambantota", "Jaffna", "Kalutara", "Kandy", "Kegalle", "Kilinochchi", "Kurunegala", 
+                                "Mannar", "Matale", "Matara", "Monaragala", "Mullaitivu", "NuwaraEliya", "Polonnaruwa", 
+                                "Puttalam", "Ratnapura", "Trincomalee", "Vavuniya"]
+                                .map((city, index) => {
+                                    return <option key={`city${index}`} value={city}>{city}</option>
+                                })
+                            }
+                        </Select>
+                    </Filter>
+                </FilterBase>
+            </FilterContainer>
             <Query
                 query={GET_POTENTIAL_PARTNERS}
                 variables={variables}
