@@ -259,9 +259,17 @@ const Query = {
         const currentUser = await User.find(queryToFindLangInfo);
 
         // Find users that user is not following
-        const query = {
-            $and: [{_id: {$ne: userId}}, {_id: {$nin: userFollowing}}, {targetLanguage: currentUser["0"].nativeLanguage}, {nativeLanguage: currentUser["0"].targetLanguage}, {city: city}],
-        };
+        let query;
+        if (city) {
+            query = {
+                $and: [{_id: {$ne: userId}}, {_id: {$nin: userFollowing}}, {targetLanguage: currentUser["0"].nativeLanguage}, {nativeLanguage: currentUser["0"].targetLanguage}, {city: city}],
+            };
+        } else {
+            query = {
+                $and: [{_id: {$ne: userId}}, {_id: {$nin: userFollowing}}, {targetLanguage: currentUser["0"].nativeLanguage}, {nativeLanguage: currentUser["0"].targetLanguage}],
+            };
+        }
+        
         const count = await User.where(query).countDocuments();
         const users = await User.find(query)
             .populate('followers')
