@@ -31,11 +31,13 @@ const Root = styled(Container)`
 const Filters = styled(Container)`
   /* margin-top: ${p => p.theme.spacing.sm}; */
   margin-bottom: ${p => p.theme.spacing.lg};
+  max-width: 15em;
+  margin-left: 0;
 
-  @media (min-width: ${p => p.theme.screen.lg}) {
+  /* @media (min-width: ${p => p.theme.screen.lg}) {
     margin-left: ${p => p.theme.spacing.lg};
     padding: 0;
-  }
+  } */
 `;
 
 const LearnerContainer = styled.div`
