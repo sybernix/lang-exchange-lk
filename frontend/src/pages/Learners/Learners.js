@@ -81,7 +81,7 @@ const Learners = () => {
                     type="text"
                     name="city"
                     // defaultValue={data.getUser.city}
-                    values={city}
+                    values={variables.city}
                     onChange={handleChange}
                     borderColor="white"
                 >
