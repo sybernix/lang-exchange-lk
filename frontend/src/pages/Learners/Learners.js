@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import styled from 'styled-components';
 
-import {Container} from 'components/Layout';
+import {Container, Spacing} from 'components/Layout';
 import Skeleton from 'components/Skeleton';
 import {Loading} from 'components/Loading';
 import Empty from 'components/Empty';
@@ -63,7 +63,9 @@ const Learners = () => {
         <Root maxWidth="md">
             <Head title="Find language partners"/>
             <Filters>
-                <H3>Search learners by:</H3>
+                <Spacing bottom="sm">
+                    <H3>Search learners by:</H3>
+                </Spacing>
                 <Select
                     type="text"
                     name="city"
