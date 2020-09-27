@@ -64,11 +64,6 @@ const Learners = () => {
         const {name, value} = e.target;
         setVariables({...variables, [name]: value});
     };
-    // const variables = {
-    //     userId: auth.user.id,
-    //     skip: 0,
-    //     limit: LEARNER_PAGE_USERS_LIMIT,
-    // };
 
     return (
         <Root maxWidth="md">
@@ -90,8 +85,8 @@ const Learners = () => {
                         "Hambantota", "Jaffna", "Kalutara", "Kandy", "Kegalle", "Kilinochchi", "Kurunegala", 
                         "Mannar", "Matale", "Matara", "Monaragala", "Mullaitivu", "NuwaraEliya", "Polonnaruwa", 
                         "Puttalam", "Ratnapura", "Trincomalee", "Vavuniya"]
-                        .map((year, index) => {
-                            return <option key={`year${index}`} value={year}>{year}</option>
+                        .map((city, index) => {
+                            return <option key={`city${index}`} value={city}>{city}</option>
                         })
                     }
                 </Select>
