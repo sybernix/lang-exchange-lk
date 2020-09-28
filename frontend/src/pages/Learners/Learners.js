@@ -106,18 +106,21 @@ const Learners = () => {
                         </Select>
                     </Filter>
                     <Filter>
-                    <Select
-                        type="text"
-                        name="sex"
-                        // defaultValue={data.getUser.sex}
-                        // values={sex}
-                        onChange={handleChange}
-                        borderColor="white"
-                    >
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
-                    </Select>
+                        Sex:
+                    </Filter>
+                    <Filter>
+                        <Select
+                            type="text"
+                            name="sex"
+                            // defaultValue={data.getUser.sex}
+                            // values={sex}
+                            onChange={handleChange}
+                            borderColor="white"
+                        >
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </Select>
                     </Filter>
                 </FilterBase>
             </FilterContainer>
