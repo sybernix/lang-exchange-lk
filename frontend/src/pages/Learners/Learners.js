@@ -69,6 +69,7 @@ const Learners = () => {
         skip: 0,
         limit: LEARNER_PAGE_USERS_LIMIT,
         city: '',
+        sex: '',
     });
 
     const handleChange = e => {
@@ -113,7 +114,7 @@ const Learners = () => {
                             type="text"
                             name="sex"
                             // defaultValue={data.getUser.sex}
-                            // values={sex}
+                            values={variables.sex}
                             onChange={handleChange}
                             borderColor="white"
                         >
