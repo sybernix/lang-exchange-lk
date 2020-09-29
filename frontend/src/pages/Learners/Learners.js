@@ -124,21 +124,21 @@ const Learners = () => {
                         </Select>
                     </Filter>
                     <Filter>
-                        <Select2
-                                                                type="text"
-                                                                name="age"
-                                                                defaultValue={data.getUser.age}
-                                                                values={age}
-                                                                onChange={handleChange}
-                                                                borderColor="white"
-                                                            >
-                                                                {
-                                                                    Array.from(new Array(100),( val, index) => index).reverse()
-                                                                    .map((year, index) => {
-                                                                        return <option key={`year${index}`} value={year}>{year}</option>
-                                                                    })
-                                                                }
-                                                            </Select2>
+                            <Select2
+                                type="text"
+                                name="age"
+                                defaultValue={data.getUser.age}
+                                values={age}
+                                onChange={handleChange}
+                                borderColor="white"
+                            >
+                                {
+                                    Array.from(new Array(100),( val, index) => index).reverse()
+                                    .map((year, index) => {
+                                        return <option key={`year${index}`} value={year}>{year}</option>
+                                    })
+                                }
+                            </Select2>
                     </Filter>
                 </FilterBase>
             </FilterContainer>
