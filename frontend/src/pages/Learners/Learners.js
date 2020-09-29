@@ -124,11 +124,11 @@ const Learners = () => {
                         </Select>
                     </Filter>
                     <Filter>
-                            <Select2
+                            <Select
                                 type="text"
                                 name="age"
-                                defaultValue={data.getUser.age}
-                                values={age}
+                                // defaultValue={data.getUser.age}
+                                // values={age}
                                 onChange={handleChange}
                                 borderColor="white"
                             >
@@ -138,7 +138,7 @@ const Learners = () => {
                                         return <option key={`year${index}`} value={year}>{year}</option>
                                     })
                                 }
-                            </Select2>
+                            </Select>
                     </Filter>
                 </FilterBase>
             </FilterContainer>
