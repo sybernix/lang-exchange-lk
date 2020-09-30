@@ -124,6 +124,9 @@ const Learners = () => {
                         </Select>
                     </Filter>
                     <Filter>
+                        Age:
+                    </Filter>
+                    <Filter>
                             <Select
                                 type="text"
                                 name="age"
