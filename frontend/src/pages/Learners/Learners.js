@@ -70,6 +70,7 @@ const Learners = () => {
         limit: LEARNER_PAGE_USERS_LIMIT,
         city: '',
         sex: '',
+        age: 0
     });
 
     const handleChange = e => {
