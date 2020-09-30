@@ -132,7 +132,7 @@ const Learners = () => {
                                 type="text"
                                 name="age"
                                 // defaultValue={data.getUser.age}
-                                // values={age}
+                                values={variables.age}
                                 onChange={handleChange}
                                 borderColor="white"
                             >
