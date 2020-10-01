@@ -96,16 +96,17 @@ export const GET_FOLLOWED_POSTS = gql`
 `;
 
 /**
- * Gets all available posts
+ * Gets all available posts of potential partners
  */
-export const GET_POSTS = gql`
-  query($authUserId: ID!, $skip: Int, $limit: Int) {
-    getPosts(authUserId: $authUserId, skip: $skip, limit: $limit) {
+export const GET_EXPLORE_POSTS = gql`
+  query($authUserId: ID!, $targetLanguage: String!, $nativeLanguage: String! $skip: Int, $limit: Int) {
+    getExplorePosts(authUserId: $authUserId, nativeLanguage: $nativeLanguage, targetLanguage: $targetLanguage, skip: $skip, limit: $limit) {
       count
       posts {
         id
         title
         image
+        createdAt
         ${postAuthorPayload}
         ${postCommentsPayload}
         ${postLikesPayload}

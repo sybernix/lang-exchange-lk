@@ -7,7 +7,7 @@ import {LikeIcon} from 'components/icons';
 import {Spacing} from './Layout';
 import {Button} from './Form';
 
-import {GET_FOLLOWED_POSTS, GET_POSTS} from 'graphql/post';
+import {GET_FOLLOWED_POSTS, GET_EXPLORE_POSTS} from 'graphql/post';
 import {GET_AUTH_USER} from 'graphql/user';
 import {CREATE_LIKE, DELETE_LIKE} from 'graphql/like';
 
@@ -70,7 +70,7 @@ const Like = ({postId, user, likes, withText, fullWidth}) => {
             variables={{input: {...options[operation].variables}}}
             refetchQueries={() => [
                 {query: GET_AUTH_USER},
-                {query: GET_POSTS, variables: {authUserId: auth.user.id}},
+                {query: GET_EXPLORE_POSTS, variables: {authUserId: auth.user.id}},
                 {query: GET_FOLLOWED_POSTS, variables: {userId: auth.user.id}},
             ]}
         >

@@ -13,6 +13,8 @@ const PostSchema = gql`
     image: File
     imagePublicId: String
     author: User!
+    authorNativeLanguage: String
+    authorTargetLanguage: String
     likes: [Like]
     comments: [Comment]
     createdAt: String
@@ -27,6 +29,8 @@ const PostSchema = gql`
     image: Upload
     imagePublicId: String
     authorId: ID!
+    authorNativeLanguage: String
+    authorTargetLanguage: String
   }
 
   input DeletePostInput {
@@ -48,6 +52,8 @@ const PostSchema = gql`
     image: String
     imagePublicId: String
     author: UserPayload!
+    authorNativeLanguage: String
+    authorTargetLanguage: String
     likes: [Like]
     comments: [CommentPayload]
     createdAt: String
@@ -69,8 +75,8 @@ const PostSchema = gql`
     # Gets posts from followed users
     getFollowedPosts(userId: String!, skip: Int, limit: Int): PostsPayload
 
-    # Gets all posts
-    getPosts(authUserId: ID!, skip: Int, limit: Int): PostsPayload
+    # Gets all posts of potential language partners
+    getExplorePosts(authUserId: ID!, nativeLanguage: String!, targetLanguage: String!, skip: Int, limit: Int): PostsPayload
 
     # Gets post by id
     getPost(id: ID!): PostPayload

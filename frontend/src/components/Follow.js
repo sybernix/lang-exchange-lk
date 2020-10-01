@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Mutation} from 'react-apollo';
 import styled from 'styled-components';
 
-import {GET_FOLLOWED_POSTS, GET_POSTS} from 'graphql/post';
+import {GET_FOLLOWED_POSTS, GET_EXPLORE_POSTS} from 'graphql/post';
 import {GET_AUTH_USER, GET_USER} from 'graphql/user';
 import {CREATE_FOLLOW, DELETE_FOLLOW} from 'graphql/follow';
 
@@ -77,7 +77,7 @@ const Follow = ({user}) => {
             variables={{input: {...options[operation].variables}}}
             refetchQueries={() => [
                 {query: GET_AUTH_USER},
-                {query: GET_POSTS, variables: {authUserId: auth.user.id}},
+                {query: GET_EXPLORE_POSTS, variables: {authUserId: auth.user.id}},
                 {
                     query: GET_FOLLOWED_POSTS,
                     variables: {

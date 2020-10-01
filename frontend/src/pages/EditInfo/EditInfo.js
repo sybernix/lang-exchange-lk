@@ -247,8 +247,8 @@ const EditInfo = ({history}) => {
                                                                     "Hambantota", "Jaffna", "Kalutara", "Kandy", "Kegalle", "Kilinochchi", "Kurunegala", 
                                                                     "Mannar", "Matale", "Matara", "Monaragala", "Mullaitivu", "NuwaraEliya", "Polonnaruwa", 
                                                                     "Puttalam", "Ratnapura", "Trincomalee", "Vavuniya"]
-                                                                    .map((year, index) => {
-                                                                        return <option key={`year${index}`} value={year}>{year}</option>
+                                                                    .map((city, index) => {
+                                                                        return <option key={`city${index}`} value={city}>{city}</option>
                                                                     })
                                                                 }
                                                             </Select2>

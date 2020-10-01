@@ -91,6 +91,8 @@ export const GET_AUTH_USER = gql`
   query {
     getAuthUser {
       ${userPayload}
+      nativeLanguage
+      targetLanguage
       newNotifications {
         id
         createdAt
@@ -205,8 +207,8 @@ export const GET_USERS = gql`
  * Gets potential language partners
  */
 export const GET_POTENTIAL_PARTNERS = gql`
-  query($userId: String!, $skip: Int, $limit: Int) {
-    getPotentialPartners(userId: $userId, skip: $skip, limit: $limit) {
+  query($userId: String!, $city: String, $skip: Int, $limit: Int) {
+    getPotentialPartners(userId: $userId, city: $city, skip: $skip, limit: $limit) {
       count
       users {
         id

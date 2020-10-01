@@ -2,15 +2,18 @@ import {uploadToCloudinary, deleteFromCloudinary} from '../utils/cloudinary';
 
 const Query = {
     /**
-     * Gets all posts
+     * Gets all posts of potential language partners
      *
      * @param {string} authUserId
      * @param {int} skip how many posts to skip
      * @param {int} limit how many posts to limit
      */
-    getPosts: async (root, {authUserId, skip, limit}, {Post}) => {
+    getExplorePosts: async (root, {authUserId, nativeLanguage, targetLanguage, skip, limit}, {Post}) => {
+        // const query = {
+        //     $and: [{image: {$ne: null}}, {author: {$ne: authUserId}}],
+        // };
         const query = {
-            $and: [{image: {$ne: null}}, {author: {$ne: authUserId}}],
+            $and: [{author: {$ne: authUserId}, authorNativeLanguage: targetLanguage, authorTargetLanguage: nativeLanguage}],
         };
         const postsCount = await Post.find(query).countDocuments();
         const allPosts = await Post.find(query)
@@ -134,7 +137,7 @@ const Mutation = {
      */
     createPost: async (
         root,
-        {input: {title, image, authorId}},
+        {input: {title, image, authorId, authorNativeLanguage, authorTargetLanguage}},
         {Post, User}
     ) => {
         if (!title && !image) {
@@ -162,6 +165,8 @@ const Mutation = {
             image: imageUrl,
             imagePublicId,
             author: authorId,
+            authorNativeLanguage: authorNativeLanguage,
+            authorTargetLanguage: authorTargetLanguage
         }).save();
 
         await User.findOneAndUpdate(
