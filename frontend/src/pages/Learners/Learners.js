@@ -91,7 +91,6 @@ const Learners = () => {
                         <Select
                         type="text"
                         name="city"
-                        // defaultValue={data.getUser.city}
                         values={variables.city}
                         onChange={handleChange}
                         borderColor="white"
@@ -114,7 +113,6 @@ const Learners = () => {
                         <Select
                             type="text"
                             name="sex"
-                            // defaultValue={data.getUser.sex}
                             values={variables.sex}
                             onChange={handleChange}
                             borderColor="white"
@@ -131,7 +129,6 @@ const Learners = () => {
                             <Select
                                 type="text"
                                 name="age"
-                                // defaultValue={data.getUser.age}
                                 values={variables.age}
                                 onChange={handleChange}
                                 borderColor="white"
