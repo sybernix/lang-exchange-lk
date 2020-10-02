@@ -1,4 +1,5 @@
 import React, {Fragment, useState} from 'react';
+import {Query} from 'react-apollo';
 import styled from 'styled-components';
 
 import {Container} from 'components/Layout';
@@ -10,14 +11,10 @@ import Head from 'components/Head';
 import {Select} from 'components/Form';
 import {H3} from 'components/Text';
 import LearnerCard from './LearnerCard';
-
-import {GET_POTENTIAL_PARTNERS} from 'graphql/user';
-
-import {LEARNER_PAGE_USERS_LIMIT} from 'constants/DataLimit';
-
 import {useStore} from 'store';
 
-import {Query} from 'react-apollo';
+import {GET_POTENTIAL_PARTNERS} from 'graphql/user';
+import {LEARNER_PAGE_USERS_LIMIT} from 'constants/DataLimit';
 
 const Root = styled(Container)`
   margin-top: ${p => p.theme.spacing.lg};
@@ -47,7 +44,6 @@ const Filter = styled.div`
   flex-direction: column;
   justify-content: center;
   margin-right: ${p => p.theme.spacing.sm}
-  /* border-right: 1px ${p => p.theme.colors.grey[400]} ${p => p.border && 'solid'}; */
   margin-top: ${p => p.theme.spacing.sm};
 `;
 
