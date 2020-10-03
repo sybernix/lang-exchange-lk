@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { generatePath, Link, NavLink } from 'react-router-dom';
 import { useSubscription } from '@apollo/react-hooks';
 import { IS_USER_ONLINE_SUBSCRIPTION } from 'graphql/user';
+import { useStore } from 'store';
+import * as Routes from 'routes';
 
 import { H1 } from 'components/Text';
 import { Spacing } from 'components/Layout';
@@ -12,10 +14,6 @@ import { PencilIcon, LocationIcon, MaleIcon, FemaleIcon } from 'components/icons
 
 import ProfileImageUpload from './ProfileImageUpload';
 import ProfileCoverUpload from './ProfileCoverUpload';
-
-import { useStore } from 'store';
-
-import * as Routes from 'routes';
 import ProfileIntroduction from "./ProfileIntroduction";
 
 
