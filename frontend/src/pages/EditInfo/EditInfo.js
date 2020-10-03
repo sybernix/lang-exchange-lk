@@ -174,7 +174,6 @@ const EditInfo = ({history}) => {
                                                             <option value="sinhala">Sinhala</option>
                                                             <option value="tamil">Tamil</option>
                                                         </Select2>
-
                                                         <Spacing top="xs" bottom="xs">
                                                             <Label>Target Language:</Label>
                                                             <Select2
@@ -200,7 +199,6 @@ const EditInfo = ({history}) => {
                                                             placeholder="Introduction About Yourself"
                                                             borderColor="white"
                                                         />
-
                                                         <Spacing top="xs" bottom="xs">
                                                             <Label>Age:</Label>
                                                             <Select2
@@ -253,9 +251,7 @@ const EditInfo = ({history}) => {
                                                                 }
                                                             </Select2>
                                                         </Spacing>
-
                                                         {/* {renderErrors(apiError)} */}
-
                                                         <Spacing top="sm"/>
                                                         <Button size="large" disabled={loading}>
                                                             Update
