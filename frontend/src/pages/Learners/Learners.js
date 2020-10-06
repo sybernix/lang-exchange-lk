@@ -130,9 +130,9 @@ const Learners = () => {
                                 borderColor="white"
                             >
                                 {
-                                    Array.from(new Array(100),( val, index) => index).reverse()
+                                    Array.from(new Array(10),( val, index) => index).reverse()
                                     .map((year, index) => {
-                                        return <option key={`year${index}`} value={year}>{year}</option>
+                                        return <option key={`year${index}`} value={year}>{(year * 10) + '-' + ((year + 1) * 10)}</option>
                                     })
                                 }
                             </Select>
