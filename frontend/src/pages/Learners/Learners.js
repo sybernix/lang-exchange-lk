@@ -27,7 +27,6 @@ const Root = styled(Container)`
 
 const FilterContainer = styled(Container)`
   margin-bottom: ${p => p.theme.spacing.lg};
-  /* max-width: 15em; */
   margin-left: 0;
 `;
 
@@ -43,8 +42,20 @@ const Filter = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-right: ${p => p.theme.spacing.sm}
+  margin-right: ${p => p.theme.spacing.sm};
   margin-top: ${p => p.theme.spacing.sm};
+  &:nth-child(n + 4) {
+    order: 2;
+  }
+`;
+
+const Select2 = styled(Select)`
+  display:inline-block;
+  float:left;
+`;
+const Niru = styled.div`
+  display:inline-block;
+  float:left;
 `;
 
 const LearnerContainer = styled.div`
@@ -81,7 +92,7 @@ const Learners = () => {
                 <H3>Filter learners by</H3>
                 <FilterBase>
                     <Filter>
-                        District: 
+                        District:
                     </Filter>
                     <Filter>
                         <Select
