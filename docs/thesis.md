@@ -1160,6 +1160,223 @@ limit: Int
   </tr>
 </table>
 
+The following are the GraphQL mutations available in the backend API.
+
+
+<table>
+  <tr>
+   <td><strong>Mutation</strong>
+   </td>
+   <td><strong>Inputs</strong>
+   </td>
+   <td><strong>Outputs</strong>
+   </td>
+   <td><strong>Description</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>signin
+   </td>
+   <td>SignInInput!
+   </td>
+   <td>Token
+   </td>
+   <td>To send a sign in request
+   </td>
+  </tr>
+  <tr>
+   <td>signup
+   </td>
+   <td>SignUpInput!
+   </td>
+   <td>Token
+   </td>
+   <td>Create a new user
+   </td>
+  </tr>
+  <tr>
+   <td>requestPasswordReset
+   </td>
+   <td>RequestPasswordResetInput!
+   </td>
+   <td>SuccessMessage
+   </td>
+   <td>Request to reset the password of a user. A token will be sent to the user’s email address
+   </td>
+  </tr>
+  <tr>
+   <td>addIntroduction
+   </td>
+   <td>addIntroductionInput!
+   </td>
+   <td>SuccessMessage
+   </td>
+   <td>Add introduction text to a user which will show up in the profile page
+   </td>
+  </tr>
+  <tr>
+   <td>resetPassword
+   </td>
+   <td>ResetPasswordInput!
+   </td>
+   <td>Token
+   </td>
+   <td>This resets and returns a new token based on the changed password
+   </td>
+  </tr>
+  <tr>
+   <td>uploadUserPhoto
+   </td>
+   <td>UploadUserPhotoInput!
+   </td>
+   <td>UserPayload
+   </td>
+   <td>This will upload a photo of the user to Cloudinary, which will be displayed for the user’s profile. Both profile picture and cover picture are uploaded through this mutation
+   </td>
+  </tr>
+  <tr>
+   <td>updateAccountInfo
+   </td>
+   <td>UpdateInfoInput!
+   </td>
+   <td>SuccessMessage
+   </td>
+   <td>After creating the account information in sign up this mutation is used to edit the information in edit info page. Additional information are also added to user document
+   </td>
+  </tr>
+  <tr>
+   <td>createPost
+   </td>
+   <td>CreatePostInput!
+   </td>
+   <td>PostPayload
+   </td>
+   <td>Used to add a post by users
+   </td>
+  </tr>
+  <tr>
+   <td>deletePost
+   </td>
+   <td>DeletePostInput!
+   </td>
+   <td>PostPayload
+   </td>
+   <td>Deletes a post
+   </td>
+  </tr>
+  <tr>
+   <td>createMessage
+   </td>
+   <td>CreateMessageInput!
+   </td>
+   <td>MessagePayload
+   </td>
+   <td>Creates a new message and publishes events into MESSAGE_CREATED, and NEW_CONVERSATION subscriptions
+   </td>
+  </tr>
+  <tr>
+   <td>updateMessageSeen
+   </td>
+   <td>UpdateMessageSeenInput!
+   </td>
+   <td>Boolean
+   </td>
+   <td>Updates if the user sees the message
+   </td>
+  </tr>
+  <tr>
+   <td>createFollow
+   </td>
+   <td>CreateFollowInput!
+   </td>
+   <td>Follow
+   </td>
+   <td>Create a new follower to a user
+   </td>
+  </tr>
+  <tr>
+   <td>deleteFollow
+   </td>
+   <td>DeleteFollowInput!
+   </td>
+   <td>Follow
+   </td>
+   <td>Remove a follower to a user
+   </td>
+  </tr>
+  <tr>
+   <td>createLike
+   </td>
+   <td>CreateLikeInput!
+   </td>
+   <td>Like
+   </td>
+   <td>Add a like to a post
+   </td>
+  </tr>
+  <tr>
+   <td>deleteLike
+   </td>
+   <td>DeleteLikeInput!
+   </td>
+   <td>Like
+   </td>
+   <td>Remove a like from a post
+   </td>
+  </tr>
+  <tr>
+   <td>createComment
+   </td>
+   <td>CreateCommentInput!
+   </td>
+   <td>Comment
+   </td>
+   <td>Add a comment to a post
+   </td>
+  </tr>
+  <tr>
+   <td>deleteComment
+   </td>
+   <td>DeleteCommentInput!
+   </td>
+   <td>Comment
+   </td>
+   <td>Delete a comment from a post
+   </td>
+  </tr>
+  <tr>
+   <td>createNotification
+   </td>
+   <td>CreateNotificationInput!
+   </td>
+   <td>Notification
+   </td>
+   <td>Create a notification and publish event into NOTIFICATION_CREATED_OR_DELETED subscription
+   </td>
+  </tr>
+  <tr>
+   <td>deleteNotification
+   </td>
+   <td>DeleteNotificationInput!
+   </td>
+   <td>Notification
+   </td>
+   <td>Delete a notification and publish event into NOTIFICATION_CREATED_OR_DELETED subscription
+   </td>
+  </tr>
+  <tr>
+   <td>updateNotificationSeen
+   </td>
+   <td>UpdateNotificationSeenInput!
+   </td>
+   <td>Boolean
+   </td>
+   <td>Set if a user has seen a notification
+   </td>
+  </tr>
+</table>
+
+
 
 
 
