@@ -1377,6 +1377,65 @@ The following are the GraphQL mutations available in the backend API.
 </table>
 
 
+The following are subscriptions available in our GraphQL API.
+
+
+<table>
+  <tr>
+   <td><strong>Subscription</strong>
+   </td>
+   <td><strong>Inputs</strong>
+   </td>
+   <td><strong>Outputs</strong>
+   </td>
+   <td><strong>Description</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>isUserOnline
+   </td>
+   <td>authUserId: ID!
+<p>
+userId: ID!
+   </td>
+   <td>IsUserOnlinePayload
+   </td>
+   <td>Listen to IS_USER_ONLINE whether a user with userId is online
+   </td>
+  </tr>
+  <tr>
+   <td>messageCreated
+   </td>
+   <td>authUserId: ID!
+<p>
+userId: ID!
+   </td>
+   <td>MessagePayload
+   </td>
+   <td>Listen to MESSAGE_CREATED to check for new messages
+   </td>
+  </tr>
+  <tr>
+   <td>newConversation
+   </td>
+   <td>
+   </td>
+   <td>ConversationsPayload
+   </td>
+   <td>Listen to NEW_CONVERSATION
+   </td>
+  </tr>
+  <tr>
+   <td>notificationCreatedOrDeleted
+   </td>
+   <td>
+   </td>
+   <td>NotificationCreatedOrDeletedPayload
+   </td>
+   <td>Listen to NOTIFICATION_CREATED_OR_DELETED
+   </td>
+  </tr>
+</table>
 
 
 
