@@ -967,7 +967,199 @@ Comment document holds reference to the author of the comment, post on which the
 
 Three types of interactions between the frontend and the backend are possible through the GraphQL API. They are queries, mutations, and subscriptions. Queries are used for data retrieval from the MongoDB database through the backend. Mutations are used to write data to MongoDB. Subscriptions are used to add a listener to events that can occur during the run time. For example, when we visit the page of a potential partner we need to see whether he is online or not. We can do this by adding a listener to isUserOnline event with the ID of the potential partner. If the potential partner is online true will be returned and if he or she is offline false will be returned.
 
-The following is the list of GraphQL queries available in our backend system.
+The following is the list of GraphQL queries available in our backend system. Note that the data types marked with a “!” are mandatory input parameters and others are optional. Refer [Appendix 3] for GraphQl schema which describes schema such as SuccessMessage, UserPayload, etc.
+
+
+
+<table>
+  <tr>
+   <td>Query
+   </td>
+   <td>Inputs
+   </td>
+   <td>Outputs
+   </td>
+   <td>Description
+   </td>
+  </tr>
+  <tr>
+   <td>verifyResetPasswordToken
+   </td>
+   <td>email: String
+<p>
+token: String!
+   </td>
+   <td>SuccessMessage
+   </td>
+   <td>used to verify token during a password reset
+   </td>
+  </tr>
+  <tr>
+   <td>getAuthUser
+   </td>
+   <td>
+   </td>
+   <td>UserPayload
+   </td>
+   <td>Retrieve details of the logged in user
+   </td>
+  </tr>
+  <tr>
+   <td>getUser
+   </td>
+   <td>username: String
+<p>
+id: ID
+   </td>
+   <td>UserPayload
+   </td>
+   <td>Retrieve details of a user given his username or ID.
+   </td>
+  </tr>
+  <tr>
+   <td>getUsers
+   </td>
+   <td>userId: String!
+<p>
+skip: Int
+<p>
+limit: Int
+   </td>
+   <td>UsersPayload
+   </td>
+   <td>Retrieve details of all other users except the user with the input userId
+   </td>
+  </tr>
+  <tr>
+   <td>getPotentialPartners
+   </td>
+   <td>userId: String!
+<p>
+city: String
+<p>
+skip: Int
+<p>
+limit: Int
+   </td>
+   <td>UsersPayload
+   </td>
+   <td>Retrieve details of all users who have nativeLanguage as the target language of userId and target language as the native language of userId
+   </td>
+  </tr>
+  <tr>
+   <td>searchUsers
+   </td>
+   <td>searchQuery: String!
+   </td>
+   <td>[UserPayload]
+   </td>
+   <td>search user with username or full name. Used in the search bar
+   </td>
+  </tr>
+  <tr>
+   <td>suggestLearners
+   </td>
+   <td>userId: String!
+   </td>
+   <td>[UserPayload]
+   </td>
+   <td>Get a randomized list of 6 potential partners. Used in the side bar suggestion list.
+   </td>
+  </tr>
+  <tr>
+   <td>getUserPosts
+   </td>
+   <td>username: String!
+<p>
+skip: Int
+<p>
+limit: Int
+   </td>
+   <td>UserPostsPayload
+   </td>
+   <td>Retrieve list of posts by the user with input username
+   </td>
+  </tr>
+  <tr>
+   <td>getFollowedPosts
+   </td>
+   <td>userId: String!
+<p>
+skip: Int
+<p>
+limit: Int
+   </td>
+   <td>PostsPayload
+   </td>
+   <td>Retrieve list of posts authored by the users who a user with the input userId follows
+   </td>
+  </tr>
+  <tr>
+   <td>getExplorePosts
+   </td>
+   <td>authUserId: ID!
+<p>
+nativeLanguage: String!
+<p>
+targetLanguage: String!
+<p>
+skip: Int
+<p>
+limit: Int
+   </td>
+   <td>PostsPayload
+   </td>
+   <td>Retrieve list of posts by potential language partners, whether the user follows them or not
+   </td>
+  </tr>
+  <tr>
+   <td>getPost
+   </td>
+   <td>id: ID!
+   </td>
+   <td>PostPayload
+   </td>
+   <td>Get a post by ID
+   </td>
+  </tr>
+  <tr>
+   <td>getMessages
+   </td>
+   <td>authUserId: ID!
+<p>
+userId: ID!
+   </td>
+   <td>[MessagePayload]
+   </td>
+   <td>Get messages that were sent by authUserId to userId
+   </td>
+  </tr>
+  <tr>
+   <td>getConversations
+   </td>
+   <td>authUserId: ID!
+   </td>
+   <td>[ConversationsPayload]
+   </td>
+   <td>Retrieve information of users with whom authUserId has conversations and the respective recent messages
+   </td>
+  </tr>
+  <tr>
+   <td>getUserNotifications
+   </td>
+   <td>userId: ID!
+<p>
+skip: Int
+<p>
+limit: Int
+   </td>
+   <td>NotificationsPayload
+   </td>
+   <td>Retrieve notifications that a user with userId should see
+   </td>
+  </tr>
+</table>
+
 
 
 
