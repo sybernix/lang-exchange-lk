@@ -18,6 +18,7 @@ const TranslateSchema = gql`
   extend type Query {
     # Gets user posts by username
     getTranslation(text: String!, fromLang: String, toLang: String!): TranslatePayload
+  }
 `;
 
 export default TranslateSchema;
