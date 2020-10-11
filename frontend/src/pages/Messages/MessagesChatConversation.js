@@ -123,6 +123,8 @@ const MessagesChatConversation = ({
 
     const [messageText, setMessageText] = useState('');
     const [translations, setTranslations] = useState({});
+    const [translationCallCount, setTranslationCallCount] = useState(0);
+
 
     const [createMessage] = useMutation(CREATE_MESSAGE);
 
@@ -160,17 +162,16 @@ const MessagesChatConversation = ({
     };
 
     const translate = message => {
-        // e.preventDefault();
         console.log(message);
         let url = 'https://translation.googleapis.com/language/translate/v2?target=en&key=&q=' + message.message;
-
         fetch(url)
             .then(res => res.json())
             .then((data) => {
                 const object = translations;
                 object[message.id] = data.data.translations[0].translatedText;
                 setTranslations(object);
-                console.log(translations);
+                setTranslationCallCount(translationCallCount + 1);
+                console.log(translations[message.id]);
             })
             .catch(console.log)
     };
@@ -197,7 +198,8 @@ const MessagesChatConversation = ({
 
                             <Message userMessage={isAuthUserReceiver}>
                                 {message.message}
-                                {console.log(message.id)}
+                                <br/>
+                                {translations[message.id]}
                                 <TranslateButton onClick={() => translate(message)}>Translate</TranslateButton>
                             </Message>
 
