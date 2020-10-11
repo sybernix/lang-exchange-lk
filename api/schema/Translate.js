@@ -8,7 +8,7 @@ const TranslateSchema = gql`
   # Return Payloads
   # ---------------------------------------------------------
   type TranslatePayload {
-    translatedText: [PostPayload]!
+    translatedText: String!
     language: String!
   }
 
