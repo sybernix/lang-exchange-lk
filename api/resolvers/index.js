@@ -5,6 +5,7 @@ import followResolver from './follow';
 import commentResolver from './comment';
 import notificationResolver from './notification';
 import message from './message';
+import translate from './translate';
 
 export default [
     userResolver,
@@ -14,4 +15,5 @@ export default [
     commentResolver,
     notificationResolver,
     message,
+    translate
 ];
