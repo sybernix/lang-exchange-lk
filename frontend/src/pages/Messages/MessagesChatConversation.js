@@ -170,7 +170,7 @@ const MessagesChatConversation = ({
         console.log(message);
         let url = 'https://translation.googleapis.com/language/translate/v2' 
                     + '?target=' + translateTarget
-                    + '&key=' 
+                    + '&key=' + process.env.REACT_APP_GOOGLE_API_KEY 
                     + '&q=' + message.message;
         fetch(url)
             .then(res => res.json())
@@ -179,7 +179,6 @@ const MessagesChatConversation = ({
                 object[message.id] = data.data.translations[0].translatedText;
                 setTranslations(object);
                 setTranslationCallCount(translationCallCount + 1);
-                console.log(authUser);
             })
             .catch(console.log)
     };
