@@ -104,6 +104,11 @@ const SendButton = styled(Button)`
   align-self: center;
 `;
 
+const TranslateButton = styled(Button)`
+  margin-left: ${p => p.theme.spacing.sm};
+  align-self: center;
+`;
+
 /**
  * Component that renders messages conversations UI
  */
@@ -153,6 +158,18 @@ const MessagesChatConversation = ({
         });
     };
 
+    const translate = e => {
+        e.preventDefault();
+
+        fetch(`https://translation.googleapis.com/language/translate/v2?target=fr&q=hello&key=`)
+            .then(res => res.json())
+            .then((data) => {
+                // this.setState({ contacts: data })
+                console.log(data);
+            })
+            .catch(console.log)
+    };
+
     const onEnterPress = e => {
         if (e.keyCode === 13 && e.shiftKey === false) {
             sendMessage(e);
@@ -175,6 +192,7 @@ const MessagesChatConversation = ({
 
                             <Message userMessage={isAuthUserReceiver}>
                                 {message.message}
+                                
                             </Message>
 
                             <MessageDate userMessage={isAuthUserReceiver}>
