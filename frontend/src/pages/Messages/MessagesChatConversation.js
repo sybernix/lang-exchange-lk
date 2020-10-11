@@ -120,13 +120,18 @@ const MessagesChatConversation = ({
                                       match,
                                   }) => {
     const bottomRef = useRef(null);
-
     const [messageText, setMessageText] = useState('');
     const [translations, setTranslations] = useState({});
     const [translationCallCount, setTranslationCallCount] = useState(0);
-
-
     const [createMessage] = useMutation(CREATE_MESSAGE);
+    let translateTarget;
+    if (authUser.nativeLanguage === 'tamil') {
+        translateTarget = 'ta';
+    } else if (authUser.nativeLanguage === 'sinhala') {
+        translateTarget = 'si';
+    } else if (authUser.nativeLanguage === 'english') {
+        translateTarget = 'en';
+    }
 
     useEffect(() => {
         if (bottomRef.current) {
@@ -163,7 +168,10 @@ const MessagesChatConversation = ({
 
     const translate = message => {
         console.log(message);
-        let url = 'https://translation.googleapis.com/language/translate/v2?target=en&key=&q=' + message.message;
+        let url = 'https://translation.googleapis.com/language/translate/v2' 
+                    + '?target=' + translateTarget
+                    + '&key=' 
+                    + '&q=' + message.message;
         fetch(url)
             .then(res => res.json())
             .then((data) => {
@@ -171,7 +179,7 @@ const MessagesChatConversation = ({
                 object[message.id] = data.data.translations[0].translatedText;
                 setTranslations(object);
                 setTranslationCallCount(translationCallCount + 1);
-                console.log(translations[message.id]);
+                console.log(authUser);
             })
             .catch(console.log)
     };
