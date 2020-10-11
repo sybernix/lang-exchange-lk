@@ -159,9 +159,11 @@ const MessagesChatConversation = ({
     };
 
     const translate = e => {
-        e.preventDefault();
+        // e.preventDefault();
+        console.log(e);
+        let url = 'https://translation.googleapis.com/language/translate/v2?target=fr&key=&q=' + e;
 
-        fetch(`https://translation.googleapis.com/language/translate/v2?target=fr&q=hello&key=`)
+        fetch(url)
             .then(res => res.json())
             .then((data) => {
                 // this.setState({ contacts: data })
@@ -192,7 +194,7 @@ const MessagesChatConversation = ({
 
                             <Message userMessage={isAuthUserReceiver}>
                                 {message.message}
-                                
+                                <TranslateButton onClick={() => translate('my message')}>Translate</TranslateButton>
                             </Message>
 
                             <MessageDate userMessage={isAuthUserReceiver}>

@@ -17,8 +17,8 @@ const Query = {
           
             res.on('data', d => {
                 process.stdout.write(d)
-                console.log(d);
-                return {translatedText: d, language: 'dummy'};
+                console.log(JSON.parse(d).data.translations[0].translatedText);
+                return {translatedText: JSON.stringify(JSON.parse(d).data.translations[0].translatedText), language: 'dummy'};
             })
           })
           
