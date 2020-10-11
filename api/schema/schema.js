@@ -7,6 +7,7 @@ import LikeSchema from './Like';
 import FollowSchema from './Follow';
 import CommentSchema from './Comment';
 import NotificationSchema from './Notification';
+import TranslateSchema from './Translate';
 
 const schema = gql`
   type Query {
@@ -28,6 +29,7 @@ const schema = gql`
   ${LikeSchema}
   ${CommentSchema}
   ${NotificationSchema}
+  ${TranslateSchema}
 `;
 
 export default schema;
