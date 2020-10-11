@@ -9,18 +9,16 @@ const Query = {
      * @param {string} toLang the language to which the text should be translated
      */
     getTranslation: async (root, {text, fromLang, toLang}, {Post}) => {
-        const options = {
-            hostname: 'whatever.com',
-            port: 443,
-            path: '/todos',
-            method: 'GET'
-          }
+        const options = new URL('https://translation.googleapis.com/language/translate/v2?target=fr&q=hello&key=' + process.env.GOOGLE_API_KEY);
           
           const req = https.request(options, res => {
             console.log(`statusCode: ${res.statusCode}`)
+            console.log(`res: ${res}`)
           
             res.on('data', d => {
-              process.stdout.write(d)
+                process.stdout.write(d)
+                console.log(d);
+                return {translatedText: d, language: 'dummy'};
             })
           })
           
@@ -29,7 +27,7 @@ const Query = {
           })
           
           req.end()
-        return {posts: allPosts, count: postsCount};
+        // return {translatedText: 'fail', language: 'fail'};
     }
 };
 
