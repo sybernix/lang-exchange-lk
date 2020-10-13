@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 12.936 seconds.
+Conversion time: 12.308 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Tue Oct 13 2020 10:35:38 GMT-0700 (PDT)
+* Tue Oct 13 2020 10:57:38 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -1527,10 +1527,12 @@ The second cycle was focused on optimizing the features to suite the needs of a 
 *   Explore page
 *   Filter learners using city, age, sex
 
+The following new queries and mutations were added to GraphQL API.
+
+
 <table>
   <tr>
-   <td>
-<strong>Query</strong>
+   <td><strong>Query</strong>
    </td>
    <td><strong>Inputs</strong>
    </td>
@@ -1633,6 +1635,8 @@ limit: Int
 </table>
 
 
+The frontend was extended with two new pages shown below in yellow squares.
+
 
 
 <p id="gdcalert14" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image14.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert15">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
@@ -1644,7 +1648,39 @@ limit: Int
 
 #### 3.1.3 Third Cycle
 
-Third cycle of development was performed to add message translation feature.
+Third cycle of development was performed to add message translation feature. Google Translate API was chosen for this feature since it is the most accurate [20] and it was the only one that had support for Sinhala language translation. In order to use Google Translate API, we first need to create a Google Cloud user account and create a project. After providing billing details we need to enable Translate API for the aforementioned project and then generate an GOOGLE_API_KEY that we use authenticate our REST API calls.
+
+You can send your request in the following format,
+
+[https://translation.googleapis.com/language/translate/v2?key=GOOGLE_API_KEY&q=cheese&target=si](https://translation.googleapis.com/language/translate/v2?key=GOOGLE_API_KEY&q=cheese&target=si)
+
+q - the text that needs to be translated
+
+target - the language to which the text should be translated
+
+We will get a response as follows,
+
+{
+
+  "data": {
+
+    "translations": [
+
+      {
+
+        "translatedText": "චීස්",
+
+        "detectedSourceLanguage": "en"
+
+      }
+
+    ]
+
+  }
+
+}
+
+This calls were set up from the frontend without going through the backend. A translate button was added to every message box which can be clicked to translate the message to the user’s native language.
 
 
 #### 3.1.4 Fourth Cycle
@@ -1747,6 +1783,8 @@ and non-native users of English. California Linguistic Notes Volume XXVI No. 1
 [18] GraphQL: A data query language [Online]. Available at: https://engineering.fb.com/core-data/graphql-a-data-query-language/ (Accessed: 6 October, 2020)
 
 [19] The Apollo Data Graph Platform [Online]. Available at: https://www.apollographql.com/ (Accessed: 6 October, 2020)
+
+[20] Purkayashta, S. (2019) Top 10 Best Translation APIs in 2020 [Online]. Available at: https://blog.api.rakuten.net/top-10-best-translation-apis-google-translate-microsoft-translator-and-others (Accessed: 13 October, 2020)
 
 
 ## Appendices
