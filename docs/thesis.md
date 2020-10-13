@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 17.433 seconds.
+Conversion time: 12.936 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Tue Oct 13 2020 10:25:54 GMT-0700 (PDT)
+* Tue Oct 13 2020 10:35:38 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -1158,22 +1158,6 @@ limit: Int
    </td>
   </tr>
   <tr>
-   <td>getPotentialPartners
-   </td>
-   <td>userId: String!
-<p>
-city: String
-<p>
-skip: Int
-<p>
-limit: Int
-   </td>
-   <td>UsersPayload
-   </td>
-   <td>Retrieve details of all users who have nativeLanguage as the target language of userId and target language as the native language of userId
-   </td>
-  </tr>
-  <tr>
    <td>searchUsers
    </td>
    <td>searchQuery: String!
@@ -1181,16 +1165,6 @@ limit: Int
    <td>[UserPayload]
    </td>
    <td>search user with username or full name. Used in the search bar
-   </td>
-  </tr>
-  <tr>
-   <td>suggestLearners
-   </td>
-   <td>userId: String!
-   </td>
-   <td>[UserPayload]
-   </td>
-   <td>Get a randomized list of 6 potential partners. Used in the side bar suggestion list.
    </td>
   </tr>
   <tr>
@@ -1219,24 +1193,6 @@ limit: Int
    <td>PostsPayload
    </td>
    <td>Retrieve list of posts authored by the users who a user with the input userId follows
-   </td>
-  </tr>
-  <tr>
-   <td>getExplorePosts
-   </td>
-   <td>authUserId: ID!
-<p>
-nativeLanguage: String!
-<p>
-targetLanguage: String!
-<p>
-skip: Int
-<p>
-limit: Int
-   </td>
-   <td>PostsPayload
-   </td>
-   <td>Retrieve list of posts by potential language partners, whether the user follows them or not
    </td>
   </tr>
   <tr>
@@ -1333,16 +1289,6 @@ The following are the GraphQL mutations available in the backend API.
    </td>
   </tr>
   <tr>
-   <td>addIntroduction
-   </td>
-   <td>addIntroductionInput!
-   </td>
-   <td>SuccessMessage
-   </td>
-   <td>Add introduction text to a user which will show up in the profile page
-   </td>
-  </tr>
-  <tr>
    <td>resetPassword
    </td>
    <td>ResetPasswordInput!
@@ -1360,16 +1306,6 @@ The following are the GraphQL mutations available in the backend API.
    <td>UserPayload
    </td>
    <td>This will upload a photo of the user to Cloudinary, which will be displayed for the user’s profile. Both profile picture and cover picture are uploaded through this mutation
-   </td>
-  </tr>
-  <tr>
-   <td>updateAccountInfo
-   </td>
-   <td>UpdateInfoInput!
-   </td>
-   <td>SuccessMessage
-   </td>
-   <td>After creating the account information in sign up this mutation is used to edit the information in edit info page. Additional information are also added to user document
    </td>
   </tr>
   <tr>
@@ -1590,6 +1526,112 @@ The second cycle was focused on optimizing the features to suite the needs of a 
 *   Show only users with matching language preferences in Learners page
 *   Explore page
 *   Filter learners using city, age, sex
+
+<table>
+  <tr>
+   <td>
+<strong>Query</strong>
+   </td>
+   <td><strong>Inputs</strong>
+   </td>
+   <td><strong>Outputs</strong>
+   </td>
+   <td><strong>Description</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>verifyResetPasswordToken
+   </td>
+   <td>email: String
+<p>
+token: String!
+   </td>
+   <td>SuccessMessage
+   </td>
+   <td>used to verify token during a password reset
+   </td>
+  </tr>
+  <tr>
+   <td>getPotentialPartners
+   </td>
+   <td>userId: String!
+<p>
+city: String
+<p>
+skip: Int
+<p>
+limit: Int
+   </td>
+   <td>UsersPayload
+   </td>
+   <td>Retrieve details of all users who have nativeLanguage as the target language of userId and target language as the native language of userId
+   </td>
+  </tr>
+  <tr>
+   <td>suggestLearners
+   </td>
+   <td>userId: String!
+   </td>
+   <td>[UserPayload]
+   </td>
+   <td>Get a randomized list of 6 potential partners. Used in the side bar suggestion list.
+   </td>
+  </tr>
+  <tr>
+   <td>getExplorePosts
+   </td>
+   <td>authUserId: ID!
+<p>
+nativeLanguage: String!
+<p>
+targetLanguage: String!
+<p>
+skip: Int
+<p>
+limit: Int
+   </td>
+   <td>PostsPayload
+   </td>
+   <td>Retrieve list of posts by potential language partners, whether the user follows them or not
+   </td>
+  </tr>
+</table>
+
+
+
+<table>
+  <tr>
+   <td><strong>Mutation</strong>
+   </td>
+   <td><strong>Inputs</strong>
+   </td>
+   <td><strong>Outputs</strong>
+   </td>
+   <td><strong>Description</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>addIntroduction
+   </td>
+   <td>addIntroductionInput!
+   </td>
+   <td>SuccessMessage
+   </td>
+   <td>Add introduction text to a user which will show up in the profile page
+   </td>
+  </tr>
+  <tr>
+   <td>updateAccountInfo
+   </td>
+   <td>UpdateInfoInput!
+   </td>
+   <td>SuccessMessage
+   </td>
+   <td>After creating the account information in sign up this mutation is used to edit the information in edit info page. Additional information are also added to user document
+   </td>
+  </tr>
+</table>
+
 
 
 
