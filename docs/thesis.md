@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 16.422 seconds.
+Conversion time: 17.433 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Tue Oct 13 2020 09:22:51 GMT-0700 (PDT)
+* Tue Oct 13 2020 10:25:54 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -24,7 +24,7 @@ Conversion notes:
 ----->
 
 
-<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 16.</p>
+<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 17.</p>
 <ul style="color: red; font-weight: bold"><li>See top comment block for details on ERRORs and WARNINGs. <li>In the converted Markdown or HTML, search for inline alerts that start with >>>>>  gd2md-html alert:  for specific instances that need correction.</ul>
 
 <p style="color: red; font-weight: bold">Links to alert messages:</p><a href="#gdcalert1">alert1</a>
@@ -43,6 +43,7 @@ Conversion notes:
 <a href="#gdcalert14">alert14</a>
 <a href="#gdcalert15">alert15</a>
 <a href="#gdcalert16">alert16</a>
+<a href="#gdcalert17">alert17</a>
 
 <p style="color: red; font-weight: bold">>>>>> PLEASE check and correct alert issues and delete this message and the inline alerts.<hr></p>
 
@@ -304,9 +305,7 @@ Spiral SDLC was chosen for the development of LangExchangeLK. This is because, i
 
 #### 3.1.1 First Cycle
 
-This was the major cycle of the development. 
-
-At the start of this cycle the survey that we discussed in chapter one was performed and the following feature requirements were identified.
+This was the major cycle of the development. At the start of this cycle the survey that we discussed in chapter one was performed and the following feature requirements were identified.
 
 
 
@@ -326,32 +325,7 @@ The following features were finalized for implementation during this cycle.
 *   Write posts and comments, like a post
 *   Follow users
 
-
-#### 3.1.2 Second Cycle
-
-The second cycle was focused on optimizing the features to suite the needs of a language learner well. The following features were implemented in this cycle
-
-
-
-*   Edit info page
-*   Show only users with matching language preferences in Learners page
-*   Explore page
-*   Filter learners using city, age, sex
-
-
-#### 3.1.3 Third Cycle
-
-Third cycle of development was performed to add message translation feature.
-
-
-#### 3.1.4 Fourth Cycle
-
-This cycle was performed to fine tune the platform and prepare it for deployment in Amazon Web Services and serve it at www.langexchange.lk. During this cycle, a user recommendation feature based on a custom algorithm was also implemented.
-
-
-### 3.2 – Architecture of the System
-
-The web application developed contains two independent runtimes, backend and frontend, which communicate through a GraphQL API.
+In the second stage of this cycle, the architecture of the system as a whole was designed. The web application developed contains two independent runtimes, backend and frontend, which communicate through a GraphQL API.
 
 
 
@@ -364,12 +338,12 @@ The web application developed contains two independent runtimes, backend and fro
 GraphQL was chosen instead of a simpler REST API because it allows us to request for only the fields that we require from the frontend. This is in contrast to retrieving the entire JSON payload by calling a REST endpoint and then parsing the JSON to find the required value. Hence, GraphQL allows us to save bandwidth in frontend - backend communication by receiving only required data and as a consequence, improves the speed of frontend application. GraphQL is not actually a software program [17]. It is rather a data query and manipulation language for API’s. It is a set of definitions and rules. It was developed by Facebook in 2012 and then subsequently released for open source usage in 2015 [18]. There exist many implementations of this specification. I have chosen Apollo GraphQL platform [19] which provides both a GraphQL server to be used in the backend and a GraphQL client to be used in the frontend.
 
 
-#### 3.1.1 Architecture of the Backend System
+##### Architecture of the Backend System
 
 The backend is developed using Node.js, a Javascript runtime. Backend handles requests from the frontend and responds with appropriate data. Backend also handles data persistence and reading from MongoDB. Let’s begin the analysis of the backend with a review of data modelling. The data models are defined using Mongoose JS library schemas.
 
 
-##### 3.1.1.1 Data Models
+###### Data Models
 
 User model holds data related to each user. This data contains both user’s personal data and platform specific data such as the user’s followers etc.
 
@@ -1117,7 +1091,7 @@ Follower document holds reference to the user and the new follower of that user.
 Comment document holds reference to the author of the comment, post on which the comment was written and the actual comment string. The “comment” field is mandatory.
 
 
-##### 3.1.1.2 GraphQL API
+###### GraphQL API
 
 Three types of interactions between the frontend and the backend are possible through the GraphQL API. They are queries, mutations, and subscriptions. Queries are used for data retrieval from the MongoDB database through the backend. Mutations are used to write data to MongoDB. Subscriptions are used to add a listener to events that can occur during the run time. For example, when we visit the page of a potential partner we need to see whether he is online or not. We can do this by adding a listener to isUserOnline event with the ID of the potential partner. If the potential partner is online true will be returned and if he or she is offline false will be returned.
 
@@ -1593,7 +1567,7 @@ userId: ID!
 
 
 
-#### 3.1.2 Architecture of the Frontend System
+##### 3.1.2 Architecture of the Frontend System
 
 
 
@@ -1606,12 +1580,16 @@ userId: ID!
 The above image shows the sitemap of langexchange.lk. 
 
 
-### 3.4 – Solution Design
+#### 3.1.2 Second Cycle
+
+The second cycle was focused on optimizing the features to suite the needs of a language learner well. The following features were implemented in this cycle
 
 
-## CHAPTER FOUR – PROJECT PRESENTATION AND ANALYSIS (3580)
 
-The base URL initially lands in the landing page. You can sign up as a new user or login using your credentials. This page looks as follows.
+*   Edit info page
+*   Show only users with matching language preferences in Learners page
+*   Explore page
+*   Filter learners using city, age, sex
 
 
 
@@ -1621,7 +1599,26 @@ The base URL initially lands in the landing page. You can sign up as a new user 
 ![alt_text](images/image14.png "image_tooltip")
 
 
-After logging in or signing up, you will be shown a home page. This home page is also served in the base URL.
+
+#### 3.1.3 Third Cycle
+
+Third cycle of development was performed to add message translation feature.
+
+
+#### 3.1.4 Fourth Cycle
+
+This cycle was performed to fine tune the platform and prepare it for deployment in Amazon Web Services and serve it at www.langexchange.lk. During this cycle, a user recommendation feature based on a custom algorithm was also implemented.
+
+
+### 3.2 – Architecture of the System
+
+
+### 3.4 – Solution Design
+
+
+## CHAPTER FOUR – PROJECT PRESENTATION AND ANALYSIS (3580)
+
+The base URL initially lands in the landing page. You can sign up as a new user or login using your credentials. This page looks as follows.
 
 
 
@@ -1631,7 +1628,7 @@ After logging in or signing up, you will be shown a home page. This home page is
 ![alt_text](images/image15.png "image_tooltip")
 
 
-From the home page you can navigate to all other pages. In all pages, a header which contains a search bar, drop down menus for messages, notifications, and profile is shown on the top. The following is the profile page.
+After logging in or signing up, you will be shown a home page. This home page is also served in the base URL.
 
 
 
@@ -1639,6 +1636,16 @@ From the home page you can navigate to all other pages. In all pages, a header w
 
 
 ![alt_text](images/image16.png "image_tooltip")
+
+
+From the home page you can navigate to all other pages. In all pages, a header which contains a search bar, drop down menus for messages, notifications, and profile is shown on the top. The following is the profile page.
+
+
+
+<p id="gdcalert17" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image17.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert18">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image17.png "image_tooltip")
 
 
 
