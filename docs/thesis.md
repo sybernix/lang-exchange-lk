@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 18.188 seconds.
+Conversion time: 16.422 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Tue Oct 13 2020 09:10:55 GMT-0700 (PDT)
+* Tue Oct 13 2020 09:22:51 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -325,6 +325,28 @@ The following features were finalized for implementation during this cycle.
 *   Instant messaging
 *   Write posts and comments, like a post
 *   Follow users
+
+
+#### 3.1.2 Second Cycle
+
+The second cycle was focused on optimizing the features to suite the needs of a language learner well. The following features were implemented in this cycle
+
+
+
+*   Edit info page
+*   Show only users with matching language preferences in Learners page
+*   Explore page
+*   Filter learners using city, age, sex
+
+
+#### 3.1.3 Third Cycle
+
+Third cycle of development was performed to add message translation feature.
+
+
+#### 3.1.4 Fourth Cycle
+
+This cycle was performed to fine tune the platform and prepare it for deployment in Amazon Web Services and serve it at www.langexchange.lk. During this cycle, a user recommendation feature based on a custom algorithm was also implemented.
 
 
 ### 3.2 – Architecture of the System
