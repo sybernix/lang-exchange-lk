@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 16.548 seconds.
+Conversion time: 15.967 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Wed Oct 14 2020 10:38:24 GMT-0700 (PDT)
+* Wed Oct 14 2020 11:13:52 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -24,7 +24,7 @@ Conversion notes:
 ----->
 
 
-<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 21.</p>
+<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 25.</p>
 <ul style="color: red; font-weight: bold"><li>See top comment block for details on ERRORs and WARNINGs. <li>In the converted Markdown or HTML, search for inline alerts that start with >>>>>  gd2md-html alert:  for specific instances that need correction.</ul>
 
 <p style="color: red; font-weight: bold">Links to alert messages:</p><a href="#gdcalert1">alert1</a>
@@ -48,6 +48,10 @@ Conversion notes:
 <a href="#gdcalert19">alert19</a>
 <a href="#gdcalert20">alert20</a>
 <a href="#gdcalert21">alert21</a>
+<a href="#gdcalert22">alert22</a>
+<a href="#gdcalert23">alert23</a>
+<a href="#gdcalert24">alert24</a>
+<a href="#gdcalert25">alert25</a>
 
 <p style="color: red; font-weight: bold">>>>>> PLEASE check and correct alert issues and delete this message and the inline alerts.<hr></p>
 
@@ -1728,8 +1732,52 @@ As of 14th October 2020 234 commits have been made to this repository.
 ![alt_text](images/image18.png "image_tooltip")
 
 
+Github project page was used for project management. Features chosen for development were added as issues in the project which shows up in the “To Do” column in the following image.
+
+
+
+<p id="gdcalert19" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image19.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert20">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image19.png "image_tooltip")
+
+
+The “In Progress” column has the features that are currently under development. “Done” column has the completed features. There are also two additional columns “Immediate Action Items” for the features that will be implemented next, and “On Hold” for the features that are rejected.
+
 
 ### 3.3 Continuous Integration & Continuous Deployment
+
+Continuous integration practice advocates developers to merge works to the main source code repository as much as several times per day. Every merge / integration is verified by an automated build and testing mechanisms [22]. As you can see in the image below a CI build badge is shows in the readme to indicate whether the build is passing, failing, or unstable.
+
+
+
+<p id="gdcalert20" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image20.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert21">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image20.png "image_tooltip")
+
+
+This badge is produced by a Node CI builder set up using Github Actions. You can see the build history below.
+
+
+
+<p id="gdcalert21" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image21.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert22">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image21.png "image_tooltip")
+
+
+For each commit to the master branch Node CI build runs and produces a report as follows.
+
+
+
+<p id="gdcalert22" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image22.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert23">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image22.png "image_tooltip")
+
+
+You can observe that there are 3 builds for each commit. This is to build in three Node.js versions 10, 12, and 14 to make sure the source code build is passing in all versions.
 
 
 ### 3.4 Hosting
@@ -1741,30 +1789,30 @@ The base URL initially lands in the landing page. You can sign up as a new user 
 
 
 
-<p id="gdcalert19" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image19.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert20">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+<p id="gdcalert23" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image23.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert24">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
-![alt_text](images/image19.png "image_tooltip")
+![alt_text](images/image23.png "image_tooltip")
 
 
 After logging in or signing up, you will be shown a home page. This home page is also served in the base URL.
 
 
 
-<p id="gdcalert20" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image20.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert21">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+<p id="gdcalert24" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image24.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert25">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
-![alt_text](images/image20.png "image_tooltip")
+![alt_text](images/image24.png "image_tooltip")
 
 
 From the home page you can navigate to all other pages. In all pages, a header which contains a search bar, drop down menus for messages, notifications, and profile is shown on the top. The following is the profile page.
 
 
 
-<p id="gdcalert21" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image21.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert22">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+<p id="gdcalert25" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image25.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert26">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
-![alt_text](images/image21.png "image_tooltip")
+![alt_text](images/image25.png "image_tooltip")
 
 
 
@@ -1788,7 +1836,7 @@ From the home page you can navigate to all other pages. In all pages, a header w
 
 ## References
 
-[1] [https://data.worldbank.org/indicator/IT.NET.USER.ZS?locations=LK](https://data.worldbank.org/indicator/IT.NET.USER.ZS?locations=LK)
+[1] https://data.worldbank.org/indicator/IT.NET.USER.ZS?locations=LK
 
 [2] Perera M., Kularatne S.A. (2014) An attempt to develop bilingualism in Sri Lanka through content and language integrated learning (CLIL) [Online]. Available at: http://www.universitypublications.net/ijas/0703/pdf/P4RS143.pdf (Accessed: 30 September, 2020)
 
@@ -1831,6 +1879,10 @@ and non-native users of English. California Linguistic Notes Volume XXVI No. 1
 [20] Purkayashta, S. (2019) Top 10 Best Translation APIs in 2020 [Online]. Available at: https://blog.api.rakuten.net/top-10-best-translation-apis-google-translate-microsoft-translator-and-others (Accessed: 13 October, 2020)
 
 [21] niruhan/lang-exchange-lk [Online]. Available at: https://github.com/niruhan/lang-exchange-lk (Accessed: Often)
+
+[22] Continuous Integration: What is CI? Testing, Software &amp; Process Tutorial [Online]. Available at: https://codeship.com/continuous-integration-essentials (Accessed: 14 October, 2020)
+
+[23] Rouse, M. Continuous Deployment [Online]. Available at: https://searchitoperations.techtarget.com/definition/continuous-deployment (Accessed: 14 October, 2020)
 
 
 ## Appendices
