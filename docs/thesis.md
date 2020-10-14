@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 12.308 seconds.
+Conversion time: 16.548 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Tue Oct 13 2020 10:57:38 GMT-0700 (PDT)
+* Wed Oct 14 2020 10:38:24 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -24,7 +24,7 @@ Conversion notes:
 ----->
 
 
-<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 17.</p>
+<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 21.</p>
 <ul style="color: red; font-weight: bold"><li>See top comment block for details on ERRORs and WARNINGs. <li>In the converted Markdown or HTML, search for inline alerts that start with >>>>>  gd2md-html alert:  for specific instances that need correction.</ul>
 
 <p style="color: red; font-weight: bold">Links to alert messages:</p><a href="#gdcalert1">alert1</a>
@@ -44,6 +44,10 @@ Conversion notes:
 <a href="#gdcalert15">alert15</a>
 <a href="#gdcalert16">alert16</a>
 <a href="#gdcalert17">alert17</a>
+<a href="#gdcalert18">alert18</a>
+<a href="#gdcalert19">alert19</a>
+<a href="#gdcalert20">alert20</a>
+<a href="#gdcalert21">alert21</a>
 
 <p style="color: red; font-weight: bold">>>>>> PLEASE check and correct alert issues and delete this message and the inline alerts.<hr></p>
 
@@ -122,12 +126,6 @@ Furthermore, 40.7% of the respondents have said they are willing to receive targ
 
 
 This paves the way for more commercialization of this project by collaborating with language learning resource providers like language schools, bookshops and promoting their product to suitable users on the platform. The conversion rate will be high in this mode of advertising because the users are generally self-motivated individuals who are able and willing to acquire resources related to language learning. Compared to promoting on a general social media platform like Facebook, this platform will be more effective for the promotion partners.
-
-
-#### ~~1.2.3 Defining Research Problem~~
-
-
-### ~~1.3 – Research Question~~
 
 
 ### 1.4 – Objectives of the Project
@@ -1503,7 +1501,7 @@ userId: ID!
 
 
 
-##### 3.1.2 Architecture of the Frontend System
+##### Architecture of the Frontend System
 
 
 
@@ -1652,7 +1650,7 @@ Third cycle of development was performed to add message translation feature. Goo
 
 You can send your request in the following format,
 
-[https://translation.googleapis.com/language/translate/v2?key=GOOGLE_API_KEY&q=cheese&target=si](https://translation.googleapis.com/language/translate/v2?key=GOOGLE_API_KEY&q=cheese&target=si)
+https://translation.googleapis.com/language/translate/v2?key=GOOGLE_API_KEY&q=cheese&target=si
 
 q - the text that needs to be translated
 
@@ -1688,15 +1686,9 @@ This calls were set up from the frontend without going through the backend. A tr
 This cycle was performed to fine tune the platform and prepare it for deployment in Amazon Web Services and serve it at www.langexchange.lk. During this cycle, a user recommendation feature based on a custom algorithm was also implemented.
 
 
-### 3.2 – Architecture of the System
+### 3.2 Version Controlling
 
-
-### 3.4 – Solution Design
-
-
-## CHAPTER FOUR – PROJECT PRESENTATION AND ANALYSIS (3580)
-
-The base URL initially lands in the landing page. You can sign up as a new user or login using your credentials. This page looks as follows.
+GitHub was used for version controlling the source code. The source repository can be found at [21]. 
 
 
 
@@ -1706,7 +1698,7 @@ The base URL initially lands in the landing page. You can sign up as a new user 
 ![alt_text](images/image15.png "image_tooltip")
 
 
-After logging in or signing up, you will be shown a home page. This home page is also served in the base URL.
+(lang-exchange-lk repository page in GitHub)
 
 
 
@@ -1716,7 +1708,9 @@ After logging in or signing up, you will be shown a home page. This home page is
 ![alt_text](images/image16.png "image_tooltip")
 
 
-From the home page you can navigate to all other pages. In all pages, a header which contains a search bar, drop down menus for messages, notifications, and profile is shown on the top. The following is the profile page.
+(Subset of the commit history)
+
+As of 14th October 2020 234 commits have been made to this repository.
 
 
 
@@ -1724,6 +1718,53 @@ From the home page you can navigate to all other pages. In all pages, a header w
 
 
 ![alt_text](images/image17.png "image_tooltip")
+
+
+
+
+<p id="gdcalert18" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image18.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert19">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image18.png "image_tooltip")
+
+
+
+### 3.3 Continuous Integration & Continuous Deployment
+
+
+### 3.4 Hosting
+
+
+## CHAPTER FOUR – PROJECT PRESENTATION AND ANALYSIS (3580)
+
+The base URL initially lands in the landing page. You can sign up as a new user or login using your credentials. This page looks as follows.
+
+
+
+<p id="gdcalert19" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image19.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert20">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image19.png "image_tooltip")
+
+
+After logging in or signing up, you will be shown a home page. This home page is also served in the base URL.
+
+
+
+<p id="gdcalert20" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image20.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert21">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image20.png "image_tooltip")
+
+
+From the home page you can navigate to all other pages. In all pages, a header which contains a search bar, drop down menus for messages, notifications, and profile is shown on the top. The following is the profile page.
+
+
+
+<p id="gdcalert21" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image21.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert22">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image21.png "image_tooltip")
 
 
 
@@ -1740,6 +1781,9 @@ From the home page you can navigate to all other pages. In all pages, a header w
 
 
 ### 5.4 – Suggestion for Further Development
+
+
+## 
 
 
 ## References
@@ -1785,6 +1829,8 @@ and non-native users of English. California Linguistic Notes Volume XXVI No. 1
 [19] The Apollo Data Graph Platform [Online]. Available at: https://www.apollographql.com/ (Accessed: 6 October, 2020)
 
 [20] Purkayashta, S. (2019) Top 10 Best Translation APIs in 2020 [Online]. Available at: https://blog.api.rakuten.net/top-10-best-translation-apis-google-translate-microsoft-translator-and-others (Accessed: 13 October, 2020)
+
+[21] niruhan/lang-exchange-lk [Online]. Available at: https://github.com/niruhan/lang-exchange-lk (Accessed: Often)
 
 
 ## Appendices
