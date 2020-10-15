@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 28.487 seconds.
+Conversion time: 20.266 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Thu Oct 15 2020 10:58:33 GMT-0700 (PDT)
+* Thu Oct 15 2020 11:10:04 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -24,7 +24,7 @@ Conversion notes:
 ----->
 
 
-<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 27.</p>
+<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 29.</p>
 <ul style="color: red; font-weight: bold"><li>See top comment block for details on ERRORs and WARNINGs. <li>In the converted Markdown or HTML, search for inline alerts that start with >>>>>  gd2md-html alert:  for specific instances that need correction.</ul>
 
 <p style="color: red; font-weight: bold">Links to alert messages:</p><a href="#gdcalert1">alert1</a>
@@ -54,6 +54,8 @@ Conversion notes:
 <a href="#gdcalert25">alert25</a>
 <a href="#gdcalert26">alert26</a>
 <a href="#gdcalert27">alert27</a>
+<a href="#gdcalert28">alert28</a>
+<a href="#gdcalert29">alert29</a>
 
 <p style="color: red; font-weight: bold">>>>>> PLEASE check and correct alert issues and delete this message and the inline alerts.<hr></p>
 
@@ -1845,7 +1847,27 @@ From the home page you can navigate to all other pages. In all pages, a header w
 ![alt_text](images/image27.png "image_tooltip")
 
 
-The profice page shows the user’s profile picture, cover image, full name, introduction text, follower count, native and target language, location, sex, age, and posts by the user. It is important to note that there are two version of this profile page. If you visit your own profile page there will be textbox to write a post and a “Edit Info” button which will direct you to a “Edit Info” page. The following image shows the “Edit Info” page.
+The profice page shows the user’s profile picture, cover image, full name, introduction text, follower count, native and target language, location, sex, age, and posts by the user. It is important to note that there are two versions of this profile page. If you visit your own profile page there will be a textbox to write a post and a “Edit Info” button which will direct you to a “Edit Info” page. The following image shows the “Edit Info” page.
+
+
+
+<p id="gdcalert28" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image28.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert29">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image28.png "image_tooltip")
+
+
+In this page you can edit the information you entered when signing up and add additional information as well. If you decide to learn a different language you change the target language on this page and after update you will see potential partners for the new target language.
+
+
+
+<p id="gdcalert29" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image29.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert30">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image29.png "image_tooltip")
+
+
+The image above shows the “Explore” page. In this page, you can see posts from all the potential language partners irrespective of whether you follow them or not. Hence, you will be able to discover ideas and resources from people whom you haven’t connected yet. This page also can be used to find an instant partner. For example, if none of your connected partners are online at a time, you can post on this page requesting for anyone online to chat. This way, you are assured to have someone to learn with always.
 
 
 ## CHAPTER FIVE – CONCLUSIONS AND RECOMMENDATION (1790)
