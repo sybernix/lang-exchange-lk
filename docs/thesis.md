@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 7.493 seconds.
+Conversion time: 24.299 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Thu Oct 15 2020 11:13:36 GMT-0700 (PDT)
+* Thu Oct 15 2020 11:20:24 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -24,7 +24,7 @@ Conversion notes:
 ----->
 
 
-<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 30.</p>
+<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 33.</p>
 <ul style="color: red; font-weight: bold"><li>See top comment block for details on ERRORs and WARNINGs. <li>In the converted Markdown or HTML, search for inline alerts that start with >>>>>  gd2md-html alert:  for specific instances that need correction.</ul>
 
 <p style="color: red; font-weight: bold">Links to alert messages:</p><a href="#gdcalert1">alert1</a>
@@ -57,6 +57,9 @@ Conversion notes:
 <a href="#gdcalert28">alert28</a>
 <a href="#gdcalert29">alert29</a>
 <a href="#gdcalert30">alert30</a>
+<a href="#gdcalert31">alert31</a>
+<a href="#gdcalert32">alert32</a>
+<a href="#gdcalert33">alert33</a>
 
 <p style="color: red; font-weight: bold">>>>>> PLEASE check and correct alert issues and delete this message and the inline alerts.<hr></p>
 
@@ -1879,6 +1882,34 @@ The image above shows the “Explore” page. In this page, you can see posts fr
 
 
 This is the “Learners” page. Here you will see tiles containing potential language partners whom you have not followed. Each tile will show the user’s profile picture, full name, language infor, and a follow button. Here, you can connect with new language partners.
+
+
+
+<p id="gdcalert31" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image31.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert32">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image31.png "image_tooltip")
+
+
+This is the notifications page where you can see your notifications. The following image shows the instant messaging page.
+
+
+
+<p id="gdcalert32" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image32.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert33">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image32.png "image_tooltip")
+
+
+In the “Messages” page you will see a list of users and corresponding conversations. You can click on a conversation to view the messages. The most important feature of this platform is found in this page. With each message there is a “Translate” button. If you click the translate button, the contents of that particular message will be translated and shown in your native language. Even if your partner has messaged you in multiple languages the platform will detect the language and always translate to your native language. Our translation supports over 100 languages. The following image shows how the translated message looks.
+
+
+
+<p id="gdcalert33" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image33.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert34">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image33.png "image_tooltip")
+
 
 
 ## CHAPTER FIVE – CONCLUSIONS AND RECOMMENDATION (1790)
