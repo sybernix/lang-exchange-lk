@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 16.164 seconds.
+Conversion time: 28.487 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Wed Oct 14 2020 11:27:06 GMT-0700 (PDT)
+* Thu Oct 15 2020 10:58:33 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -1808,6 +1808,10 @@ The production branch is configured as the source. Every commit into the product
 
 ### 3.4 Hosting
 
+Amazon Web Services was chosen as the web hosting platform for www.langexchange.lk. The main reasons for this choice was because of the flexible scalability of AWS, high availability, and a pay-as-you-go payment model which suits a startup better [24]. AWS Elastic Beanstalk orchestration service was used for hosting the application. Elastic Beanstalk is a managed hosting where Node.js environment is auto-configured and deployment ready. This is as opposed to renting an EC2 instance and installing Node.js, ReactJS and all the application dependencies manually and deploying the service. Using Elastic Beanstalk removes all these extra devops work. The following image shows the Elastic Beanstalk dashboard used for configuration. This instance is linked to the Code Pipeline which pushes changes for deployment.
+
+&lt;Add Elastic Beanstalk Screenshot>
+
 
 ## CHAPTER FOUR – PROJECT PRESENTATION AND ANALYSIS (3580)
 
@@ -1909,6 +1913,8 @@ and non-native users of English. California Linguistic Notes Volume XXVI No. 1
 [22] Continuous Integration: What is CI? Testing, Software &amp; Process Tutorial [Online]. Available at: https://codeship.com/continuous-integration-essentials (Accessed: 14 October, 2020)
 
 [23] Rouse, M. Continuous Deployment [Online]. Available at: https://searchitoperations.techtarget.com/definition/continuous-deployment (Accessed: 14 October, 2020)
+
+[24] Duff, S. 10 Reasons To Choose AWS As Your Cloud Platform [Online]. Available at: https://cloudranger.com/10-reasons-to-choose-aws/ (Accessed: 15 October, 2020)
 
 
 ## Appendices
