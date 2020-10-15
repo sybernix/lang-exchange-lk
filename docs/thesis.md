@@ -1845,6 +1845,8 @@ From the home page you can navigate to all other pages. In all pages, a header w
 ![alt_text](images/image27.png "image_tooltip")
 
 
+The profice page shows the user’s profile picture, cover image, full name, introduction text, follower count, native and target language, location, sex, age, and posts by the user. It is important to note that there are two version of this profile page. If you visit your own profile page there will be textbox to write a post and a “Edit Info” button which will direct you to a “Edit Info” page. The following image shows the “Edit Info” page.
+
 
 ## CHAPTER FIVE – CONCLUSIONS AND RECOMMENDATION (1790)
 
