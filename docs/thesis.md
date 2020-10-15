@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 20.266 seconds.
+Conversion time: 7.493 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Thu Oct 15 2020 11:10:04 GMT-0700 (PDT)
+* Thu Oct 15 2020 11:13:36 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -24,7 +24,7 @@ Conversion notes:
 ----->
 
 
-<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 29.</p>
+<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 30.</p>
 <ul style="color: red; font-weight: bold"><li>See top comment block for details on ERRORs and WARNINGs. <li>In the converted Markdown or HTML, search for inline alerts that start with >>>>>  gd2md-html alert:  for specific instances that need correction.</ul>
 
 <p style="color: red; font-weight: bold">Links to alert messages:</p><a href="#gdcalert1">alert1</a>
@@ -56,6 +56,7 @@ Conversion notes:
 <a href="#gdcalert27">alert27</a>
 <a href="#gdcalert28">alert28</a>
 <a href="#gdcalert29">alert29</a>
+<a href="#gdcalert30">alert30</a>
 
 <p style="color: red; font-weight: bold">>>>>> PLEASE check and correct alert issues and delete this message and the inline alerts.<hr></p>
 
@@ -1868,6 +1869,16 @@ In this page you can edit the information you entered when signing up and add ad
 
 
 The image above shows the “Explore” page. In this page, you can see posts from all the potential language partners irrespective of whether you follow them or not. Hence, you will be able to discover ideas and resources from people whom you haven’t connected yet. This page also can be used to find an instant partner. For example, if none of your connected partners are online at a time, you can post on this page requesting for anyone online to chat. This way, you are assured to have someone to learn with always.
+
+
+
+<p id="gdcalert30" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image30.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert31">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image30.png "image_tooltip")
+
+
+This is the “Learners” page. Here you will see tiles containing potential language partners whom you have not followed. Each tile will show the user’s profile picture, full name, language infor, and a follow button. Here, you can connect with new language partners.
 
 
 ## CHAPTER FIVE – CONCLUSIONS AND RECOMMENDATION (1790)
