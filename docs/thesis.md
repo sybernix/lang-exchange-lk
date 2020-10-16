@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 24.299 seconds.
+Conversion time: 44.394 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Thu Oct 15 2020 11:20:24 GMT-0700 (PDT)
+* Fri Oct 16 2020 10:58:55 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -24,7 +24,7 @@ Conversion notes:
 ----->
 
 
-<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 33.</p>
+<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 34.</p>
 <ul style="color: red; font-weight: bold"><li>See top comment block for details on ERRORs and WARNINGs. <li>In the converted Markdown or HTML, search for inline alerts that start with >>>>>  gd2md-html alert:  for specific instances that need correction.</ul>
 
 <p style="color: red; font-weight: bold">Links to alert messages:</p><a href="#gdcalert1">alert1</a>
@@ -60,6 +60,7 @@ Conversion notes:
 <a href="#gdcalert31">alert31</a>
 <a href="#gdcalert32">alert32</a>
 <a href="#gdcalert33">alert33</a>
+<a href="#gdcalert34">alert34</a>
 
 <p style="color: red; font-weight: bold">>>>>> PLEASE check and correct alert issues and delete this message and the inline alerts.<hr></p>
 
@@ -1821,6 +1822,9 @@ Amazon Web Services was chosen as the web hosting platform for www.langexchange.
 
 ## CHAPTER FOUR – PROJECT PRESENTATION AND ANALYSIS (3580)
 
+
+### 4.1 User Experience
+
 The base URL initially lands in the landing page. You can sign up as a new user or login using your credentials. This page looks as follows.
 
 
@@ -1912,6 +1916,23 @@ In the “Messages” page you will see a list of users and corresponding conver
 
 
 
+### 4.2 Responsiveness
+
+The frontend of this application was designed and developed keeping mobile responsiveness in mind. Responsive web design is a philosophy that underlines the need for using flexible layout designs that re-orient themselves for better viewing experience in several different screen sizes and aspect ratios [25]. Users of today browse websites from devices such as laptop, tablet computer, mobile phones, etc. Traditional websites which only render well in laptop screens lose a lot of visitors due to their static nature which is difficult to use in mobile screens.
+
+
+
+<p id="gdcalert34" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image34.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert35">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image34.png "image_tooltip")
+
+
+(Source: [https://www.broadbandsearch.net/blog/mobile-desktop-internet-usage-statistics](https://www.broadbandsearch.net/blog/mobile-desktop-internet-usage-statistics))
+
+The above graph shows the network traffic from mobile and desktop devices during the period 2009 to 2016. Now, the mobile internet traffic is more than that of desktop. So, we risk losing the majority of users if we fail to make our web page responsive.
+
+
 ## CHAPTER FIVE – CONCLUSIONS AND RECOMMENDATION (1790)
 
 
@@ -1981,6 +2002,8 @@ and non-native users of English. California Linguistic Notes Volume XXVI No. 1
 [23] Rouse, M. Continuous Deployment [Online]. Available at: https://searchitoperations.techtarget.com/definition/continuous-deployment (Accessed: 14 October, 2020)
 
 [24] Duff, S. 10 Reasons To Choose AWS As Your Cloud Platform [Online]. Available at: https://cloudranger.com/10-reasons-to-choose-aws/ (Accessed: 15 October, 2020)
+
+[25] Responsive Web Design - What It Is And How To Use It [Online]. Available at: https://www.smashingmagazine.com/2011/01/guidelines-for-responsive-web-design// (Accessed: 16 October, 2020)
 
 
 ## Appendices
