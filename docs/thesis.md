@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 44.394 seconds.
+Conversion time: 20.272 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Fri Oct 16 2020 10:58:55 GMT-0700 (PDT)
+* Fri Oct 16 2020 11:06:06 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -1931,6 +1931,8 @@ The frontend of this application was designed and developed keeping mobile respo
 (Source: [https://www.broadbandsearch.net/blog/mobile-desktop-internet-usage-statistics](https://www.broadbandsearch.net/blog/mobile-desktop-internet-usage-statistics))
 
 The above graph shows the network traffic from mobile and desktop devices during the period 2009 to 2016. Now, the mobile internet traffic is more than that of desktop. So, we risk losing the majority of users if we fail to make our web page responsive.
+
+Another solution to handle mobile traffic is to implement native applications for each mobile platform. That is developing a separate Android application and an iOS application. However, this solution is time consuming, expensive, and requires a team of engineers working on different platforms. A native application will always be faster and more responsive than a responsive web application. However, for startups and debutant projects, this approach is discouraged since the sheer load of effort required will sink the project into failure without adequate resources.
 
 
 ## CHAPTER FIVE – CONCLUSIONS AND RECOMMENDATION (1790)
