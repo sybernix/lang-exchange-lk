@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 22.606 seconds.
+Conversion time: 18.523 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Fri Oct 16 2020 11:19:47 GMT-0700 (PDT)
+* Fri Oct 16 2020 11:25:11 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -1941,6 +1941,12 @@ The image to the left shows the login screen. Google Chrome’s developer tool w
 This image shows the home page. Note that the left navigation bar is minimized and the user suggestion column to the right is removed in this view.
 
 This image shows the profile page. Note that the width of the information box has shrunk and as a result some user information such as city, age, and sex have moved to the next row.
+
+This image shows how the minimized side navigation bar looks like after being expanded by clicking on the three horizontal lines icon on the top left.
+
+This image shows the learners page. Notice that from a table view tiles have changed to a list view where you see only one tile per row.
+
+This image shows the messages page. Notice how the conversation list column has shrunk to make more space for the messages view.
 
 
 ## CHAPTER FIVE – CONCLUSIONS AND RECOMMENDATION (1790)
