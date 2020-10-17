@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 20.285 seconds.
+Conversion time: 25.661 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Sat Oct 17 2020 02:57:26 GMT-0700 (PDT)
+* Sat Oct 17 2020 10:21:38 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -1958,6 +1958,16 @@ This image shows the messages page. Notice how the conversation list column has 
 
 ### 5.1 – Summary of the Project
 
+A language exchange platform which will help Sri Lankans to learn a second language was successfully implemented. In this language exchange platform, users can freely sign up and create a personal profile. Information on their native language and their target language are mandatory. After signing up, based on their language preferences users will see a list of potential language partners. User can use filters such as city, age, sex to find a suitable language partner. You can also follow a user so that his or her posts show up in your home page.
+
+Instant messaging feature is available with in-built translation feature so that you can converse in two languages while understanding each other. Whatever the language the message is in, it will be automatically identified and translated in your native language and shows just below the source message. Like a traditional messenger, messages are grouped as conversations based on the receiver.
+
+A page to explore resources related to your target language can be found in the Explore page. You can see posts from all potential language partners irrespective of whether you follow them or not. This opens the door for creative usages by the users. For example, you can post asking for any online users to have a conversation if your existing partners are offline. You can post an essay you wrote in the target language and ask others to correct it for you.
+
+Profile page is available to show posts from only one user and information such as followers, introduction text, age, sex, city, and languages. If you visit your own page, you will have the option to write new posts and edit your personal information. A notification concept exists to alert users about new followers, messages, etc.
+
+The web application was built as a single page application. So user’s will feel as if they are using a native application instead of browsing a web page. In addition, the application is responsive to various screen sizes. They layout organises automatically to enhance viewer experience in different screen sizes.
+
 
 ### 5.2 – Conclusion of the Project
 
@@ -1979,7 +1989,11 @@ There are few features that were considered during the survey, but ended up bein
 
 The most requested feature is translation of messages in the chat window. This feature is implemented as a part of this project. The second most requested feature is providing basic grammar lessons within the application. This was not implemented because to prepare lessons, we need to hire professional language tutors, and it was outside the scope of a traditional language exchange platform which we intended to build in this project. However, this is a very important and useful feature which can be added to this platform in the future. Speech-to-text and text-to-speech of messages were requested by 40.7% and 39.5% of respondents respectively. These features were left out due to the bandwidth requirements of processing audio files and the text-to-speech APIs are expensive [26].
 
-Voice call and video call which were requested by 25% and 17% of the respondents were not implemented due to the sheer complexity of its implementation, and the network requirements in the server for such a feature. Group chat, group video call, group audio call which are requested by 33%, 23%, and 26% of the respondents were not implemented as a part of deferring group learning features which were left out of implementation. These group learning features along with support for special types of users who can organise a class consisting of paying students can be added as a part of future enhancement. This will allow language teachers to expand their audience by providing online tuition on our platform. This is an attractive business opportunity for this platform as payments can be routed through the platform from which a cut can be retained. The other features that can be implemented are support for sending and receiving audio messages, photos, videos, and PDF documents. Especially sharing PDF documents can be helpful for learning 
+Voice call and video call which were requested by 25% and 17% of the respondents were not implemented due to the sheer complexity of its implementation, and the network requirements in the server for such a feature. Implementing a peer-to-peer call feature where the role of server is only to initially connect the two users and then after the initial connection, the call would directly be between the two parties is one way to solve the huge bandwidth requirements for the server if all the call data are routed centrally. However, this type of architecture would require implementation of both server and client in the application side which is against complex and time consuming.
+
+Group chat, group video call, group audio call which are requested by 33%, 23%, and 26% of the respondents were not implemented as a part of deferring group learning features which were left out of implementation. These group learning features along with support for special types of users who can organise a class consisting of paying students can be added as a part of future enhancement. This will allow language teachers to expand their audience by providing online tuition on our platform. This is an attractive business opportunity for this platform as payments can be routed through the platform from which a cut can be retained. This can be an attractive proposition to gain investor confidence. Since the rollout and adoption of this feature would mean that from day one this feature will start providing revenue to our platform. The other features that can be implemented are support for sending and receiving audio messages, photos, videos, and PDF documents. Especially sharing PDF documents can be helpful for learning.
+
+In addition to the above features, native applications for Android and iOS platforms can be implemented in the future. This will make the mobile user experience even better.
 
 
 ## 
