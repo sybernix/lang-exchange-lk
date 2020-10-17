@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 22.532 seconds.
+Conversion time: 23.445 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Sat Oct 17 2020 02:01:47 GMT-0700 (PDT)
+* Sat Oct 17 2020 02:48:04 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -1977,7 +1977,9 @@ There are few features that were considered during the survey, but ended up bein
 ![alt_text](images/image35.png "image_tooltip")
 
 
-The most requested feature is translation of messages in the chat window. This feature is implemented as a part of this project. The second most requested feature is providing basic grammar lessons within the application. This was not implemented because to prepare lessons, we need to hire professional language tutors, and it was outside the scope of a traditional language exchange platform which we intended to build in this project. However, this is a very important and useful feature which can be added to this platform in the future.
+The most requested feature is translation of messages in the chat window. This feature is implemented as a part of this project. The second most requested feature is providing basic grammar lessons within the application. This was not implemented because to prepare lessons, we need to hire professional language tutors, and it was outside the scope of a traditional language exchange platform which we intended to build in this project. However, this is a very important and useful feature which can be added to this platform in the future. Speech-to-text and text-to-speech of messages were requested by 40.7% and 39.5% of respondents respectively. These features were left out due to the bandwidth requirements of processing audio files and the text-to-speech APIs are expensive [26].
+
+Voice call and video call which were requested by 25% and 17% of the respondents were not implemented due to the sheer complexity of its implementation, and the network requirements in the server for such a feature. Group chat, group video call, group audio call which are requested by 33%, 23%, and 26% of the respondents were not implemented as a part of deferring group learning features which were left out of implementation. These group learning features along with support for special types of users who can organise a class consisting of paying students can be added as a part of future enhancement. This will allow language teachers to expand their audience by providing online tuition on our platform. This is an attractive business opportunity for this platform as payments can be routed through the platform from which a cut can be retained.
 
 
 ## 
@@ -2035,7 +2037,9 @@ and non-native users of English. California Linguistic Notes Volume XXVI No. 1
 
 [24] Duff, S. 10 Reasons To Choose AWS As Your Cloud Platform [Online]. Available at: https://cloudranger.com/10-reasons-to-choose-aws/ (Accessed: 15 October, 2020)
 
-[25] Responsive Web Design - What It Is And How To Use It [Online]. Available at: https://www.smashingmagazine.com/2011/01/guidelines-for-responsive-web-design// (Accessed: 16 October, 2020)
+[25] Responsive Web Design - What It Is And How To Use It [Online]. Available at: https://www.smashingmagazine.com/2011/01/guidelines-for-responsive-web-design (Accessed: 16 October, 2020)
+
+[26] Pricing | Cloud Speech-to-Text Documentation | Google Cloud [Online]. Available at: https://cloud.google.com/speech-to-text/pricing (Accessed: 17 October, 2020)
 
 
 ## Appendices
