@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 23.308 seconds.
+Conversion time: 23.949 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Sat Oct 17 2020 10:42:44 GMT-0700 (PDT)
+* Sat Oct 17 2020 11:04:49 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -1978,7 +1978,9 @@ As discussed in chapter one, there was a real need for a language learning platf
 
 For a traditional language learning website, the success depends mostly on the quality of the language learning materials, the pricing, and the marketing of the product to the target users. If there is great content, eventually our website will have high search engine optimization and many users will naturally find a way to our website and consume information. However, this exchange platform can be compared to a social network. A social network like Facebook can only be successful and self-sustaining if many users sign up and a new user is tempted by others who have already joined the network. A parallel scenario for this platform would be when a new user who natively speaks Sinhala and wants to learn Tamil signs up. He will continue to use this platform only if there are an adequate number of native Tamil speakers who want to learn Sinhala. If there are no potential language partners available, the user retention will be difficult. Hence, it is important to acquire a lot of users within the first few weeks of launch of this service.
 
-For the reasons discussed, it is important to make entry barriers to this platform as little as possible. To this end, the sign up page was added as a widget in the landing page itself without having a 
+For the reasons discussed, it is important to make entry barriers to this platform as little as possible. To this end, the sign up page was added as a widget in the landing page itself without having a separate page for signup. In addition, it is important not to add a membership fee or any kind of payment when a user initially joins. There should always be a free and usable version of this platform. Additional features such as tutoring from a teacher etc. which will be discussed in detail in the section 5.4 can be made premium features.
+
+Furthermore, the long term goal of this project is to contribute positively to the communal harmony of Sri Lanka. Our country has a communal conflict which is compounded by the language divide. Making more and more people bilingual is a way of ameliorating the situation we find ourselves in this country. There have been noted examples of language being used as a tool to establish peace among heterogeneous communities in the world. A notable example is Singapore. However, their approach differed in the usage of English as the preferred language for education, conduct of business, and government affairs. Even though that option is also open to us, it is difficult to expect the diverse communities which take pride in their identity formed around their language, denounce their mother tongue and take up a totally foreign language. Hence, making more and more people bilingual is the best approach in the short to medium term for the country.
 
 
 ### 5.3 – Recommendations
