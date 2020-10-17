@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 18.523 seconds.
+Conversion time: 22.532 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Fri Oct 16 2020 11:25:11 GMT-0700 (PDT)
+* Sat Oct 17 2020 02:01:47 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -24,7 +24,7 @@ Conversion notes:
 ----->
 
 
-<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 34.</p>
+<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 35.</p>
 <ul style="color: red; font-weight: bold"><li>See top comment block for details on ERRORs and WARNINGs. <li>In the converted Markdown or HTML, search for inline alerts that start with >>>>>  gd2md-html alert:  for specific instances that need correction.</ul>
 
 <p style="color: red; font-weight: bold">Links to alert messages:</p><a href="#gdcalert1">alert1</a>
@@ -61,6 +61,7 @@ Conversion notes:
 <a href="#gdcalert32">alert32</a>
 <a href="#gdcalert33">alert33</a>
 <a href="#gdcalert34">alert34</a>
+<a href="#gdcalert35">alert35</a>
 
 <p style="color: red; font-weight: bold">>>>>> PLEASE check and correct alert issues and delete this message and the inline alerts.<hr></p>
 
@@ -1949,6 +1950,9 @@ This image shows the learners page. Notice that from a table view tiles have cha
 This image shows the messages page. Notice how the conversation list column has shrunk to make more space for the messages view.
 
 
+## 
+
+
 ## CHAPTER FIVE – CONCLUSIONS AND RECOMMENDATION (1790)
 
 
@@ -1962,6 +1966,18 @@ This image shows the messages page. Notice how the conversation list column has 
 
 
 ### 5.4 – Suggestion for Further Development
+
+There are few features that were considered during the survey, but ended up being cancelled due to lack of time and or resources to implement. The following chart shows the features and the percentage of responders who requested that feature.
+
+
+
+<p id="gdcalert35" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image35.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert36">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image35.png "image_tooltip")
+
+
+The most requested feature is translation of messages in the chat window. This feature is implemented as a part of this project. The second most requested feature is providing basic grammar lessons within the application. This was not implemented because to prepare lessons, we need to hire professional language tutors, and it was outside the scope of a traditional language exchange platform which we intended to build in this project. However, this is a very important and useful feature which can be added to this platform in the future.
 
 
 ## 
