@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 25.661 seconds.
+Conversion time: 23.308 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Sat Oct 17 2020 10:21:38 GMT-0700 (PDT)
+* Sat Oct 17 2020 10:42:44 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -1953,6 +1953,9 @@ This image shows the messages page. Notice how the conversation list column has 
 ## 
 
 
+### 4.3 Presence on the Internet
+
+
 ## CHAPTER FIVE – CONCLUSIONS AND RECOMMENDATION (1790)
 
 
@@ -1970,6 +1973,12 @@ The web application was built as a single page application. So user’s will fee
 
 
 ### 5.2 – Conclusion of the Project
+
+As discussed in chapter one, there was a real need for a language learning platform in Sri Lanka, where you can meet native speakers of Tamil, Sinhala, and English. This platform attempts to fulfill this need. This website is hosted at www.langexchange.lk. Due to the targeted nature of this application to the needs of our country, the probability of adoption remains high. The success of this project depends highly on adoption. 
+
+For a traditional language learning website, the success depends mostly on the quality of the language learning materials, the pricing, and the marketing of the product to the target users. If there is great content, eventually our website will have high search engine optimization and many users will naturally find a way to our website and consume information. However, this exchange platform can be compared to a social network. A social network like Facebook can only be successful and self-sustaining if many users sign up and a new user is tempted by others who have already joined the network. A parallel scenario for this platform would be when a new user who natively speaks Sinhala and wants to learn Tamil signs up. He will continue to use this platform only if there are an adequate number of native Tamil speakers who want to learn Sinhala. If there are no potential language partners available, the user retention will be difficult. Hence, it is important to acquire a lot of users within the first few weeks of launch of this service.
+
+For the reasons discussed, it is important to make entry barriers to this platform as little as possible. To this end, the sign up page was added as a widget in the landing page itself without having a 
 
 
 ### 5.3 – Recommendations
