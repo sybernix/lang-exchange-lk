@@ -85,12 +85,12 @@ const Navigation = () => {
                 </ListItem>
             </Link>
 
-            {/* <Link exact activeClassName="selected" to={Routes.EDIT_INFO}>
+            <Link exact activeClassName="selected" to={Routes.LANGFORUM}>
                 <ListItem>
                     <NotificationIcon width={18}/>
-                    <Name>Edit Info</Name>
+                    <Name>Lang Forum</Name>
                 </ListItem>
-            </Link> */}
+            </Link>
 
             <Link
                 exact

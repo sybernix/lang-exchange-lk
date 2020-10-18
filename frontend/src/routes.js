@@ -18,6 +18,8 @@ export const LEARNER = '/learners';
 
 export const NOTIFICATIONS = '/notifications';
 
+export const LANGFORUM = '/langforum';
+
 export const MESSAGES = '/messages/:userId';
 
 export const POST = '/post/:id';
