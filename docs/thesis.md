@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 19.402 seconds.
+Conversion time: 17.914 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Sun Oct 18 2020 03:21:35 GMT-0700 (PDT)
+* Sun Oct 18 2020 03:38:28 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -1150,6 +1150,31 @@ export default mongoose.model('Post', postSchema);
 ###### GraphQL API
 
 Three types of interactions between the frontend and the backend are possible through the GraphQL API. They are queries, mutations, and subscriptions. Queries are used for data retrieval from the MongoDB database through the backend. Mutations are used to write data to MongoDB. Subscriptions are used to add a listener to events that can occur during the run time. For example, when we visit the page of a potential partner we need to see whether he is online or not. We can do this by adding a listener to isUserOnline event with the ID of the potential partner. If the potential partner is online true will be returned and if he or she is offline false will be returned.
+
+Because of the dynamic nature of the response to GraphQL queries, there is a need to write resolver functions manually for each query and mutation. The following piece of code shows the resolver function for getMessages query.
+
+
+```
+/**
+* Gets user's specific conversation
+*
+* @param {string} authUserId
+* @param {string} userId
+*/
+    getMessages: async (root, {authUserId, userId}, {Message}) => {
+        const specificMessage = await Message.find()
+            .and([
+                {$or: [{sender: authUserId}, {receiver: authUserId}]},
+                {$or: [{sender: userId}, {receiver: userId}]},
+            ])
+            .populate('sender')
+            .populate('receiver')
+            .sort({updatedAt: 'asc'});
+
+        return specificMessage;
+    }
+```
+
 
 The following is the list of GraphQL queries available in our backend system. Note that the data types marked with a “!” are mandatory input parameters and others are optional. Refer [Appendix 3] for GraphQl schema which describes schema such as SuccessMessage, UserPayload, etc.
 
