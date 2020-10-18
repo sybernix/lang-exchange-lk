@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 30.259 seconds.
+Conversion time: 23.692 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Sun Oct 18 2020 02:21:00 GMT-0700 (PDT)
+* Sun Oct 18 2020 03:07:55 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -1969,6 +1969,22 @@ This application is presented as a website on the internet. The language exchang
 The cost of this domain name for a year is LKR 2700 without hosting service from the same provider. You can see the purchase invoice in the appendix 4. An additional LKR 100 transaction fee was charged and the total cost of LKR 2800 was paid to www.register.lk on 4th September 2020.
 
 Since it was decided to host this website in AWS, only domain was purchased without the subsidized hosting.If we are continuing this language exchange platform project, we need to make the next annual payment on 3rd September 2021 to prevent this URL being bought by anyone else.
+
+Furthermore, search engine optimization was implemented in the index.js page of this application. The React-helmet library was used for this purpose. It is a simple HTML parser which takes in HTML tags and passes HTML tags out. The following piece of code shows the SEO tags.
+
+
+```
+<Helmet>
+    <meta charSet="utf-8" />
+    <title>LangExchangeLK</title>
+    <link rel="canonical" href="www.langexchange.lk" />
+    <meta name="description" content="A language exchange platform for sri lankans who want to learn a second language with a language partner"/>
+    <meta name="keywords" content="language, exchange, sri lanka, language partner, tamil, english, sinhala"/>
+</Helmet>
+```
+
+
+The keyword tag is a very important SEO parameter since the search keywords will be matched against this parameter to show the users best matching pages. It is a comma separated list where words related to our platform are written.
 
 
 ## CHAPTER FIVE – CONCLUSIONS AND RECOMMENDATION (1790)
