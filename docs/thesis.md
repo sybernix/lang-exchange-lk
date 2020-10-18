@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 23.692 seconds.
+Conversion time: 19.402 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Sun Oct 18 2020 03:07:55 GMT-0700 (PDT)
+* Sun Oct 18 2020 03:21:35 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -303,7 +303,7 @@ All components of MERN stack are open source. So there is no need to obtain a li
 
 ### 3.1 Software Development Life Cycle - Waterfall
 
-Spiral SDLC was chosen for the development of LangExchangeLK. This is because, it was better to start implementation with basic set of requirements and producing an application and then iteratively improve the product in subsequent cycles of development after feedback from the supervisor. However, the first cycle covered majority of the identified requirements and majority of the implemented features. So, the development can also be considered as a mix of waterfall and spiral SDLC.
+Spiral SDLC was chosen for the development of LangExchangeLK. This is because, it was better to start implementation with a basic set of requirements and produce an application and then iteratively improve the product in subsequent cycles of development after feedback from the supervisor. However, the first cycle covered the majority of the identified requirements and majority of the implemented features. So, the development can also be considered as a mix of waterfall and spiral SDLC.
 
 
 
@@ -1102,6 +1102,49 @@ Follower document holds reference to the user and the new follower of that user.
 
 
 Comment document holds reference to the author of the comment, post on which the comment was written and the actual comment string. The “comment” field is mandatory.
+
+The following piece of code shows how a schema can be defined in Node.js using Mongoose library. This is the implementation of the Post model and the other models are similar.
+
+
+```
+import mongoose from 'mongoose';
+
+const Schema = mongoose.Schema;
+
+/**
+ * Post schema that has references to User, Like and Comment schemas
+ */
+const postSchema = Schema(
+    {
+        title: String,
+        image: String,
+        imagePublicId: String,
+        author: {
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+        },
+        authorNativeLanguage: String,
+        authorTargetLanguage: String,
+        likes: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Like',
+            },
+        ],
+        comments: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Comment',
+            },
+        ],
+    },
+    {
+        timestamps: true,
+    }
+);
+export default mongoose.model('Post', postSchema);
+```
+
 
 
 ###### GraphQL API
