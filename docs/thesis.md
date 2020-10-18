@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 23.949 seconds.
+Conversion time: 30.259 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Sat Oct 17 2020 11:04:49 GMT-0700 (PDT)
+* Sun Oct 18 2020 02:21:00 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -24,7 +24,7 @@ Conversion notes:
 ----->
 
 
-<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 35.</p>
+<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 36.</p>
 <ul style="color: red; font-weight: bold"><li>See top comment block for details on ERRORs and WARNINGs. <li>In the converted Markdown or HTML, search for inline alerts that start with >>>>>  gd2md-html alert:  for specific instances that need correction.</ul>
 
 <p style="color: red; font-weight: bold">Links to alert messages:</p><a href="#gdcalert1">alert1</a>
@@ -62,6 +62,7 @@ Conversion notes:
 <a href="#gdcalert33">alert33</a>
 <a href="#gdcalert34">alert34</a>
 <a href="#gdcalert35">alert35</a>
+<a href="#gdcalert36">alert36</a>
 
 <p style="color: red; font-weight: bold">>>>>> PLEASE check and correct alert issues and delete this message and the inline alerts.<hr></p>
 
@@ -1955,6 +1956,20 @@ This image shows the messages page. Notice how the conversation list column has 
 
 ### 4.3 Presence on the Internet
 
+This application is presented as a website on the internet. The language exchange platform is publicly accessible on the URL www.langexchange.lk. This URL was purchased on 4th September 2020 through the domain broker and hosting provider service website www.register.lk, a subsidiary of Solution Infinity (Pvt) Ltd. You can see their management dashboard in the image below.
+
+
+
+<p id="gdcalert35" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image35.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert36">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image35.png "image_tooltip")
+
+
+The cost of this domain name for a year is LKR 2700 without hosting service from the same provider. You can see the purchase invoice in the appendix 4. An additional LKR 100 transaction fee was charged and the total cost of LKR 2800 was paid to www.register.lk on 4th September 2020.
+
+Since it was decided to host this website in AWS, only domain was purchased without the subsidized hosting.If we are continuing this language exchange platform project, we need to make the next annual payment on 3rd September 2021 to prevent this URL being bought by anyone else.
+
 
 ## CHAPTER FIVE – CONCLUSIONS AND RECOMMENDATION (1790)
 
@@ -1983,19 +1998,16 @@ For the reasons discussed, it is important to make entry barriers to this platfo
 Furthermore, the long term goal of this project is to contribute positively to the communal harmony of Sri Lanka. Our country has a communal conflict which is compounded by the language divide. Making more and more people bilingual is a way of ameliorating the situation we find ourselves in this country. There have been noted examples of language being used as a tool to establish peace among heterogeneous communities in the world. A notable example is Singapore. However, their approach differed in the usage of English as the preferred language for education, conduct of business, and government affairs. Even though that option is also open to us, it is difficult to expect the diverse communities which take pride in their identity formed around their language, denounce their mother tongue and take up a totally foreign language. Hence, making more and more people bilingual is the best approach in the short to medium term for the country.
 
 
-### 5.3 – Recommendations
-
-
-### 5.4 – Suggestion for Further Development
+### 5.3 – Suggestion for Further Development
 
 There are few features that were considered during the survey, but ended up being cancelled due to lack of time and or resources to implement. The following chart shows the features and the percentage of responders who requested that feature.
 
 
 
-<p id="gdcalert35" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image35.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert36">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+<p id="gdcalert36" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image36.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert37">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
-![alt_text](images/image35.png "image_tooltip")
+![alt_text](images/image36.png "image_tooltip")
 
 
 The most requested feature is translation of messages in the chat window. This feature is implemented as a part of this project. The second most requested feature is providing basic grammar lessons within the application. This was not implemented because to prepare lessons, we need to hire professional language tutors, and it was outside the scope of a traditional language exchange platform which we intended to build in this project. However, this is a very important and useful feature which can be added to this platform in the future. Speech-to-text and text-to-speech of messages were requested by 40.7% and 39.5% of respondents respectively. These features were left out due to the bandwidth requirements of processing audio files and the text-to-speech APIs are expensive [26].
@@ -2501,3 +2513,8 @@ type UsersPayload {
 }
 ```
 
+
+
+### Appendix 4
+
+(Add domain name purchase bill)
