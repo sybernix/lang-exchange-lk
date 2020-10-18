@@ -12,6 +12,7 @@ import UserSuggestions from './UserSuggestions';
 import Home from 'pages/Home';
 import Profile from 'pages/Profile';
 import Explore from 'pages/Explore';
+import LangForum from 'pages/LangForum';
 import Learners from 'pages/Learners';
 import EditInfo from 'pages/EditInfo';
 import Notifications from 'pages/Notifications';
@@ -88,6 +89,7 @@ const AppLayout = ({location, authUser, refetch}) => {
                 <Switch>
                     <Route exact path={Routes.EDIT_INFO} component={EditInfo}/>
                     <Route exact path={Routes.HOME} component={Home}/>
+                    <Route exact path={Routes.LANGFORUM} component={LangForum}/>
                     <Route exact path={Routes.EXPLORE} component={Explore}/>
                     <Route exact path={Routes.LEARNER} component={Learners}/>
                     <Route exact path={Routes.NOTIFICATIONS} component={Notifications}/>
