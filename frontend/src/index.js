@@ -5,6 +5,7 @@ import {ApolloProvider as ApolloHooksProvider} from '@apollo/react-hooks';
 import {ThemeProvider} from 'styled-components';
 import {createApolloClient} from 'utils/apollo-client';
 import {StoreProvider} from 'store';
+import {Helmet} from "react-helmet";
 
 import 'normalize.css';
 import theme from 'theme';
@@ -25,14 +26,23 @@ const websocketApiUrl = WEBSOCKET_API_URL
 const apolloClient = createApolloClient(API_URL, websocketApiUrl);
 
 render(
-    <ApolloProvider client={apolloClient}>
-        <ApolloHooksProvider client={apolloClient}>
-            <ThemeProvider theme={theme}>
-                <StoreProvider>
-                    <App/>
-                </StoreProvider>
-            </ThemeProvider>
-        </ApolloHooksProvider>
-    </ApolloProvider>,
+    <div>
+        <Helmet>
+            <meta charSet="utf-8" />
+            <title>LangExchangeLK</title>
+            <link rel="canonical" href="www.langexchange.lk" />
+            <meta name="description" content="A language exchange platform for sri lankans who want to learn a second language with a language partner"/>
+	        <meta name="keywords" content="language, exchange, sri lanka, language partner, tamil, english, sinhala"/>
+        </Helmet>
+        <ApolloProvider client={apolloClient}>
+            <ApolloHooksProvider client={apolloClient}>
+                <ThemeProvider theme={theme}>
+                    <StoreProvider>
+                        <App/>
+                    </StoreProvider>
+                </ThemeProvider>
+            </ApolloHooksProvider>
+        </ApolloProvider>
+    </div>,
     document.getElementById('root')
 );
