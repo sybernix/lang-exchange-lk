@@ -64,6 +64,13 @@ const Navigation = () => {
                 </ListItem>
             </Link>
 
+            <Link exact activeClassName="selected" to={Routes.LANGFORUM}>
+                <ListItem>
+                    <NotificationIcon width={18}/>
+                    <Name>Lang Forum</Name>
+                </ListItem>
+            </Link>
+
             <Link exact activeClassName="selected" to={Routes.EXPLORE}>
                 <ListItem>
                     <ExploreIcon width={20}/>
@@ -85,12 +92,7 @@ const Navigation = () => {
                 </ListItem>
             </Link>
 
-            <Link exact activeClassName="selected" to={Routes.LANGFORUM}>
-                <ListItem>
-                    <NotificationIcon width={18}/>
-                    <Name>Lang Forum</Name>
-                </ListItem>
-            </Link>
+            
 
             <Link
                 exact

@@ -39,15 +39,15 @@ const PostsContainer = styled.div`
 `;
 
 /**
- * Explore page
+ * LangForum page
  */
-const Explore = () => {
+const LangForum = () => {
     const [{auth}] = useStore();
 
     const [modalPostId, setModalPostId] = useState(null);
 
     const closeModal = () => {
-        window.history.pushState('', '', '/explore');
+        window.history.pushState('', '', '/langforum');
         setModalPostId(null);
     };
 
@@ -138,4 +138,4 @@ const Explore = () => {
     );
 };
 
-export default Explore;
+export default LangForum;

@@ -43,9 +43,9 @@ const Photo = styled.div`
 `;
 
 /**
- * Card component, meant to be used in Explore page
+ * Card component, meant to be used in LangForum page
  */
-const ExploreCard = ({openPostPopup, image, countLikes, countComments}) => {
+const ForumCard = ({openPostPopup, image, countLikes, countComments}) => {
     const [imageLoaded, setImageLoaded] = useState(false);
 
     useEffect(() => {
@@ -80,11 +80,11 @@ const ExploreCard = ({openPostPopup, image, countLikes, countComments}) => {
     );
 };
 
-ExploreCard.propTypes = {
+ForumCard.propTypes = {
     openPostPopup: PropTypes.func.isRequired,
     image: PropTypes.string.isRequired,
     countLikes: PropTypes.number.isRequired,
     countComments: PropTypes.number.isRequired,
 };
 
-export default ExploreCard;
+export default ForumCard;
