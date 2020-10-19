@@ -2,9 +2,56 @@ import {uploadToCloudinary, deleteFromCloudinary} from '../utils/cloudinary';
 
 const Query = {
     /**
+     * Gets all posts of people learning the same language
+     *
+     * @param {string} authUserId
+     * @param {string} targetLanguage
+     * @param {int} skip how many posts to skip
+     * @param {int} limit how many posts to limit
+     */
+    getForumPosts: async (root, {authUserId, targetLanguage, skip, limit}, {Post}) => {
+        // const query = {
+        //     $and: [{image: {$ne: null}}, {author: {$ne: authUserId}}],
+        // };
+        const query = {
+            $and: [{author: {$ne: authUserId}, authorTargetLanguage: targetLanguage}],
+        };
+        const postsCount = await Post.find(query).countDocuments();
+        const allPosts = await Post.find(query)
+            .populate({
+                path: 'author',
+                populate: [
+                    {path: 'following'},
+                    {path: 'followers'},
+                    {
+                        path: 'notifications',
+                        populate: [
+                            {path: 'author'},
+                            {path: 'follow'},
+                            {path: 'like'},
+                            {path: 'comment'},
+                        ],
+                    },
+                ],
+            })
+            .populate('likes')
+            .populate({
+                path: 'comments',
+                options: {sort: {createdAt: 'desc'}},
+                populate: {path: 'author'},
+            })
+            .skip(skip)
+            .limit(limit)
+            .sort({createdAt: 'desc'});
+
+        return {posts: allPosts, count: postsCount};
+    },
+    /**
      * Gets all posts of potential language partners
      *
      * @param {string} authUserId
+     * @param {string} nativeLanguage
+     * @param {string} targetLanguage
      * @param {int} skip how many posts to skip
      * @param {int} limit how many posts to limit
      */
