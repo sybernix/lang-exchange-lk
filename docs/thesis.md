@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 21.857 seconds.
+Conversion time: 19.64 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Mon Oct 19 2020 10:51:33 GMT-0700 (PDT)
+* Mon Oct 19 2020 10:56:37 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -336,6 +336,11 @@ All Sri Lankans who want to learn a second language. They should have access to 
 *   User should be able to see posts by the partners he or she follows
 *   User should be able to view an introduction text, pictures, posts, language information, age, sex, and city of other users by visiting their profile
 *   User should be able to filter potential partner discovery with city, sex, and age range
+
+
+#### 3.1.5 Development Responsibility
+
+I, Niruhan Viswarupan, will be solely responsible for the development of the application and deployment until the date of the end of the academic requirements for the MSc IT program. Thereafter, the project will be made open source on GitHub where the open source community can contribute to the project
 
 
 
