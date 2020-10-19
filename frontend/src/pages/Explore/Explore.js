@@ -21,16 +21,6 @@ import {useStore} from 'store';
 
 import * as Routes from 'routes';
 
-const Root = styled(Container)`
-  margin-top: ${p => p.theme.spacing.lg};
-  margin-bottom: ${p => p.theme.spacing.sm};
-
-  @media (min-width: ${p => p.theme.screen.lg}) {
-    margin-left: ${p => p.theme.spacing.lg};
-    padding: 0;
-  }
-`;
-
 const PostsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 3fr));
@@ -65,9 +55,10 @@ const Explore = () => {
     };
 
     return (
-        <Root maxWidth="md">
+        <Container maxWidth="sm">
             <Head title="Explore New Posts and Learners"/>
             {/* {console.log(auth)} */}
+            <Spacing top="lg"/>
 
             <Query
                 query={GET_EXPLORE_POSTS}
@@ -134,7 +125,7 @@ const Explore = () => {
                     );
                 }}
             </Query>
-        </Root>
+        </Container>
     );
 };
 
