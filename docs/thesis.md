@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 20.92 seconds.
+Conversion time: 21.849 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Mon Oct 19 2020 11:01:57 GMT-0700 (PDT)
+* Mon Oct 19 2020 11:15:53 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -353,7 +353,33 @@ The deliverables through this project are as follows,
 *   Design of a language exchange platform
 *   Dissertation on LangExchange LK
 *   Open source code in GitHub
-*   Publicly accessible platform on www.langexchange.lk
+*   Publicly accessible platform on [www.langexchange.lk](www.langexchange.lk)
+
+
+#### 3.1.7 Risk Management
+
+The identified risks in the project are as follows,
+
+
+
+*   Compreting international platforms dominating the user share
+*   Delay in delivering the project
+*   Lack of knowledge on frontend development of the developer
+*   Risk of plateauing due to lack of initial users to make the platform interesting for new users
+
+The above risk can be mitigated using the following strategies,
+
+
+
+*   Focus on the local market needs and provide a tailor-made solution which will attract the users.
+*   Provide privacy features requested by Sri Lankan users in the survey
+*   Allocate time every day to work on the project after office hours
+*   Track the project progress through GitHub project page by opening issues under columns such as “Todo”, “Immediate action items”, “In Progress”, “Completed”, and “On Hold”
+*   Learn React JS and frontend javascript technologies in Youtube tutorials
+*   Leverage the experience in Java and Python to quickly learn and understand Javascript
+*   Use developer support communities such as StackOverflow, and other forums to clear roadblocks
+*   After launching the product do targeted promotion in educational institutes to capture the initial user base
+*   Consider providing monetary reward to first 100 - 1000 users depending on the available funding
 
 
 
