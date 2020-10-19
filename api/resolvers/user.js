@@ -417,6 +417,9 @@ const Query = {
 
             // Increase score by 2 for each X auth user follows and X follows pp
             scores[ppId] = scores[ppId] + 2 * ppFollowedBy.filter(value => userFollows.includes(value)).length
+
+            // Increase score by 2 for each X follows auth user and pp
+            scores[ppId] = scores[ppId] + 2 * ppFollowedBy.filter(value => userFollowedBy.includes(value)).length
         }
         console.log("scores");
         console.log(scores);
