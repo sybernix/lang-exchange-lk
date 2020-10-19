@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 13.552 seconds.
+Conversion time: 26.427 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Mon Oct 19 2020 10:33:01 GMT-0700 (PDT)
+* Mon Oct 19 2020 10:38:37 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -312,6 +312,11 @@ This SRS document presents the plan for the development of the project “LangEx
 #### 3.1.2 Overview
 
 Sri Lanka is a multilingual country where three languages, Sinhala, Tamil, and English are predominantly spoken. Traditional way of learning language is going to language classes is still the most prevalent way of language acquisition. This project aims to develop a language exchange platform where Sri Lankans can find language partners and learn together. This platform will provide more chances to actually use the language for the learners.
+
+
+#### 3.1.3 Customers
+
+All Sri Lankans who want to learn a second language. They should have access to the internet and basic IT knowledge.
 
 
 
