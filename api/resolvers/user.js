@@ -327,7 +327,7 @@ const Query = {
             {_id: 0}
         ).select('user');
         following.map(f => userFollowing.push(f.user));
-        userFollowing.push(userId);
+        // userFollowing.push(userId);
 
         //Find the native and target language of the current user with userId
         const queryToFindLangInfo = {
@@ -369,8 +369,7 @@ const Query = {
             {_id: 0}
         ).select('user');
         following.map(f => userFollowing.push(f.user));
-        userFollowing.push(userId);
-        console.log(following);
+        // userFollowing.push(userId);
 
         //Find the native and target language of the current user with userId
         const queryToFindLangInfo = {
@@ -380,23 +379,29 @@ const Query = {
 
         // build score
         let scores = {};
-
-        // Find random users
         const query = {$and: [{_id: {$nin: userFollowing}}, {targetLanguage: currentUser["0"].nativeLanguage}, {nativeLanguage: currentUser["0"].targetLanguage}]};
-        const usersCount = await User.where(query).countDocuments();
-        let random = Math.floor(Math.random() * usersCount);
+        const potentialPartners = await User.find(query).select('_id');
+        potentialPartners.map(f => scores[f._id] = 0);
 
-        const usersLeft = usersCount - random;
-        if (usersLeft < LIMIT) {
-            random = random - (LIMIT - usersLeft);
-            if (random < 0) {
-                random = 0;
-            }
+        for (const ppId in scores) {
+            console.log("ppId");
+            console.log(ppId);
+            const ppFollows = [];
+            const ppFollowsTemp = await Follow.find(
+                {follower: ppId},
+                {_id: 0}
+            ).select('user');
+            ppFollowsTemp.map(f => ppFollows.push(f.user));
+            console.log(ppFollows);
+            if (ppFollows.indexOf(userId) > -1) {
+                console.log("true");
+                scores[ppId] = scores[ppId] + 100;
+            };
         }
+        console.log("scores");
+        console.log(scores);
 
-        const randomUsers = await User.find(query)
-            .skip(random)
-            .limit(LIMIT);
+        const randomUsers = await User.find();
 
         return randomUsers;
     },
