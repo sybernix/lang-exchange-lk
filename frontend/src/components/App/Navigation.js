@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink, generatePath} from 'react-router-dom';
 import styled from 'styled-components';
-
+import {capitalizeFirstLetter} from 'utils/utilFunctions'
 import * as Routes from 'routes';
 
 import {
@@ -54,7 +54,7 @@ const Name = styled.div`
 /**
  * Navigation component used in SideBar
  */
-const Navigation = () => {
+const Navigation = (p) => {
     return (
         <List>
             <Link exact activeClassName="selected" to={Routes.HOME}>
@@ -67,7 +67,7 @@ const Navigation = () => {
             <Link exact activeClassName="selected" to={Routes.LANGFORUM}>
                 <ListItem>
                     <NotificationIcon width={18}/>
-                    <Name>Lang Forum</Name>
+                    <Name>{capitalizeFirstLetter(p.auth.user.targetLanguage)} Forum</Name>
                 </ListItem>
             </Link>
 

@@ -98,7 +98,7 @@ const SideBar = ({location, isOpen, sideBarRef}) => {
 
             <Spacing top="sm"/>
 
-            <Navigation/>
+            <Navigation auth={auth}/>
         </Root>
     );
 };

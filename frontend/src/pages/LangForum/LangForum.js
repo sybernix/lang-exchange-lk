@@ -70,7 +70,6 @@ const LangForum = () => {
                             </PostsContainer>
                         );
                     }
-                    {console.log(data)}
                     const {posts, count} = data.getForumPosts;
 
                     if (!posts.length > 0) return <Empty text="No posts yet."/>;
