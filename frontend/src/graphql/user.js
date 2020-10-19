@@ -337,6 +337,20 @@ export const USER_SUGGESTIONS = gql`
 `;
 
 /**
+ * Learners suggestions for auth user
+ */
+export const USER_SUGGESTIONS_WITH_SCORE = gql`
+  query($userId: String!) {
+    suggestLearnersWithScore(userId: $userId) {
+      id
+      fullName
+      username
+      image
+    }
+  }
+`;
+
+/**
  * Get users with whom authUser had a conversation
  */
 export const GET_CONVERSATIONS = gql`

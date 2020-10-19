@@ -263,6 +263,7 @@ type Query {
   ): UsersPayload
   searchUsers(searchQuery: String!): [UserPayload]
   suggestLearners(userId: String!): [UserPayload]
+  suggestLearnersWithScore(userId: String!): [UserPayload]
   getUserPosts(username: String!, skip: Int, limit: Int): UserPostsPayload
   getFollowedPosts(userId: String!, skip: Int, limit: Int): PostsPayload
   getExplorePosts(

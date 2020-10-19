@@ -41,7 +41,6 @@ const StyledA = styled(A)`
 const Home = () => {
     const [{auth}] = useStore();
     const [modalPostId, setModalPostId] = useState(null);
-    console.log(auth);
 
     const closeModal = () => {
         window.history.pushState('', '', '/');

@@ -12,7 +12,7 @@ import Avatar from 'components/Avatar';
 
 import {useStore} from 'store';
 
-import {USER_SUGGESTIONS} from 'graphql/user';
+import {USER_SUGGESTIONS_WITH_SCORE} from 'graphql/user';
 
 import {USER_SUGGESTIONS_WIDTH, HEADER_HEIGHT} from 'constants/Layout';
 
@@ -74,7 +74,7 @@ const UserSuggestions = ({pathname}) => {
     if (hideUserSuggestions) return null;
 
     return (
-        <Query query={USER_SUGGESTIONS} variables={{userId: auth.user.id}}>
+        <Query query={USER_SUGGESTIONS_WITH_SCORE} variables={{userId: auth.user.id}}>
             {({data, loading}) => {
                 if (loading)
                     return (
@@ -83,7 +83,7 @@ const UserSuggestions = ({pathname}) => {
                         </Root>
                     );
 
-                if (!data.suggestLearners.length > 0) {
+                if (!data.suggestLearnersWithScore.length > 0) {
                     return null;
                 }
 
@@ -92,7 +92,7 @@ const UserSuggestions = ({pathname}) => {
                         <H3>Suggestions For You</H3>
 
                         <List>
-                            {data.suggestLearners.map(user => (
+                            {data.suggestLearnersWithScore.map(user => (
                                 <ListItem key={user.id}>
                                     <A
                                         to={generatePath(Routes.USER_PROFILE, {
