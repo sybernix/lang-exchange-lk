@@ -68,7 +68,7 @@ const UserSuggestions = ({pathname}) => {
     const [{auth}] = useStore();
 
     const hideUserSuggestions = matchPath(pathname, {
-        path: [Routes.MESSAGES, Routes.LEARNER, Routes.USER_PROFILE, Routes.EDIT_INFO],
+        path: [Routes.MESSAGES, Routes.LEARNER, Routes.EDIT_INFO, Routes.NOTIFICATIONS, "/" + auth.user.username],
     });
 
     if (hideUserSuggestions) return null;
