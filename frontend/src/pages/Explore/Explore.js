@@ -14,11 +14,8 @@ import {Loading} from 'components/Loading';
 import Head from 'components/Head';
 
 import {GET_EXPLORE_POSTS} from 'graphql/post';
-
 import {EXPLORE_PAGE_POSTS_LIMIT} from 'constants/DataLimit';
-
 import {useStore} from 'store';
-
 import * as Routes from 'routes';
 
 const PostsContainer = styled.div`
@@ -57,8 +54,6 @@ const Explore = () => {
     return (
         <Container maxWidth="sm">
             <Head title="Explore New Posts and Learners"/>
-            {/* {console.log(auth)} */}
-            <Spacing top="lg"/>
 
             <Query
                 query={GET_EXPLORE_POSTS}

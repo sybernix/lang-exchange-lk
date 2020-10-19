@@ -82,23 +82,26 @@ const SideBar = ({location, isOpen, sideBarRef}) => {
 
     return (
         <Root isOpen={isOpen} ref={sideBarRef}>
-            <User
-                exact
-                to={generatePath(Routes.USER_PROFILE, {username: auth.user.username})}
-                activeClassName="selected"
-            >
-                <Avatar image={auth.user.image} size={20}/>
+          {location.pathname === "/" && 
+            <Spacing top="lg"/>
+          }
+          <User
+              exact
+              to={generatePath(Routes.USER_PROFILE, {username: auth.user.username})}
+              activeClassName="selected"
+          >
+              <Avatar image={auth.user.image} size={20}/>
 
-                <Spacing left="xxs">
-                    <FullName active={isAuthUsersProfilePage}>
-                        {auth.user.fullName}
-                    </FullName>
-                </Spacing>
-            </User>
+              <Spacing left="xxs">
+                  <FullName active={isAuthUsersProfilePage}>
+                      {auth.user.fullName}
+                  </FullName>
+              </Spacing>
+          </User>
 
-            <Spacing top="sm"/>
+          <Spacing top="sm"/>
 
-            <Navigation auth={auth}/>
+          <Navigation auth={auth}/>
         </Root>
     );
 };

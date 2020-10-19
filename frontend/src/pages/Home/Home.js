@@ -62,11 +62,8 @@ const Home = () => {
     return (
         <Container maxWidth="sm">
             <Head/>
-
             <Spacing top="lg"/>
-
             <CreatePost/>
-
             <Query
                 query={GET_FOLLOWED_POSTS}
                 variables={variables}
