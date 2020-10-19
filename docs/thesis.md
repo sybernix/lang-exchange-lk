@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 21.849 seconds.
+Conversion time: 19.962 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Mon Oct 19 2020 11:15:53 GMT-0700 (PDT)
+* Mon Oct 19 2020 11:18:20 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -380,6 +380,12 @@ The above risk can be mitigated using the following strategies,
 *   Use developer support communities such as StackOverflow, and other forums to clear roadblocks
 *   After launching the product do targeted promotion in educational institutes to capture the initial user base
 *   Consider providing monetary reward to first 100 - 1000 users depending on the available funding
+
+
+#### 3.1.8 Release Plans
+
+
+#### 3.1.9 Technical Processes
 
 
 
