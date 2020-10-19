@@ -424,12 +424,32 @@ const Query = {
             // Increase score by 2 for each X, PP follows X follows auth user
             scores[ppId] = scores[ppId] + 2 * ppFollows.filter(value => userFollowedBy.includes(value)).length
         }
-        console.log("scores");
-        console.log(scores);
 
-        const randomUsers = await User.find();
+        // sort the pp in descending order of score
+        var sortableScores = [];
+        for (var ppId in scores) {
+            sortableScores.push([ppId, scores[ppId]]);
+        }
 
-        return randomUsers;
+        sortableScores.sort(function(a, b) {
+            return b[1] - a[1];
+        });
+
+        console.log("sortable scores");
+        console.log(sortableScores);
+
+        let topMatchIds = [];
+        sortableScores.map(f => topMatchIds.push(String(f[0])));
+
+        console.log("top match ids");
+        console.log(topMatchIds);
+
+        const queryTopMatches = {_id: {$in: topMatchIds}};
+        const topMatches = await User.find(queryTopMatches);
+
+        console.log("top matches");
+        console.log(topMatches);
+        return topMatches;
     },
     /**
      * Verifies reset password token
