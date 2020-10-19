@@ -167,6 +167,9 @@ const UserSchema = gql`
 
     # Gets Suggested learners for user
     suggestLearners(userId: String!): [UserPayload]
+
+    # Gets Suggested learners for user
+    suggestLearnersWithScore(userId: String!): [UserPayload]
   }
 
   # ---------------------------------------------------------

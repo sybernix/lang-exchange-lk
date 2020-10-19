@@ -313,7 +313,7 @@ const Query = {
         return users;
     },
     /**
-     * Gets Suggested learners for user
+     * Gets Randomly Suggested learners for user
      *
      * @param {string} userId
      */
@@ -334,6 +334,52 @@ const Query = {
             $and: [{_id: userId}],
         };
         const currentUser = await User.find(queryToFindLangInfo);
+
+        // Find random users
+        const query = {$and: [{_id: {$nin: userFollowing}}, {targetLanguage: currentUser["0"].nativeLanguage}, {nativeLanguage: currentUser["0"].targetLanguage}]};
+        const usersCount = await User.where(query).countDocuments();
+        let random = Math.floor(Math.random() * usersCount);
+
+        const usersLeft = usersCount - random;
+        if (usersLeft < LIMIT) {
+            random = random - (LIMIT - usersLeft);
+            if (random < 0) {
+                random = 0;
+            }
+        }
+
+        const randomUsers = await User.find(query)
+            .skip(random)
+            .limit(LIMIT);
+
+        return randomUsers;
+    },
+    /**
+     * Gets Algorithmically Suggested learners for user
+     *
+     * @param {string} userId
+     */
+    suggestLearnersWithScore: async (root, {userId}, {User, Follow}) => {
+        const LIMIT = 6;
+
+        // Find who user follows
+        const userFollowing = [];
+        const following = await Follow.find(
+            {follower: userId},
+            {_id: 0}
+        ).select('user');
+        following.map(f => userFollowing.push(f.user));
+        userFollowing.push(userId);
+        console.log(following);
+
+        //Find the native and target language of the current user with userId
+        const queryToFindLangInfo = {
+            $and: [{_id: userId}],
+        };
+        const currentUser = await User.find(queryToFindLangInfo);
+
+        // build score
+        let scores = {};
 
         // Find random users
         const query = {$and: [{_id: {$nin: userFollowing}}, {targetLanguage: currentUser["0"].nativeLanguage}, {nativeLanguage: currentUser["0"].targetLanguage}]};
