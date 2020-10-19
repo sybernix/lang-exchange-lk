@@ -362,42 +362,59 @@ const Query = {
     suggestLearnersWithScore: async (root, {userId}, {User, Follow}) => {
         const LIMIT = 6;
 
-        // Find who user follows
-        const userFollowing = [];
-        const following = await Follow.find(
+        // Find the list of users the auth user follows
+        const userFollows = [];
+        const userFollowsTemp = await Follow.find(
             {follower: userId},
             {_id: 0}
         ).select('user');
-        following.map(f => userFollowing.push(f.user));
-        // userFollowing.push(userId);
+        userFollowsTemp.map(f => userFollows.push(f.user));
+
+        // Find the list of users who follow the auth user
+        const userFollowedBy = [];
+        const userFollowedByTemp = await Follow.find(
+            {user: userId},
+            {_id: 0}
+        ).select('user');
+        userFollowedByTemp.map(f => userFollowedBy.push(f.user));
 
         //Find the native and target language of the current user with userId
         const queryToFindLangInfo = {
             $and: [{_id: userId}],
         };
-        const currentUser = await User.find(queryToFindLangInfo);
+        const authUser = await User.find(queryToFindLangInfo);
 
         // build score
         let scores = {};
-        const query = {$and: [{_id: {$nin: userFollowing}}, {targetLanguage: currentUser["0"].nativeLanguage}, {nativeLanguage: currentUser["0"].targetLanguage}]};
+        const query = {$and: [{_id: {$nin: userFollows}}, {targetLanguage: authUser["0"].nativeLanguage}, {nativeLanguage: authUser["0"].targetLanguage}]};
         const potentialPartners = await User.find(query).select('_id');
         potentialPartners.map(f => scores[f._id] = 0);
 
         for (const ppId in scores) {
             // console.log("ppId");
             // console.log(ppId);
+            // Find the list of users the pp follows
             const ppFollows = [];
             const ppFollowsTemp = await Follow.find(
                 {follower: ppId},
                 {_id: 0}
             ).select('user');
             ppFollowsTemp.map(f => ppFollows.push(f.user));
+
+            // Find the list of users who follow the pp
+            const ppFollowedBy = [];
+            const ppFollowedByTemp = await Follow.find(
+                {user: ppId},
+                {_id: 0}
+            ).select('user');
+            ppFollowedByTemp.map(f => ppFollowedBy.push(f.user));
+
             // console.log("ppFollows");
             // console.log(ppFollows);
             // console.log("userId");
             // console.log(userId);
             if (ppFollows.some(f => f == userId)) {
-                console.log("true");
+                // console.log("true");
                 scores[ppId] = scores[ppId] + 100;
             };
         }
