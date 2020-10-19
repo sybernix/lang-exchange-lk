@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 19.962 seconds.
+Conversion time: 10.584 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Mon Oct 19 2020 11:18:20 GMT-0700 (PDT)
+* Mon Oct 19 2020 11:20:49 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -386,6 +386,14 @@ The above risk can be mitigated using the following strategies,
 
 
 #### 3.1.9 Technical Processes
+
+The following will be the languages and technologies that I will use for building the product
+
+Frontend: React JS, Styledcomponents, FlexBox
+
+Backend: Node.js, Express JS, Mongoose
+
+Others: Javascript, GraphQL, MongoDB, Google Translate API, AWS
 
 
 
