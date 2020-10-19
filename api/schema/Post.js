@@ -78,6 +78,9 @@ const PostSchema = gql`
     # Gets all posts of potential language partners
     getExplorePosts(authUserId: ID!, nativeLanguage: String!, targetLanguage: String!, skip: Int, limit: Int): PostsPayload
 
+    # Gets all posts of potential language partners
+    getForumPosts(authUserId: ID!, targetLanguage: String!, skip: Int, limit: Int): PostsPayload
+
     # Gets post by id
     getPost(id: ID!): PostPayload
   }
