@@ -116,6 +116,26 @@ export const GET_EXPLORE_POSTS = gql`
 `;
 
 /**
+ * Gets all available posts of people who are learning the same language
+ */
+export const GET_FORUM_POSTS = gql`
+  query($authUserId: ID!, $targetLanguage: String!, $skip: Int, $limit: Int) {
+    getForumPosts(authUserId: $authUserId, targetLanguage: $targetLanguage, skip: $skip, limit: $limit) {
+      count
+      posts {
+        id
+        title
+        image
+        createdAt
+        ${postAuthorPayload}
+        ${postCommentsPayload}
+        ${postLikesPayload}
+      }
+    }
+  }
+`;
+
+/**
  * Gets specific post by id
  */
 export const GET_POST = gql`
