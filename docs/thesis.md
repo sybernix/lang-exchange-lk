@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 47.93 seconds.
+Conversion time: 13.552 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Mon Oct 19 2020 10:28:02 GMT-0700 (PDT)
+* Mon Oct 19 2020 10:33:01 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -307,6 +307,11 @@ All components of MERN stack are open source. So there is no need to obtain a li
 #### 3.1.1 Introduction
 
 This SRS document presents the plan for the development of the project “LangExchangeLK”, a system developed by Niruhan Viswarupan. The audience of this document will be the developers working on the project currently and who will maintain this project in the future. This document contains information on system functionality, the scope, the release and availability estimates, the potential risks and their mitigations, process of development and related statistics.
+
+
+#### 3.1.2 Overview
+
+Sri Lanka is a multilingual country where three languages, Sinhala, Tamil, and English are predominantly spoken. Traditional way of learning language is going to language classes is still the most prevalent way of language acquisition. This project aims to develop a language exchange platform where Sri Lankans can find language partners and learn together. This platform will provide more chances to actually use the language for the learners.
 
 
 
