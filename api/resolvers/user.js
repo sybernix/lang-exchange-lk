@@ -391,8 +391,6 @@ const Query = {
         potentialPartners.map(f => scores[f._id] = 0);
 
         for (const ppId in scores) {
-            // console.log("ppId");
-            // console.log(typeOf ppId);
             // Find the list of users the pp follows
             const ppFollows = [];
             const ppFollowsTemp = await Follow.find(
@@ -409,10 +407,6 @@ const Query = {
             ).select('user');
             ppFollowedByTemp.map(f => ppFollowedBy.push(String(f.user)));
 
-            // console.log("ppFollows");
-            // console.log(ppFollows);
-            // console.log("userId");
-            // console.log(userId);
             // Increase score by 100 if pp follows auth user
             if (ppFollows.some(f => f === userId)) {
                 // console.log("true");
@@ -420,7 +414,9 @@ const Query = {
             };
             // Increase score by 2 for each common user followed by auth user and pp
             scores[ppId] = scores[ppId] + 2 * ppFollows.filter(value => userFollows.includes(value)).length
-            console.log();
+
+            // Increase score by 2 for each X auth user follows and X follows pp
+            scores[ppId] = scores[ppId] + 2 * ppFollowedBy.filter(value => userFollows.includes(value)).length
         }
         console.log("scores");
         console.log(scores);
