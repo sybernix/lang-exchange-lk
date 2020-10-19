@@ -272,6 +272,12 @@ type Query {
     skip: Int
     limit: Int
   ): PostsPayload
+  getForumPosts(
+    authUserId: ID!
+    targetLanguage: String!
+    skip: Int
+    limit: Int
+  ): PostsPayload
   getPost(id: ID!): PostPayload
   getMessages(authUserId: ID!, userId: ID!): [MessagePayload]
   getConversations(authUserId: ID!): [ConversationsPayload]

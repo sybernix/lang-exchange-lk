@@ -13,7 +13,7 @@ import Empty from 'components/Empty';
 import {Loading} from 'components/Loading';
 import Head from 'components/Head';
 
-import {GET_EXPLORE_POSTS} from 'graphql/post';
+import {GET_FORUM_POSTS} from 'graphql/post';
 
 import {EXPLORE_PAGE_POSTS_LIMIT} from 'constants/DataLimit';
 
@@ -58,7 +58,6 @@ const LangForum = () => {
 
     const variables = {
         authUserId: auth.user.id,
-        nativeLanguage: auth.user.nativeLanguage,
         targetLanguage: auth.user.targetLanguage,
         skip: 0,
         limit: EXPLORE_PAGE_POSTS_LIMIT,
@@ -70,7 +69,7 @@ const LangForum = () => {
             {/* {console.log(auth)} */}
 
             <Query
-                query={GET_EXPLORE_POSTS}
+                query={GET_FORUM_POSTS}
                 variables={variables}
                 notifyOnNetworkStatusChange
             >
@@ -83,7 +82,7 @@ const LangForum = () => {
                         );
                     }
                     {console.log(data)}
-                    const {posts, count} = data.getExplorePosts;
+                    const {posts, count} = data.getForumPosts;
 
                     if (!posts.length > 0) return <Empty text="No posts yet."/>;
 
