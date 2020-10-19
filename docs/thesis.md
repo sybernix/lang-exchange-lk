@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 17.914 seconds.
+Conversion time: 47.93 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Sun Oct 18 2020 03:38:28 GMT-0700 (PDT)
+* Mon Oct 19 2020 10:28:02 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -301,7 +301,17 @@ Node.js is a Javascript runtime environment built using Google Chrome JavaScript
 All components of MERN stack are open source. So there is no need to obtain a license if we ever decide to commercialize our application. In addition, React JS and Node.js allow the same code to be executed concurrently in the client side as well as server side. Hence the application will be in total sync and function smoothly.
 
 
-### 3.1 Software Development Life Cycle - Waterfall
+### 3.1 Software Requirements Specification
+
+
+#### 3.1.1 Introduction
+
+This SRS document presents the plan for the development of the project “LangExchangeLK”, a system developed by Niruhan Viswarupan. The audience of this document will be the developers working on the project currently and who will maintain this project in the future. This document contains information on system functionality, the scope, the release and availability estimates, the potential risks and their mitigations, process of development and related statistics.
+
+
+
+
+### 3.2 Software Development Life Cycle
 
 Spiral SDLC was chosen for the development of LangExchangeLK. This is because, it was better to start implementation with a basic set of requirements and produce an application and then iteratively improve the product in subsequent cycles of development after feedback from the supervisor. However, the first cycle covered the majority of the identified requirements and majority of the implemented features. So, the development can also be considered as a mix of waterfall and spiral SDLC.
 
@@ -316,7 +326,7 @@ Spiral SDLC was chosen for the development of LangExchangeLK. This is because, i
 (Source: [https://airbrake.io/blog/sdlc/spiral-model](https://airbrake.io/blog/sdlc/spiral-model))
 
 
-#### 3.1.1 First Cycle
+#### 3.2.1 First Cycle
 
 This was the major cycle of the development. At the start of this cycle the survey that we discussed in chapter one was performed and the following feature requirements were identified.
 
