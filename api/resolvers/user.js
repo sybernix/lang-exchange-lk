@@ -384,16 +384,19 @@ const Query = {
         potentialPartners.map(f => scores[f._id] = 0);
 
         for (const ppId in scores) {
-            console.log("ppId");
-            console.log(ppId);
+            // console.log("ppId");
+            // console.log(ppId);
             const ppFollows = [];
             const ppFollowsTemp = await Follow.find(
                 {follower: ppId},
                 {_id: 0}
             ).select('user');
             ppFollowsTemp.map(f => ppFollows.push(f.user));
-            console.log(ppFollows);
-            if (ppFollows.indexOf(userId) > -1) {
+            // console.log("ppFollows");
+            // console.log(ppFollows);
+            // console.log("userId");
+            // console.log(userId);
+            if (ppFollows.some(f => f == userId)) {
                 console.log("true");
                 scores[ppId] = scores[ppId] + 100;
             };
