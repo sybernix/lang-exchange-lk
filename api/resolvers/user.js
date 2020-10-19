@@ -368,7 +368,7 @@ const Query = {
             {follower: userId},
             {_id: 0}
         ).select('user');
-        userFollowsTemp.map(f => userFollows.push(f.user));
+        userFollowsTemp.map(f => userFollows.push(String(f.user)));
 
         // Find the list of users who follow the auth user
         const userFollowedBy = [];
@@ -376,7 +376,7 @@ const Query = {
             {user: userId},
             {_id: 0}
         ).select('user');
-        userFollowedByTemp.map(f => userFollowedBy.push(f.user));
+        userFollowedByTemp.map(f => userFollowedBy.push(String(f.user)));
 
         //Find the native and target language of the current user with userId
         const queryToFindLangInfo = {
@@ -392,14 +392,14 @@ const Query = {
 
         for (const ppId in scores) {
             // console.log("ppId");
-            // console.log(ppId);
+            // console.log(typeOf ppId);
             // Find the list of users the pp follows
             const ppFollows = [];
             const ppFollowsTemp = await Follow.find(
                 {follower: ppId},
                 {_id: 0}
             ).select('user');
-            ppFollowsTemp.map(f => ppFollows.push(f.user));
+            ppFollowsTemp.map(f => ppFollows.push(String(f.user)));
 
             // Find the list of users who follow the pp
             const ppFollowedBy = [];
@@ -407,16 +407,20 @@ const Query = {
                 {user: ppId},
                 {_id: 0}
             ).select('user');
-            ppFollowedByTemp.map(f => ppFollowedBy.push(f.user));
+            ppFollowedByTemp.map(f => ppFollowedBy.push(String(f.user)));
 
             // console.log("ppFollows");
             // console.log(ppFollows);
             // console.log("userId");
             // console.log(userId);
-            if (ppFollows.some(f => f == userId)) {
+            // Increase score by 100 if pp follows auth user
+            if (ppFollows.some(f => f === userId)) {
                 // console.log("true");
                 scores[ppId] = scores[ppId] + 100;
             };
+            // Increase score by 2 for each common user followed by auth user and pp
+            scores[ppId] = scores[ppId] + 2 * ppFollows.filter(value => userFollows.includes(value)).length
+            console.log();
         }
         console.log("scores");
         console.log(scores);
