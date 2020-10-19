@@ -13,12 +13,10 @@ import Empty from 'components/Empty';
 import {Loading} from 'components/Loading';
 import Head from 'components/Head';
 
+import {capitalizeFirstLetter} from 'utils/utilFunctions'
 import {GET_FORUM_POSTS} from 'graphql/post';
-
 import {EXPLORE_PAGE_POSTS_LIMIT} from 'constants/DataLimit';
-
 import {useStore} from 'store';
-
 import * as Routes from 'routes';
 
 const PostsContainer = styled.div`
@@ -33,6 +31,7 @@ const PostsContainer = styled.div`
  */
 const LangForum = () => {
     const [{auth}] = useStore();
+    const title = "Forum for users learning " + capitalizeFirstLetter(auth.user.targetLanguage);
 
     const [modalPostId, setModalPostId] = useState(null);
 
@@ -55,7 +54,7 @@ const LangForum = () => {
 
     return (
         <Container maxWidth="sm">
-            <Head title="Explore New Posts and Learners"/>
+            <Head title={title}/>
             {/* {console.log(auth)} */}
 
             <Query
