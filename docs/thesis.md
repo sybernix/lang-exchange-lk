@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 26.427 seconds.
+Conversion time: 21.857 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Mon Oct 19 2020 10:38:37 GMT-0700 (PDT)
+* Mon Oct 19 2020 10:51:33 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -317,6 +317,25 @@ Sri Lanka is a multilingual country where three languages, Sinhala, Tamil, and E
 #### 3.1.3 Customers
 
 All Sri Lankans who want to learn a second language. They should have access to the internet and basic IT knowledge.
+
+
+#### 3.1.4 Functionality
+
+
+
+*   Users should be able to sign up and create a learning profile
+*   User should be able to find matching language partners
+*   User should be able to send and receive message to a language partner
+*   User should be able to post text, and photo posts
+*   Posts by others learning the same language should be discoverable
+*   Messages in other languages should be translated and shown alongside in the chat window
+*   System should suggest best matching language partners based on compatibility
+*   User should get notification about new followers
+*   User should be able to edit his personal information
+*   User should be able to upload profile picture and cover picture
+*   User should be able to see posts by the partners he or she follows
+*   User should be able to view an introduction text, pictures, posts, language information, age, sex, and city of other users by visiting their profile
+*   User should be able to filter potential partner discovery with city, sex, and age range
 
 
 
