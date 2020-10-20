@@ -383,7 +383,7 @@ const Query = {
 
         // build score
         let scores = {};
-        const query = {$and: [{_id: {$nin: userFollows}}, {targetLanguage: authUser["0"].nativeLanguage}, {nativeLanguage: authUser["0"].targetLanguage}]};
+        const query = {$and: [{_id: {$nin: userFollows}}, {targetLanguage: authUser[0].nativeLanguage}, {nativeLanguage: authUser[0].targetLanguage}]};
         const potentialPartners = await User.find(query).select('_id');
         potentialPartners.map(f => scores[f._id] = 0);
 
@@ -420,6 +420,13 @@ const Query = {
 
             // Increase score by 2 for each X, PP follows X follows auth user
             scores[ppId] = scores[ppId] + 2 * ppFollows.filter(value => userFollowedBy.includes(value)).length
+
+            const potentialPartner = await User.find({_id: ppId});
+
+            // Increase score by 10 if the PP and auth user are from the same city
+            if (potentialPartner[0].city == authUser[0].city) {
+                scores[ppId] = scores[ppId] + 10;
+            }
         }
 
         // sort the pp in descending order of score
@@ -432,14 +439,14 @@ const Query = {
             return b[1] - a[1];
         });
 
-        console.log("sortable scores");
-        console.log(sortableScores);
+        // console.log("sortable scores");
+        // console.log(sortableScores);
 
         let topMatchIds = [];
         sortableScores.map(f => topMatchIds.push(String(f[0])));
 
-        console.log("top match ids");
-        console.log(topMatchIds);
+        // console.log("top match ids");
+        // console.log(topMatchIds);
 
         const numMatches = Math.min(LIMIT, topMatchIds.length);
         const queryTopMatches = {_id: {$in: topMatchIds}};
@@ -453,8 +460,8 @@ const Query = {
             });
         }
 
-        console.log("top matches");
-        console.log(topMatchesOrdered);
+        // console.log("top matches");
+        // console.log(topMatchesOrdered);
         return topMatchesOrdered;
     },
     /**
