@@ -15,6 +15,10 @@ const likeSchema = Schema(
             type: Schema.Types.ObjectId,
             ref: 'User',
         },
+        postAuthor: {
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+        },
     },
     {
         timestamps: true,
