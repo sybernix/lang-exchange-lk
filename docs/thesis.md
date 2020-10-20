@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 35.152 seconds.
+Conversion time: 24.327 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Tue Oct 20 2020 10:19:28 GMT-0700 (PDT)
+* Tue Oct 20 2020 10:48:14 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -459,6 +459,27 @@ Frontend: React JS, Styledcomponents, FlexBox
 Backend: Node.js, Express JS, Mongoose
 
 Others: Javascript, GraphQL, MongoDB, Google Translate API, AWS
+
+
+
+
+### 3.2 Feasibility Study
+
+
+#### 3.2.1 Financial Feasibility
+
+There are three primary costs that should be covered for the successful delivery of this project. They are developer payment, hosting cost, and domain name cost. The developer cost is zero since the initial development burden is borne by myself and this project is developed as a part of requirements of MSc degree. The domain name cost is LKR 2800 which was covered by myself. Since this cost is for one year of usage of the domain name, it is not expensive. AWS is used for hosting and Google Translate API is used for message translation. The cost of Google Translate API [27] for number of characters per month is as follows,
+
+
+    First 500,000 characters - Free
+
+
+    500,000 to 1 billion characters - $20 per million characters
+
+
+    Over 1 billion characters - Custom pricing
+
+The cost of an AWS EC2 instance is $0.102 per hour for a linux machine with 8GB memory [28]. The value added services such as Elastic Beanstalk, Codepipeline are free. In addition, for one year after joining you get 750 hours per month of EC2 instance free.  So for both AWS and Google Translate we will be able stay within the free tier at least for a year. Apart from these there is no licensing cost for software since only open source technologies will be used to build this product.
 
 
 
@@ -2323,6 +2344,10 @@ and non-native users of English. California Linguistic Notes Volume XXVI No. 1
 [25] Responsive Web Design - What It Is And How To Use It [Online]. Available at: https://www.smashingmagazine.com/2011/01/guidelines-for-responsive-web-design (Accessed: 16 October, 2020)
 
 [26] Pricing | Cloud Speech-to-Text Documentation | Google Cloud [Online]. Available at: https://cloud.google.com/speech-to-text/pricing (Accessed: 17 October, 2020)
+
+[27] Pricing | Cloud Translation | Google Cloud [Online]. Available at: https://cloud.google.com/translate/pricing (Accessed: 20 October, 2020)
+
+[28] Amazon EC2 On-Demand Pricing [Online]. Available at: https://aws.amazon.com/ec2/pricing/on-demand/ (Accessed: 20 October, 2020)
 
 
 ## Appendices
