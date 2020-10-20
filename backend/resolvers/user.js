@@ -370,6 +370,11 @@ const Query = {
         ).select('user');
         userFollowsTemp.map(f => userFollows.push(String(f.user)));
 
+        // Retrieve list of posts liked by auth user
+        const userLikes = [];
+        const userLikesTemp = await Like.find({user: userId});
+        userLikesTemp.map(f => userLikes.push(String(f.user)));
+
         // Find the list of users who follow the auth user
         const userFollowedBy = [];
         const userFollowedByTemp = await Follow.find(
@@ -436,9 +441,10 @@ const Query = {
                 scores[ppId] = scores[ppId] + 5;
             }
 
-            // Retrieve list of posts liked by auth user
-            const userLikes = await Like.find({user: userId});
-            console.log(userLikes);
+            // Retrieve list of posts liked by PP
+            const ppLikes = [];
+            const ppLikesTemp = await Like.find({user: ppId});
+            ppLikesTemp.map(f => ppLikes.push(String(f.user)));
         }
 
         // sort the pp in descending order of score
