@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 24.327 seconds.
+Conversion time: 28.67 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Tue Oct 20 2020 10:48:14 GMT-0700 (PDT)
+* Tue Oct 20 2020 11:21:20 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -480,6 +480,18 @@ There are three primary costs that should be covered for the successful delivery
     Over 1 billion characters - Custom pricing
 
 The cost of an AWS EC2 instance is $0.102 per hour for a linux machine with 8GB memory [28]. The value added services such as Elastic Beanstalk, Codepipeline are free. In addition, for one year after joining you get 750 hours per month of EC2 instance free.  So for both AWS and Google Translate we will be able stay within the free tier at least for a year. Apart from these there is no licensing cost for software since only open source technologies will be used to build this product.
+
+
+#### 3.2.2 Technical Feasibility
+
+The technologies that will be used in this project are React JS, Styledcomponents, FlexBox, Node.js, Express JS, Mongoose, Javascript, GraphQL, MongoDB, Google Translate API, AWS. I already have experience in Node.js, Express JS, Mongoose, MongoDB, and Javascript prior to this project. In addition, I have worked as a software developer for 2 years. These combined skills will make it possible to deliver the project on time and with all required functionality. In addition, I own a suitable laptop for development, have an internet connection, and other utilities necessary for making the project a success.
+
+
+#### 3.2.3 Social and Legal Feasibility
+
+There is a vibrant language learning community in our country. However, they are mostly centered around language schools such as the British Council. Our platform will be able to attract this audience. In addition, liberally sharing contact details such as mobile numbers, e-mail addresses is frowned upon in Sri Lanka. So adequate privacy features will be included.
+
+In terms of legal aspects, since we will be using free, open source software, there will not be any licensing or copyright disputes. The internet laws of the country will be respected and no obscene or violence inciting publications will be allowed on the platform.
 
 
 
