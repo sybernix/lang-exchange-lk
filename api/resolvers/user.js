@@ -444,8 +444,14 @@ const Query = {
         console.log("top match ids");
         console.log(topMatchIds);
 
-        const queryTopMatches = {_id: {$in: topMatchIds}};
-        const topMatches = await User.find(queryTopMatches);
+        // Retrieve from DB in the order
+        const numMatches = Math.min(LIMIT, topMatchIds.length);
+        let topMatches = [];
+
+        for (let index = 0; index < numMatches; index++) {
+            const match = await User.find({_id: topMatchIds[index]});
+            topMatches.push(match[0]);
+        }
 
         console.log("top matches");
         console.log(topMatches);
