@@ -427,6 +427,14 @@ const Query = {
             if (potentialPartner[0].city == authUser[0].city) {
                 scores[ppId] = scores[ppId] + 10;
             }
+
+            // Increase score by 10 if the age of the PP and auth user are within 5 years of each other
+            // and by 5 if they are withing 10 years of each other
+            if (Math.abs(potentialPartner[0].age - authUser[0].age) <= 5) {
+                scores[ppId] = scores[ppId] + 10;
+            } else if (Math.abs(potentialPartner[0].age - authUser[0].age) <= 10) {
+                scores[ppId] = scores[ppId] + 5;
+            }
         }
 
         // sort the pp in descending order of score
@@ -439,8 +447,8 @@ const Query = {
             return b[1] - a[1];
         });
 
-        // console.log("sortable scores");
-        // console.log(sortableScores);
+        console.log("sortable scores");
+        console.log(sortableScores);
 
         let topMatchIds = [];
         sortableScores.map(f => topMatchIds.push(String(f[0])));
