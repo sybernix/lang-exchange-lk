@@ -75,9 +75,9 @@ const Learners = () => {
         userId: auth.user.id,
         skip: 0,
         limit: LEARNER_PAGE_USERS_LIMIT,
-        city: '',
-        sex: '',
-        age: 0
+        city: null,
+        sex: null,
+        age: null
     });
 
     const handleChange = e => {
