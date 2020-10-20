@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start:api": "npm start --prefix api",
+    "start:backend": "npm start --prefix backend",
     "start:frontend": "npm start --prefix frontend",
-    "start": "concurrently \"npm run start:api\" \"npm run start:frontend\"",
-    "deploy:api": "git subtree push --prefix api heroku master"
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "deploy:backend": "git subtree push --prefix backend heroku master"
   },
   "workspaces": [
-    "api",
+    "backend",
     "frontend"
   ],
   "devDependencies": {
