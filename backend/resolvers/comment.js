@@ -11,10 +11,12 @@ const Mutation = {
         {input: {comment, author, postId}},
         {Comment, Post, User}
     ) => {
+        const commentedPost = await Post.find({_id: postId}).select('author');
         const newComment = await new Comment({
             comment,
             author,
             post: postId,
+            postAuthor: commentedPost[0].author
         }).save();
 
         // Push comment to post collection
