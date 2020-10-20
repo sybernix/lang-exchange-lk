@@ -453,7 +453,7 @@ const Query = {
             ppLikesTemp.map(f => ppLikes.push(String(f.post)));
 
             // Increase score by 1 for each common post liked by by auth user and pp
-            scores[ppId] = scores[ppId] + 1 * ppLikes.filter(value => userLikes.includes(value)).length
+            scores[ppId] = scores[ppId] + 1 * ppLikes.filter(value => userLikes.includes(value)).length;
 
             // Increase score by 3 for each post by PP liked by auth user
             scores[ppId] = scores[ppId] + 3 * userLikesTemp.filter((obj) => obj.postAuthor == ppId).length;
@@ -465,7 +465,9 @@ const Query = {
             const ppComments = [];
             const ppCommentsTemp = await Comment.find({author: ppId}, {_id: 0, createdAt: 0, updatedAt: 0, author: 0, comment: 0});
             ppCommentsTemp.map(f => ppComments.push(String(f.post)));
-            console.log(ppCommentsTemp);
+            
+            // Increase score by 1 for each common post commented by by auth user and pp
+            scores[ppId] = scores[ppId] + 1 * ppComments.filter(value => userComments.includes(value)).length;
         }
 
         // sort the pp in descending order of score
