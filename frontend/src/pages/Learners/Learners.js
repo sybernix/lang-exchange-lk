@@ -103,12 +103,16 @@ const Learners = () => {
                         borderColor="white"
                         >
                             {
-                                ["Ampara", "Anuradhapura", "Badulla", "Batticaloa", "Colombo", "Galle", "Gampaha", 
+                                ["", "Ampara", "Anuradhapura", "Badulla", "Batticaloa", "Colombo", "Galle", "Gampaha", 
                                 "Hambantota", "Jaffna", "Kalutara", "Kandy", "Kegalle", "Kilinochchi", "Kurunegala", 
                                 "Mannar", "Matale", "Matara", "Monaragala", "Mullaitivu", "NuwaraEliya", "Polonnaruwa", 
                                 "Puttalam", "Ratnapura", "Trincomalee", "Vavuniya"]
                                 .map((city, index) => {
-                                    return <option key={`city${index}`} value={city}>{city}</option>
+                                    if (city === "") {
+                                        return <option value="" disabled selected>Select district</option>
+                                    } else {
+                                        return <option key={`city${index}`} value={city}>{city}</option>
+                                    }
                                 })
                             }
                         </Select>
@@ -124,6 +128,7 @@ const Learners = () => {
                             onChange={handleChange}
                             borderColor="white"
                         >
+                            <option value="" disabled selected>Select sex</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                             <option value="other">Other</option>
