@@ -39,6 +39,7 @@ const FilterBase = styled.div`
 `;
 
 const Filter = styled.div`
+  ${p => p.width && `width: ${p.width}`};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -85,7 +86,7 @@ const Learners = () => {
                     <Filter>
                         District:
                     </Filter>
-                    <Filter>
+                    <Filter width="10em">
                         <Select
                         type="text"
                         name="city"
@@ -111,7 +112,7 @@ const Learners = () => {
                     <Filter>
                         Sex:
                     </Filter>
-                    <Filter>
+                    <Filter width="10em">
                         <Select
                             type="text"
                             name="sex"
@@ -128,7 +129,7 @@ const Learners = () => {
                     <Filter>
                         Age:
                     </Filter>
-                    <Filter>
+                    <Filter width="10em">
                             <Select
                                 type="text"
                                 name="age"
