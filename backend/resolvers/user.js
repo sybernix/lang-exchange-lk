@@ -372,7 +372,7 @@ const Query = {
 
         // Retrieve list of posts liked by auth user
         const userLikes = [];
-        const userLikesTemp = await Like.find({user: userId}, {_id: 0}).select('post');
+        const userLikesTemp = await Like.find({user: userId}, {_id: 0, createdAt: 0, updatedAt: 0});
         userLikesTemp.map(f => userLikes.push(String(f.post)));
 
         // Find the list of users who follow the auth user
@@ -443,11 +443,13 @@ const Query = {
 
             // Retrieve list of posts liked by PP
             const ppLikes = [];
-            const ppLikesTemp = await Like.find({user: ppId}, {_id: 0}).select('post');
+            const ppLikesTemp = await Like.find({user: ppId}, {_id: 0, createdAt: 0, updatedAt: 0});
             ppLikesTemp.map(f => ppLikes.push(String(f.post)));
 
             // Increase score by 1 for each common post liked by by auth user and pp
             scores[ppId] = scores[ppId] + 1 * ppLikes.filter(value => userLikes.includes(value)).length
+
+            
         }
 
         // sort the pp in descending order of score
