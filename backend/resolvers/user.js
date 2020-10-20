@@ -486,14 +486,8 @@ const Query = {
             return b[1] - a[1];
         });
 
-        // console.log("sortable scores");
-        // console.log(sortableScores);
-
         let topMatchIds = [];
         sortableScores.map(f => topMatchIds.push(String(f[0])));
-
-        // console.log("top match ids");
-        // console.log(topMatchIds);
 
         const numMatches = Math.min(LIMIT, topMatchIds.length);
         const queryTopMatches = {_id: {$in: topMatchIds}};
@@ -506,9 +500,6 @@ const Query = {
                 }
             });
         }
-
-        // console.log("top matches");
-        // console.log(topMatchesOrdered);
         return topMatchesOrdered;
     },
     /**
