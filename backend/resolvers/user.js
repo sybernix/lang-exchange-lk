@@ -372,8 +372,9 @@ const Query = {
 
         // Retrieve list of posts liked by auth user
         const userLikes = [];
-        const userLikesTemp = await Like.find({user: userId}, {_id: 0, createdAt: 0, updatedAt: 0});
+        const userLikesTemp = await Like.find({user: userId}, {_id: 0, createdAt: 0, updatedAt: 0, user: 0});
         userLikesTemp.map(f => userLikes.push(String(f.post)));
+        console.log(userLikesTemp);
 
         // Find the list of users who follow the auth user
         const userFollowedBy = [];
@@ -443,18 +444,14 @@ const Query = {
 
             // Retrieve list of posts liked by PP
             const ppLikes = [];
-            const ppLikesTemp = await Like.find({user: ppId}, {_id: 0, createdAt: 0, updatedAt: 0});
+            const ppLikesTemp = await Like.find({user: ppId}, {_id: 0, createdAt: 0, updatedAt: 0, user: 0});
             ppLikesTemp.map(f => ppLikes.push(String(f.post)));
 
             // Increase score by 1 for each common post liked by by auth user and pp
             scores[ppId] = scores[ppId] + 1 * ppLikes.filter(value => userLikes.includes(value)).length
 
             // Increase score by 3 for each post by PP auth user likes
-            var res = userLikesTemp.reduce(function(obj, v) {
-                obj[v.user] = (obj[v.user] || 0) + 1;
-                return obj;
-              }, {})
-              console.log(res);
+            scores[ppId] = scores[ppId] + 3 * userLikesTemp.filter((obj) => obj.postAuthor == ppId).length;
         }
 
         // sort the pp in descending order of score
