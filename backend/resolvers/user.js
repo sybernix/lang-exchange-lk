@@ -269,6 +269,10 @@ const Query = {
         if (sex != "") {
             query["$and"].push({sex: sex});
         }
+        if (age != "") {
+            const ageRange = age.split('-');
+            query["$and"].push({age: {$gte :  parseInt(ageRange[0]), $lt :  parseInt(ageRange[1])}});
+        }
         
         const count = await User.where(query).countDocuments();
         const users = await User.find(query)

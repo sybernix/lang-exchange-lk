@@ -146,7 +146,7 @@ const Learners = () => {
                                         if (year === 10) {
                                             return <option key="" value="DEFAULT" disabled>Select year</option>
                                         } else {
-                                            return <option key={`year${index}`} value={year}>{(year * 10) + '-' + ((year + 1) * 10)}</option>
+                                            return <option key={`year${index}`} value={(year * 10) + '-' + ((year + 1) * 10)}>{(year * 10) + '-' + ((year + 1) * 10)}</option>
                                         }
                                     })
                                 }
