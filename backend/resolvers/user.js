@@ -379,7 +379,7 @@ const Query = {
         const userComments = [];
         const userCommentsTemp = await Comment.find({author: userId}, {_id: 0, createdAt: 0, updatedAt: 0, author: 0, comment: 0});
         userCommentsTemp.map(f => userComments.push(String(f.post)));
-        console.log(userCommentsTemp);
+        // console.log(userCommentsTemp);
 
         // Find the list of users who follow the auth user
         const userFollowedBy = [];
@@ -460,6 +460,12 @@ const Query = {
 
             // Increase score by 3 for each post by auth user liked by PP
             scores[ppId] = scores[ppId] + 3 * ppLikesTemp.filter((obj) => obj.postAuthor == userId).length;
+
+            // Retrieve list of posts liked by auth user
+            const ppComments = [];
+            const ppCommentsTemp = await Comment.find({author: ppId}, {_id: 0, createdAt: 0, updatedAt: 0, author: 0, comment: 0});
+            ppCommentsTemp.map(f => ppComments.push(String(f.post)));
+            console.log(ppCommentsTemp);
         }
 
         // sort the pp in descending order of score
