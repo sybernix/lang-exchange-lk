@@ -11,6 +11,7 @@ const CommentSchema = gql`
     id: ID!
     comment: String!
     author: ID
+    postAuthor: ID
     post: ID
     createdAt: String
   }
@@ -35,6 +36,7 @@ const CommentSchema = gql`
     id: ID
     comment: String
     author: UserPayload
+    postAuthor: UserPayload
     post: PostPayload
     createdAt: String
   }

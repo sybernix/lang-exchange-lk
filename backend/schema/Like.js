@@ -11,6 +11,7 @@ const LikeSchema = gql`
     id: ID!
     post: ID
     user: ID
+    postAuthor: ID
   }
 
   # ---------------------------------------------------------
@@ -32,6 +33,7 @@ const LikeSchema = gql`
     id: ID!
     post: PostPayload
     user: UserPayload
+    postAuthor: UserPayload
   }
 
   # ---------------------------------------------------------
