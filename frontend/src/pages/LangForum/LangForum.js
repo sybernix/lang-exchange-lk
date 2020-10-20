@@ -55,8 +55,6 @@ const LangForum = () => {
     return (
         <Container maxWidth="sm">
             <Head title={title}/>
-            {/* {console.log(auth)} */}
-
             <Query
                 query={GET_FORUM_POSTS}
                 variables={variables}

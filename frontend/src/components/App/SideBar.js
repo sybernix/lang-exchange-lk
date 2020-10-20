@@ -82,9 +82,6 @@ const SideBar = ({location, isOpen, sideBarRef}) => {
 
     return (
         <Root isOpen={isOpen} ref={sideBarRef}>
-          {location.pathname === "/" && 
-            <Spacing top="lg"/>
-          }
           <User
               exact
               to={generatePath(Routes.USER_PROFILE, {username: auth.user.username})}
