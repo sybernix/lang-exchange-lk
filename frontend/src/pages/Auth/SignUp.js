@@ -206,8 +206,9 @@ const SignUp = ({history, refetch}) => {
                                     values={nativeLanguage}
                                     onChange={handleChange}
                                     borderColor="white"
+                                    defaultValue="DEFAULT"
                                 >
-                                    <option value="" disabled selected>Native Language</option>
+                                    <option key="" value="DEFAULT" disabled>Native Language</option>
                                     <option value="english">English</option>
                                     <option value="sinhala">Sinhala</option>
                                     <option value="tamil">Tamil</option>
@@ -220,8 +221,9 @@ const SignUp = ({history, refetch}) => {
                                         values={targetLanguage}
                                         onChange={handleChange}
                                         borderColor="white"
+                                        defaultValue="DEFAULT"
                                     >
-                                        <option value="" disabled selected>Target Language</option>
+                                        <option key="" value="DEFAULT" disabled>Target Language</option>
                                         <option value="english">English</option>
                                         <option value="sinhala">Sinhala</option>
                                         <option value="tamil">Tamil</option>
