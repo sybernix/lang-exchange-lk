@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 10.584 seconds.
+Conversion time: 35.152 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Mon Oct 19 2020 11:20:49 GMT-0700 (PDT)
+* Tue Oct 20 2020 10:19:28 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -383,6 +383,71 @@ The above risk can be mitigated using the following strategies,
 
 
 #### 3.1.8 Release Plans
+
+
+<table>
+  <tr>
+   <td><strong>Milestone</strong>
+   </td>
+   <td><strong>Date</strong>
+   </td>
+   <td><strong>Description</strong>
+   </td>
+   <td><strong>Cycle</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>M1
+   </td>
+   <td>3/9/2020
+   </td>
+   <td>Release after 1st cycle with user sigun, profile, home, and chat features
+   </td>
+   <td>1st
+   </td>
+  </tr>
+  <tr>
+   <td>M2
+   </td>
+   <td>17/9/2020
+   </td>
+   <td>Explore, language filter
+   </td>
+   <td>2nd
+   </td>
+  </tr>
+  <tr>
+   <td>M3
+   </td>
+   <td>11/10/2020
+   </td>
+   <td>Message translation feature
+   </td>
+   <td>3rd
+   </td>
+  </tr>
+  <tr>
+   <td>M4
+   </td>
+   <td>20/10/2020
+   </td>
+   <td>Algorithmic user suggestion, Language forum, UI/UX fixes
+   </td>
+   <td>4th
+   </td>
+  </tr>
+  <tr>
+   <td>Beta
+   </td>
+   <td>31/10/2020
+   </td>
+   <td>Hosted and deployed into production. Available at www.langexchange.com
+   </td>
+   <td>4th
+   </td>
+  </tr>
+</table>
+
 
 
 #### 3.1.9 Technical Processes
