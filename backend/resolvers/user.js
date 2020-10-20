@@ -359,7 +359,7 @@ const Query = {
      *
      * @param {string} userId
      */
-    suggestLearnersWithScore: async (root, {userId}, {User, Follow}) => {
+    suggestLearnersWithScore: async (root, {userId}, {User, Follow, Like}) => {
         const LIMIT = 6;
 
         // Find the list of users the auth user follows
@@ -435,6 +435,10 @@ const Query = {
             } else if (Math.abs(potentialPartner[0].age - authUser[0].age) <= 10) {
                 scores[ppId] = scores[ppId] + 5;
             }
+
+            // Retrieve list of posts liked by auth user
+            const userLikes = await Like.find({user: userId});
+            console.log(userLikes);
         }
 
         // sort the pp in descending order of score
