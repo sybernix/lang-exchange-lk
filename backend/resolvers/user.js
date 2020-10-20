@@ -449,7 +449,12 @@ const Query = {
             // Increase score by 1 for each common post liked by by auth user and pp
             scores[ppId] = scores[ppId] + 1 * ppLikes.filter(value => userLikes.includes(value)).length
 
-            
+            // Increase score by 3 for each post by PP auth user likes
+            var res = userLikesTemp.reduce(function(obj, v) {
+                obj[v.user] = (obj[v.user] || 0) + 1;
+                return obj;
+              }, {})
+              console.log(res);
         }
 
         // sort the pp in descending order of score
@@ -462,8 +467,8 @@ const Query = {
             return b[1] - a[1];
         });
 
-        console.log("sortable scores");
-        console.log(sortableScores);
+        // console.log("sortable scores");
+        // console.log(sortableScores);
 
         let topMatchIds = [];
         sortableScores.map(f => topMatchIds.push(String(f[0])));
