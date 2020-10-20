@@ -263,10 +263,10 @@ const Query = {
             $and: [{_id: {$ne: userId}}, {_id: {$nin: userFollowing}}, {targetLanguage: currentUser["0"].nativeLanguage}, 
             {nativeLanguage: currentUser["0"].targetLanguage}]
         };
-        if (city != null) {
+        if (city != "") {
             query["$and"].push({city: city});
         }
-        if (sex != null) {
+        if (sex != "") {
             query["$and"].push({sex: sex});
         }
         
