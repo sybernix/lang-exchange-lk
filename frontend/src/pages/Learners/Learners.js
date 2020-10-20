@@ -93,6 +93,7 @@ const Learners = () => {
                         values={variables.city}
                         onChange={handleChange}
                         borderColor="white"
+                        defaultValue="DEFAULT"
                         >
                             {
                                 ["", "Ampara", "Anuradhapura", "Badulla", "Batticaloa", "Colombo", "Galle", "Gampaha", 
@@ -101,7 +102,7 @@ const Learners = () => {
                                 "Puttalam", "Ratnapura", "Trincomalee", "Vavuniya"]
                                 .map((city, index) => {
                                     if (city === "") {
-                                        return <option value="" disabled selected>Select district</option>
+                                        return <option key="" value="DEFAULT" disabled>Select district</option>
                                     } else {
                                         return <option key={`city${index}`} value={city}>{city}</option>
                                     }
@@ -119,8 +120,9 @@ const Learners = () => {
                             values={variables.sex}
                             onChange={handleChange}
                             borderColor="white"
+                            defaultValue="DEFAULT"
                         >
-                            <option value="" disabled selected>Select sex</option>
+                            <option key="" value="DEFAULT" disabled>Select sex</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                             <option value="other">Other</option>
@@ -136,12 +138,13 @@ const Learners = () => {
                                 values={variables.age}
                                 onChange={handleChange}
                                 borderColor="white"
+                                defaultValue="DEFAULT"
                             >
                                 {
                                     Array.from(new Array(11),( val, index) => index).reverse()
                                     .map((year, index) => {
                                         if (year === 10) {
-                                            return <option value="" disabled selected>Select year</option>
+                                            return <option key="" value="DEFAULT" disabled>Select year</option>
                                         } else {
                                             return <option key={`year${index}`} value={year}>{(year * 10) + '-' + ((year + 1) * 10)}</option>
                                         }

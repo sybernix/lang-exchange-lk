@@ -89,7 +89,6 @@ const LearnerCard = ({user}) => {
     const [color, setColor] = useState('');
 
     const {fullName, username, image, nativeLanguage, targetLanguage} = user;
-    console.log(user);
 
     useEffect(() => {
         const {primary, secondary, success, error} = theme.colors;
