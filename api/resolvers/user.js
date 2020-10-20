@@ -379,10 +379,7 @@ const Query = {
         userFollowedByTemp.map(f => userFollowedBy.push(String(f.user)));
 
         //Find the native and target language of the current user with userId
-        const queryToFindLangInfo = {
-            $and: [{_id: userId}],
-        };
-        const authUser = await User.find(queryToFindLangInfo);
+        const authUser = await User.find({_id: userId});
 
         // build score
         let scores = {};
