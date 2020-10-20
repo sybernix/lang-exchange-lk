@@ -70,7 +70,8 @@ const CreateComment = ({post, focus}) => {
                 {query: GET_FOLLOWED_POSTS, variables: {userId: auth.user.id}},
                 {query: GET_USER, variables: {username: auth.user.username}},
                 {query: GET_AUTH_USER},
-                {query: GET_EXPLORE_POSTS, variables: {authUserId: auth.user.id}},
+                {query: GET_EXPLORE_POSTS, variables: {authUserId: auth.user.id, nativeLanguage: auth.user.nativeLanguage,
+                    targetLanguage: auth.user.targetLanguage}},
                 {query: GET_POST, variables: {id: post.id}},
             ]}
         >
