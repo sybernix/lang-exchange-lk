@@ -10,7 +10,8 @@ const Mutation = {
         {input: {userId, postId}},
         {Like, Post, User}
     ) => {
-        const like = await new Like({user: userId, post: postId}).save();
+        const likedPost = await Post.find({_id: postId}).select('author');
+        const like = await new Like({user: userId, post: postId, postAuthor: likedPost[0].author}).save();
 
         // Push like to post collection
         await Post.findOneAndUpdate({_id: postId}, {$push: {likes: like.id}});
