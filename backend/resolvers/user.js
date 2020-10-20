@@ -469,8 +469,11 @@ const Query = {
             // Increase score by 1 for each common post commented by by auth user and pp
             scores[ppId] = scores[ppId] + 1 * ppComments.filter(value => userComments.includes(value)).length;
 
-            // Increase score by 3 for each post by PP commented by auth user
-            scores[ppId] = scores[ppId] + 3 * userCommentsTemp.filter((obj) => obj.postAuthor == ppId).length;
+            // Increase score by 5 for each post by PP commented by auth user
+            scores[ppId] = scores[ppId] + 5 * userCommentsTemp.filter((obj) => obj.postAuthor == ppId).length;
+
+            // Increase score by 5 for each post by auth user commented by PP
+            scores[ppId] = scores[ppId] + 5 * ppCommentsTemp.filter((obj) => obj.postAuthor == userId).length;
         }
 
         // sort the pp in descending order of score
