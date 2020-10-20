@@ -49,15 +49,6 @@ const Filter = styled.div`
   }
 `;
 
-const Select2 = styled(Select)`
-  display:inline-block;
-  float:left;
-`;
-const Niru = styled.div`
-  display:inline-block;
-  float:left;
-`;
-
 const LearnerContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 3fr));
@@ -146,9 +137,13 @@ const Learners = () => {
                                 borderColor="white"
                             >
                                 {
-                                    Array.from(new Array(10),( val, index) => index).reverse()
+                                    Array.from(new Array(11),( val, index) => index).reverse()
                                     .map((year, index) => {
-                                        return <option key={`year${index}`} value={year}>{(year * 10) + '-' + ((year + 1) * 10)}</option>
+                                        if (year === 10) {
+                                            return <option value="" disabled selected>Select year</option>
+                                        } else {
+                                            return <option key={`year${index}`} value={year}>{(year * 10) + '-' + ((year + 1) * 10)}</option>
+                                        }
                                     })
                                 }
                             </Select>
