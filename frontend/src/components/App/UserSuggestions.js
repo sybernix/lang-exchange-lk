@@ -67,11 +67,9 @@ const UserName = styled.div`
 const UserSuggestions = ({pathname}) => {
     const [{auth}] = useStore();
 
-    const hideUserSuggestions = matchPath(pathname, {
-        path: [Routes.MESSAGES, Routes.LEARNER, Routes.EDIT_INFO, Routes.NOTIFICATIONS, "/" + auth.user.username],
-    });
-
-    if (hideUserSuggestions) return null;
+    if (!(pathname === "/" || pathname === "/langforum" || pathname === "/explore")) {
+        return null;
+    }
 
     return (
         <Query query={USER_SUGGESTIONS_WITH_SCORE} variables={{userId: auth.user.id}}>
