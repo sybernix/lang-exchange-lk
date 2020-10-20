@@ -359,7 +359,7 @@ const Query = {
      *
      * @param {string} userId
      */
-    suggestLearnersWithScore: async (root, {userId}, {User, Follow, Like}) => {
+    suggestLearnersWithScore: async (root, {userId}, {User, Follow, Like, Comment}) => {
         const LIMIT = 6;
 
         // Find the list of users the auth user follows
@@ -374,7 +374,12 @@ const Query = {
         const userLikes = [];
         const userLikesTemp = await Like.find({user: userId}, {_id: 0, createdAt: 0, updatedAt: 0, user: 0});
         userLikesTemp.map(f => userLikes.push(String(f.post)));
-        // console.log(userLikesTemp);
+
+        // Retrieve list of posts liked by auth user
+        const userComments = [];
+        const userCommentsTemp = await Comment.find({author: userId}, {_id: 0, createdAt: 0, updatedAt: 0, author: 0, comment: 0});
+        userCommentsTemp.map(f => userComments.push(String(f.post)));
+        console.log(userCommentsTemp);
 
         // Find the list of users who follow the auth user
         const userFollowedBy = [];
