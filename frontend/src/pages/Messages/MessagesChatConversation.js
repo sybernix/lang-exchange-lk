@@ -167,7 +167,6 @@ const MessagesChatConversation = ({
     };
 
     const translate = message => {
-        console.log(message);
         let url = 'https://translation.googleapis.com/language/translate/v2' 
                     + '?target=' + translateTarget
                     + '&key=' + process.env.REACT_APP_GOOGLE_API_KEY 
