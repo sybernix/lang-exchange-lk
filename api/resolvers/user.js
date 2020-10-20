@@ -444,18 +444,21 @@ const Query = {
         console.log("top match ids");
         console.log(topMatchIds);
 
-        // Retrieve from DB in the order
         const numMatches = Math.min(LIMIT, topMatchIds.length);
-        let topMatches = [];
-
-        for (let index = 0; index < numMatches; index++) {
-            const match = await User.find({_id: topMatchIds[index]});
-            topMatches.push(match[0]);
+        const queryTopMatches = {_id: {$in: topMatchIds}};
+        const topMatches = await User.find(queryTopMatches).limit(numMatches);
+        let topMatchesOrdered = [];
+        for (let i = 0; i < numMatches; i++) {
+            topMatches.forEach(element => {
+                if (element._id == topMatchIds[i]) {
+                    topMatchesOrdered.push(element);
+                }
+            });
         }
 
         console.log("top matches");
-        console.log(topMatches);
-        return topMatches;
+        console.log(topMatchesOrdered);
+        return topMatchesOrdered;
     },
     /**
      * Verifies reset password token
