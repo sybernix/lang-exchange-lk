@@ -2,7 +2,7 @@
   "name": "lang-exchange-lk-frontend",
   "version": "1.0.0",
   "private": true,
-  "homepage": "ec2-3-137-156-93.us-east-2.compute.amazonaws.com",
+  "homepage": "http://localhost:3000",
   "dependencies": {
     "@apollo/react-hooks": "^3.1.3",
     "apollo-cache-inmemory": "^1.5.1",
