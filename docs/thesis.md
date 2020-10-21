@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 28.67 seconds.
+Conversion time: 32.617 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Tue Oct 20 2020 11:21:20 GMT-0700 (PDT)
+* Wed Oct 21 2020 10:50:26 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -492,6 +492,11 @@ The technologies that will be used in this project are React JS, Styledcomponent
 There is a vibrant language learning community in our country. However, they are mostly centered around language schools such as the British Council. Our platform will be able to attract this audience. In addition, liberally sharing contact details such as mobile numbers, e-mail addresses is frowned upon in Sri Lanka. So adequate privacy features will be included.
 
 In terms of legal aspects, since we will be using free, open source software, there will not be any licensing or copyright disputes. The internet laws of the country will be respected and no obscene or violence inciting publications will be allowed on the platform.
+
+
+#### 3.2.4 Alternative Approaches
+
+Physical alternative to a digital platform for language learning exist already in Sri Lanka. All public universities in Sri Lanka offer language courses and even degrees on languages. English language learning is mandatory for school children in Sri Lanka all the way to the high school graduation. In addition to English tamil students must take Sinhala language course until grade 9 and Sinhala students must take Tamil as a subject. However, in most schools only the first language and English are taught well and Sinhala or Tamil gets neglected due to various reasons. Some of the reasons are lack of qualified language teachers, option to stop learning after grade 9 and not having to take a public examination such as O/L or A/L in the language, etc.
 
 
 
