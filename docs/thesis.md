@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 32.617 seconds.
+Conversion time: 22.414 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Wed Oct 21 2020 10:50:26 GMT-0700 (PDT)
+* Wed Oct 21 2020 11:07:46 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -497,6 +497,12 @@ In terms of legal aspects, since we will be using free, open source software, th
 #### 3.2.4 Alternative Approaches
 
 Physical alternative to a digital platform for language learning exist already in Sri Lanka. All public universities in Sri Lanka offer language courses and even degrees on languages. English language learning is mandatory for school children in Sri Lanka all the way to the high school graduation. In addition to English tamil students must take Sinhala language course until grade 9 and Sinhala students must take Tamil as a subject. However, in most schools only the first language and English are taught well and Sinhala or Tamil gets neglected due to various reasons. Some of the reasons are lack of qualified language teachers, option to stop learning after grade 9 and not having to take a public examination such as O/L or A/L in the language, etc.
+
+In addition to the formal education institutes, there are plenty of private tuition classes that offer language classes. They are sometimes to support the courses at schools, and sometimes standalone courses designed to improve language skills. Notably, the British Council offers highly formulated English language courses, and L’Alliance Francaise offers similarly designed French Courses. For Tamil and Sinhala there exists informal tutoring by native speakers in all parts of the country.
+
+The physical approaches mentioned above have existed for a long time and were able to produce only a small percentage of population as bilingual. As discussed in the chapter one, cultural aspects hinder usage of second language in such institutions. So, a digital platform will provide more opportunities for students to practice languages.
+
+One of the digital options is to provide structured course materials, text books, audio, vido lectures as downloadable material on a website. There are handful of services, paid and free, already providing such service in Sri Lanka. However, this does not provide a real opportunity for students to actuallt talk and practice conversation in their target language.
 
 
 
