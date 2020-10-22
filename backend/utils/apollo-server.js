@@ -33,8 +33,8 @@ const checkAuthorization = token => {
  */
 export const createApolloServer = (schema, resolvers, models) => {
     return new ApolloServer({
-        ntrospection: true,
-        playground: true,
+        // introspection: true,
+        // playground: true,
         typeDefs: schema,
         resolvers,
         // engine: {
@@ -47,13 +47,13 @@ export const createApolloServer = (schema, resolvers, models) => {
             }
 
             let authUser;
-            if (req.headers.authorization !== 'null') {
+            if (!req.headers.authorization == null && req.headers.authorization !== 'null') {
                 const user = await checkAuthorization(req.headers['authorization']);
                 if (user) {
                     authUser = user;
                 }
             }
-
+            console.log("Reached end of context");
             return Object.assign({authUser}, models);
         },
         subscriptions: {
