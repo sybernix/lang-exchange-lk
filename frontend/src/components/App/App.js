@@ -23,6 +23,8 @@ const App = () => {
     const [{message}] = useStore();
 
     const {loading, subscribeToMore, data, refetch} = useQuery(GET_AUTH_USER);
+    console.log("data from GET_AUTH_USER");
+    console.log(data);
 
     useEffect(() => {
         const unsubscribe = subscribeToMore({
@@ -117,7 +119,7 @@ const App = () => {
 
             <ScrollToTop>
                 <Switch>
-                    {data.getAuthUser ? (
+                    {data && data.getAuthUser ? (
                         <Route
                             exact
                             render={() => <AppLayout authUser={data.getAuthUser} refetch={refetch}/>}
