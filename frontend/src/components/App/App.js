@@ -21,10 +21,7 @@ import {useStore} from 'store';
  */
 const App = () => {
     const [{message}] = useStore();
-
     const {loading, subscribeToMore, data, refetch} = useQuery(GET_AUTH_USER);
-    console.log("data from GET_AUTH_USER");
-    console.log(data);
 
     useEffect(() => {
         const unsubscribe = subscribeToMore({
