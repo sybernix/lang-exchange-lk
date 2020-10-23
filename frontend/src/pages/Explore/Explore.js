@@ -68,7 +68,6 @@ const Explore = () => {
                             </PostsContainer>
                         );
                     }
-                    {console.log(data)}
                     const {posts, count} = data.getExplorePosts;
 
                     if (!posts.length > 0) return <Empty text="No posts yet."/>;
