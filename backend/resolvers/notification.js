@@ -2,6 +2,8 @@ import {withFilter} from 'apollo-server';
 
 import {pubSub} from '../utils/apollo-server';
 import {NOTIFICATION_CREATED_OR_DELETED} from '../constants/Subscriptions';
+import User from '../models/User';
+import Notification from '../models/Notification';
 
 const Query = {
     /**
@@ -11,11 +13,7 @@ const Query = {
      * @param {int} skip how many notifications to skip
      * @param {int} limit how many notifications to limit
      */
-    getUserNotifications: async (
-        root,
-        {userId, skip, limit},
-        {Notification}
-    ) => {
+    getUserNotifications: async (_, {userId, skip, limit}) => {
         const query = {user: userId};
         const count = await Notification.where(query).countDocuments();
         const notifications = await Notification.where(query)
@@ -42,13 +40,7 @@ const Mutation = {
      * @param {string} notificationType
      * @param {string} notificationTypeId
      */
-    createNotification: async (
-        root,
-        {
-            input: {userId, authorId, postId, notificationType, notificationTypeId},
-        },
-        {Notification, User}
-    ) => {
+    createNotification: async (_, {input: {userId, authorId, postId, notificationType, notificationTypeId}}) => {
         let newNotification = await new Notification({
             author: authorId,
             user: userId,
@@ -83,11 +75,7 @@ const Mutation = {
      *
      * @param {string} id
      */
-    deleteNotification: async (
-        root,
-        {input: {id}},
-        {Notification, User}
-    ) => {
+    deleteNotification: async (_, {input: {id}}) => {
         let notification = await Notification.findByIdAndRemove(id);
 
         // Delete notification from users collection
@@ -117,11 +105,7 @@ const Mutation = {
      *
      * @param {string} userId
      */
-    updateNotificationSeen: async (
-        root,
-        {input: {userId}},
-        {Notification}
-    ) => {
+    updateNotificationSeen: async (_, {input: {userId}}) => {
         try {
             await Notification.update(
                 {user: userId, seen: false},
