@@ -1,9 +1,6 @@
 import User from '../models/User';
 import Post from '../models/Post';
 import Like from '../models/Like';
-import Follow from '../models/Follow';
-import Comment from '../models/Comment';
-import Message from '../models/Message';
 
 const Mutation = {
     /**

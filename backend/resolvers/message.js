@@ -3,6 +3,8 @@ import {withFilter} from 'apollo-server';
 
 import {pubSub} from '../utils/apollo-server';
 import {MESSAGE_CREATED, NEW_CONVERSATION} from '../constants/Subscriptions';
+import User from '../models/User';
+import Message from '../models/Message';
 
 const Query = {
     /**
@@ -11,7 +13,7 @@ const Query = {
      * @param {string} authUserId
      * @param {string} userId
      */
-    getMessages: async (root, {authUserId, userId}, {Message}) => {
+    getMessages: async (_, {authUserId, userId}) => {
         const specificMessage = await Message.find()
             .and([
                 {$or: [{sender: authUserId}, {receiver: authUserId}]},
@@ -28,7 +30,7 @@ const Query = {
      *
      * @param {string} authUserId
      */
-    getConversations: async (root, {authUserId}, {User, Message}) => {
+    getConversations: async (_, {authUserId}) => {
         // Get users with whom authUser had a chat
         const users = await User.findById(authUserId).populate(
             'messages',
@@ -111,11 +113,7 @@ const Mutation = {
      * @param {string} sender
      * @param {string} receiver
      */
-    createMessage: async (
-        root,
-        {input: {message, sender, receiver}},
-        {Message, User}
-    ) => {
+    createMessage: async (_, {input: {message, sender, receiver}}) => {
         let newMessage = await new Message({
             message,
             sender,
@@ -169,11 +167,7 @@ const Mutation = {
      *
      * @param {string} userId
      */
-    updateMessageSeen: async (
-        root,
-        {input: {sender, receiver}},
-        {Message}
-    ) => {
+    updateMessageSeen: async (_, {input: {sender, receiver}}) => {
         try {
             await Message.update(
                 {receiver, sender, seen: false},
