@@ -86,7 +86,7 @@ const Comment = ({comment, postId, postAuthor}) => {
             refetchQueries={() => [
                 {query: GET_FOLLOWED_POSTS, variables: {userId: auth.user.id}},
                 {query: GET_USER, variables: {username: comment.author.username}},
-                {query: GET_AUTH_USER},
+                {query: GET_AUTH_USER, variables: {authUserId: auth.user.id, authUserEmail: auth.user.email}},
                 {query: GET_EXPLORE_POSTS, variables: {authUserId: auth.user.id, nativeLanguage: auth.user.nativeLanguage,
                     targetLanguage: auth.user.targetLanguage}},
                 {query: GET_POST, variables: {id: postId}},

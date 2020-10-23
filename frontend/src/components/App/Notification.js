@@ -84,14 +84,14 @@ const Notification = ({notification, close, client}) => {
                             userId: auth.user.id,
                         },
                     },
-                    refetchQueries: () => [{query: GET_AUTH_USER}],
+                    refetchQueries: () => [{query: GET_AUTH_USER, variables: {authUserId: auth.user.id, authUserEmail: auth.user.email}}],
                 });
             } catch (err) {
             }
         };
 
         updateNotificationSeen();
-    }, [auth.user.id, auth.user.newNotifications.length, client]);
+    }, [auth.user.id, auth.user.email, auth.user.newNotifications.length, client]);
 
     if (!notification.follow && !notification.like && !notification.comment) {
         return null;
