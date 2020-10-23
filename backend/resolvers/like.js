@@ -1,3 +1,10 @@
+import User from '../models/User';
+import Post from '../models/Post';
+import Like from '../models/Like';
+import Follow from '../models/Follow';
+import Comment from '../models/Comment';
+import Message from '../models/Message';
+
 const Mutation = {
     /**
      * Creates a like for post
@@ -5,11 +12,7 @@ const Mutation = {
      * @param {string} userId
      * @param {string} postId
      */
-    createLike: async (
-        root,
-        {input: {userId, postId}},
-        {Like, Post, User}
-    ) => {
+    createLike: async (_, {input: {userId, postId}}) => {
         const likedPost = await Post.find({_id: postId}).select('author');
         const like = await new Like({user: userId, post: postId, postAuthor: likedPost[0].author}).save();
 
@@ -25,7 +28,7 @@ const Mutation = {
      *
      * @param {string} id
      */
-    deleteLike: async (root, {input: {id}}, {Like, User, Post}) => {
+    deleteLike: async (_, {input: {id}}) => {
         const like = await Like.findByIdAndRemove(id);
 
         // Delete like from users collection
