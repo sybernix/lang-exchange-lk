@@ -8,6 +8,7 @@ import models from './models';
 import schema from './schema';
 import resolvers from './resolvers';
 import {createApolloServer} from './utils/apollo-server';
+import { verify } from 'jsonwebtoken';
 
 // Connect to database
 mongoose
@@ -27,6 +28,17 @@ const corsOptions = {
     credentials: true,
 };
 app.use(cors(corsOptions));
+
+// Check authentication
+app.use((req, _, next) => {
+    console.log(req.headers);
+    try {
+        const authUser = verify(req.headers.token, process.env.SECRET);
+        req.authUserId = authUser.id;
+        console.log(authUser);
+    } catch {}
+    next();
+})
 
 // Create a Apollo Server
 const server = createApolloServer(schema, resolvers, models);
