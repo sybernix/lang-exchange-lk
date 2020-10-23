@@ -40,7 +40,9 @@ const Query = {
                 ],
                 match: {seen: false},
             });
-
+        if (user == null) {
+            return null;
+        }
         user.newNotifications = user.notifications;
 
         // Find unseen messages
