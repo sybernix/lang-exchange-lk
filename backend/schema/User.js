@@ -138,6 +138,12 @@ const UserSchema = gql`
     count: String!
   }
 
+  type SigninPayload {
+    token: String!
+    authUserId: String!
+    authUserEmail: String!
+  }
+
   type IsUserOnlinePayload {
     userId: ID!
     isOnline: Boolean
@@ -177,7 +183,7 @@ const UserSchema = gql`
   # ---------------------------------------------------------
   extend type Mutation {
     # Signs in user
-    signin(input: SignInInput!): Token
+    signin(input: SignInInput!): SigninPayload
 
     # Signs up user
     signup(input: SignUpInput!): Token
