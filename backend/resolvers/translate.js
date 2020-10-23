@@ -12,9 +12,6 @@ const Query = {
         const options = new URL('https://translation.googleapis.com/language/translate/v2?target=fr&q=hello&key=' + process.env.GOOGLE_API_KEY);
           
           const req = https.request(options, res => {
-            console.log(`statusCode: ${res.statusCode}`)
-            console.log(`res: ${res}`)
-          
             res.on('data', d => {
                 process.stdout.write(d)
                 console.log(JSON.parse(d).data.translations[0].translatedText);
@@ -27,7 +24,6 @@ const Query = {
           })
           
           req.end()
-        // return {translatedText: 'fail', language: 'fail'};
     }
 };
 
