@@ -1,3 +1,6 @@
+import User from '../models/User';
+import Follow from '../models/Follow';
+
 const Mutation = {
     /**
      * Creates a following/follower relationship between users
@@ -5,11 +8,7 @@ const Mutation = {
      * @param {string} userId
      * @param {string} followerId
      */
-    createFollow: async (
-        root,
-        {input: {userId, followerId}},
-        {Follow, User}
-    ) => {
+    createFollow: async (_, {input: {userId, followerId}}) => {
         const follow = await new Follow({
             user: userId,
             follower: followerId,
@@ -32,7 +31,7 @@ const Mutation = {
      *
      * @param {string} id follow id
      */
-    deleteFollow: async (root, {input: {id}}, {Follow, User}) => {
+    deleteFollow: async (_, {input: {id}}) => {
         const follow = await Follow.findByIdAndRemove(id);
 
         // Delete follow from users collection
