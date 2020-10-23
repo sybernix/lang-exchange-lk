@@ -88,8 +88,8 @@ export const GET_USER_POSTS = gql`
  * Gets authenticated user
  */
 export const GET_AUTH_USER = gql`
-  query {
-    getAuthUser {
+  query($authUserId: String, $authUserEmail: String) {
+    getAuthUser(authUserId: $authUserId, authUserEmail: $authUserEmail) {
       ${userPayload}
       nativeLanguage
       targetLanguage
