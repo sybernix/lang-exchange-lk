@@ -8,6 +8,8 @@ import {sendEmail} from '../utils/email';
 import {pubSub} from '../utils/apollo-server';
 
 import {IS_USER_ONLINE} from '../constants/Subscriptions';
+import User from '../models/User';
+import Message from '../models/Message';
 
 const AUTH_TOKEN_EXPIRY = '1y';
 const RESET_PASSWORD_TOKEN_EXPIRY = 3600000;
@@ -16,12 +18,18 @@ const Query = {
     /**
      * Gets the currently logged in user
      */
-    getAuthUser: async (root, {authUserId, authUserEmail}, {Message, User}) => {
-        if (!authUserId && !authUserEmail) return null;
+    getAuthUser: async (_, __, {req}) => {
+        console.log("req in getAuthUser");
+        const authUserMongoId = new mongoose.Types.ObjectId(req.authUserId);
+        console.log(authUserMongoId);
+        const authUser = await User.findById(authUserMongoId);
+        console.log(authUser);
+        // return authUser;
+        // if (!authUserId && !authUserEmail) return null;
 
         // If user is authenticated, update it's isOnline field to true
         const user = await User.findOneAndUpdate(
-            {email: authUserEmail},
+            {_id: authUserMongoId},
             {isOnline: true}
         )
             .populate({path: 'posts', options: {sort: {createdAt: 'desc'}}})
@@ -47,7 +55,7 @@ const Query = {
         const lastUnseenMessages = await Message.aggregate([
             {
                 $match: {
-                    receiver: mongoose.Types.ObjectId(authUserId),
+                    receiver: authUserMongoId,
                     seen: false,
                 },
             },
