@@ -285,6 +285,8 @@ export const SIGN_IN = gql`
   mutation($input: SignInInput!) {
     signin(input: $input) {
       token
+      authUserId
+      authUserEmail
     }
   }
 `;
