@@ -84,7 +84,7 @@ const Notification = ({notification, close, client}) => {
                             userId: auth.user.id,
                         },
                     },
-                    refetchQueries: () => [{query: GET_AUTH_USER, variables: {authUserId: auth.user.id, authUserEmail: auth.user.email}}],
+                    refetchQueries: () => [{query: GET_AUTH_USER}],
                 });
             } catch (err) {
             }

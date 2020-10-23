@@ -134,7 +134,7 @@ const CreatePost = () => {
                         limit: HOME_PAGE_POSTS_LIMIT,
                     },
                 },
-                {query: GET_AUTH_USER, variables: {authUserId: auth.user.id, authUserEmail: auth.user.email}},
+                {query: GET_AUTH_USER},
                 {
                     query: GET_USER_POSTS,
                     variables: {

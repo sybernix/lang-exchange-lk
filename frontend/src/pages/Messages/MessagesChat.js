@@ -59,7 +59,7 @@ const MessagesChat = ({match, authUser}) => {
                         query: GET_CONVERSATIONS,
                         variables: {authUserId: authUser.id},
                     },
-                    {query: GET_AUTH_USER, variables: {authUserId: authUser.user.id, authUserEmail: authUser.user.email}},
+                    {query: GET_AUTH_USER},
                 ],
             });
         } catch (err) {

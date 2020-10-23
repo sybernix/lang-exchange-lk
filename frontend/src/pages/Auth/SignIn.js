@@ -64,7 +64,7 @@ const SignIn = ({history, location, refetch}) => {
         setError('');
         signin().then(async ({data}) => {
             localStorage.setItem('token', data.signin.token);
-            await refetch({authUserId: data.signin.authUserId, authUserEmail: data.signin.authUserEmail});
+            await refetch();
             history.push(Routes.HOME);
         });
     };
