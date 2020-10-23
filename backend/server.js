@@ -35,7 +35,6 @@ app.use((req, _, next) => {
     try {
         const authUser = verify(req.headers.token, process.env.SECRET);
         req.authUserId = authUser.id;
-        console.log(authUser);
     } catch {}
     next();
 })
