@@ -19,17 +19,9 @@ const Query = {
      * Gets the currently logged in user
      */
     getAuthUser: async (_, __, {req}) => {
-        console.log("req in getAuthUser");
-        const authUserMongoId = new mongoose.Types.ObjectId(req.authUserId);
-        console.log(authUserMongoId);
-        const authUser = await User.findById(authUserMongoId);
-        console.log(authUser);
-        // return authUser;
-        // if (!authUserId && !authUserEmail) return null;
-
         // If user is authenticated, update it's isOnline field to true
         const user = await User.findOneAndUpdate(
-            {_id: authUserMongoId},
+            {_id: mongoose.Types.ObjectId(req.authUserId)},
             {isOnline: true}
         )
             .populate({path: 'posts', options: {sort: {createdAt: 'desc'}}})
@@ -55,7 +47,7 @@ const Query = {
         const lastUnseenMessages = await Message.aggregate([
             {
                 $match: {
-                    receiver: authUserMongoId,
+                    receiver: mongoose.Types.ObjectId(req.authUserId),
                     seen: false,
                 },
             },
