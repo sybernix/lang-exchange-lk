@@ -1,5 +1,12 @@
 import {uploadToCloudinary, deleteFromCloudinary} from '../utils/cloudinary';
 
+import User from '../models/User';
+import Post from '../models/Post';
+import Like from '../models/Like';
+import Follow from '../models/Follow';
+import Comment from '../models/Comment';
+import Notification from '../models/Notification';
+
 const Query = {
     /**
      * Gets all posts of people learning the same language
@@ -9,7 +16,7 @@ const Query = {
      * @param {int} skip how many posts to skip
      * @param {int} limit how many posts to limit
      */
-    getForumPosts: async (root, {authUserId, targetLanguage, skip, limit}, {Post}) => {
+    getForumPosts: async (_, {authUserId, targetLanguage, skip, limit}) => {
         // const query = {
         //     $and: [{image: {$ne: null}}, {author: {$ne: authUserId}}],
         // };
@@ -55,7 +62,7 @@ const Query = {
      * @param {int} skip how many posts to skip
      * @param {int} limit how many posts to limit
      */
-    getExplorePosts: async (root, {authUserId, nativeLanguage, targetLanguage, skip, limit}, {Post}) => {
+    getExplorePosts: async (_, {authUserId, nativeLanguage, targetLanguage, skip, limit}) => {
         // const query = {
         //     $and: [{image: {$ne: null}}, {author: {$ne: authUserId}}],
         // };
@@ -99,7 +106,7 @@ const Query = {
      * @param {int} skip how many posts to skip
      * @param {int} limit how many posts to limit
      */
-    getFollowedPosts: async (root, {userId, skip, limit}, {Post, Follow}) => {
+    getFollowedPosts: async (_, {userId, skip, limit}) => {
         // Find user ids, that current user follows
         const userFollowing = [];
         const follow = await Follow.find({follower: userId}, {_id: 0}).select(
@@ -146,7 +153,7 @@ const Query = {
      *
      * @param {string} id
      */
-    getPost: async (root, {id}, {Post}) => {
+    getPost: async (_, {id}) => {
         const post = await Post.findById(id)
             .populate({
                 path: 'author',
@@ -182,11 +189,7 @@ const Mutation = {
      * @param {string} image
      * @param {string} authorId
      */
-    createPost: async (
-        root,
-        {input: {title, image, authorId, authorNativeLanguage, authorTargetLanguage}},
-        {Post, User}
-    ) => {
+    createPost: async (_, {input: {title, image, authorId, authorNativeLanguage, authorTargetLanguage}}) => {
         if (!title && !image) {
             throw new Error('Post title or image is required.');
         }
@@ -229,11 +232,7 @@ const Mutation = {
      * @param {string} id
      * @param {imagePublicId} id
      */
-    deletePost: async (
-        root,
-        {input: {id, imagePublicId}},
-        {Post, Like, User, Comment, Notification}
-    ) => {
+    deletePost: async (_, {input: {id, imagePublicId}}) => {
         // Remove post image from cloudinary, if imagePublicId is present
         if (imagePublicId) {
             const deleteImage = await deleteFromCloudinary(imagePublicId);
