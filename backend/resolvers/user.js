@@ -9,6 +9,10 @@ import {pubSub} from '../utils/apollo-server';
 
 import {IS_USER_ONLINE} from '../constants/Subscriptions';
 import User from '../models/User';
+import Post from '../models/Post';
+import Like from '../models/Like';
+import Follow from '../models/Follow';
+import Comment from '../models/Comment';
 import Message from '../models/Message';
 
 const AUTH_TOKEN_EXPIRY = '1y';
@@ -104,7 +108,7 @@ const Query = {
      *
      * @param {string} username
      */
-    getUser: async (root, {username, id}, {User}) => {
+    getUser: async (_, {username, id}) => {
         if (!username && !id) {
             throw new Error('username or id is required params.');
         }
@@ -165,7 +169,7 @@ const Query = {
      * @param {int} skip how many posts to skip
      * @param {int} limit how many posts to limit
      */
-    getUserPosts: async (root, {username, skip, limit}, {User, Post}) => {
+    getUserPosts: async (_, {username, skip, limit}) => {
         const user = await User.findOne({username}).select('_id');
 
         const query = {author: user._id};
@@ -206,7 +210,7 @@ const Query = {
      * @param {int} skip how many users to skip
      * @param {int} limit how many users to limit
      */
-    getUsers: async (root, {userId, skip, limit}, {User, Follow}) => {
+    getUsers: async (_, {userId, skip, limit}) => {
         // Find user ids, that current user follows
         const userFollowing = [];
         const follow = await Follow.find({follower: userId}, {_id: 0}).select(
@@ -245,7 +249,7 @@ const Query = {
      * @param {int} skip how many users to skip
      * @param {int} limit how many users to limit
      */
-    getPotentialPartners: async (root, {userId, city, sex, age, skip, limit}, {User, Follow}) => {
+    getPotentialPartners: async (_, {userId, city, sex, age, skip, limit}) => {
         // Find user ids, that current user follows
         const userFollowing = [];
         const follow = await Follow.find({follower: userId}, {_id: 0}).select(
@@ -299,7 +303,7 @@ const Query = {
      *
      * @param {string} searchQuery
      */
-    searchUsers: async (root, {searchQuery}, {User, authUser}) => {
+    searchUsers: async (_, {searchQuery}) => {
         // Return an empty array if searchQuery isn't presented
         if (!searchQuery) {
             return [];
@@ -322,7 +326,7 @@ const Query = {
      *
      * @param {string} userId
      */
-    suggestLearners: async (root, {userId}, {User, Follow}) => {
+    suggestLearners: async (_, {userId}) => {
         const LIMIT = 6;
 
         // Find who user follows
@@ -364,7 +368,7 @@ const Query = {
      *
      * @param {string} userId
      */
-    suggestLearnersWithScore: async (root, {userId}, {User, Follow, Like, Comment}) => {
+    suggestLearnersWithScore: async (_, {userId}) => {
         const LIMIT = 6;
 
         // Find the list of users the auth user follows
@@ -511,7 +515,7 @@ const Query = {
      * @param {string} email
      * @param {string} token
      */
-    verifyResetPasswordToken: async (root, {email, token}, {User}) => {
+    verifyResetPasswordToken: async (_, {email, token}) => {
         // Check if user exists and token is valid
         const user = await User.findOne({
             email,
@@ -535,7 +539,7 @@ const Mutation = {
      * @param {string} emailOrUsername
      * @param {string} password
      */
-    signin: async (root, {input: {emailOrUsername, password}}, {User}) => {
+    signin: async (_, {input: {emailOrUsername, password}}) => {
         const user = await User.findOne().or([
             {email: emailOrUsername},
             {username: emailOrUsername},
@@ -564,11 +568,7 @@ const Mutation = {
      * @param {string} username
      * @param {string} password
      */
-    signup: async (
-        root,
-        {input: {fullName, email, username, password, nativeLanguage, targetLanguage}},
-        {User}
-    ) => {
+    signup: async (_, {input: {fullName, email, username, password, nativeLanguage, targetLanguage}}) => {
         // Check if user with given email or username already exists
         const user = await User.findOne().or([{email}, {username}]);
         if (user) {
@@ -645,11 +645,7 @@ const Mutation = {
      * @param {string} introductionText
      * @param {string} userId
      */
-    addIntroduction: async (
-        root,
-        {input: {introductionText, userId}},
-        {User}
-    ) => {
+    addIntroduction: async (_, {input: {introductionText, userId}}) => {
         if (!introductionText ) {
             throw new Error('Introduction text is required is required.');
         }
@@ -667,11 +663,7 @@ const Mutation = {
             message: `Introduction successfully added`,
         };
     },
-    updateAccountInfo: async (
-        root,
-        {input: {id, fullName, email, nativeLanguage, targetLanguage, introduction, age, sex, city}},
-        {User}
-    ) => {
+    updateAccountInfo: async (_, {input: {id, fullName, email, nativeLanguage, targetLanguage, introduction, age, sex, city}}) => {
         // Check if user exists
         const user = await User.findOne({_id: id});
         if (!user) {
@@ -726,7 +718,7 @@ const Mutation = {
      *
      * @param {string} email
      */
-    requestPasswordReset: async (root, {input: {email}}, {User}) => {
+    requestPasswordReset: async (_, {input: {email}}) => {
         // Check if user exists
         const user = await User.findOne({email});
         if (!user) {
@@ -768,11 +760,7 @@ const Mutation = {
      * @param {string} token
      * @param {string} password
      */
-    resetPassword: async (
-        root,
-        {input: {email, token, password}},
-        {User}
-    ) => {
+    resetPassword: async (_, {input: {email, token, password}}) => {
         if (!password) {
             throw new Error('Enter password and Confirm password.');
         }
@@ -812,11 +800,7 @@ const Mutation = {
      * @param {string} imagePublicId
      * @param {bool} isCover is Cover or Profile photo
      */
-    uploadUserPhoto: async (
-        root,
-        {input: {id, image, imagePublicId, isCover}},
-        {User}
-    ) => {
+    uploadUserPhoto: async (_, {input: {id, image, imagePublicId, isCover}}) => {
         const {createReadStream} = await image;
         const stream = createReadStream();
         const uploadImage = await uploadToCloudinary(stream, 'user', imagePublicId);

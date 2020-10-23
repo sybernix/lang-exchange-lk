@@ -31,9 +31,8 @@ app.use(cors(corsOptions));
 
 // Check authentication
 app.use((req, _, next) => {
-    console.log(req.headers);
     try {
-        const authUser = verify(req.headers.token, process.env.SECRET);
+        const authUser = verify(req.headers.authorization, process.env.SECRET);
         req.authUserId = authUser.id;
     } catch {}
     next();
