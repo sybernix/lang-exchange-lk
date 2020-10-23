@@ -17,8 +17,6 @@ const Query = {
      * Gets the currently logged in user
      */
     getAuthUser: async (root, {authUserId, authUserEmail}, {Message, User}) => {
-        console.log("Reach getAuthUser backend method");
-        console.log(authUserEmail);
         if (!authUserId && !authUserEmail) return null;
 
         // If user is authenticated, update it's isOnline field to true
@@ -97,7 +95,6 @@ const Query = {
 
         // Attach new conversations to auth User
         user.newConversations = sortedConversations;
-        console.log(user);
         return user;
     },
     /**
@@ -385,7 +382,6 @@ const Query = {
         const userComments = [];
         const userCommentsTemp = await Comment.find({author: userId}, {_id: 0, createdAt: 0, updatedAt: 0, author: 0, comment: 0});
         userCommentsTemp.map(f => userComments.push(String(f.post)));
-        // console.log(userCommentsTemp);
 
         // Find the list of users who follow the auth user
         const userFollowedBy = [];
@@ -423,7 +419,6 @@ const Query = {
 
             // Increase score by 100 if pp follows auth user
             if (ppFollows.some(f => f === userId)) {
-                // console.log("true");
                 scores[ppId] = scores[ppId] + 100;
             };
             // Increase score by 2 for each common user followed by auth user and pp
@@ -657,11 +652,6 @@ const Mutation = {
             throw new Error('Introduction text is required is required.');
         }
 
-        // await User.findOneAndUpdate(
-        //     {_id: userId},
-        //     {$push: {introduction: introductionText}}
-        // );
-
         // Check if user exists
         const user = await User.findOne({_id: userId});
         if (!user) {
@@ -669,16 +659,6 @@ const Mutation = {
         }
         user.introduction = introductionText;
         await user.save();
-
-        // User.findOneAndUpdate({_id: userId}, {$set:{introduction:introductionText}},
-        //     {new: true}, (err, doc) => {
-        //     if (err || doc === null) {
-        //         return {
-        //             message: `Error when adding introduction` + err,
-        //         };
-        //     }
-        //     console.log(doc);
-        // });
 
         // Return success message
         return {
