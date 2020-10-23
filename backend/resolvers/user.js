@@ -17,6 +17,8 @@ const Query = {
      * Gets the currently logged in user
      */
     getAuthUser: async (root, args, {authUser, Message, User}) => {
+        console.log("Reach getAuthUser backend method");
+        console.log(authUser);
         if (!authUser) return null;
 
         // If user is authenticated, update it's isOnline field to true
@@ -95,7 +97,7 @@ const Query = {
 
         // Attach new conversations to auth User
         user.newConversations = sortedConversations;
-
+        console.log(user);
         return user;
     },
     /**
@@ -553,6 +555,8 @@ const Mutation = {
 
         return {
             token: generateToken(user, process.env.SECRET, AUTH_TOKEN_EXPIRY),
+            authUserId: user._id,
+            authUserEmail: user.email
         };
     },
     /**
