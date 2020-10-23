@@ -1,3 +1,7 @@
+import User from '../models/User';
+import Post from '../models/Post';
+import Comment from '../models/Comment';
+
 const Mutation = {
     /**
      * Creates a post comment
@@ -6,11 +10,7 @@ const Mutation = {
      * @param {string} author author id
      * @param {string} postId
      */
-    createComment: async (
-        root,
-        {input: {comment, author, postId}},
-        {Comment, Post, User}
-    ) => {
+    createComment: async (_, {input: {comment, author, postId}}) => {
         const commentedPost = await Post.find({_id: postId}).select('author');
         const newComment = await new Comment({
             comment,
@@ -37,7 +37,7 @@ const Mutation = {
      *
      * @param {string} id
      */
-    deleteComment: async (root, {input: {id}}, {Comment, User, Post}) => {
+    deleteComment: async (_, {input: {id}}) => {
         const comment = await Comment.findByIdAndRemove(id);
 
         // Delete comment from users collection
