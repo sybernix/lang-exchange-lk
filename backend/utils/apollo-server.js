@@ -14,12 +14,16 @@ export const pubSub = new PubSub();
  */
 const checkAuthorization = token => {
     return new Promise(async (resolve, reject) => {
-        const authUser = await jwt.verify(token, process.env.SECRET);
-
-        if (authUser) {
-            resolve(authUser);
+        if (token == null) {
+            reject("Couldn't authenticate user"); 
         } else {
-            reject("Couldn't authenticate user");
+            const authUser = await jwt.verify(token, process.env.SECRET);
+
+            if (authUser) {
+                resolve(authUser);
+            } else {
+                reject("Couldn't authenticate user");
+            }
         }
     });
 };
@@ -41,21 +45,33 @@ export const createApolloServer = (schema, resolvers, models) => {
         //     reportSchema: true,
         //     variant: "current"
         // },
-        context: async ({req, connection}) => {
-            if (connection) {
-                return connection.context;
-            }
+        // context: async ({req, connection}) => {
+        //     console.log("received request");
+        //     console.log(req.headers.authorization);
 
-            let authUser;
-            if (!req.headers.authorization == null && req.headers.authorization !== 'null') {
-                const user = await checkAuthorization(req.headers['authorization']);
-                if (user) {
-                    authUser = user;
-                }
-            }
-            console.log("Reached end of context");
-            return Object.assign({authUser}, models);
-        },
+        //     // const user = await checkAuthorization(req.headers['authorization']);
+        //     // if (user) {
+        //     //     authUser = user;
+        //     // } else {
+        //     //     return null;
+        //     // }
+        //     if (connection) {
+        //         console.log("received connection");
+        //         // console.log(connection.context);
+        //         return connection.context;
+        //     }
+
+        //     let authUser;
+        //     if (!req.headers.authorization == null && req.headers.authorization !== 'null') {
+        //         const user = await checkAuthorization(req.headers['authorization']);
+        //         if (user) {
+        //             authUser = user;
+        //         }
+        //     }
+        //     console.log("Reached end of context");
+        //     return Object.assign({authUser}, models);
+        // },
+        context: ({ req, res }) => ({ req, res }),
         subscriptions: {
             onConnect: async (connectionParams, webSocket) => {
                 // Check if user is authenticated
