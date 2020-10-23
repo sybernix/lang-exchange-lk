@@ -14,7 +14,6 @@ const Query = {
           const req = https.request(options, res => {
             res.on('data', d => {
                 process.stdout.write(d)
-                console.log(JSON.parse(d).data.translations[0].translatedText);
                 return {translatedText: JSON.stringify(JSON.parse(d).data.translations[0].translatedText), language: 'dummy'};
             })
           })
