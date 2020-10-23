@@ -157,7 +157,7 @@ const UserSchema = gql`
     verifyResetPasswordToken(email: String, token: String!): SuccessMessage
 
     # Gets the currently logged in user
-    getAuthUser(authUserId: String, authUserEmail: String): UserPayload
+    getAuthUser: UserPayload
 
     # Gets user by username or by id
     getUser(username: String, id: ID): UserPayload
