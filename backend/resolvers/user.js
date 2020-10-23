@@ -16,7 +16,7 @@ const Query = {
     /**
      * Gets the currently logged in user
      */
-    getAuthUser: async (root, args, {authUserId, authUserEmail, Message, User}) => {
+    getAuthUser: async (root, {authUserId, authUserEmail}, {Message, User}) => {
         console.log("Reach getAuthUser backend method");
         console.log(authUserEmail);
         if (!authUserId && !authUserEmail) return null;
