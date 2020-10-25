@@ -41,37 +41,11 @@ export const createApolloServer = (schema, resolvers, models) => {
         // playground: true,
         typeDefs: schema,
         resolvers,
-        // engine: {
-        //     reportSchema: true,
-        //     variant: "current"
-        // },
-        // context: async ({req, connection}) => {
-        //     console.log("received request");
-        //     console.log(req.headers.authorization);
-
-        //     // const user = await checkAuthorization(req.headers['authorization']);
-        //     // if (user) {
-        //     //     authUser = user;
-        //     // } else {
-        //     //     return null;
-        //     // }
-        //     if (connection) {
-        //         console.log("received connection");
-        //         // console.log(connection.context);
-        //         return connection.context;
-        //     }
-
-        //     let authUser;
-        //     if (!req.headers.authorization == null && req.headers.authorization !== 'null') {
-        //         const user = await checkAuthorization(req.headers['authorization']);
-        //         if (user) {
-        //             authUser = user;
-        //         }
-        //     }
-        //     console.log("Reached end of context");
-        //     return Object.assign({authUser}, models);
-        // },
-        context: ({ req, res }) => ({ req, res }),
+        context: ({ req, res }) => {
+            console.log("Reached context");
+            setTimeout(function(){}, 20000); 
+            return ({ req, res })
+        },
         subscriptions: {
             onConnect: async (connectionParams, webSocket) => {
                 // Check if user is authenticated
