@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 22.414 seconds.
+Conversion time: 34.03 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Wed Oct 21 2020 11:07:46 GMT-0700 (PDT)
+* Mon Oct 26 2020 10:26:06 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -319,23 +319,23 @@ Sri Lanka is a multilingual country where three languages, Sinhala, Tamil, and E
 All Sri Lankans who want to learn a second language. They should have access to the internet and basic IT knowledge.
 
 
-#### 3.1.4 Functionality
+#### 3.1.4 Functional Requirements
 
 
 
-*   Users should be able to sign up and create a learning profile
-*   User should be able to find matching language partners
-*   User should be able to send and receive message to a language partner
-*   User should be able to post text, and photo posts
-*   Posts by others learning the same language should be discoverable
-*   Messages in other languages should be translated and shown alongside in the chat window
-*   System should suggest best matching language partners based on compatibility
-*   User should get notification about new followers
-*   User should be able to edit his personal information
-*   User should be able to upload profile picture and cover picture
-*   User should be able to see posts by the partners he or she follows
-*   User should be able to view an introduction text, pictures, posts, language information, age, sex, and city of other users by visiting their profile
-*   User should be able to filter potential partner discovery with city, sex, and age range
+*   Users shall be able to sign up and create a learning profile
+*   User shall be able to find matching language partners
+*   User shall be able to send and receive message to a language partner
+*   User shall be able to post text, and photo posts
+*   Posts by others learning the same language shall be discoverable
+*   Messages in other languages shall be translated and shown alongside in the chat window
+*   System shall suggest best matching language partners based on compatibility
+*   User shall get notification about new followers
+*   User shall be able to edit his personal information
+*   User shall be able to upload profile picture and cover picture
+*   User shall be able to see posts by the partners he or she follows
+*   User shall be able to view an introduction text, pictures, posts, language information, age, sex, and city of other users by visiting their profile
+*   User shall be able to filter potential partner discovery with city, sex, and age range
 
 
 #### 3.1.5 Development Responsibility
@@ -494,15 +494,15 @@ There is a vibrant language learning community in our country. However, they are
 In terms of legal aspects, since we will be using free, open source software, there will not be any licensing or copyright disputes. The internet laws of the country will be respected and no obscene or violence inciting publications will be allowed on the platform.
 
 
-#### 3.2.4 Alternative Approaches
+#### 3.2.4 Feasibility of Alternative Approaches
 
-Physical alternative to a digital platform for language learning exist already in Sri Lanka. All public universities in Sri Lanka offer language courses and even degrees on languages. English language learning is mandatory for school children in Sri Lanka all the way to the high school graduation. In addition to English tamil students must take Sinhala language course until grade 9 and Sinhala students must take Tamil as a subject. However, in most schools only the first language and English are taught well and Sinhala or Tamil gets neglected due to various reasons. Some of the reasons are lack of qualified language teachers, option to stop learning after grade 9 and not having to take a public examination such as O/L or A/L in the language, etc.
+Physical alternatives to a digital platform for language learning exist already in Sri Lanka. All public universities in Sri Lanka offer language courses and even degrees in languages. English language learning is mandatory for school children in Sri Lanka all the way to high school graduation. In addition to English tamil students must take Sinhala language courses until grade 9 and Sinhala students must take Tamil as a subject. However, in most schools only the first language and English are taught well and Sinhala or Tamil gets neglected due to various reasons. Some of the reasons are lack of qualified language teachers, the option to stop learning after grade 9 and not having to take a public examination such as O/L or A/L in the language, etc.
 
 In addition to the formal education institutes, there are plenty of private tuition classes that offer language classes. They are sometimes to support the courses at schools, and sometimes standalone courses designed to improve language skills. Notably, the British Council offers highly formulated English language courses, and L’Alliance Francaise offers similarly designed French Courses. For Tamil and Sinhala there exists informal tutoring by native speakers in all parts of the country.
 
-The physical approaches mentioned above have existed for a long time and were able to produce only a small percentage of population as bilingual. As discussed in the chapter one, cultural aspects hinder usage of second language in such institutions. So, a digital platform will provide more opportunities for students to practice languages.
+The physical approaches mentioned above have existed for a long time and were able to produce only a small percentage of the population as bilingual. As discussed in chapter one, cultural aspects hinder usage of second language in such institutions. So, a digital platform will provide more opportunities for students to practice languages.
 
-One of the digital options is to provide structured course materials, text books, audio, vido lectures as downloadable material on a website. There are handful of services, paid and free, already providing such service in Sri Lanka. However, this does not provide a real opportunity for students to actuallt talk and practice conversation in their target language.
+One of the digital options is to provide structured course materials, text books, audio, video lectures as downloadable material on a website. There are a handful of services, paid and free, already providing such service in Sri Lanka. However, this does not provide a real opportunity for students to actually talk and practice conversation in their target language.
 
 
 
@@ -1973,6 +1973,9 @@ This calls were set up from the frontend without going through the backend. A tr
 #### 3.1.4 Fourth Cycle
 
 This cycle was performed to fine tune the platform and prepare it for deployment in Amazon Web Services and serve it at www.langexchange.lk. During this cycle, a user recommendation feature based on a custom algorithm was also implemented.
+
+
+##### User recommendation system design
 
 
 ### 3.2 Version Controlling
