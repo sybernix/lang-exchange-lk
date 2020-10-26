@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 24.903 seconds.
+Conversion time: 28.953 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Mon Oct 26 2020 10:53:35 GMT-0700 (PDT)
+* Mon Oct 26 2020 11:03:35 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -2004,6 +2004,17 @@ The flowchart above shows the user recommendation system algorithm. The summary 
 *   If potential partner follows user: score +100
 *   For each common user followed by authenticated user and potential partner: score + 2
 *   For each common user who follows both authenticated user and potential partner: score + 2
+*   For each user followed by auth user who follows potential partner: score + 2
+*   For each user followed by potential partner who follows auth user: score + 2
+*   If auth user and potential partner are from the same city: score + 10
+*   If age of auth user and potential partner are within 5 years of each other: score + 10
+*   If age of auth user and potential partner are within 10 years of each other: score + 5
+*   For each post liked by both auth user and potential partner: score + 1
+*   For each post by auth user liked by potential partner: score + 3
+*   For each post by potential partner liked by auth user: score + 3
+*   For each post commented on by both auth user and potential partner: score + 1
+*   For each post by auth user commented on by potential partner: score + 5
+*   For each post by potential partner commented on by auth user: score + 5
 
 
 ### 3.2 Version Controlling
