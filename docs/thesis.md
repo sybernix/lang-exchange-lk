@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 34.03 seconds.
+Conversion time: 24.903 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Mon Oct 26 2020 10:26:06 GMT-0700 (PDT)
+* Mon Oct 26 2020 10:53:35 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -24,7 +24,7 @@ Conversion notes:
 ----->
 
 
-<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 36.</p>
+<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 38.</p>
 <ul style="color: red; font-weight: bold"><li>See top comment block for details on ERRORs and WARNINGs. <li>In the converted Markdown or HTML, search for inline alerts that start with >>>>>  gd2md-html alert:  for specific instances that need correction.</ul>
 
 <p style="color: red; font-weight: bold">Links to alert messages:</p><a href="#gdcalert1">alert1</a>
@@ -63,6 +63,8 @@ Conversion notes:
 <a href="#gdcalert34">alert34</a>
 <a href="#gdcalert35">alert35</a>
 <a href="#gdcalert36">alert36</a>
+<a href="#gdcalert37">alert37</a>
+<a href="#gdcalert38">alert38</a>
 
 <p style="color: red; font-weight: bold">>>>>> PLEASE check and correct alert issues and delete this message and the inline alerts.<hr></p>
 
@@ -1978,11 +1980,6 @@ This cycle was performed to fine tune the platform and prepare it for deployment
 ##### User recommendation system design
 
 
-### 3.2 Version Controlling
-
-GitHub was used for version controlling the source code. The source repository can be found at [21]. 
-
-
 
 <p id="gdcalert15" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image15.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert16">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
@@ -1990,7 +1987,7 @@ GitHub was used for version controlling the source code. The source repository c
 ![alt_text](images/image15.png "image_tooltip")
 
 
-(lang-exchange-lk repository page in GitHub)
+(Diagram continued in the next page)
 
 
 
@@ -2000,9 +1997,18 @@ GitHub was used for version controlling the source code. The source repository c
 ![alt_text](images/image16.png "image_tooltip")
 
 
-(Subset of the commit history)
+The flowchart above shows the user recommendation system algorithm. The summary of this algorithm is as follows. We retrieve the list of users who have compatible language preferences to be partners (called potential partners). We create a dictionary of keys of these users and value of score. Higher score should indicate more compatibility to become language partner with the authenticated user. The score is calculated as follows,
 
-As of 14th October 2020 234 commits have been made to this repository.
+
+
+*   If potential partner follows user: score +100
+*   For each common user followed by authenticated user and potential partner: score + 2
+*   For each common user who follows both authenticated user and potential partner: score + 2
+
+
+### 3.2 Version Controlling
+
+GitHub was used for version controlling the source code. The source repository can be found at [21]. 
 
 
 
@@ -2012,6 +2018,8 @@ As of 14th October 2020 234 commits have been made to this repository.
 ![alt_text](images/image17.png "image_tooltip")
 
 
+(lang-exchange-lk repository page in GitHub)
+
 
 
 <p id="gdcalert18" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image18.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert19">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
@@ -2020,7 +2028,9 @@ As of 14th October 2020 234 commits have been made to this repository.
 ![alt_text](images/image18.png "image_tooltip")
 
 
-Github project page was used for project management. Features chosen for development were added as issues in the project which shows up in the “To Do” column in the following image.
+(Subset of the commit history)
+
+As of 14th October 2020 234 commits have been made to this repository.
 
 
 
@@ -2028,6 +2038,24 @@ Github project page was used for project management. Features chosen for develop
 
 
 ![alt_text](images/image19.png "image_tooltip")
+
+
+
+
+<p id="gdcalert20" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image20.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert21">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image20.png "image_tooltip")
+
+
+Github project page was used for project management. Features chosen for development were added as issues in the project which shows up in the “To Do” column in the following image.
+
+
+
+<p id="gdcalert21" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image21.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert22">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image21.png "image_tooltip")
 
 
 The “In Progress” column has the features that are currently under development. “Done” column has the completed features. There are also two additional columns “Immediate Action Items” for the features that will be implemented next, and “On Hold” for the features that are rejected.
@@ -2039,30 +2067,30 @@ Continuous integration practice advocates developers to merge works to the main 
 
 
 
-<p id="gdcalert20" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image20.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert21">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+<p id="gdcalert22" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image22.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert23">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
-![alt_text](images/image20.png "image_tooltip")
+![alt_text](images/image22.png "image_tooltip")
 
 
 This badge is produced by a Node CI builder set up using Github Actions. You can see the build history below.
 
 
 
-<p id="gdcalert21" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image21.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert22">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+<p id="gdcalert23" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image23.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert24">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
-![alt_text](images/image21.png "image_tooltip")
+![alt_text](images/image23.png "image_tooltip")
 
 
 For each commit to the master branch Node CI build runs and produces a report as follows.
 
 
 
-<p id="gdcalert22" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image22.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert23">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+<p id="gdcalert24" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image24.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert25">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
-![alt_text](images/image22.png "image_tooltip")
+![alt_text](images/image24.png "image_tooltip")
 
 
 You can observe that there are 3 builds for each commit. This is to build in three Node.js versions 10, 12, and 14 to make sure the source code build is passing in all versions.
@@ -2073,20 +2101,20 @@ Two repository branches were created to maintain a separation between the master
 
 
 
-<p id="gdcalert23" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image23.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert24">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+<p id="gdcalert25" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image25.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert26">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
-![alt_text](images/image23.png "image_tooltip")
+![alt_text](images/image25.png "image_tooltip")
 
 
 This “production” branch is linked to the continuous deployment pipeline of langexchange.lk. Amazon Code Pipeline tool was used for this purpose. The following image shows the Code Pipeline dashboard.
 
 
 
-<p id="gdcalert24" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image24.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert25">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+<p id="gdcalert26" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image26.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert27">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
-![alt_text](images/image24.png "image_tooltip")
+![alt_text](images/image26.png "image_tooltip")
 
 
 The production branch is configured as the source. Every commit into the production branch will trigger this pipeline and it will be pushed into the production instance in the “Deploy” stage. The hosting is explained in the following section.
@@ -2108,33 +2136,13 @@ The base URL initially lands in the landing page. You can sign up as a new user 
 
 
 
-<p id="gdcalert25" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image25.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert26">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image25.png "image_tooltip")
-
-
-After logging in or signing up, you will be shown a home page. This home page is also served in the base URL.
-
-
-
-<p id="gdcalert26" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image26.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert27">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image26.png "image_tooltip")
-
-
-From the home page you can navigate to all other pages. In all pages, a header which contains a search bar, drop down menus for messages, notifications, and profile is shown on the top. The following is the profile page.
-
-
-
 <p id="gdcalert27" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image27.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert28">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
 ![alt_text](images/image27.png "image_tooltip")
 
 
-The profice page shows the user’s profile picture, cover image, full name, introduction text, follower count, native and target language, location, sex, age, and posts by the user. It is important to note that there are two versions of this profile page. If you visit your own profile page there will be a textbox to write a post and a “Edit Info” button which will direct you to a “Edit Info” page. The following image shows the “Edit Info” page.
+After logging in or signing up, you will be shown a home page. This home page is also served in the base URL.
 
 
 
@@ -2144,7 +2152,7 @@ The profice page shows the user’s profile picture, cover image, full name, int
 ![alt_text](images/image28.png "image_tooltip")
 
 
-In this page you can edit the information you entered when signing up and add additional information as well. If you decide to learn a different language you change the target language on this page and after update you will see potential partners for the new target language.
+From the home page you can navigate to all other pages. In all pages, a header which contains a search bar, drop down menus for messages, notifications, and profile is shown on the top. The following is the profile page.
 
 
 
@@ -2154,7 +2162,7 @@ In this page you can edit the information you entered when signing up and add ad
 ![alt_text](images/image29.png "image_tooltip")
 
 
-The image above shows the “Explore” page. In this page, you can see posts from all the potential language partners irrespective of whether you follow them or not. Hence, you will be able to discover ideas and resources from people whom you haven’t connected yet. This page also can be used to find an instant partner. For example, if none of your connected partners are online at a time, you can post on this page requesting for anyone online to chat. This way, you are assured to have someone to learn with always.
+The profice page shows the user’s profile picture, cover image, full name, introduction text, follower count, native and target language, location, sex, age, and posts by the user. It is important to note that there are two versions of this profile page. If you visit your own profile page there will be a textbox to write a post and a “Edit Info” button which will direct you to a “Edit Info” page. The following image shows the “Edit Info” page.
 
 
 
@@ -2164,7 +2172,7 @@ The image above shows the “Explore” page. In this page, you can see posts fr
 ![alt_text](images/image30.png "image_tooltip")
 
 
-This is the “Learners” page. Here you will see tiles containing potential language partners whom you have not followed. Each tile will show the user’s profile picture, full name, language infor, and a follow button. Here, you can connect with new language partners.
+In this page you can edit the information you entered when signing up and add additional information as well. If you decide to learn a different language you change the target language on this page and after update you will see potential partners for the new target language.
 
 
 
@@ -2174,7 +2182,7 @@ This is the “Learners” page. Here you will see tiles containing potential la
 ![alt_text](images/image31.png "image_tooltip")
 
 
-This is the notifications page where you can see your notifications. The following image shows the instant messaging page.
+The image above shows the “Explore” page. In this page, you can see posts from all the potential language partners irrespective of whether you follow them or not. Hence, you will be able to discover ideas and resources from people whom you haven’t connected yet. This page also can be used to find an instant partner. For example, if none of your connected partners are online at a time, you can post on this page requesting for anyone online to chat. This way, you are assured to have someone to learn with always.
 
 
 
@@ -2184,7 +2192,7 @@ This is the notifications page where you can see your notifications. The followi
 ![alt_text](images/image32.png "image_tooltip")
 
 
-In the “Messages” page you will see a list of users and corresponding conversations. You can click on a conversation to view the messages. The most important feature of this platform is found in this page. With each message there is a “Translate” button. If you click the translate button, the contents of that particular message will be translated and shown in your native language. Even if your partner has messaged you in multiple languages the platform will detect the language and always translate to your native language. Our translation supports over 100 languages. The following image shows how the translated message looks.
+This is the “Learners” page. Here you will see tiles containing potential language partners whom you have not followed. Each tile will show the user’s profile picture, full name, language infor, and a follow button. Here, you can connect with new language partners.
 
 
 
@@ -2194,10 +2202,7 @@ In the “Messages” page you will see a list of users and corresponding conver
 ![alt_text](images/image33.png "image_tooltip")
 
 
-
-### 4.2 Responsiveness
-
-The frontend of this application was designed and developed keeping mobile responsiveness in mind. Responsive web design is a philosophy that underlines the need for using flexible layout designs that re-orient themselves for better viewing experience in several different screen sizes and aspect ratios [25]. Users of today browse websites from devices such as laptop, tablet computer, mobile phones, etc. Traditional websites which only render well in laptop screens lose a lot of visitors due to their static nature which is difficult to use in mobile screens.
+This is the notifications page where you can see your notifications. The following image shows the instant messaging page.
 
 
 
@@ -2205,6 +2210,29 @@ The frontend of this application was designed and developed keeping mobile respo
 
 
 ![alt_text](images/image34.png "image_tooltip")
+
+
+In the “Messages” page you will see a list of users and corresponding conversations. You can click on a conversation to view the messages. The most important feature of this platform is found in this page. With each message there is a “Translate” button. If you click the translate button, the contents of that particular message will be translated and shown in your native language. Even if your partner has messaged you in multiple languages the platform will detect the language and always translate to your native language. Our translation supports over 100 languages. The following image shows how the translated message looks.
+
+
+
+<p id="gdcalert35" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image35.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert36">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image35.png "image_tooltip")
+
+
+
+### 4.2 Responsiveness
+
+The frontend of this application was designed and developed keeping mobile responsiveness in mind. Responsive web design is a philosophy that underlines the need for using flexible layout designs that re-orient themselves for better viewing experience in several different screen sizes and aspect ratios [25]. Users of today browse websites from devices such as laptop, tablet computer, mobile phones, etc. Traditional websites which only render well in laptop screens lose a lot of visitors due to their static nature which is difficult to use in mobile screens.
+
+
+
+<p id="gdcalert36" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image36.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert37">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image36.png "image_tooltip")
 
 
 (Source: [https://www.broadbandsearch.net/blog/mobile-desktop-internet-usage-statistics](https://www.broadbandsearch.net/blog/mobile-desktop-internet-usage-statistics))
@@ -2237,10 +2265,10 @@ This application is presented as a website on the internet. The language exchang
 
 
 
-<p id="gdcalert35" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image35.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert36">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+<p id="gdcalert37" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image37.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert38">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
-![alt_text](images/image35.png "image_tooltip")
+![alt_text](images/image37.png "image_tooltip")
 
 
 The cost of this domain name for a year is LKR 2700 without hosting service from the same provider. You can see the purchase invoice in the appendix 4. An additional LKR 100 transaction fee was charged and the total cost of LKR 2800 was paid to www.register.lk on 4th September 2020.
@@ -2297,10 +2325,10 @@ There are few features that were considered during the survey, but ended up bein
 
 
 
-<p id="gdcalert36" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image36.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert37">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+<p id="gdcalert38" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image38.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert39">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
-![alt_text](images/image36.png "image_tooltip")
+![alt_text](images/image38.png "image_tooltip")
 
 
 The most requested feature is translation of messages in the chat window. This feature is implemented as a part of this project. The second most requested feature is providing basic grammar lessons within the application. This was not implemented because to prepare lessons, we need to hire professional language tutors, and it was outside the scope of a traditional language exchange platform which we intended to build in this project. However, this is a very important and useful feature which can be added to this platform in the future. Speech-to-text and text-to-speech of messages were requested by 40.7% and 39.5% of respondents respectively. These features were left out due to the bandwidth requirements of processing audio files and the text-to-speech APIs are expensive [26].
