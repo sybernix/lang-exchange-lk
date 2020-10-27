@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 30.963 seconds.
+Conversion time: 25.583 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Mon Oct 26 2020 21:41:13 GMT-0700 (PDT)
+* Mon Oct 26 2020 21:46:27 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -509,7 +509,7 @@ One of the digital options is to provide structured course materials, text books
 
 
 
-### 3.2 Software Development Life Cycle
+### 3.3 Software Development Life Cycle
 
 Spiral SDLC was chosen for the development of LangExchangeLK. This is because, it was better to start implementation with a basic set of requirements and produce an application and then iteratively improve the product in subsequent cycles of development after feedback from the supervisor. However, the first cycle covered the majority of the identified requirements and majority of the implemented features. So, the development can also be considered as a mix of waterfall and spiral SDLC.
 
@@ -524,10 +524,10 @@ Spiral SDLC was chosen for the development of LangExchangeLK. This is because, i
 (Source: [https://airbrake.io/blog/sdlc/spiral-model](https://airbrake.io/blog/sdlc/spiral-model))
 
 
-#### 3.2.1 First Cycle
+#### 3.3.1 First Cycle
 
 
-##### 3.2.1.1 Requirement Analysis
+##### 3.3.1.1 Requirement Analysis
 
 This was the major cycle of the development. At the start of this cycle the survey that we discussed in chapter one was performed and the following feature requirements were identified.
 
@@ -550,7 +550,7 @@ The following features were finalized for implementation during this cycle.
 *   Follow users
 
 
-##### 3.2.1.2 Design
+##### 3.3.1.2 Design
 
 In the second stage of this cycle, the architecture of the system as a whole was designed. The web application developed contains two independent runtimes, backend and frontend, which communicate through a GraphQL API.
 
@@ -1312,7 +1312,7 @@ Follower document holds reference to the user and the new follower of that user.
 Comment document holds reference to the author of the comment, post on which the comment was written and the actual comment string. The “comment” field is mandatory.
 
 
-##### 3.2.1.3 Implementation
+##### 3.3.1.3 Implementation
 
 The following piece of code shows how a schema can be defined in Node.js using Mongoose library. This is the implementation of the Post model and the other models are similar.
 
@@ -1358,7 +1358,7 @@ export default mongoose.model('Post', postSchema);
 
 
 
-###### 3.2.1.3.1 GraphQL API
+###### 3.3.1.3.1 GraphQL API
 
 Three types of interactions between the frontend and the backend are possible through the GraphQL API. They are queries, mutations, and subscriptions. Queries are used for data retrieval from the MongoDB database through the backend. Mutations are used to write data to MongoDB. Subscriptions are used to add a listener to events that can occur during the run time. For example, when we visit the page of a potential partner we need to see whether he is online or not. We can do this by adding a listener to isUserOnline event with the ID of the potential partner. If the potential partner is online true will be returned and if he or she is offline false will be returned.
 
@@ -1805,10 +1805,12 @@ The frontend client application was implemented in React JS as discussed earlier
 
 
 
-##### 3.2.1.4 Testing
+##### 3.3.1.4 Testing
 
 
-#### 3.1.2 Second Cycle
+#### 3.3.2 Second Cycle
+
+3.3.
 
 The second cycle was focused on optimizing the features to suit the needs of a language learner well. The following features were implemented in this cycle
 
@@ -1938,9 +1940,9 @@ The frontend was extended with two new pages shown below in yellow squares.
 
 
 
-#### 3.1.3 Third Cycle
+#### 3.3.3 Third Cycle
 
-Third cycle of development was performed to add message translation feature. Google Translate API was chosen for this feature since it is the most accurate [20] and it was the only one that had support for Sinhala language translation. In order to use Google Translate API, we first need to create a Google Cloud user account and create a project. After providing billing details we need to enable Translate API for the aforementioned project and then generate an GOOGLE_API_KEY that we use authenticate our REST API calls.
+Third cycle of development was performed to add message translation features. Google Translate API was chosen for this feature since it is the most accurate [20] and it was the only one that had support for Sinhala language translation. In order to use Google Translate API, we first need to create a Google Cloud user account and create a project. After providing billing details we need to enable the Translate API for the aforementioned project and then generate a GOOGLE_API_KEY that we use to authenticate our REST API calls.
 
 You can send your request in the following format,
 
@@ -1972,10 +1974,10 @@ We will get a response as follows,
 
 }
 
-This calls were set up from the frontend without going through the backend. A translate button was added to every message box which can be clicked to translate the message to the user’s native language.
+These calls were set up from the frontend without going through the backend. A translate button was added to every message box which can be clicked to translate the message to the user’s native language.
 
 
-#### 3.1.4 Fourth Cycle
+#### 3.3.4 Fourth Cycle
 
 This cycle was performed to fine tune the platform and prepare it for deployment in Amazon Web Services and serve it at www.langexchange.lk. During this cycle, a user recommendation feature based on a custom algorithm was also implemented.
 
@@ -2020,7 +2022,7 @@ The flowchart above shows the user recommendation system algorithm. The summary 
 *   For each post by potential partner commented on by auth user: score + 5
 
 
-### 3.2 Version Controlling
+### 3.4 Version Controlling
 
 GitHub was used for version controlling the source code. The source repository can be found at [21]. 
 
@@ -2075,9 +2077,9 @@ Github project page was used for project management. Features chosen for develop
 The “In Progress” column has the features that are currently under development. “Done” column has the completed features. There are also two additional columns “Immediate Action Items” for the features that will be implemented next, and “On Hold” for the features that are rejected.
 
 
-### 3.3 Continuous Integration & Continuous Deployment
+### 3.5 Continuous Integration & Continuous Deployment
 
-Continuous integration practice advocates developers to merge works to the main source code repository as much as several times per day. Every merge / integration is verified by an automated build and testing mechanisms [22]. As you can see in the image below a CI build badge is shows in the readme to indicate whether the build is passing, failing, or unstable.
+Continuous integration practice advocates developers to merge works to the main source code repository as much as several times per day. Every merge / integration is verified by an automated build and testing mechanisms [22]. As you can see in the image below a CI build badge is shown in the readme to indicate whether the build is passing, failing, or unstable.
 
 
 
@@ -2109,7 +2111,7 @@ For each commit to the master branch Node CI build runs and produces a report as
 
 You can observe that there are 3 builds for each commit. This is to build in three Node.js versions 10, 12, and 14 to make sure the source code build is passing in all versions.
 
-Continuous deployment is a production strategy where the new features and changes added to the source code is immediately released to production environment after continuous integration tests are done [23]. This makes sure that the users of the software are always on the bleeding edge of technology and are able to enjoy newest features as soon as they are created.
+Continuous deployment is a production strategy where the new features and changes added to the source code are immediately released to the production environment after continuous integration tests are done [23]. This makes sure that the users of the software are always on the bleeding edge of technology and are able to enjoy the newest features as soon as they are created.
 
 Two repository branches were created to maintain a separation between the master and the production environments as shown below.
 
@@ -2121,7 +2123,7 @@ Two repository branches were created to maintain a separation between the master
 ![alt_text](images/image25.png "image_tooltip")
 
 
-This “production” branch is linked to the continuous deployment pipeline of langexchange.lk. Amazon Code Pipeline tool was used for this purpose. The following image shows the Code Pipeline dashboard.
+This “production” branch is linked to the continuous deployment pipeline of langexchange.lk. Amazon CodePipeline tool was used for this purpose. The following image shows the Code Pipeline dashboard.
 
 
 
@@ -2134,7 +2136,7 @@ This “production” branch is linked to the continuous deployment pipeline of 
 The production branch is configured as the source. Every commit into the production branch will trigger this pipeline and it will be pushed into the production instance in the “Deploy” stage. The hosting is explained in the following section.
 
 
-### 3.4 Hosting
+#### 3.5.1 Hosting
 
 Amazon Web Services was chosen as the web hosting platform for www.langexchange.lk. The main reasons for this choice was because of the flexible scalability of AWS, high availability, and a pay-as-you-go payment model which suits a startup better [24]. AWS Elastic Beanstalk orchestration service was used for hosting the application. Elastic Beanstalk is a managed hosting where Node.js environment is auto-configured and deployment ready. This is as opposed to renting an EC2 instance and installing Node.js, ReactJS and all the application dependencies manually and deploying the service. Using Elastic Beanstalk removes all these extra devops work. The following image shows the Elastic Beanstalk dashboard used for configuration. This instance is linked to the Code Pipeline which pushes changes for deployment.
 
