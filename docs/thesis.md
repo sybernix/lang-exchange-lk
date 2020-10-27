@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 31.598 seconds.
+Conversion time: 30.684 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Tue Oct 27 2020 02:30:20 GMT-0700 (PDT)
+* Tue Oct 27 2020 09:13:17 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -24,7 +24,7 @@ Conversion notes:
 ----->
 
 
-<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 50.</p>
+<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 51.</p>
 <ul style="color: red; font-weight: bold"><li>See top comment block for details on ERRORs and WARNINGs. <li>In the converted Markdown or HTML, search for inline alerts that start with >>>>>  gd2md-html alert:  for specific instances that need correction.</ul>
 
 <p style="color: red; font-weight: bold">Links to alert messages:</p><a href="#gdcalert1">alert1</a>
@@ -77,6 +77,7 @@ Conversion notes:
 <a href="#gdcalert48">alert48</a>
 <a href="#gdcalert49">alert49</a>
 <a href="#gdcalert50">alert50</a>
+<a href="#gdcalert51">alert51</a>
 
 <p style="color: red; font-weight: bold">>>>>> PLEASE check and correct alert issues and delete this message and the inline alerts.<hr></p>
 
@@ -2376,7 +2377,7 @@ The newly added forum page was verified by visiting the URL localhost:3000/langf
 
 ### 3.4 Final System Architecture
 
-The following image shows the database schema architecture of LangExchange LK system.
+The system was designed according to the Model-View-Controller principle. The database and schemas are represented in the model component and the view component describes the frontend application with which a user will interact. The controller component is the backend system which receives user inputs from the view component, makes necessary changes in the model and returns data to view again.
 
 
 
@@ -2386,9 +2387,7 @@ The following image shows the database schema architecture of LangExchange LK sy
 ![alt_text](images/image26.png "image_tooltip")
 
 
-As you can see there are 4 collections named users, likes, messages, comments, followers, posts, and notifications. The users collection is the most informative which holds data of each registered user. Posts collection holds each post written by users on the platform. Likes and comments hold the user interaction data such as liking and commenting on posts. Follows hold information about the user-user-follow relationship. Messages store the chat messages for viewing later. It should be noted that GraphQL subscriptions transfer the message between users without having to go through MongoDB. However, to view later after closing the chat window, the messages are retrieved from the database.
-
-The following diagram shows the GraphQL query map and how different Input and Return types are related to queries.
+The following image shows the detailed architecture of the model component, i.e database of LangExchange LK system.
 
 
 
@@ -2398,7 +2397,9 @@ The following diagram shows the GraphQL query map and how different Input and Re
 ![alt_text](images/image27.png "image_tooltip")
 
 
-The zoomed in view of the query is seen below,
+As you can see there are 4 collections named users, likes, messages, comments, followers, posts, and notifications. The users collection is the most informative which holds data of each registered user. Posts collection holds each post written by users on the platform. Likes and comments hold the user interaction data such as liking and commenting on posts. Follows hold information about the user-user-follow relationship. Messages store the chat messages for viewing later. It should be noted that GraphQL subscriptions transfer the message between users without having to go through MongoDB. However, to view later after closing the chat window, the messages are retrieved from the database.
+
+The following diagram shows the GraphQL query map and how different Input and Return types are related to queries.
 
 
 
@@ -2408,10 +2409,7 @@ The zoomed in view of the query is seen below,
 ![alt_text](images/image28.png "image_tooltip")
 
 
-
-### 3.5 Version Controlling
-
-GitHub was used for version controlling the source code. The source repository can be found at [21]. 
+The zoomed in view of the query is seen below,
 
 
 
@@ -2421,7 +2419,10 @@ GitHub was used for version controlling the source code. The source repository c
 ![alt_text](images/image29.png "image_tooltip")
 
 
-(lang-exchange-lk repository page in GitHub)
+
+### 3.5 Version Controlling
+
+GitHub was used for version controlling the source code. The source repository can be found at [21]. 
 
 
 
@@ -2431,9 +2432,7 @@ GitHub was used for version controlling the source code. The source repository c
 ![alt_text](images/image30.png "image_tooltip")
 
 
-(Subset of the commit history)
-
-As of 14th October 2020 234 commits have been made to this repository.
+(lang-exchange-lk repository page in GitHub)
 
 
 
@@ -2443,6 +2442,10 @@ As of 14th October 2020 234 commits have been made to this repository.
 ![alt_text](images/image31.png "image_tooltip")
 
 
+(Subset of the commit history)
+
+As of 14th October 2020 234 commits have been made to this repository.
+
 
 
 <p id="gdcalert32" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image32.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert33">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
@@ -2451,14 +2454,22 @@ As of 14th October 2020 234 commits have been made to this repository.
 ![alt_text](images/image32.png "image_tooltip")
 
 
-Github project page was used for project management. Features chosen for development were added as issues in the project which shows up in the “To Do” column in the following image.
-
 
 
 <p id="gdcalert33" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image33.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert34">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
 ![alt_text](images/image33.png "image_tooltip")
+
+
+Github project page was used for project management. Features chosen for development were added as issues in the project which shows up in the “To Do” column in the following image.
+
+
+
+<p id="gdcalert34" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image34.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert35">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image34.png "image_tooltip")
 
 
 The “In Progress” column has the features that are currently under development. “Done” column has the completed features. There are also two additional columns “Immediate Action Items” for the features that will be implemented next, and “On Hold” for the features that are rejected.
@@ -2470,23 +2481,13 @@ Continuous integration practice advocates developers to merge works to the main 
 
 
 
-<p id="gdcalert34" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image34.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert35">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image34.png "image_tooltip")
-
-
-This badge is produced by a Node CI builder set up using Github Actions. You can see the build history below.
-
-
-
 <p id="gdcalert35" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image35.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert36">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
 ![alt_text](images/image35.png "image_tooltip")
 
 
-For each commit to the master branch Node CI build runs and produces a report as follows.
+This badge is produced by a Node CI builder set up using Github Actions. You can see the build history below.
 
 
 
@@ -2494,6 +2495,16 @@ For each commit to the master branch Node CI build runs and produces a report as
 
 
 ![alt_text](images/image36.png "image_tooltip")
+
+
+For each commit to the master branch Node CI build runs and produces a report as follows.
+
+
+
+<p id="gdcalert37" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image37.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert38">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image37.png "image_tooltip")
 
 
 You can observe that there are 3 builds for each commit. This is to build in three Node.js versions 10, 12, and 14 to make sure the source code build is passing in all versions.
@@ -2504,20 +2515,20 @@ Two repository branches were created to maintain a separation between the master
 
 
 
-<p id="gdcalert37" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image37.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert38">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+<p id="gdcalert38" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image38.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert39">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
-![alt_text](images/image37.png "image_tooltip")
+![alt_text](images/image38.png "image_tooltip")
 
 
 This “production” branch is linked to the continuous deployment pipeline of langexchange.lk. Amazon CodePipeline tool was used for this purpose. The following image shows the Code Pipeline dashboard.
 
 
 
-<p id="gdcalert38" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image38.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert39">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+<p id="gdcalert39" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image39.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert40">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
-![alt_text](images/image38.png "image_tooltip")
+![alt_text](images/image39.png "image_tooltip")
 
 
 The production branch is configured as the source. Every commit into the production branch will trigger this pipeline and it will be pushed into the production instance in the “Deploy” stage. The hosting is explained in the following section.
@@ -2539,23 +2550,13 @@ The base URL initially lands in the landing page. You can sign up as a new user 
 
 
 
-<p id="gdcalert39" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image39.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert40">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image39.png "image_tooltip")
-
-
-After logging in or signing up, you will be shown a home page. This home page is also served in the base URL.
-
-
-
 <p id="gdcalert40" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image40.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert41">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
 ![alt_text](images/image40.png "image_tooltip")
 
 
-From the home page you can navigate to all other pages. In all pages, a header which contains a search bar, drop down menus for messages, notifications, and profile is shown on the top. The following is the profile page.
+After logging in or signing up, you will be shown a home page. This home page is also served in the base URL.
 
 
 
@@ -2565,7 +2566,7 @@ From the home page you can navigate to all other pages. In all pages, a header w
 ![alt_text](images/image41.png "image_tooltip")
 
 
-The profice page shows the user’s profile picture, cover image, full name, introduction text, follower count, native and target language, location, sex, age, and posts by the user. It is important to note that there are two versions of this profile page. If you visit your own profile page there will be a textbox to write a post and a “Edit Info” button which will direct you to a “Edit Info” page. The following image shows the “Edit Info” page.
+From the home page you can navigate to all other pages. In all pages, a header which contains a search bar, drop down menus for messages, notifications, and profile is shown on the top. The following is the profile page.
 
 
 
@@ -2575,7 +2576,7 @@ The profice page shows the user’s profile picture, cover image, full name, int
 ![alt_text](images/image42.png "image_tooltip")
 
 
-In this page you can edit the information you entered when signing up and add additional information as well. If you decide to learn a different language you change the target language on this page and after update you will see potential partners for the new target language.
+The profice page shows the user’s profile picture, cover image, full name, introduction text, follower count, native and target language, location, sex, age, and posts by the user. It is important to note that there are two versions of this profile page. If you visit your own profile page there will be a textbox to write a post and a “Edit Info” button which will direct you to a “Edit Info” page. The following image shows the “Edit Info” page.
 
 
 
@@ -2585,7 +2586,7 @@ In this page you can edit the information you entered when signing up and add ad
 ![alt_text](images/image43.png "image_tooltip")
 
 
-The image above shows the “Explore” page. In this page, you can see posts from all the potential language partners irrespective of whether you follow them or not. Hence, you will be able to discover ideas and resources from people whom you haven’t connected yet. This page also can be used to find an instant partner. For example, if none of your connected partners are online at a time, you can post on this page requesting for anyone online to chat. This way, you are assured to have someone to learn with always.
+In this page you can edit the information you entered when signing up and add additional information as well. If you decide to learn a different language you change the target language on this page and after update you will see potential partners for the new target language.
 
 
 
@@ -2595,7 +2596,7 @@ The image above shows the “Explore” page. In this page, you can see posts fr
 ![alt_text](images/image44.png "image_tooltip")
 
 
-This is the “Learners” page. Here you will see tiles containing potential language partners whom you have not followed. Each tile will show the user’s profile picture, full name, language infor, and a follow button. Here, you can connect with new language partners.
+The image above shows the “Explore” page. In this page, you can see posts from all the potential language partners irrespective of whether you follow them or not. Hence, you will be able to discover ideas and resources from people whom you haven’t connected yet. This page also can be used to find an instant partner. For example, if none of your connected partners are online at a time, you can post on this page requesting for anyone online to chat. This way, you are assured to have someone to learn with always.
 
 
 
@@ -2605,7 +2606,7 @@ This is the “Learners” page. Here you will see tiles containing potential la
 ![alt_text](images/image45.png "image_tooltip")
 
 
-This is the notifications page where you can see your notifications. The following image shows the instant messaging page.
+This is the “Learners” page. Here you will see tiles containing potential language partners whom you have not followed. Each tile will show the user’s profile picture, full name, language infor, and a follow button. Here, you can connect with new language partners.
 
 
 
@@ -2615,7 +2616,7 @@ This is the notifications page where you can see your notifications. The followi
 ![alt_text](images/image46.png "image_tooltip")
 
 
-In the “Messages” page you will see a list of users and corresponding conversations. You can click on a conversation to view the messages. The most important feature of this platform is found in this page. With each message there is a “Translate” button. If you click the translate button, the contents of that particular message will be translated and shown in your native language. Even if your partner has messaged you in multiple languages the platform will detect the language and always translate to your native language. Our translation supports over 100 languages. The following image shows how the translated message looks.
+This is the notifications page where you can see your notifications. The following image shows the instant messaging page.
 
 
 
@@ -2625,10 +2626,7 @@ In the “Messages” page you will see a list of users and corresponding conver
 ![alt_text](images/image47.png "image_tooltip")
 
 
-
-### 4.2 Responsiveness
-
-The frontend of this application was designed and developed keeping mobile responsiveness in mind. Responsive web design is a philosophy that underlines the need for using flexible layout designs that re-orient themselves for better viewing experience in several different screen sizes and aspect ratios [25]. Users of today browse websites from devices such as laptop, tablet computer, mobile phones, etc. Traditional websites which only render well in laptop screens lose a lot of visitors due to their static nature which is difficult to use in mobile screens.
+In the “Messages” page you will see a list of users and corresponding conversations. You can click on a conversation to view the messages. The most important feature of this platform is found in this page. With each message there is a “Translate” button. If you click the translate button, the contents of that particular message will be translated and shown in your native language. Even if your partner has messaged you in multiple languages the platform will detect the language and always translate to your native language. Our translation supports over 100 languages. The following image shows how the translated message looks.
 
 
 
@@ -2636,6 +2634,19 @@ The frontend of this application was designed and developed keeping mobile respo
 
 
 ![alt_text](images/image48.png "image_tooltip")
+
+
+
+### 4.2 Responsiveness
+
+The frontend of this application was designed and developed keeping mobile responsiveness in mind. Responsive web design is a philosophy that underlines the need for using flexible layout designs that re-orient themselves for better viewing experience in several different screen sizes and aspect ratios [25]. Users of today browse websites from devices such as laptop, tablet computer, mobile phones, etc. Traditional websites which only render well in laptop screens lose a lot of visitors due to their static nature which is difficult to use in mobile screens.
+
+
+
+<p id="gdcalert49" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image49.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert50">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](images/image49.png "image_tooltip")
 
 
 (Source: [https://www.broadbandsearch.net/blog/mobile-desktop-internet-usage-statistics](https://www.broadbandsearch.net/blog/mobile-desktop-internet-usage-statistics))
@@ -2668,10 +2679,10 @@ This application is presented as a website on the internet. The language exchang
 
 
 
-<p id="gdcalert49" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image49.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert50">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+<p id="gdcalert50" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image50.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert51">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
-![alt_text](images/image49.png "image_tooltip")
+![alt_text](images/image50.png "image_tooltip")
 
 
 The cost of this domain name for a year is LKR 2700 without hosting service from the same provider. You can see the purchase invoice in the appendix 4. An additional LKR 100 transaction fee was charged and the total cost of LKR 2800 was paid to www.register.lk on 4th September 2020.
@@ -2728,10 +2739,10 @@ There are few features that were considered during the survey, but ended up bein
 
 
 
-<p id="gdcalert50" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image50.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert51">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+<p id="gdcalert51" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image51.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert52">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
-![alt_text](images/image50.png "image_tooltip")
+![alt_text](images/image51.png "image_tooltip")
 
 
 The most requested feature is translation of messages in the chat window. This feature is implemented as a part of this project. The second most requested feature is providing basic grammar lessons within the application. This was not implemented because to prepare lessons, we need to hire professional language tutors, and it was outside the scope of a traditional language exchange platform which we intended to build in this project. However, this is a very important and useful feature which can be added to this platform in the future. Speech-to-text and text-to-speech of messages were requested by 40.7% and 39.5% of respondents respectively. These features were left out due to the bandwidth requirements of processing audio files and the text-to-speech APIs are expensive [26].
