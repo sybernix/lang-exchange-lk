@@ -37,12 +37,9 @@ const checkAuthorization = token => {
  */
 export const createApolloServer = (schema, resolvers, models) => {
     return new ApolloServer({
-        // introspection: true,
-        // playground: true,
         typeDefs: schema,
         resolvers,
         context: ({ req, res }) => {
-            console.log("Reached context");
             setTimeout(function(){}, 20000); 
             return ({ req, res })
         },
