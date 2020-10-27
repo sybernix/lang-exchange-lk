@@ -17,9 +17,6 @@ const Query = {
      * @param {int} limit how many posts to limit
      */
     getForumPosts: async (_, {authUserId, targetLanguage, skip, limit}) => {
-        // const query = {
-        //     $and: [{image: {$ne: null}}, {author: {$ne: authUserId}}],
-        // };
         const query = {
             $and: [{author: {$ne: authUserId}, authorTargetLanguage: targetLanguage}],
         };
@@ -63,9 +60,6 @@ const Query = {
      * @param {int} limit how many posts to limit
      */
     getExplorePosts: async (_, {authUserId, nativeLanguage, targetLanguage, skip, limit}) => {
-        // const query = {
-        //     $and: [{image: {$ne: null}}, {author: {$ne: authUserId}}],
-        // };
         const query = {
             $and: [{author: {$ne: authUserId}, authorNativeLanguage: targetLanguage, authorTargetLanguage: nativeLanguage}],
         };
