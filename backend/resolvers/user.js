@@ -447,7 +447,7 @@ const Query = {
             }
 
             // Increase score by 10 if the age of the PP and auth user are within 5 years of each other
-            // and by 5 if they are withing 10 years of each other
+            // and by 5 if they are within 10 years of each other
             if (Math.abs(potentialPartner[0].age - authUser[0].age) <= 5) {
                 scores[ppId] = scores[ppId] + 10;
             } else if (Math.abs(potentialPartner[0].age - authUser[0].age) <= 10) {

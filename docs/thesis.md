@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 26.5 seconds.
+Conversion time: 26.682 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Mon Oct 26 2020 21:58:17 GMT-0700 (PDT)
+* Mon Oct 26 2020 22:47:07 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -1999,10 +1999,23 @@ These calls were set up from the frontend without going through the backend. A t
 
 #### 3.3.4 Fourth Cycle
 
-This cycle was performed to fine tune the platform and prepare it for deployment in Amazon Web Services and serve it at www.langexchange.lk. During this cycle, a user recommendation feature based on a custom algorithm was also implemented.
+
+##### 3.3.4.1 Requirement Analysis
+
+This cycle was performed to implement the following features.
 
 
-##### User recommendation system design
+
+*   a user recommendation algorithm to display list of recommended language partners
+*   Language forum where user learning the same language can share resources
+*   Display list of users learning the same language
+
+The above requirements were identified during the discussion session with the project supervisor Dr. Wickramarachchi, held on 11th, 18th, and 25th of October 2020. Rather than showing a list of random users as suggestion, an algorithmic way of distilling best matches will make it easy to find a language partner. In addition, a forum where all learners of one language can share resources will help debutants with access to enormous resources to learn. 
+
+At the end of this cycle the system was fine tuned and prepared for deployment in Amazon Web Services and served at www.langexchange.lk.
+
+
+##### 3.3.4.2 Design
 
 
 
@@ -2022,7 +2035,7 @@ This cycle was performed to fine tune the platform and prepare it for deployment
 ![alt_text](images/image16.png "image_tooltip")
 
 
-The flowchart above shows the user recommendation system algorithm. The summary of this algorithm is as follows. We retrieve the list of users who have compatible language preferences to be partners (called potential partners). We create a dictionary of keys of these users and value of score. Higher score should indicate more compatibility to become language partner with the authenticated user. The score is calculated as follows,
+The flowchart above shows the user recommendation system algorithm. The summary of this algorithm is as follows. We retrieve the list of users who have compatible language preferences to be partners (called potential partners). We create a dictionary of keys of these users and the value of score. Higher score should indicate more compatibility to become language partner with the authenticated user. The score is calculated as follows,
 
 
 
@@ -2040,6 +2053,63 @@ The flowchart above shows the user recommendation system algorithm. The summary 
 *   For each post commented on by both auth user and potential partner: score + 1
 *   For each post by auth user commented on by potential partner: score + 5
 *   For each post by potential partner commented on by auth user: score + 5
+
+
+##### 3.3.4.3 Implementation
+
+A new user resolver was implemented for the user recommendation algorithm. The following piece of code shows the section of the implemented algorithm where we retrieve the list of potential partners and initialize a scores dictionary.
+
+
+```
+let scores = {};
+const query = {$and: [{_id: {$nin: userFollows}}, 
+                  {targetLanguage: authUser[0].nativeLanguage}, 
+                  {nativeLanguage: authUser[0].targetLanguage}]};
+const potentialPartners = await User.find(query).select('_id');
+potentialPartners.map(f => scores[f._id] = 0);
+```
+
+
+The following piece of code shows how we count the members in the intersection of arrays userFollows and ppFollows and increase score accordingly.
+
+
+```
+// Increase score by 2 for each common user followed by auth user and pp
+scores[ppId] = scores[ppId] + 2 * ppFollows.filter(value =>
+                    userFollows.includes(value)).length
+```
+
+
+Similar to the above, we handle score change for other arrays as well. The following code shows how age based score increment is handled.
+
+
+```
+// Increase score by 10 if the age of the PP and auth user are within 5 years of each other
+// and by 5 if they are within 10 years of each other
+if (Math.abs(potentialPartner[0].age - authUser[0].age) <= 5) {
+    scores[ppId] = scores[ppId] + 10;
+} else if (Math.abs(potentialPartner[0].age - authUser[0].age) <= 10) {
+    scores[ppId] = scores[ppId] + 5;
+}
+```
+
+
+For the implementation of the language forum a similar page to “Explore was used”. However, a new “getForumPosts” GraphQL resolver was implemented and the post retrieval was changed as follows,
+
+
+```
+const query = {
+            $and: [{author: {$ne: authUserId}, authorTargetLanguage: targetLanguage}],
+        };
+const postsCount = await Post.find(query).countDocuments();
+const allPosts = await Post.find(query)
+```
+
+
+The post database schema was also modified to add the field “authorTargetLanguage”.
+
+
+##### 3.3.4.4 Testing
 
 
 ### 3.4 Version Controlling
