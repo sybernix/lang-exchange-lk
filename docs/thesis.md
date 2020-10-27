@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 25.583 seconds.
+Conversion time: 26.5 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Mon Oct 26 2020 21:46:27 GMT-0700 (PDT)
+* Mon Oct 26 2020 21:58:17 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -1810,7 +1810,8 @@ The frontend client application was implemented in React JS as discussed earlier
 
 #### 3.3.2 Second Cycle
 
-3.3.
+
+##### 3.3.2.1 Requirement Analysis
 
 The second cycle was focused on optimizing the features to suit the needs of a language learner well. The following features were implemented in this cycle
 
@@ -1820,6 +1821,9 @@ The second cycle was focused on optimizing the features to suit the needs of a l
 *   Show only users with matching language preferences in Learners page
 *   Explore page
 *   Filter learners using city, age, sex
+
+
+##### 3.3.2.2 Design
 
 The following new queries and mutations were added to GraphQL API.
 
@@ -1923,7 +1927,7 @@ limit: Int
    </td>
    <td>SuccessMessage
    </td>
-   <td>After creating the account information in sign up this mutation is used to edit the information in edit info page. Additional information are also added to user document
+   <td>After creating the account information to sign up this mutation is used to edit the information in the edit info page. Additional information are also added to user document
    </td>
   </tr>
 </table>
@@ -1940,13 +1944,31 @@ The frontend was extended with two new pages shown below in yellow squares.
 
 
 
+##### 3.3.2.3 Implementation
+
+
+##### 3.3.2.4 Testing
+
+
 #### 3.3.3 Third Cycle
 
-Third cycle of development was performed to add message translation features. Google Translate API was chosen for this feature since it is the most accurate [20] and it was the only one that had support for Sinhala language translation. In order to use Google Translate API, we first need to create a Google Cloud user account and create a project. After providing billing details we need to enable the Translate API for the aforementioned project and then generate a GOOGLE_API_KEY that we use to authenticate our REST API calls.
+
+##### 3.3.3.1 Requirement Analysis
+
+Third cycle of development was performed to add message translation features. This feature was requested by Dr. Wickramarachi during the second supervisor meeting held on 9th September 2020. This feature was deemed necessary since beginners will not be able to understand messages in their target language and a translation is necessary to keep them interested in the platform. Google Translate API was chosen for this feature since it is the most accurate [20] and it was the only one that had support for Sinhala language translation. 
+
+
+##### 3.3.3.2 Design and Implementation
+
+In order to use Google Translate API, we first need to create a Google Cloud user account and create a project. After providing billing details we need to enable the Translate API for the aforementioned project and then generate a GOOGLE_API_KEY that we use to authenticate our REST API calls.
 
 You can send your request in the following format,
 
+
+```
 https://translation.googleapis.com/language/translate/v2?key=GOOGLE_API_KEY&q=cheese&target=si
+```
+
 
 q - the text that needs to be translated
 
@@ -1954,27 +1976,25 @@ target - the language to which the text should be translated
 
 We will get a response as follows,
 
+
+```
 {
-
   "data": {
-
     "translations": [
-
       {
-
         "translatedText": "චීස්",
-
         "detectedSourceLanguage": "en"
-
       }
-
     ]
-
   }
-
 }
+```
+
 
 These calls were set up from the frontend without going through the backend. A translate button was added to every message box which can be clicked to translate the message to the user’s native language.
+
+
+##### 3.3.3.3 Testing
 
 
 #### 3.3.4 Fourth Cycle
