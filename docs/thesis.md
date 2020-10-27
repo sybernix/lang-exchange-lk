@@ -3,7 +3,7 @@
 <!-----
 NEW: Check the "Suppress top comment" option to remove this info from the output.
 
-Conversion time: 28.953 seconds.
+Conversion time: 30.963 seconds.
 
 
 Using this Markdown file:
@@ -16,7 +16,7 @@ Using this Markdown file:
 Conversion notes:
 
 * Docs to Markdown version 1.0β29
-* Mon Oct 26 2020 11:03:35 GMT-0700 (PDT)
+* Mon Oct 26 2020 21:41:13 GMT-0700 (PDT)
 * Source doc: MSc Dissertation - LangExchangeLK
 * Tables are currently converted to HTML tables.
 * This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
@@ -526,6 +526,9 @@ Spiral SDLC was chosen for the development of LangExchangeLK. This is because, i
 
 #### 3.2.1 First Cycle
 
+
+##### 3.2.1.1 Requirement Analysis
+
 This was the major cycle of the development. At the start of this cycle the survey that we discussed in chapter one was performed and the following feature requirements were identified.
 
 
@@ -546,6 +549,9 @@ The following features were finalized for implementation during this cycle.
 *   Write posts and comments, like a post
 *   Follow users
 
+
+##### 3.2.1.2 Design
+
 In the second stage of this cycle, the architecture of the system as a whole was designed. The web application developed contains two independent runtimes, backend and frontend, which communicate through a GraphQL API.
 
 
@@ -558,13 +564,7 @@ In the second stage of this cycle, the architecture of the system as a whole was
 
 GraphQL was chosen instead of a simpler REST API because it allows us to request for only the fields that we require from the frontend. This is in contrast to retrieving the entire JSON payload by calling a REST endpoint and then parsing the JSON to find the required value. Hence, GraphQL allows us to save bandwidth in frontend - backend communication by receiving only required data and as a consequence, improves the speed of frontend application. GraphQL is not actually a software program [17]. It is rather a data query and manipulation language for API’s. It is a set of definitions and rules. It was developed by Facebook in 2012 and then subsequently released for open source usage in 2015 [18]. There exist many implementations of this specification. I have chosen Apollo GraphQL platform [19] which provides both a GraphQL server to be used in the backend and a GraphQL client to be used in the frontend.
 
-
-##### Architecture of the Backend System
-
 The backend is developed using Node.js, a Javascript runtime. Backend handles requests from the frontend and responds with appropriate data. Backend also handles data persistence and reading from MongoDB. Let’s begin the analysis of the backend with a review of data modelling. The data models are defined using Mongoose JS library schemas.
-
-
-###### Data Models
 
 User model holds data related to each user. This data contains both user’s personal data and platform specific data such as the user’s followers etc.
 
@@ -1311,6 +1311,9 @@ Follower document holds reference to the user and the new follower of that user.
 
 Comment document holds reference to the author of the comment, post on which the comment was written and the actual comment string. The “comment” field is mandatory.
 
+
+##### 3.2.1.3 Implementation
+
 The following piece of code shows how a schema can be defined in Node.js using Mongoose library. This is the implementation of the Post model and the other models are similar.
 
 
@@ -1355,7 +1358,7 @@ export default mongoose.model('Post', postSchema);
 
 
 
-###### GraphQL API
+###### 3.2.1.3.1 GraphQL API
 
 Three types of interactions between the frontend and the backend are possible through the GraphQL API. They are queries, mutations, and subscriptions. Queries are used for data retrieval from the MongoDB database through the backend. Mutations are used to write data to MongoDB. Subscriptions are used to add a listener to events that can occur during the run time. For example, when we visit the page of a potential partner we need to see whether he is online or not. We can do this by adding a listener to isUserOnline event with the ID of the potential partner. If the potential partner is online true will be returned and if he or she is offline false will be returned.
 
@@ -1791,8 +1794,7 @@ userId: ID!
 </table>
 
 
-
-##### Architecture of the Frontend System
+The frontend client application was implemented in React JS as discussed earlier. It was implemented as a single page application. That is, only the components that change are re-rendered while the other components stay unrefreshed in the page. The following image shows the sitemap of langexchange.lk. 
 
 
 
@@ -1802,12 +1804,13 @@ userId: ID!
 ![alt_text](images/image13.png "image_tooltip")
 
 
-The above image shows the sitemap of langexchange.lk. 
+
+##### 3.2.1.4 Testing
 
 
 #### 3.1.2 Second Cycle
 
-The second cycle was focused on optimizing the features to suite the needs of a language learner well. The following features were implemented in this cycle
+The second cycle was focused on optimizing the features to suit the needs of a language learner well. The following features were implemented in this cycle
 
 
 
