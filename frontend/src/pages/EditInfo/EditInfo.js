@@ -105,6 +105,7 @@ const EditInfo = ({history}) => {
     return (
         <Root>
             <Head title={auth.user.username}/>
+            {console.log(auth.user.username)}
             <Query query={GET_USER} variables={{username: auth.user.username}}>
                 {({data, loading, error}) => {
                     if (loading) {
@@ -217,7 +218,7 @@ const EditInfo = ({history}) => {
                                                                 }
                                                             </Select2>
                                                         </Spacing>
-                                                        <Label>Sex:</Label>
+                                                        <Label>Gender:</Label>
                                                         <Select2
                                                             type="text"
                                                             name="sex"
