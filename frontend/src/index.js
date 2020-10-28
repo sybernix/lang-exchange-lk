@@ -6,11 +6,14 @@ import {ThemeProvider} from 'styled-components';
 import {createApolloClient} from 'utils/apollo-client';
 import {StoreProvider} from 'store';
 import {Helmet} from "react-helmet";
-
+import ReactGA from 'react-ga';
 import 'normalize.css';
 import theme from 'theme';
-
 import App from 'components/App/App';
+
+// Initialize Google Analytics
+ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_ID);
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 // GraphQL HTTP URL
 const API_URL = process.env.REACT_APP_API_URL;

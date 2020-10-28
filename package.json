@@ -14,5 +14,8 @@
   ],
   "devDependencies": {
     "concurrently": "^4.1.2"
+  },
+  "dependencies": {
+    "react-ga": "^3.2.0"
   }
 }
