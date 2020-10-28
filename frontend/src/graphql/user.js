@@ -31,7 +31,7 @@ export const GET_USER = gql`
       nativeLanguage
       targetLanguage
       introduction
-      age
+      dateOfBirth
       sex
       city
       posts {
@@ -207,8 +207,8 @@ export const GET_USERS = gql`
  * Gets potential language partners
  */
 export const GET_POTENTIAL_PARTNERS = gql`
-  query($userId: String!, $city: String, $sex: String, $age: String, $skip: Int, $limit: Int) {
-    getPotentialPartners(userId: $userId, city: $city, sex: $sex, age: $age, skip: $skip, limit: $limit) {
+  query($userId: String!, $city: String, $sex: String, $dateOfBirth: String, $skip: Int, $limit: Int) {
+    getPotentialPartners(userId: $userId, city: $city, sex: $sex, dateOfBirth: $dateOfBirth, skip: $skip, limit: $limit) {
       count
       users {
         id
@@ -217,7 +217,7 @@ export const GET_POTENTIAL_PARTNERS = gql`
         image
         nativeLanguage
         targetLanguage
-        age
+        dateOfBirth
         sex
         city
         following {
