@@ -37,8 +37,8 @@ const userSchema = new Schema(
         introduction: {
             type: String,
         },
-        age: {
-            type: Number
+        dateOfBirth: {
+            type: Date
         },
         sex: {
             type: String
