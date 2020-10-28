@@ -5,6 +5,7 @@ import {Query} from 'react-apollo';
 import styled from 'styled-components';
 import {Mutation} from 'react-apollo';
 import {useQuery} from '@apollo/react-hooks';
+import DatePicker from "react-datepicker";
 
 import Skeleton from 'components/Skeleton';
 import {H2} from 'components/Text';
@@ -82,7 +83,7 @@ const EditInfo = ({history}) => {
         nativeLanguage: '',
         targetLanguage: '',
         introduction: '',
-        age: '',
+        dateOfBirth: '',
         sex: '',
         city: '',
     });
@@ -100,7 +101,7 @@ const EditInfo = ({history}) => {
         });
     };
 
-    const {id, fullName, email, nativeLanguage, targetLanguage, introduction, age, sex, city} = values;
+    const {id, fullName, email, nativeLanguage, targetLanguage, introduction, dateOfBirth, sex, city} = values;
 
     return (
         <Root>
@@ -124,7 +125,7 @@ const EditInfo = ({history}) => {
                         <Root maxWidth="md">
                             <Mutation
                                 mutation={UPDATE_ACCOUNT_INFO}
-                                variables={{input: {id, fullName, email, nativeLanguage, targetLanguage, introduction, age, sex, city}}}
+                                variables={{input: {id, fullName, email, nativeLanguage, targetLanguage, introduction, dateOfBirth, sex, city}}}
                             >
                                 {(editinfo, {loading, error: apiError}) => {
                                     return (
@@ -197,12 +198,16 @@ const EditInfo = ({history}) => {
                                                             borderColor="white"
                                                         />
                                                         <Spacing top="xs" bottom="xs">
-                                                            <Label>Age:</Label>
+                                                            <Label>Date of Birth:</Label>
+                                                            {/* <input type="date"/> */}
+                                                            <DatePicker 
+                                                            // selected={this.state.date} onChange={this.handleChange} 
+                                                            />
                                                             <Select2
                                                                 type="text"
-                                                                name="age"
-                                                                defaultValue={data.getUser.age}
-                                                                values={age}
+                                                                name="dateOfBirth"
+                                                                defaultValue={data.getUser.dateOfBirth}
+                                                                values={dateOfBirth}
                                                                 onChange={handleChange}
                                                                 borderColor="white"
                                                             >
