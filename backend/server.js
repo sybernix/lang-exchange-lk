@@ -24,7 +24,7 @@ const app = express();
 
 // Enable cors
 const corsOptions = {
-    origin: process.env.FRONTEND_URL,
+    origin: process.env.FRONTEND_URL.split(','),
     credentials: true,
 };
 app.use(cors(corsOptions));
