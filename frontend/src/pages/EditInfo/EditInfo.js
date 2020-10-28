@@ -105,7 +105,7 @@ const EditInfo = ({history}) => {
     return (
         <Root>
             <Head title={auth.user.username}/>
-            <Query query={GET_USER} variables={{username: auth.user.username}}>
+            <Query fetchPolicy="no-cache" query={GET_USER} variables={{username: auth.user.username}}>
                 {({data, loading, error}) => {
                     if (loading) {
                         return (
