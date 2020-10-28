@@ -16,7 +16,7 @@ const UserSchema = gql`
     nativeLanguage: String!
     targetLanguage: String!
     introduction: String
-    age: Int
+    dateOfBirth: String
     sex: String
     city: String
     resetToken: String
@@ -96,7 +96,7 @@ const UserSchema = gql`
     nativeLanguage: String
     targetLanguage: String
     introduction: String
-    age: String
+    dateOfBirth: String
     sex: String
     city: String
   }
@@ -113,7 +113,7 @@ const UserSchema = gql`
     nativeLanguage: String
     targetLanguage: String
     introduction: String
-    age: Int
+    dateOfBirth: String
     sex: String
     city: String
     image: String
