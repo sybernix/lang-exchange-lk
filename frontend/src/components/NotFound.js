@@ -35,4 +35,4 @@ const NotFound = () => (
     </Root>
 );
 
-// export default NotFound;
+export default NotFound;
