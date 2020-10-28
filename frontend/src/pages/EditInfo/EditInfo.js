@@ -73,8 +73,8 @@ const Textarea = styled.textarea`
  * User Edit Info Page
  */
 const EditInfo = ({history}) => {
-    const {refetch} = useQuery(GET_USER);
     const [{auth}] = useStore();
+    const {refetch} = useQuery(GET_USER, {variables: {id: auth.user.id}});
     const [values, setValues] = useState({
         id: auth.user.id,
         fullName: '',
@@ -95,7 +95,7 @@ const EditInfo = ({history}) => {
     const handleSubmit = (e, editinfo) => {
         e.preventDefault();
         editinfo().then(async ({message}) => {
-            await refetch({id:auth.user.id});
+            await refetch({id: auth.user.id});
             history.push(auth.user.username);
         });
     };
@@ -105,7 +105,6 @@ const EditInfo = ({history}) => {
     return (
         <Root>
             <Head title={auth.user.username}/>
-            {console.log(auth.user.username)}
             <Query query={GET_USER} variables={{username: auth.user.username}}>
                 {({data, loading, error}) => {
                     if (loading) {
@@ -120,9 +119,6 @@ const EditInfo = ({history}) => {
                             </Container>
                         );
                     }
-
-                    // if (error || !data.getUser) return <NotFound/>;
-
                     return (
                         <Content>
                         <Root maxWidth="md">
