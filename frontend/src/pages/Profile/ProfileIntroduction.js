@@ -9,7 +9,6 @@ import {ADD_INTRODUCTION} from 'graphql/user';
 
 const Root = styled(Container)`
   border: 0;
-  /* max-width: ${p => p.theme.screen.sm}; */
   padding: 0;
   margin-top: 0;
 `;
@@ -60,7 +59,7 @@ const Introduction = styled.label`
   font-size: ${p => p.theme.font.size.xs};
   color: ${p => p.theme.colors.grey[600]};
   border-radius: ${p => p.theme.radius.sm};
-  max-width: ${p => p.theme.screen.sm}
+  max-width: ${p => p.theme.screen.sm};
 `;
 
 const ProfileIntroduction = props => {
@@ -103,7 +102,6 @@ const ProfileIntroduction = props => {
                                 zIndex={isFocused ? 'md' : 'xs'}
                                 color={isFocused ? 'mygrey2' : 'mygrey'}
                                 radius="sm"
-                                // padding="sm"
                             >
                                 <Form onSubmit={e => handleSubmit(e, addIntroduction)}>
                                     <Textarea
