@@ -111,7 +111,7 @@ const Learners = () => {
                         </Select>
                     </Filter>
                     <Filter>
-                        Sex:
+                        Gender:
                     </Filter>
                     <Filter width="10em">
                         <Select
