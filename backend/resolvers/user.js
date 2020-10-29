@@ -663,7 +663,7 @@ const Mutation = {
             message: `Introduction successfully added`,
         };
     },
-    updateAccountInfo: async (_, {input: {id, fullName, email, nativeLanguage, targetLanguage, introduction, age, sex, city}}) => {
+    updateAccountInfo: async (_, {input: {id, fullName, email, nativeLanguage, targetLanguage, introduction, dateOfBirth, sex, city}}) => {
         // Check if user exists
         const user = await User.findOne({_id: id});
         if (!user) {
@@ -690,8 +690,8 @@ const Mutation = {
             user.introduction = introduction;
             updated = true;
         }
-        if (age) {
-            user.age = parseInt(age);
+        if (dateOfBirth) {
+            user.dateOfBirth = dateOfBirth;
             updated = true;
         }
         if (sex) {
