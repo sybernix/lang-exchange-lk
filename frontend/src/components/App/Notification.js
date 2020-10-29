@@ -114,28 +114,40 @@ const Notification = ({notification, close, client}) => {
             </A>
 
             {notification.follow && <Action>started following you</Action>}
-
+            {console.log(notification)}
             {notification.like && (
-                <Action>
-                    likes your photo
-                    <A to={generatePath(Routes.POST, {id: notification.like.post.id})}>
-                        <PostImage>
-                            <Image src={notification.like.post.image}/>
-                        </PostImage>
-                    </A>
-                </Action>
+                notification.isImagePost
+                ?
+                    <Action>
+                        likes your photo
+                        <A to={generatePath(Routes.POST, {id: notification.like.post.id})}>
+                            <PostImage>
+                                <Image src={notification.like.post.image}/>
+                            </PostImage>
+                        </A>
+                    </Action>
+                :
+                    <Action>
+                        <div>likes your <A to={generatePath(Routes.POST, {id: notification.like.post.id})}>post</A></div>
+                    </Action>
             )}
 
             {notification.comment && (
+                notification.isImagePost
+                ?
+                    <Action>
+                        commented on your photo
+                        <A
+                            to={generatePath(Routes.POST, {id: notification.comment.post.id})}
+                        >
+                            <PostImage>
+                                <Image src={notification.comment.post.image}/>
+                            </PostImage>
+                        </A>
+                    </Action>
+                :
                 <Action>
-                    commented on your photo
-                    <A
-                        to={generatePath(Routes.POST, {id: notification.comment.post.id})}
-                    >
-                        <PostImage>
-                            <Image src={notification.comment.post.image}/>
-                        </PostImage>
-                    </A>
+                    <div>commented on your <A to={generatePath(Routes.POST, {id: notification.comment.post.id})}>post</A></div>
                 </Action>
             )}
         </NotificationItem>
