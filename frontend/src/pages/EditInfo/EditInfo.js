@@ -84,7 +84,7 @@ const EditInfo = ({history}) => {
         nativeLanguage: '',
         targetLanguage: '',
         introduction: '',
-        dateOfBirth: new Date(),
+        dateOfBirth: null,
         sex: '',
         city: '',
     });
@@ -206,7 +206,7 @@ const EditInfo = ({history}) => {
                                                             <Label>Date of Birth:</Label>
                                                             <DatePicker 
                                                                 name="dateOfBirth"
-                                                                selected={parseInt(data.getUser.dateOfBirth)} 
+                                                                selected={values['dateOfBirth'] ? values['dateOfBirth'] : parseInt(data.getUser.dateOfBirth)} 
                                                                 onChange={date => handleDateOfBirthChange(date)} 
                                                             />
                                                         </Spacing>
