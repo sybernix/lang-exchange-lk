@@ -72,6 +72,25 @@ const Textarea = styled.textarea`
 `;
 
 /**
+ * Datepicker styling
+ */
+export const DatePickerStyled = styled(DatePicker)`
+  outline: 0;
+  height: 36px;
+  width: 100%;
+  transition: border 0.1s;
+  border-radius: ${p => p.theme.radius.sm};
+  padding-left: ${p => p.theme.spacing.xs};
+  border: 1px solid ${p => p.theme.colors.white};
+  color: ${p => p.theme.colors.text.secondary};
+
+  &:focus {
+        border: 1px solid;
+        border-color: ${p => p.theme.colors.border.main};
+  }
+`;
+
+/**
  * User Edit Info Page
  */
 const EditInfo = ({history}) => {
@@ -204,7 +223,7 @@ const EditInfo = ({history}) => {
                                                         />
                                                         <Spacing top="xs" bottom="xs">
                                                             <Label>Date of Birth:</Label>
-                                                            <DatePicker 
+                                                            <DatePickerStyled 
                                                                 name="dateOfBirth"
                                                                 selected={values['dateOfBirth'] ? values['dateOfBirth'] : parseInt(data.getUser.dateOfBirth)} 
                                                                 onChange={date => handleDateOfBirthChange(date)} 
