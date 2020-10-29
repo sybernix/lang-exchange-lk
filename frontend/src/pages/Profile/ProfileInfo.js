@@ -190,8 +190,8 @@ const ProfileInfo = ({ user }) => {
             {user.sex === "female" &&
               <FemaleIcon width="15" color="grey500"/>
             }
-            {user.age &&
-              <Language left="1em">age {user.age}</Language>
+            {user.dateOfBirth &&
+              <Language left="1em">age {Math.ceil((new Date() - user.dateOfBirth) / (365 * 24*60*60*1000))}</Language>
             }
           </List>
         </Info>
