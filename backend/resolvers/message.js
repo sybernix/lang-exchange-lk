@@ -37,7 +37,7 @@ const Query = {
             'id username fullName image isOnline'
         );
 
-        // Get last messages with wom authUser had a chat
+        // Get last messages with whom authUser had a chat
         const lastMessages = await Message.aggregate([
             {
                 $match: {
@@ -77,11 +77,13 @@ const Query = {
             };
 
             const sender = lastMessages.find(m => u.id === m.sender.toString());
+            let isUserValid = false;
             if (sender) {
                 user.seen = sender.seen;
                 user.lastMessageCreatedAt = sender.createdAt;
                 user.lastMessage = sender.message;
                 user.lastMessageSender = false;
+                isUserValid = true;
             } else {
                 const receiver = lastMessages.find(m => u.id === m.receiver.toString());
 
@@ -90,10 +92,12 @@ const Query = {
                     user.lastMessageCreatedAt = receiver.createdAt;
                     user.lastMessage = receiver.message;
                     user.lastMessageSender = true;
+                    isUserValid = true;
                 }
             }
-
-            conversations.push(user);
+            if (isUserValid) {
+                conversations.push(user);
+            }
         });
 
         // Sort users by last created messages date
