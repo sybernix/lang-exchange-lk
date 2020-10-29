@@ -3,7 +3,9 @@ import {withFilter} from 'apollo-server';
 import {pubSub} from '../utils/apollo-server';
 import {NOTIFICATION_CREATED_OR_DELETED} from '../constants/Subscriptions';
 import User from '../models/User';
+import Post from '../models/Post';
 import Notification from '../models/Notification';
+import {NotificationType} from '../constants/NotificationType';
 
 const Query = {
     /**
@@ -41,10 +43,17 @@ const Mutation = {
      * @param {string} notificationTypeId
      */
     createNotification: async (_, {input: {userId, authorId, postId, notificationType, notificationTypeId}}) => {
+        let isImagePost = false;
+        if (notificationType == NotificationType.LIKE || notificationType == NotificationType.LIKE) {
+            const notificationPost = await Post.findById(postId);
+            isImagePost = notificationPost.image ? true : false;
+        }
+
         let newNotification = await new Notification({
             author: authorId,
             user: userId,
             post: postId,
+            isImagePost: isImagePost,
             [notificationType.toLowerCase()]: notificationTypeId,
         }).save();
 
