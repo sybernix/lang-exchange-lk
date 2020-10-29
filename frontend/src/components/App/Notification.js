@@ -114,7 +114,6 @@ const Notification = ({notification, close, client}) => {
             </A>
 
             {notification.follow && <Action>started following you</Action>}
-            {console.log(notification)}
             {notification.like && (
                 notification.isImagePost
                 ?
