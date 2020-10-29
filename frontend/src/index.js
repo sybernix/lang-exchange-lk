@@ -21,9 +21,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 // GraphQL WebSocket (subscriptions) URL.
 // If its url is not set in .env then it has same url, host and pathname
 const WEBSOCKET_API_URL = process.env.REACT_APP_WEBSOCKET_API_URL;
-const websocketApiUrl = WEBSOCKET_API_URL
-    ? WEBSOCKET_API_URL
-    : API_URL.replace('https://', 'ws://').replace('http://', 'ws://');
+const websocketApiUrl = WEBSOCKET_API_URL;
 
 // Create a Apollo client
 const apolloClient = createApolloClient(API_URL, websocketApiUrl);
