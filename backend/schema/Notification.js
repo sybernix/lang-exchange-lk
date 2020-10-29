@@ -17,6 +17,7 @@ const NotificationSchema = gql`
     id: ID!
     user: User
     author: User
+    isImagePost: Boolean
     post: ID!
     like: Like
     follow: Follow
@@ -52,6 +53,7 @@ const NotificationSchema = gql`
     id: ID
     user: UserPayload
     author: UserPayload
+    isImagePost: Boolean
     like: LikePayload
     follow: Follow
     comment: CommentPayload
