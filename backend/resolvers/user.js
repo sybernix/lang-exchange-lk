@@ -276,7 +276,13 @@ const Query = {
         }
         if (age != "") {
             const ageRange = age.split('-');
-            query["$and"].push({age: {$gte :  parseInt(ageRange[0]), $lt :  parseInt(ageRange[1])}});
+            var startDate = new Date();
+            startDate.setFullYear( startDate.getFullYear() - parseInt(ageRange[1]) );
+            console.log(startDate);
+            var endDate = new Date();
+            endDate.setFullYear( endDate.getFullYear() - parseInt(ageRange[0]) );
+            console.log(endDate);
+            query["$and"].push({dateOfBirth: {$gte : startDate, $lt : endDate}});
         }
         
         const count = await User.where(query).countDocuments();
