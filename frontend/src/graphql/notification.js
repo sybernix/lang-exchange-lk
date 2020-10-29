@@ -6,6 +6,7 @@ import gql from 'graphql-tag';
 const notificationPayload = `
   id
   createdAt
+  isImagePost
   author {
     id
     fullName
