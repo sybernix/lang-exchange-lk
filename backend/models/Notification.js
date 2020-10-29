@@ -32,6 +32,10 @@ const notificationSchema = Schema(
             type: Boolean,
             default: false,
         },
+        isImagePost: {
+            type: Boolean,
+            default: false,
+        },
     },
     {
         timestamps: true,
