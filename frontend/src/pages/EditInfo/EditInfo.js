@@ -5,7 +5,8 @@ import {Query} from 'react-apollo';
 import styled from 'styled-components';
 import {Mutation} from 'react-apollo';
 import {useQuery} from '@apollo/react-hooks';
-import DatePicker from "react-datepicker";
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 
 import Skeleton from 'components/Skeleton';
 import {H2} from 'components/Text';
@@ -83,7 +84,7 @@ const EditInfo = ({history}) => {
         nativeLanguage: '',
         targetLanguage: '',
         introduction: '',
-        dateOfBirth: '',
+        dateOfBirth: new Date(),
         sex: '',
         city: '',
     });
@@ -91,6 +92,10 @@ const EditInfo = ({history}) => {
     const handleChange = e => {
         const {name, value} = e.target;
         setValues({...values, [name]: value});
+    };
+
+    const handleDateOfBirthChange = e => {
+        setValues({...values, 'dateOfBirth': e});
     };
 
     const handleSubmit = (e, editinfo) => {
@@ -199,25 +204,11 @@ const EditInfo = ({history}) => {
                                                         />
                                                         <Spacing top="xs" bottom="xs">
                                                             <Label>Date of Birth:</Label>
-                                                            {/* <input type="date"/> */}
                                                             <DatePicker 
-                                                            // selected={this.state.date} onChange={this.handleChange} 
-                                                            />
-                                                            <Select2
-                                                                type="text"
                                                                 name="dateOfBirth"
-                                                                defaultValue={data.getUser.dateOfBirth}
-                                                                values={dateOfBirth}
-                                                                onChange={handleChange}
-                                                                borderColor="white"
-                                                            >
-                                                                {
-                                                                    Array.from(new Array(100),( val, index) => index).reverse()
-                                                                    .map((year, index) => {
-                                                                        return <option key={`year${index}`} value={year}>{year}</option>
-                                                                    })
-                                                                }
-                                                            </Select2>
+                                                                selected={data.getUser.dateOfBirth} 
+                                                                onChange={date => handleDateOfBirthChange(date)} 
+                                                            />
                                                         </Spacing>
                                                         <Label>Gender:</Label>
                                                         <Select2
