@@ -209,7 +209,7 @@ const PostCard = ({
                     </Button>
                 </TopRow>
 
-                <Spacing left="sm" bottom="sm" top="xs">
+                <Spacing left="sm" bottom="sm" top="xs" right="sm">
                     <H3>{title}</H3>
                 </Spacing>
 
