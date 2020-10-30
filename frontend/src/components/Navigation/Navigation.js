@@ -66,7 +66,7 @@ const Navigation = (p) => {
 
             <Link exact activeClassName="selected" to={Routes.LANGFORUM}>
                 <ListItem>
-                    <NotificationIcon width={18}/>
+                    <ExploreIcon width={20}/>
                     <Name>{capitalizeFirstLetter(p.auth.user.targetLanguage)} Forum</Name>
                 </ListItem>
             </Link>
@@ -81,7 +81,7 @@ const Navigation = (p) => {
             <Link exact activeClassName="selected" to={Routes.LEARNER}>
                 <ListItem>
                     <LearnerIcon/>
-                    <Name>Learners</Name>
+                    <Name>Find Partners</Name>
                 </ListItem>
             </Link>
 
