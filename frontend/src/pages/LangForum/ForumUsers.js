@@ -20,16 +20,50 @@ import * as Routes from 'routes';
 
 const Root = styled.div`
   display: none;
-  background-color: ${p => p.theme.colors.white};
-  border: 1px solid ${p => p.theme.colors.border.main};
+  /* background-color: ${p => p.theme.colors.white}; */
+  /* border: 1px solid ${p => p.theme.colors.border.main}; */
   position: sticky;
   top: ${HEADER_HEIGHT + 40}px;
   right: 0;
   height: 100%;
   width: ${USER_SUGGESTIONS_WIDTH}px;
+  /* padding: ${p => p.theme.spacing.sm}; */
+  border-radius: ${p => p.theme.radius.sm};
+
+  @media (min-width: ${p => p.theme.screen.md}) {
+    display: block;
+  }
+`;
+
+const SideTitle = styled.div`
+  display: none;
+  background-color: ${p => p.theme.colors.white};
+  border: 1px solid ${p => p.theme.colors.border.main};
+  /* position: sticky; */
+  /* top: ${HEADER_HEIGHT + 40}px; */
+  /* right: 0; */
+  /* height: 100%; */
+  /* width: ${USER_SUGGESTIONS_WIDTH}px; */
   padding: ${p => p.theme.spacing.sm};
   border-radius: ${p => p.theme.radius.sm};
 
+  @media (min-width: ${p => p.theme.screen.md}) {
+    display: block;
+  }
+`;
+
+const Scrollable = styled.div`
+  background-color: ${p => p.theme.colors.white};
+  border: 1px solid ${p => p.theme.colors.border.main};
+  position: fixed;
+  top: ${HEADER_HEIGHT + 40 + 60}px;
+  /* right: 0; */
+  height: 100%;
+  width: ${USER_SUGGESTIONS_WIDTH}px;
+  padding: ${p => p.theme.spacing.sm};
+  border-radius: ${p => p.theme.radius.sm};
+  overflow-y: scroll;
+  bottom: 0;
   @media (min-width: ${p => p.theme.screen.md}) {
     display: block;
   }
@@ -87,10 +121,14 @@ const UserSuggestions = ({pathname}) => {
 
                 return (
                     <Root>
+                        <SideTitle>
                         <H3>Users learning {capitalizeFirstLetter(auth.user.targetLanguage)}</H3>
+                        </SideTitle>
 
+                        <Scrollable>
                         <List>
                             {data.getForumUsers.map(user => (
+                                <div>
                                 <ListItem key={user.id}>
                                     <A
                                         to={generatePath(Routes.USER_PROFILE, {
@@ -111,8 +149,150 @@ const UserSuggestions = ({pathname}) => {
                                         </A>
                                     </Spacing>
                                 </ListItem>
+                                <ListItem key={user.id}>
+                                    <A
+                                        to={generatePath(Routes.USER_PROFILE, {
+                                            username: user.username,
+                                        })}
+                                    >
+                                        <Avatar image={user.image}/>
+                                    </A>
+
+                                    <Spacing left="xs">
+                                        <A
+                                            to={generatePath(Routes.USER_PROFILE, {
+                                                username: user.username,
+                                            })}
+                                        >
+                                            <FullName>{user.fullName}</FullName>
+                                            <UserName>@{user.username}</UserName>
+                                        </A>
+                                    </Spacing>
+                                </ListItem>
+                                <ListItem key={user.id}>
+                                    <A
+                                        to={generatePath(Routes.USER_PROFILE, {
+                                            username: user.username,
+                                        })}
+                                    >
+                                        <Avatar image={user.image}/>
+                                    </A>
+
+                                    <Spacing left="xs">
+                                        <A
+                                            to={generatePath(Routes.USER_PROFILE, {
+                                                username: user.username,
+                                            })}
+                                        >
+                                            <FullName>{user.fullName}</FullName>
+                                            <UserName>@{user.username}</UserName>
+                                        </A>
+                                    </Spacing>
+                                </ListItem>
+                                <ListItem key={user.id}>
+                                    <A
+                                        to={generatePath(Routes.USER_PROFILE, {
+                                            username: user.username,
+                                        })}
+                                    >
+                                        <Avatar image={user.image}/>
+                                    </A>
+
+                                    <Spacing left="xs">
+                                        <A
+                                            to={generatePath(Routes.USER_PROFILE, {
+                                                username: user.username,
+                                            })}
+                                        >
+                                            <FullName>{user.fullName}</FullName>
+                                            <UserName>@{user.username}</UserName>
+                                        </A>
+                                    </Spacing>
+                                </ListItem>
+                                <ListItem key={user.id}>
+                                    <A
+                                        to={generatePath(Routes.USER_PROFILE, {
+                                            username: user.username,
+                                        })}
+                                    >
+                                        <Avatar image={user.image}/>
+                                    </A>
+
+                                    <Spacing left="xs">
+                                        <A
+                                            to={generatePath(Routes.USER_PROFILE, {
+                                                username: user.username,
+                                            })}
+                                        >
+                                            <FullName>{user.fullName}</FullName>
+                                            <UserName>@{user.username}</UserName>
+                                        </A>
+                                    </Spacing>
+                                </ListItem>
+                                <ListItem key={user.id}>
+                                    <A
+                                        to={generatePath(Routes.USER_PROFILE, {
+                                            username: user.username,
+                                        })}
+                                    >
+                                        <Avatar image={user.image}/>
+                                    </A>
+
+                                    <Spacing left="xs">
+                                        <A
+                                            to={generatePath(Routes.USER_PROFILE, {
+                                                username: user.username,
+                                            })}
+                                        >
+                                            <FullName>{user.fullName}</FullName>
+                                            <UserName>@{user.username}</UserName>
+                                        </A>
+                                    </Spacing>
+                                </ListItem>
+                                <ListItem key={user.id}>
+                                    <A
+                                        to={generatePath(Routes.USER_PROFILE, {
+                                            username: user.username,
+                                        })}
+                                    >
+                                        <Avatar image={user.image}/>
+                                    </A>
+
+                                    <Spacing left="xs">
+                                        <A
+                                            to={generatePath(Routes.USER_PROFILE, {
+                                                username: user.username,
+                                            })}
+                                        >
+                                            <FullName>{user.fullName}</FullName>
+                                            <UserName>@{user.username}</UserName>
+                                        </A>
+                                    </Spacing>
+                                </ListItem>
+                                <ListItem key={user.id}>
+                                    <A
+                                        to={generatePath(Routes.USER_PROFILE, {
+                                            username: user.username,
+                                        })}
+                                    >
+                                        <Avatar image={user.image}/>
+                                    </A>
+
+                                    <Spacing left="xs">
+                                        <A
+                                            to={generatePath(Routes.USER_PROFILE, {
+                                                username: user.username,
+                                            })}
+                                        >
+                                            <FullName>{user.fullName}</FullName>
+                                            <UserName>@{user.username}</UserName>
+                                        </A>
+                                    </Spacing>
+                                </ListItem>
+                                </div>
                             ))}
                         </List>
+                        </Scrollable>
                     </Root>
                 );
             }}
