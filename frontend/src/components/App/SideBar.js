@@ -4,7 +4,7 @@ import {generatePath, withRouter, NavLink} from 'react-router-dom';
 import styled from 'styled-components';
 
 import {Spacing} from 'components/Layout';
-import Navigation from './Navigation';
+import Navigation from '../Navigation/Navigation';
 import Avatar from 'components/Avatar';
 
 import {
