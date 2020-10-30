@@ -33,34 +33,29 @@ const Root = styled.div`
 `;
 
 const SideTitle = styled.div`
-  display: none;
   background-color: ${p => p.theme.colors.white};
   border: 1px solid ${p => p.theme.colors.border.main};
   border-bottom: 0px;
   padding: ${p => p.theme.spacing.sm};
   border-radius: ${p => p.theme.radius.sm};
-
-  @media (min-width: ${p => p.theme.screen.md}) {
-    display: block;
-  }
 `;
 
 const Scrollable = styled.div`
+  position: fixed;
+  top: ${HEADER_HEIGHT + 40 + 40}px;
+  height: 100%;
+  overflow-y: scroll;
+  bottom: 0;
+`;
+
+const ScrollableContent = styled.div`
   background-color: ${p => p.theme.colors.white};
   border: 1px solid ${p => p.theme.colors.border.main};
   border-top: 0px;
-  position: fixed;
-  top: ${HEADER_HEIGHT + 40 + 50}px;
-  height: 100%;
-  width: ${USER_SUGGESTIONS_WIDTH}px;
   padding: ${p => p.theme.spacing.sm};
+  width: ${USER_SUGGESTIONS_WIDTH}px;
   padding-top: 0px;
   border-radius: ${p => p.theme.radius.sm};
-  overflow-y: scroll;
-  bottom: 0;
-  @media (min-width: ${p => p.theme.screen.md}) {
-    display: block;
-  }
 `;
 
 const List = styled.ul`
@@ -120,6 +115,7 @@ const UserSuggestions = ({ pathname }) => {
                         </SideTitle>
 
                         <Scrollable>
+                            <ScrollableContent>
                             <List>
                                 {data.getForumUsers.map(user => (
                                     <ListItem key={user.id}>
@@ -144,6 +140,7 @@ const UserSuggestions = ({ pathname }) => {
                                     </ListItem>
                                 ))}
                             </List>
+                            </ScrollableContent>
                         </Scrollable>
                     </Root>
                 );
