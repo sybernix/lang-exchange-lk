@@ -1,4 +1,5 @@
 import React, {Fragment, useState} from 'react';
+import {NavLink} from 'react-router-dom';
 import {Query} from 'react-apollo';
 import styled from 'styled-components';
 
@@ -15,6 +16,7 @@ import {useStore} from 'store';
 
 import {GET_POTENTIAL_PARTNERS} from 'graphql/user';
 import {LEARNER_PAGE_USERS_LIMIT} from 'constants/DataLimit';
+import * as Routes from 'routes';
 
 const Root = styled(Container)`
   margin-top: ${p => p.theme.spacing.lg};
@@ -58,6 +60,28 @@ const LearnerContainer = styled.div`
   margin-bottom: ${p => p.theme.spacing.lg};
 `;
 
+const LinkContainer = styled(Container)`
+  margin-bottom: ${p => p.theme.spacing.lg};
+  margin-left: 0;
+`;
+
+const Link = styled(NavLink)`
+  letter-spacing: 0.5px;
+  outline: 0;
+  transition: opacity 0.1s;
+  border: 0;
+  color: ${p => p.theme.colors.white};
+  font-size: ${p => p.size ? p.theme.font.size[p.size] : p.theme.font.size.xs};
+  border-radius: ${p => p.theme.radius.sm};
+  padding: ${p => p.theme.spacing.xs} ${p => p.theme.spacing.sm};
+  background-color: ${p => p.color ? p.theme.colors[p.color] : p.theme.colors.primary.main};
+  justify-content: center;
+  align-items: center;
+  font-weight: ${p => (p.weight ? p.theme.font.weight[p.weight] : p.theme.font.weight.normal)};
+  /* white-space: nowrap; */
+  /* align-self: flex-start; */
+`;
+
 /**
  * Learners page
  */
@@ -81,7 +105,7 @@ const Learners = () => {
         <Root maxWidth="md">
             <Head title="Find language partners"/>
             <FilterContainer>
-                <H3>Filter learners by</H3>
+                <H3>Filter users by</H3>
                 <FilterBase>
                     <Filter>
                         District:
@@ -154,6 +178,12 @@ const Learners = () => {
                     </Filter>
                 </FilterBase>
             </FilterContainer>
+            <LinkContainer>
+            Find partners by their posts instead!
+            <Link exact activeClassName="selected" to={Routes.EXPLORE}>
+                Find by Posts
+            </Link>
+            </LinkContainer>
             <Query
                 query={GET_POTENTIAL_PARTNERS}
                 variables={variables}

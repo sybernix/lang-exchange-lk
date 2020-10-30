@@ -71,13 +71,6 @@ const Navigation = (p) => {
                 </ListItem>
             </Link>
 
-            <Link exact activeClassName="selected" to={Routes.EXPLORE}>
-                <ListItem>
-                    <ExploreIcon width={20}/>
-                    <Name>Explore</Name>
-                </ListItem>
-            </Link>
-
             <Link exact activeClassName="selected" to={Routes.LEARNER}>
                 <ListItem>
                     <LearnerIcon/>
