@@ -16,10 +16,11 @@ import {useStore} from 'store';
 
 import {GET_POTENTIAL_PARTNERS} from 'graphql/user';
 import {LEARNER_PAGE_USERS_LIMIT} from 'constants/DataLimit';
+import { HEADER_HEIGHT } from 'constants/Layout';
 import * as Routes from 'routes';
 
 const Root = styled(Container)`
-  margin-top: ${p => p.theme.spacing.lg};
+  top: ${HEADER_HEIGHT - 4}px;
 
   @media (min-width: ${p => p.theme.screen.lg}) {
     margin-left: ${p => p.theme.spacing.lg};
@@ -60,19 +61,19 @@ const LearnerContainer = styled.div`
   margin-bottom: ${p => p.theme.spacing.lg};
 `;
 
-const LinkContainer = styled(Container)`
+const LinkContainer = styled.div`
   margin-bottom: ${p => p.theme.spacing.lg};
-  margin-left: 0;
+  margin-left: ${p => p.theme.spacing.sm};
+  font-size: ${p => p.theme.font.size.xs};
 `;
 
 const Link = styled(NavLink)`
   letter-spacing: 0.5px;
-  font-style: none;
+  text-decoration: none;
   margin-left: 10px;
   transition: opacity 0.1s;
   border: 0;
   color: ${p => p.theme.colors.white};
-  font-size: ${p => p.theme.font.size.xs};
   border-radius: ${p => p.theme.radius.sm};
   padding: ${p => p.theme.spacing.xs} ${p => p.theme.spacing.sm};
   background-color: ${p => p.color ? p.theme.colors[p.color] : p.theme.colors.primary.main};
