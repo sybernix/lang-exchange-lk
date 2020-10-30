@@ -8,6 +8,7 @@ import {Loading} from 'components/Loading';
 import {H3, A} from 'components/Text';
 import {Spacing} from 'components/Layout';
 import Avatar from 'components/Avatar';
+import {capitalizeFirstLetter} from 'utils/utilFunctions'
 
 import {useStore} from 'store';
 
@@ -86,7 +87,7 @@ const UserSuggestions = ({pathname}) => {
 
                 return (
                     <Root>
-                        <H3>Suggestions For You</H3>
+                        <H3>Users learning {capitalizeFirstLetter(auth.user.targetLanguage)}</H3>
 
                         <List>
                             {data.suggestLearnersWithScore.map(user => (
