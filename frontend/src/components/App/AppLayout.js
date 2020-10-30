@@ -5,9 +5,10 @@ import {Switch, Route} from 'react-router-dom';
 import styled from 'styled-components';
 
 import Header from 'components/App/Header';
-// import NotFound from 'components/NotFound';
+import NotFound from 'components/NotFound';
 import SideBar from './SideBar';
 import UserSuggestions from './UserSuggestions';
+import ForumUsers from 'pages/LangForum/ForumUsers.js';
 
 import Home from 'pages/Home';
 import Profile from 'pages/Profile';
@@ -96,9 +97,10 @@ const AppLayout = ({location, authUser, refetch}) => {
                     <Route exact path={Routes.MESSAGES} component={Messages}/>
                     <Route exact path={Routes.USER_PROFILE} component={Profile}/>
                     <Route exact path={Routes.POST} component={Post}/>
-                    {/* <Route component={NotFound}/> */}
+                    <Route component={NotFound}/>
                 </Switch>
                 <UserSuggestions pathname={location.pathname}/>
+                <ForumUsers pathname={location.pathname}/>
             </Root>
         </>
     );
