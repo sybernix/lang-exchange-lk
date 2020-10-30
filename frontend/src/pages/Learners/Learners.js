@@ -29,7 +29,7 @@ const Root = styled(Container)`
 `;
 
 const FilterContainer = styled(Container)`
-  margin-bottom: ${p => p.theme.spacing.lg};
+  margin-bottom: ${p => p.theme.spacing.sm};
   margin-left: 0;
 `;
 
