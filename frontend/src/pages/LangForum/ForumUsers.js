@@ -39,11 +39,6 @@ const SideTitle = styled.div`
   display: none;
   background-color: ${p => p.theme.colors.white};
   border: 1px solid ${p => p.theme.colors.border.main};
-  /* position: sticky; */
-  /* top: ${HEADER_HEIGHT + 40}px; */
-  /* right: 0; */
-  /* height: 100%; */
-  /* width: ${USER_SUGGESTIONS_WIDTH}px; */
   padding: ${p => p.theme.spacing.sm};
   border-radius: ${p => p.theme.radius.sm};
 
@@ -57,7 +52,6 @@ const Scrollable = styled.div`
   border: 1px solid ${p => p.theme.colors.border.main};
   position: fixed;
   top: ${HEADER_HEIGHT + 40 + 60}px;
-  /* right: 0; */
   height: 100%;
   width: ${USER_SUGGESTIONS_WIDTH}px;
   padding: ${p => p.theme.spacing.sm};
