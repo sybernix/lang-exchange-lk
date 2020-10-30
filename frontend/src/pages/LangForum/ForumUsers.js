@@ -66,7 +66,7 @@ const UserName = styled.div`
 const UserSuggestions = ({pathname}) => {
     const [{auth}] = useStore();
 
-    if (!(pathname === "/" || pathname === "/langforum" || pathname === "/explore")) {
+    if (!(pathname === "/langforum")) {
         return null;
     }
 
