@@ -12,7 +12,7 @@ import {capitalizeFirstLetter} from 'utils/utilFunctions'
 
 import {useStore} from 'store';
 
-import {USER_SUGGESTIONS_WITH_SCORE} from 'graphql/user';
+import {GET_FORUM_USERS} from 'graphql/user';
 
 import {USER_SUGGESTIONS_WIDTH, HEADER_HEIGHT} from 'constants/Layout';
 
@@ -72,7 +72,7 @@ const UserSuggestions = ({pathname}) => {
     }
 
     return (
-        <Query query={USER_SUGGESTIONS_WITH_SCORE} variables={{userId: auth.user.id}}>
+        <Query query={GET_FORUM_USERS} variables={{userId: auth.user.id}}>
             {({data, loading}) => {
                 if (loading)
                     return (
@@ -81,7 +81,7 @@ const UserSuggestions = ({pathname}) => {
                         </Root>
                     );
 
-                if (!data.suggestLearnersWithScore.length > 0) {
+                if (!data.getForumUsers.length > 0) {
                     return null;
                 }
 
@@ -90,7 +90,7 @@ const UserSuggestions = ({pathname}) => {
                         <H3>Users learning {capitalizeFirstLetter(auth.user.targetLanguage)}</H3>
 
                         <List>
-                            {data.suggestLearnersWithScore.map(user => (
+                            {data.getForumUsers.map(user => (
                                 <ListItem key={user.id}>
                                     <A
                                         to={generatePath(Routes.USER_PROFILE, {

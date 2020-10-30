@@ -204,45 +204,6 @@ export const GET_USERS = gql`
 `;
 
 /**
- * Gets list of forum users who are learning the same language as user
- */
-export const GET_FORUM_USER = gql`
-  query($userId: String!, $skip: Int, $limit: Int) {
-    getForumUsers(userId: $userId, skip: $skip, limit: $limit) {
-      count
-      users {
-        id
-        fullName
-        username
-        image
-        nativeLanguage
-        targetLanguage
-        dateOfBirth
-        sex
-        city
-        following {
-          id
-          user
-        }
-        followers {
-          id
-        }
-        notifications {
-          id
-          author {
-            id
-            username
-          }
-          follow {
-            id
-          }
-        }
-      }
-    }
-  }
-`;
-
-/**
  * Gets potential language partners
  */
 export const GET_POTENTIAL_PARTNERS = gql`
@@ -369,6 +330,20 @@ export const RESET_PASSWORD = gql`
 export const USER_SUGGESTIONS = gql`
   query($userId: String!) {
     suggestLearners(userId: $userId) {
+      id
+      fullName
+      username
+      image
+    }
+  }
+`;
+
+/**
+ * Gets list of forum users who are learning the same language as user
+ */
+export const GET_FORUM_USERS = gql`
+  query($userId: String!) {
+    getForumUsers(userId: $userId) {
       id
       fullName
       username

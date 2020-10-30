@@ -166,7 +166,7 @@ const UserSchema = gql`
     getUsers(userId: String!, skip: Int, limit: Int): UsersPayload
 
     # Gets forum users
-    getForumUsers(userId: String!, skip: Int, limit: Int): UsersPayload
+    getForumUsers(userId: String!): [UserPayload]
     
     # Gets potential partners
     getPotentialPartners(userId: String!, city: String, sex: String, age: String, skip: Int, limit: Int): UsersPayload

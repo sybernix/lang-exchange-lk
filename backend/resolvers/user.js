@@ -241,51 +241,51 @@ const Query = {
 
         return {users, count};
     },
-    /**
-     * Gets the list of users who are learning the same language as the auth user
-     *
-     * @param {string} userId
-     * @param {int} skip how many users to skip
-     * @param {int} limit how many users to limit
-     */
-    getForumUsers: async (_, {userId, skip, limit}) => {
-        // Find user ids, that current user follows
-        const userFollowing = [];
-        const follow = await Follow.find({follower: userId}, {_id: 0}).select(
-            'user'
-        );
-        follow.map(f => userFollowing.push(f.user));
+    // /**
+    //  * Gets the list of users who are learning the same language as the auth user
+    //  *
+    //  * @param {string} userId
+    //  * @param {int} skip how many users to skip
+    //  * @param {int} limit how many users to limit
+    //  */
+    // getForumUsers: async (_, {userId, skip, limit}) => {
+    //     // Find user ids, that current user follows
+    //     const userFollowing = [];
+    //     const follow = await Follow.find({follower: userId}, {_id: 0}).select(
+    //         'user'
+    //     );
+    //     follow.map(f => userFollowing.push(f.user));
 
-        //Find the native and target language of the current user with userId
-        const queryToFindLangInfo = {
-            $and: [{_id: userId}],
-        };
-        const currentUser = await User.find(queryToFindLangInfo);
+    //     //Find the native and target language of the current user with userId
+    //     const queryToFindLangInfo = {
+    //         $and: [{_id: userId}],
+    //     };
+    //     const currentUser = await User.find(queryToFindLangInfo);
 
-        // Find users that user is not following
-        let query = {
-            $and: [{_id: {$ne: userId}}, {_id: {$nin: userFollowing}}, {targetLanguage: currentUser["0"].targetLanguage}]
-        };
+    //     // Find users that user is not following
+    //     let query = {
+    //         $and: [{_id: {$ne: userId}}, {_id: {$nin: userFollowing}}, {targetLanguage: currentUser["0"].targetLanguage}]
+    //     };
         
-        const count = await User.where(query).countDocuments();
-        const users = await User.find(query)
-            .populate('followers')
-            .populate('following')
-            .populate({
-                path: 'notifications',
-                populate: [
-                    {path: 'author'},
-                    {path: 'follow'},
-                    {path: 'like'},
-                    {path: 'comment'},
-                ],
-            })
-            .skip(skip)
-            .limit(limit)
-            .sort({createdAt: 'desc'});
+    //     const count = await User.where(query).countDocuments();
+    //     const users = await User.find(query)
+    //         .populate('followers')
+    //         .populate('following')
+    //         .populate({
+    //             path: 'notifications',
+    //             populate: [
+    //                 {path: 'author'},
+    //                 {path: 'follow'},
+    //                 {path: 'like'},
+    //                 {path: 'comment'},
+    //             ],
+    //         })
+    //         .skip(skip)
+    //         .limit(limit)
+    //         .sort({createdAt: 'desc'});
 
-        return {users, count};
-    },
+    //     return {users, count};
+    // },
     /**
      * Gets potential language exchange partners who speak the user's target language and
      * learning user's native language
@@ -397,6 +397,48 @@ const Query = {
 
         // Find random users
         const query = {$and: [{_id: {$nin: userFollowing}}, {targetLanguage: currentUser["0"].nativeLanguage}, {nativeLanguage: currentUser["0"].targetLanguage}]};
+        const usersCount = await User.where(query).countDocuments();
+        let random = Math.floor(Math.random() * usersCount);
+
+        const usersLeft = usersCount - random;
+        if (usersLeft < LIMIT) {
+            random = random - (LIMIT - usersLeft);
+            if (random < 0) {
+                random = 0;
+            }
+        }
+
+        const randomUsers = await User.find(query)
+            .skip(random)
+            .limit(LIMIT);
+
+        return randomUsers;
+    },
+    /**
+     * Gets the list of users who are learning the same language as the auth user
+     *
+     * @param {string} userId
+     */
+    getForumUsers: async (_, {userId}) => {
+        const LIMIT = 6;
+
+        // Find who user follows
+        const userFollowing = [];
+        const following = await Follow.find(
+            {follower: userId},
+            {_id: 0}
+        ).select('user');
+        following.map(f => userFollowing.push(f.user));
+        // userFollowing.push(userId);
+
+        //Find the native and target language of the current user with userId
+        const queryToFindLangInfo = {
+            $and: [{_id: userId}],
+        };
+        const currentUser = await User.find(queryToFindLangInfo);
+
+        // Find random users
+        const query = {$and: [{_id: {$nin: userFollowing}}, {targetLanguage: currentUser["0"].targetLanguage}]};
         const usersCount = await User.where(query).countDocuments();
         let random = Math.floor(Math.random() * usersCount);
 
