@@ -163,9 +163,6 @@ const ProfileInfo = ({ user }) => {
       <InfoBase>
         <Info border="true">
           <List>
-              {/* <NavLink2 exact activeClassName="selected" to={Routes.FOLLOWERS}>
-                
-              </NavLink2> */}
               <A to={generatePath(Routes.FOLLOWERS, {username})}>
                 <b>{user.followers.length} </b> followers
               </A>
