@@ -24,6 +24,10 @@ export const MESSAGES = '/messages/:userId';
 
 export const POST = '/post/:id';
 
+export const FOLLOWERS = '/followers';
+
+export const FOLLOWING = '/following';
+
 /**
  * Value that's used in place of id when creating something new.
  */
