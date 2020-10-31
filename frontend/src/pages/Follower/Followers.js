@@ -12,6 +12,7 @@ import FollowerCard from './FollowerCard';
 
 import {useStore} from 'store';
 
+import {capitalizeFirstLetter} from 'utils/utilFunctions'
 import {NOTIFICATIONS_PAGE_NOTIFICATION_LIMIT} from 'constants/DataLimit';
 import { GET_FOLLOWERS } from 'graphql/follow';
 
@@ -28,11 +29,12 @@ const List = styled.div`
 /**
  * Followers page showing the list of users who follow the auth user
  */
-const Followers = () => {
-    const [{auth}] = useStore();
+const Followers = ({username}) => {
+    // const [{auth}] = useStore();
+    const title = capitalizeFirstLetter(username) + "'s Followers";
 
     const variables = {
-        userId: auth.user.id,
+        username: username,
         skip: 0,
         limit: NOTIFICATIONS_PAGE_NOTIFICATION_LIMIT,
     };
@@ -40,7 +42,7 @@ const Followers = () => {
     return (
         <Content>
             <Root maxWidth="md">
-                <Head title={`${auth.user.username}'s Followers`}/>
+                <Head title={title}/>
 
                 <Query
                     query={GET_FOLLOWERS}
@@ -58,8 +60,6 @@ const Followers = () => {
                             );
                         }
 
-                        console.log(data.getFollowers);
-
                         if (!data.getFollowers.length) {
                             return <Empty text="No followers yet."/>;
                         }
@@ -73,8 +73,7 @@ const Followers = () => {
                                 fetchMore={fetchMore}
                             >
                                 {data => {
-                                    const showNextLoading =
-                                        loading && networkStatus === 3;
+                                    const showNextLoading = loading && networkStatus === 3;
 
                                     return (
                                         <>
