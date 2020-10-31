@@ -31,7 +31,7 @@ const FollowSchema = gql`
   extend type Query {
     # Gets notifications for specific user
     getFollowers(
-      userId: String!
+      username: String!
       skip: Int
       limit: Int
     ): [UserPayload]
