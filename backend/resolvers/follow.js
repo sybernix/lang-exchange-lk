@@ -11,7 +11,6 @@ const Query = {
      */
     getFollowers: async (_, {username, skip, limit}) => {
         const user = await User.find({username: username}).select('_id');
-        console.log(user);
         const followersId = [];
         const result = await Follow.find({user: user[0]._id}, {_id: 0}).select('follower');
         result.map(f => followersId.push(f.follower));
