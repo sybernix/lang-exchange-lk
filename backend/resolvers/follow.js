@@ -23,6 +23,27 @@ const Query = {
 
         return followers;
     },
+    /**
+     * Gets the list of users a user follows
+     *
+     * @param {string} username
+     * @param {int} skip how many notifications to skip
+     * @param {int} limit how many notifications to limit
+     */
+    getUsersFollowedByUser: async (_, {username, skip, limit}) => {
+        const user = await User.find({username: username}).select('_id');
+        console.log(user);
+        const usersFollowedByUserIds = [];
+        const result = await Follow.find({follower: user[0]._id}, {_id: 0}).select('user');
+        result.map(f => usersFollowedByUserIds.push(f.user));
+
+        const query = {_id: {$in: usersFollowedByUserIds}};
+        const usersFollowedByUser = await User.find(query)
+            .skip(skip)
+            .limit(limit);
+
+        return usersFollowedByUser;
+    },
 };
 
 const Mutation = {
