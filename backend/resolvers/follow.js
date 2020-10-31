@@ -5,11 +5,13 @@ const Query = {
     /**
      * Gets followers of a specific user
      *
-     * @param {string} userId
+     * @param {string} username
      * @param {int} skip how many notifications to skip
      * @param {int} limit how many notifications to limit
      */
-    getFollowers: async (_, {userId, skip, limit}) => {
+    getFollowers: async (_, {username, skip, limit}) => {
+        const user = await User.find({username: username});
+        console.log(user);
         const followersId = [];
         const result = await Follow.find({user: userId}, {_id: 0}).select('follower');
         result.map(f => followersId.push(f.follower));
