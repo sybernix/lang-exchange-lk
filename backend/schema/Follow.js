@@ -29,8 +29,15 @@ const FollowSchema = gql`
   # Queries
   # ---------------------------------------------------------
   extend type Query {
-    # Gets notifications for specific user
+    # Gets followers of a specific user
     getFollowers(
+      username: String!
+      skip: Int
+      limit: Int
+    ): [UserPayload]
+
+    # Gets users followed by a specific user
+    getFollgetUsersFollowedByUserowers(
       username: String!
       skip: Int
       limit: Int
