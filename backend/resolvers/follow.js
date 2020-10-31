@@ -32,7 +32,6 @@ const Query = {
      */
     getUsersFollowedByUser: async (_, {username, skip, limit}) => {
         const user = await User.find({username: username}).select('_id');
-        console.log(user);
         const usersFollowedByUserIds = [];
         const result = await Follow.find({follower: user[0]._id}, {_id: 0}).select('user');
         result.map(f => usersFollowedByUserIds.push(f.user));
