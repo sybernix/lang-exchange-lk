@@ -9,7 +9,7 @@ import Avatar from 'components/Avatar';
 
 import PostImageUpload from 'pages/Home/PostImageUpload';
 
-import {GET_FOLLOWED_POSTS, CREATE_POST} from 'graphql/post';
+import {GET_FOLLOWED_POSTS, CREATE_POST, GET_FORUM_POSTS} from 'graphql/post';
 import {GET_AUTH_USER, GET_USER_POSTS} from 'graphql/user';
 
 import {useStore} from 'store';
@@ -141,6 +141,15 @@ const CreatePost = ({isForumPost}) => {
                     query: GET_USER_POSTS,
                     variables: {
                         username: auth.user.username,
+                        skip: 0,
+                        limit: PROFILE_PAGE_POSTS_LIMIT,
+                    },
+                },
+                {
+                    query: GET_FORUM_POSTS,
+                    variables: {
+                        authUserId: auth.user.id,
+                        targetLanguage: auth.user.targetLanguage,
                         skip: 0,
                         limit: PROFILE_PAGE_POSTS_LIMIT,
                     },
