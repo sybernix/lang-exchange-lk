@@ -14,6 +14,7 @@ import Home from 'pages/Home';
 import Profile from 'pages/Profile';
 import Explore from 'pages/Explore';
 import Followers from 'pages/Follower';
+import Following from 'pages/Follower';
 import LangForum from 'pages/LangForum';
 import Learners from 'pages/Learners';
 import EditInfo from 'pages/EditInfo';
@@ -100,6 +101,7 @@ const AppLayout = ({location, authUser, refetch}) => {
                     <Route exact path={Routes.USER_PROFILE} component={Profile}/>
                     <Route exact path={Routes.POST} component={Post}/>
                     <Route exact path={Routes.FOLLOWERS} component={Followers}/>
+                    <Route exact path={Routes.FOLLOWING} component={Following}/>
                     <Route component={NotFound}/>
                 </Switch>
                 <UserSuggestions pathname={location.pathname}/>
