@@ -26,8 +26,8 @@ export const DELETE_FOLLOW = gql`
  * Gets list of users who follow the userId
  */
 export const GET_FOLLOWERS = gql`
-  query($userId: String!, $skip: Int, $limit: Int) {
-    getFollowers(userId: $userId, skip: $skip, limit: $limit) {
+  query($username: String!, $skip: Int, $limit: Int) {
+    getFollowers(username: $username, skip: $skip, limit: $limit) {
       id
       fullName
       username
