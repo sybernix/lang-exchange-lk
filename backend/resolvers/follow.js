@@ -1,6 +1,24 @@
 import User from '../models/User';
 import Follow from '../models/Follow';
 
+const Query = {
+    /**
+     * Gets followers of a specific user
+     *
+     * @param {string} userId
+     * @param {int} skip how many notifications to skip
+     * @param {int} limit how many notifications to limit
+     */
+    getFollowers: async (_, {userId, skip, limit}) => {
+        const followers = [];
+        const result = await Follow.find({user: userId}, {_id: 0}).select('follower');
+        result.map(f => followers.push(f.user));
+        console.log(followers);
+
+        return followers;
+    },
+};
+
 const Mutation = {
     /**
      * Creates a following/follower relationship between users
@@ -48,4 +66,4 @@ const Mutation = {
     },
 };
 
-export default {Mutation};
+export default { Query, Mutation };
