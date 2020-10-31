@@ -26,6 +26,18 @@ const FollowSchema = gql`
   }
 
   # ---------------------------------------------------------
+  # Queries
+  # ---------------------------------------------------------
+  extend type Query {
+    # Gets notifications for specific user
+    getFollowers(
+      userId: ID!
+      skip: Int
+      limit: Int
+    ): UsersPayload
+  }
+
+  # ---------------------------------------------------------
   # Mutations
   # ---------------------------------------------------------
   extend type Mutation {
