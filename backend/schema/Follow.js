@@ -37,7 +37,7 @@ const FollowSchema = gql`
     ): [UserPayload]
 
     # Gets users followed by a specific user
-    getFollgetUsersFollowedByUserowers(
+    getUsersFollowedByUser(
       username: String!
       skip: Int
       limit: Int

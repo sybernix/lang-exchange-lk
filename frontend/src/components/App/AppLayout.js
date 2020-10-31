@@ -89,7 +89,7 @@ const AppLayout = ({location, authUser, refetch}) => {
             <Root>
                 <SideBar isOpen={isSideBarOpen} sideBarRef={sideBarRef}/>
                 <Switch>
-                <Route exact path={Routes.FOLLOWERS} component={Followers}/>
+                    
                     <Route exact path={Routes.EDIT_INFO} component={EditInfo}/>
                     <Route exact path={Routes.HOME} component={Home}/>
                     <Route exact path={Routes.LANGFORUM} component={LangForum}/>
@@ -99,7 +99,7 @@ const AppLayout = ({location, authUser, refetch}) => {
                     <Route exact path={Routes.MESSAGES} component={Messages}/>
                     <Route exact path={Routes.USER_PROFILE} component={Profile}/>
                     <Route exact path={Routes.POST} component={Post}/>
-                    {/* <Route exact path={Routes.FOLLOWERS} component={Followers}/> */}
+                    <Route exact path={Routes.FOLLOWERS} component={Followers}/>
                     <Route component={NotFound}/>
                 </Switch>
                 <UserSuggestions pathname={location.pathname}/>
