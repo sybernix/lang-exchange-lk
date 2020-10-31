@@ -35,3 +35,17 @@ export const GET_FOLLOWERS = gql`
     }
   }
 `;
+
+/**
+ * Gets list of users followed by the userId
+ */
+export const GET_USERS_FOLLOWED_BY_USER = gql`
+  query($username: String!, $skip: Int, $limit: Int) {
+    getUsersFollowedByUser(username: $username, skip: $skip, limit: $limit) {
+      id
+      fullName
+      username
+      image
+    }
+  }
+`;
