@@ -14,6 +14,7 @@ import FollowerCard from './FollowerCard';
 import {capitalizeFirstLetter} from 'utils/utilFunctions'
 import {NOTIFICATIONS_PAGE_NOTIFICATION_LIMIT} from 'constants/DataLimit';
 import { GET_USERS_FOLLOWED_BY_USER } from 'graphql/follow';
+import {useStore} from 'store';
 
 const Root = styled(Container)`
   margin-top: ${p => p.theme.spacing.lg};
@@ -29,9 +30,10 @@ const List = styled.div`
  * Followers page showing the list of users followed by a user
  */
 const Following = ({match}) => {
+    const [{auth}] = useStore();
     const {username} = match.params;
-    console.log(username)
     const title = "Users Folled By" + capitalizeFirstLetter(username);
+    const emptyMessage = (auth.user.username === username ? "You are" : capitalizeFirstLetter(username) + " is") +  " not following any users yet.";
 
     const variables = {
         username: username,
@@ -61,7 +63,7 @@ const Following = ({match}) => {
                         }
 
                         if (!data.getUsersFollowedByUser.length) {
-                            return <Empty text="You are not following any users yet."/>;
+                            return <Empty text={emptyMessage}/>;
                         }
 
                         return (

@@ -30,7 +30,6 @@ const List = styled.div`
  */
 const Followers = ({match}) => {
     const {username} = match.params;
-    console.log(username)
     const title = capitalizeFirstLetter(username) + "'s Followers";
 
     const variables = {
