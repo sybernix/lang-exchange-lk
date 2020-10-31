@@ -15,6 +15,7 @@ const PostSchema = gql`
     author: User!
     authorNativeLanguage: String
     authorTargetLanguage: String
+    isForumPost: Boolean
     likes: [Like]
     comments: [Comment]
     createdAt: String
@@ -31,6 +32,7 @@ const PostSchema = gql`
     authorId: ID!
     authorNativeLanguage: String
     authorTargetLanguage: String
+    isForumPost: Boolean
   }
 
   input DeletePostInput {
@@ -54,6 +56,7 @@ const PostSchema = gql`
     author: UserPayload!
     authorNativeLanguage: String
     authorTargetLanguage: String
+    isForumPost: Boolean
     likes: [Like]
     comments: [CommentPayload]
     createdAt: String
