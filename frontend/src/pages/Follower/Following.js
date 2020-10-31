@@ -31,7 +31,7 @@ const List = styled.div`
 const Following = ({match}) => {
     const {username} = match.params;
     console.log(username)
-    const title = capitalizeFirstLetter(username) + "'s Followers";
+    const title = "Users Folled By" + capitalizeFirstLetter(username);
 
     const variables = {
         username: username,
@@ -60,15 +60,15 @@ const Following = ({match}) => {
                             );
                         }
 
-                        if (!data.getFollowers.length) {
-                            return <Empty text="No followers yet."/>;
+                        if (!data.getUsersFollowedByUser.length) {
+                            return <Empty text="You are not following any users yet."/>;
                         }
 
                         return (
                             <InfiniteScroll
-                                data={data.getFollowers}
+                                data={data.getUsersFollowedByUser}
                                 dataKey="getUserNotifications.notifications"
-                                count={parseInt(data.getFollowers.length)}
+                                count={parseInt(data.getUsersFollowedByUser.length)}
                                 variables={variables}
                                 fetchMore={fetchMore}
                             >
