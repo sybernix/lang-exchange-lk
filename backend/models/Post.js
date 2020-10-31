@@ -28,6 +28,10 @@ const postSchema = Schema(
                 ref: 'Comment',
             },
         ],
+        isForumPost: {
+            type: Boolean,
+            default: false,
+        },
     },
     {
         timestamps: true,
