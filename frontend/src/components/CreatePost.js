@@ -77,12 +77,13 @@ const Buttons = styled.div`
 /**
  * Component for creating a post
  */
-const CreatePost = () => {
+const CreatePost = ({isForumPost}) => {
     const [{auth}] = useStore();
     const [title, setTitle] = useState('');
     const [image, setImage] = useState('');
     const [isFocused, setIsFocused] = useState(false);
     const [error, setError] = useState('');
+    const placeholder = isForumPost ? "Add a forum post" : "Add a post";
 
     const message = useGlobalMessage();
 
@@ -124,7 +125,8 @@ const CreatePost = () => {
     return (
         <Mutation
             mutation={CREATE_POST}
-            variables={{input: {title, image, authorId: auth.user.id, authorNativeLanguage: auth.user.nativeLanguage, authorTargetLanguage: auth.user.targetLanguage}}}
+            variables={{input: {title, image, authorId: auth.user.id, authorNativeLanguage: auth.user.nativeLanguage, 
+                authorTargetLanguage: auth.user.targetLanguage, isForumPost: isForumPost}}}
             refetchQueries={() => [
                 {
                     query: GET_FOLLOWED_POSTS,
@@ -169,7 +171,7 @@ const CreatePost = () => {
                                         value={title}
                                         onFocus={handleOnFocus}
                                         onChange={handleTitleChange}
-                                        placeholder="Add a post"
+                                        placeholder={placeholder}
                                     />
 
                                     {!isFocused && (
