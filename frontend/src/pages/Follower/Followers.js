@@ -58,7 +58,9 @@ const Notifications = () => {
                             );
                         }
 
-                        const {notifications, count} = data.getUserNotifications;
+                        console.log(data);
+
+                        const {notifications, count} = data.getFollowers;
 
                         if (!notifications.length) {
                             return <Empty text="No followers yet."/>;
