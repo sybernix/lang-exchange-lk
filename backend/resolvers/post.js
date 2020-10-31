@@ -18,7 +18,7 @@ const Query = {
      */
     getForumPosts: async (_, {authUserId, targetLanguage, skip, limit}) => {
         const query = {
-            $and: [{author: {$ne: authUserId}, authorTargetLanguage: targetLanguage}],
+            $and: [{author: {$ne: authUserId}, authorTargetLanguage: targetLanguage}, {isForumPost: true}],
         };
         const postsCount = await Post.find(query).countDocuments();
         const allPosts = await Post.find(query)
