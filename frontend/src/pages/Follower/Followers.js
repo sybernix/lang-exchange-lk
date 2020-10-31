@@ -1,4 +1,5 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 import styled from 'styled-components';
 import {Query} from 'react-apollo';
 
@@ -29,8 +30,9 @@ const List = styled.div`
 /**
  * Followers page showing the list of users who follow the auth user
  */
-const Followers = ({username}) => {
-    // const [{auth}] = useStore();
+const Followers = ({match}) => {
+    const {username} = match.params;
+    console.log(username)
     const title = capitalizeFirstLetter(username) + "'s Followers";
 
     const variables = {
@@ -100,4 +102,4 @@ const Followers = ({username}) => {
     );
 };
 
-export default Followers;
+export default withRouter(Followers);
