@@ -5,10 +5,10 @@ import {Query} from 'react-apollo';
 import {Container, Content} from 'components/Layout';
 import {Loading} from 'components/Loading';
 import Skeleton from 'components/Skeleton';
-import Notification from 'components/App/Notification';
 import InfiniteScroll from 'components/InfiniteScroll';
 import Empty from 'components/Empty';
 import Head from 'components/Head';
+import FollowerCard from './FollowerCard';
 
 import {useStore} from 'store';
 
@@ -28,7 +28,7 @@ const List = styled.div`
 /**
  * Followers page showing the list of users who follow the auth user
  */
-const Notifications = () => {
+const Followers = () => {
     const [{auth}] = useStore();
 
     const variables = {
@@ -58,33 +58,31 @@ const Notifications = () => {
                             );
                         }
 
-                        console.log(data);
+                        console.log(data.getFollowers);
 
-                        const {notifications, count} = data.getFollowers;
-
-                        if (!notifications.length) {
+                        if (!data.getFollowers.length) {
                             return <Empty text="No followers yet."/>;
                         }
 
                         return (
                             <InfiniteScroll
-                                data={notifications}
+                                data={data.getFollowers}
                                 dataKey="getUserNotifications.notifications"
-                                count={parseInt(count)}
+                                count={parseInt(data.getFollowers.length)}
                                 variables={variables}
                                 fetchMore={fetchMore}
                             >
                                 {data => {
                                     const showNextLoading =
-                                        loading && networkStatus === 3 && count !== data.length;
+                                        loading && networkStatus === 3;
 
                                     return (
                                         <>
                                             <List>
-                                                {data.map(notification => (
-                                                    <Notification
-                                                        key={notification.id}
-                                                        notification={notification}
+                                                {data.map(follower => (
+                                                    <FollowerCard
+                                                        key={follower.id}
+                                                        follower={follower}
                                                         close={() => false}
                                                     />
                                                 ))}
@@ -103,4 +101,4 @@ const Notifications = () => {
     );
 };
 
-export default Notifications;
+export default Followers;
