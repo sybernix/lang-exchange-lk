@@ -168,7 +168,9 @@ const ProfileInfo = ({ user }) => {
               </A>
           </List>
           <List top="0.5em">
-            <b>{user.following.length} </b> following
+            <A to={generatePath(Routes.FOLLOWING, {username})}>
+              <b>{user.following.length} </b> following
+            </A>
           </List>
         </Info>
         <Info border="true">
