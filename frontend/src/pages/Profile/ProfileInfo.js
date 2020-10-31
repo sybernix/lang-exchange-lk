@@ -7,7 +7,7 @@ import { IS_USER_ONLINE_SUBSCRIPTION } from 'graphql/user';
 import { useStore } from 'store';
 import * as Routes from 'routes';
 
-import { H1 } from 'components/Text';
+import { H1, A } from 'components/Text';
 import { Spacing } from 'components/Layout';
 import Follow from 'components/Follow';
 import { PencilIcon, LocationIcon, MaleIcon, FemaleIcon } from 'components/icons';
@@ -114,6 +114,7 @@ const NavLink2 = styled(NavLink)`
  */
 const ProfileInfo = ({ user }) => {
   const [{ auth }] = useStore();
+  const username = user.username;
 
   const { data, loading } = useSubscription(IS_USER_ONLINE_SUBSCRIPTION, {
     variables: { authUserId: auth.user.id, userId: user.id },
@@ -162,7 +163,12 @@ const ProfileInfo = ({ user }) => {
       <InfoBase>
         <Info border="true">
           <List>
-            <b>{user.followers.length} </b> followers
+              {/* <NavLink2 exact activeClassName="selected" to={Routes.FOLLOWERS}>
+                
+              </NavLink2> */}
+              <A to={generatePath(Routes.FOLLOWERS, {username})}>
+                <b>{user.followers.length} </b> followers
+              </A>
           </List>
           <List top="0.5em">
             <b>{user.following.length} </b> following

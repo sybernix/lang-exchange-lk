@@ -55,21 +55,10 @@ const FullName = styled.span`
   font-weight: ${p => p.theme.font.weight.bold};
 `;
 
-const UserName = styled.span`
-  font-size: ${p => p.theme.font.size.xs};
-`;
-
 const Language = styled.span`
   font-size: ${p => p.theme.font.size.xs};
   color: ${p => p.theme.colors.grey[600]};
   text-transform: capitalize;
-`;
-
-const IconContainer = styled.div`
-  // position: absolute;
-  //top: 12px;
-  //left: 10px;
-  //border: 1px solid palevioletred;
 `;
 
 const LangInfoBase = styled.div`
