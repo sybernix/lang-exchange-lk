@@ -10,6 +10,7 @@ import PostPopup from 'components/PostPopup';
 import Modal from 'components/Modal';
 import InfiniteScroll from 'components/InfiniteScroll';
 import Empty from 'components/Empty';
+import CreatePost from 'components/CreatePost';
 import {Loading} from 'components/Loading';
 import Head from 'components/Head';
 
@@ -55,6 +56,8 @@ const LangForum = () => {
     return (
         <Container maxWidth="sm">
             <Head title={title}/>
+            <Spacing top="lg"/>
+            <CreatePost isForumPost={true}/>
             <Query
                 query={GET_FORUM_POSTS}
                 variables={variables}
