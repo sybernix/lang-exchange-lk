@@ -11,8 +11,6 @@ import Empty from 'components/Empty';
 import Head from 'components/Head';
 import FollowerCard from './FollowerCard';
 
-import {useStore} from 'store';
-
 import {capitalizeFirstLetter} from 'utils/utilFunctions'
 import {NOTIFICATIONS_PAGE_NOTIFICATION_LIMIT} from 'constants/DataLimit';
 import { GET_FOLLOWERS } from 'graphql/follow';

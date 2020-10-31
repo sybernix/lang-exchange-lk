@@ -10,10 +10,10 @@ const Query = {
      * @param {int} limit how many notifications to limit
      */
     getFollowers: async (_, {username, skip, limit}) => {
-        const user = await User.find({username: username});
+        const user = await User.find({username: username}).select('_id');
         console.log(user);
         const followersId = [];
-        const result = await Follow.find({user: userId}, {_id: 0}).select('follower');
+        const result = await Follow.find({user: user[0]._id}, {_id: 0}).select('follower');
         result.map(f => followersId.push(f.follower));
 
         const query = {_id: {$in: followersId}};
