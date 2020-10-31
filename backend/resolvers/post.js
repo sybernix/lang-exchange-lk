@@ -183,7 +183,7 @@ const Mutation = {
      * @param {string} image
      * @param {string} authorId
      */
-    createPost: async (_, {input: {title, image, authorId, authorNativeLanguage, authorTargetLanguage}}) => {
+    createPost: async (_, {input: {title, image, authorId, authorNativeLanguage, authorTargetLanguage, isForumPost}}) => {
         if (!title && !image) {
             throw new Error('Post title or image is required.');
         }
@@ -210,7 +210,8 @@ const Mutation = {
             imagePublicId,
             author: authorId,
             authorNativeLanguage: authorNativeLanguage,
-            authorTargetLanguage: authorTargetLanguage
+            authorTargetLanguage: authorTargetLanguage,
+            isForumPost: isForumPost
         }).save();
 
         await User.findOneAndUpdate(
