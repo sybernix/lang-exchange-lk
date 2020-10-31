@@ -26,7 +26,7 @@ const List = styled.div`
 `;
 
 /**
- * Followers page showing the list of users who follow the auth user
+ * Followers page showing the list of users who follow a user
  */
 const Followers = ({match}) => {
     const {username} = match.params;
