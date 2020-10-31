@@ -12,9 +12,8 @@ import Head from 'components/Head';
 
 import {useStore} from 'store';
 
-import {GET_USER_NOTIFICATION} from 'graphql/notification';
-
 import {NOTIFICATIONS_PAGE_NOTIFICATION_LIMIT} from 'constants/DataLimit';
+import { GET_FOLLOWERS } from 'graphql/follow';
 
 const Root = styled(Container)`
   margin-top: ${p => p.theme.spacing.lg};
@@ -44,7 +43,7 @@ const Notifications = () => {
                 <Head title={`${auth.user.username}'s Followers`}/>
 
                 <Query
-                    query={GET_USER_NOTIFICATION}
+                    query={GET_FOLLOWERS}
                     variables={variables}
                     notifyOnNetworkStatusChange
                 >
