@@ -132,7 +132,7 @@ const ProfileInfo = ({ user }) => {
         coverImage={user.coverImage}
         coverImagePublicId={user.coverImagePublicId}
       />
-      {auth.user.id == user.id &&
+      {auth.user.id === user.id &&
         <NavLink2 exact activeClassName="selected" to={Routes.EDIT_INFO}>
           <PencilIcon color='grey600' />
         </NavLink2>

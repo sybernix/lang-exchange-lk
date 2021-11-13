@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {generatePath} from 'react-router-dom';
 import styled from 'styled-components';
