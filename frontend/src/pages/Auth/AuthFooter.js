@@ -55,7 +55,7 @@ const AuthFooter = props => {
     return (
         <Root>
             <StyledContainer maxWidth="lg">
-                <Copyright>&copy; 2020 <a href="https://niruhan.github.io/" target="_blank" rel="noopener noreferrer ">Niruhan Viswarupan</a></Copyright>
+                <Copyright>&copy; 2020 <a href="https://www.niruhan.com" target="_blank" rel="noopener noreferrer ">Niruhan Viswarupan</a></Copyright>
             </StyledContainer>
         </Root>
     );
